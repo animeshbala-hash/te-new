@@ -735,9 +735,7 @@ export default function ProfileView() {
             })}
 
             {/* Badges shelf — below nav */}
-            {!IS_NGO && (
-              <div style={{ marginTop: 28, background: "#fff", border: "1px solid #e8e8f0", borderRadius: 12, padding: "16px" }}>
-                <div style={{ fontSize: 10, fontWeight: 700, color: "#aaaabc", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 12 }}>Badges</div>
+            {!isEditing && !IS_NGO && (
                 {[
                   { image: badgeVeteran,    name: "ProEngage Veteran"    },
                   { image: badgeAmbassador, name: "ProEngage Ambassador"  },
@@ -754,9 +752,7 @@ export default function ProfileView() {
             )}
 
             {/* Certificates — forest green tint */}
-            {!IS_NGO && (
-              <div style={{ marginTop: 12, background: CP_TEAL_CERT, border: `1px solid ${C_TEAL_CERT}22`, borderRadius: 12, padding: "14px 16px" }}>
-                <div style={{ fontSize: 10, fontWeight: 700, color: C_TEAL_CERT, textTransform: "uppercase", letterSpacing: "1px", marginBottom: 10 }}>My Certificates</div>
+            {!isEditing && !IS_NGO && (
                 {[
                   { edition: "Mock Interviews - Students · ProEngage 2025 | 01", date: "2025" },
                   { edition: "Mock Interviews · ProEngage 2024 | 02",            date: "2024" },
