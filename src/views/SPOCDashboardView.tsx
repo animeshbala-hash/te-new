@@ -1227,9 +1227,8 @@ export default function SPOCDashboardView() {
           <section id="spoc-mgt" style={{ scrollMarginTop: 108 }}>
             <SectionHeading eyebrow="Corporate SPOC · TCS" title="SPOC Management" />
 
-            <div style={{ ...spocCard, marginBottom: 16 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#aaaabc", marginBottom: 16 }}>Company Leaderboard · Top 10</div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <CollapsiblePanel title="Company Leaderboard" eyebrow="Top 10" accentColor={B_PINK} badge={COMPANY_LEADERBOARD.length}>
+              <div style={{ paddingTop: 16, display: "flex", flexDirection: "column", gap: 8 }}>
                 {COMPANY_LEADERBOARD.map((c: any) => {
                   const isTCS = c.name === "TCS";
                   const barColor = c.rank === 1 ? KPI_YELLOW : isTCS ? B_PINK : KPI_TVW;
@@ -1248,7 +1247,7 @@ export default function SPOCDashboardView() {
                   );
                 })}
               </div>
-            </div>
+            </CollapsiblePanel>
 
             <CollapsiblePanel title="SPOC Directory" eyebrow="TCS SPOCs" accentColor={B_PINK} badge={SPOC_DIRECTORY.filter((s: any) => s.company === "TCS").length}>
               <div style={{ paddingTop: 16, display: "flex", flexDirection: "column", gap: 8 }}>
