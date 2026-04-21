@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronRight, ChevronLeft, Play, BookOpen, Bell, X, Check } from "lucide-react";
-import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAppContext } from "@/context/AppContext";
 import { useAuth } from "@/context/AuthContext";
@@ -482,7 +482,7 @@ const HomeView = () => {
             <div>
               <h4 className="font-bold mb-3 text-sm">Connect With Us</h4>
               <div className="flex gap-3.5 mb-5">
-                {[{ Icon: Facebook, c: "hover:text-blue-400", k: "fb" }, { Icon: Twitter, c: "hover:text-sky-400", k: "tw" }, { Icon: Instagram, c: "hover:text-pink-400", k: "ig" }, { Icon: Linkedin, c: "hover:text-blue-400", k: "li" }, { Icon: Youtube, c: "hover:text-red-500", k: "yt" }].map(({ Icon, c, k }) => (
+                {[{ Icon: Linkedin, c: "hover:text-blue-400", k: "li" }, { Icon: Instagram, c: "hover:text-pink-400", k: "ig" }, { Icon: Facebook, c: "hover:text-blue-400", k: "fb" }].map(({ Icon, c, k }) => (
                   <Icon key={k} size={17} className={`text-slate-500 ${c} cursor-pointer transition-colors`} />
                 ))}
               </div>
@@ -521,7 +521,7 @@ const HomeView = () => {
         {[
           { icon: <Linkedin size={15} />, label: "LinkedIn" },
           { icon: <Instagram size={15} />, label: "Instagram" },
-          { icon: <Twitter size={15} />, label: "X (Twitter)" },
+          { icon: <Facebook size={15} />, label: "Facebook" },
         ].map(({ icon, label }) => (
           <button
             key={label}
