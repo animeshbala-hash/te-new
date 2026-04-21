@@ -11,6 +11,11 @@ import {
 import { MOCK_APPLICANTS, ANJALI_MEHTA } from "@/data/mockData";
 import { useAppContext } from "@/context/AppContext";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
+import badgeVeteran    from "@/assets/badges/veteran.svg";
+import badgeAmbassador from "@/assets/badges/ambassador.svg";
+import badgeNorthStar  from "@/assets/badges/northstar.svg";
+import badgeLead       from "@/assets/badges/lead.svg";
+import badgeChampion   from "@/assets/badges/lead.png";
 
 // ─── Brand tokens (same as Volunteer + SPOC) ─────────────────────────────────
 const B_YELLOW    = "#F5A623";
@@ -35,6 +40,14 @@ const KPI_GREEN     = "#1A6B3C";   // primary ProEngage green
 const KPI_TEAL      = "#00A896";   // teal — matched/active
 const KPI_LIME      = "#5A9E1A";   // lime — completions
 const KPI_BLUE      = "#1E6BB8";   // blue — pending/review
+
+const NGO_BADGES = [
+  { id: "b1", name: "ProEngage Partner",   image: badgeVeteran,    desc: "Completed 5+ matched projects",              earned: "Jan 2026" },
+  { id: "b2", name: "5-Star NGO",          image: badgeAmbassador, desc: "Consistently high volunteer ratings",         earned: "Dec 2025" },
+  { id: "b3", name: "Community Champion",  image: badgeNorthStar,  desc: "10+ editions of TVW engagement",              earned: "Nov 2025" },
+  { id: "b4", name: "Impact Pathfinder",   image: badgeChampion,   desc: "First edition with 100% feedback submitted",  earned: "Oct 2025" },
+  { id: "b5", name: "NGO Pioneer",         image: badgeLead,       desc: "First NGO to complete a ProEngage project",   earned: "2020"     },
+];
 
 const notifDot: React.CSSProperties = {
   position: "absolute", top: -3, right: -6,
@@ -495,21 +508,30 @@ const NGODashboardView = () => {
   });
 
   return (
-    <div style={{ background: "#f8f9ff", minHeight: "100vh", paddingTop: 80, paddingBottom: 80 }}>
+    <div style={{ background: "#f8f9ff", minHeight: "100vh", paddingBottom: 80 }}>
 
-      {/* Identity banner */}
-      <div style={{ background: ACCENT_NAVY, padding: "20px 48px 18px", display: "flex", alignItems: "center", gap: 16 }}>
-        <div style={{ width: 44, height: 44, borderRadius: 12, background: B_GREEN, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 700, color: "#fff", flexShrink: 0, border: "2px solid rgba(255,255,255,0.2)" }}>AM</div>
-        <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>{ngoData.organization ?? "Pratham Foundation"}</div>
-          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", marginTop: 2 }}>Lead Partner · Education · Mumbai, India</div>
+      {/* Full-bleed greeting banner — matches Volunteer/SPOC exactly */}
+      <div style={{ background: "linear-gradient(135deg, #0A4A26 0%, #1A6B3C 55%, #2D9A56 100%)", padding: "92px 40px 28px", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24, flexWrap: "wrap" }}>
+        <div>
+          <div style={{ fontSize: 24, fontWeight: 900, color: "#fff", letterSpacing: -0.5 }}>
+            {ngoData.organization ?? "Pratham Foundation"}, this is your NGO space.
+          </div>
+          <div style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", marginTop: 6, fontWeight: 300 }}>
+            {ngoData.tier ?? "Lead Partner"} · Education · Mumbai, India
+          </div>
         </div>
-        <span style={{ background: `${B_GREEN}33`, color: "#90EE90", fontSize: 11, fontWeight: 700, padding: "4px 12px", borderRadius: 100, border: `1px solid ${B_GREEN}60` }}>{ngoData.tier ?? "Lead Partner"}</span>
-        <button onClick={() => setNotifOpen(v => !v)}
-          style={{ position: "relative", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 10, width: 38, height: 38, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", flexShrink: 0 }}>
-          <Bell size={17} color="rgba(255,255,255,0.85)" />
-          <span style={{ position: "absolute", top: 6, right: 6, width: 8, height: 8, borderRadius: "50%", background: B_RED, border: "2px solid #0D1B3E" }} />
-        </button>
+        {/* Right context card with notification bell */}
+        <div style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.22)", borderRadius: 12, padding: "14px 20px", minWidth: 280, maxWidth: 360, position: "relative" }}>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", marginBottom: 5 }}>Active · PE Edition 23</div>
+          <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", lineHeight: 1.3 }}>{activeProjects} active project{activeProjects !== 1 ? "s" : ""} · {pendingApps} pending reviews</div>
+          <div style={{ fontSize: 12.5, color: "rgba(255,255,255,0.6)", marginTop: 4 }}>Feedback due on {projects.filter((p: any) => p.status === "Active").length} project{projects.filter((p: any) => p.status === "Active").length !== 1 ? "s" : ""}</div>
+          {/* Bell in top-right of context card */}
+          <button onClick={() => setNotifOpen(v => !v)}
+            style={{ position: "absolute", top: 12, right: 12, background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.25)", borderRadius: 8, width: 32, height: 32, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
+            <Bell size={15} color="rgba(255,255,255,0.9)" />
+            <span style={{ position: "absolute", top: 4, right: 4, width: 7, height: 7, borderRadius: "50%", background: B_RED, border: "1.5px solid rgba(26,107,60,0.8)" }} />
+          </button>
+        </div>
       </div>
 
       {/* Notification popout */}
@@ -545,10 +567,10 @@ const NGODashboardView = () => {
       )}
 
       {/* Main layout */}
-      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "32px 48px 0", display: "grid", gridTemplateColumns: "1fr 148px", gap: 24, alignItems: "start" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 40px 100px", display: "flex", gap: 44, alignItems: "start" }}>
 
         {/* ── MAIN SCROLL ── */}
-        <div>
+        <div style={{ flex: 1, minWidth: 0 }}>
 
           {/* ─── I. Engagement Snapshot ─── */}
           <div id="snapshot" ref={snapshotRef} style={card}>
@@ -580,17 +602,18 @@ const NGODashboardView = () => {
                 <div style={{ fontSize: 10, color: B_BLUE, fontWeight: 600, marginTop: 6 }}>View all →</div>
               </div>
 
-              {/* Badges */}
               <div onClick={() => setSnapPopout(snapPopout === "badges" ? null : "badges")}
                 style={{ background: P_YELLOW, borderRadius: 10, padding: "12px 14px", cursor: "pointer", border: `1.5px solid ${snapPopout === "badges" ? B_YELLOW : "transparent"}`, transition: "border-color 0.15s" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
                   <Award size={13} color="#9a6500" />
                   <div style={{ fontSize: 10.5, fontWeight: 700, color: "#6b6b7a", textTransform: "uppercase", letterSpacing: "0.6px" }}>Badges Earned</div>
                 </div>
-                <div style={{ display: "flex", gap: 6 }}>
-                  {["🏅","🌟","🤝","🌱"].map((b, i) => <span key={i} style={{ fontSize: 20, lineHeight: 1 }}>{b}</span>)}
+                <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+                  {NGO_BADGES.slice(0, 4).map(b => (
+                    <img key={b.id} src={b.image} alt={b.name} style={{ width: 28, height: 28, objectFit: "contain" }} />
+                  ))}
                 </div>
-                <div style={{ fontSize: 24, fontWeight: 700, color: "#9a6500", letterSpacing: "-1px", marginTop: 4 }}>4</div>
+                <div style={{ fontSize: 24, fontWeight: 700, color: "#9a6500", letterSpacing: "-1px", marginTop: 4 }}>{NGO_BADGES.length}</div>
                 <div style={{ fontSize: 10, color: "#9a6500", fontWeight: 600 }}>View all →</div>
               </div>
 
@@ -625,20 +648,20 @@ const NGODashboardView = () => {
               </div>
             )}
             {snapPopout === "badges" && (
-              <div style={{ background: "#fffbee", border: `1.5px solid ${B_YELLOW}40`, borderRadius: 10, padding: "16px", marginBottom: 4 }}>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+              <div style={{ background: "#f8fff4", border: `1.5px solid ${B_GREEN}30`, borderRadius: 10, padding: "16px", marginBottom: 4 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
                   <div style={{ fontSize: 12.5, fontWeight: 700, color: ACCENT_NAVY }}>Badges Earned</div>
                   <button onClick={() => setSnapPopout(null)} style={{ background: "none", border: "none", color: "#aaa", cursor: "pointer", fontSize: 16 }}>✕</button>
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-                  {[{ icon: "🏅", name: "ProEngage Partner", desc: "Completed 5+ matched projects", earned: "Jan 2026" },{ icon: "🌟", name: "5-Star NGO", desc: "Consistently high volunteer ratings", earned: "Dec 2025" },{ icon: "🤝", name: "Community Champion", desc: "10+ editions of TVW engagement", earned: "Nov 2025" },{ icon: "🌱", name: "Impact Pathfinder", desc: "First edition with 100% feedback submitted", earned: "Oct 2025" }].map(b => (
-                    <div key={b.name} style={{ display: "flex", gap: 10, background: "#fff", border: "1px solid #f5d48a", borderRadius: 8, padding: "10px 12px" }}>
-                      <span style={{ fontSize: 24, flexShrink: 0, lineHeight: 1, marginTop: 2 }}>{b.icon}</span>
-                      <div>
-                        <div style={{ fontSize: 12.5, fontWeight: 700, color: ACCENT_NAVY }}>{b.name}</div>
-                        <div style={{ fontSize: 11, color: "#888", lineHeight: 1.4, marginTop: 2 }}>{b.desc}</div>
-                        <div style={{ fontSize: 10, color: "#9a6500", fontWeight: 600, marginTop: 4 }}>Earned {b.earned}</div>
-                      </div>
+                <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+                  {NGO_BADGES.map(b => (
+                    <div key={b.id} title={`${b.name} — ${b.desc} (${b.earned})`}
+                      style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5, cursor: "default", transition: "transform 0.15s" }}
+                      onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.08)")}
+                      onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}>
+                      <img src={b.image} alt={b.name} style={{ width: 52, height: 52, objectFit: "contain", display: "block" }} />
+                      <span style={{ fontSize: 10, fontWeight: 600, color: "#6b6b7a", textAlign: "center", lineHeight: 1.2, maxWidth: 64 }}>{b.name}</span>
+                      <span style={{ fontSize: 9.5, fontWeight: 600, color: B_GREEN }}>{b.earned}</span>
                     </div>
                   ))}
                 </div>
@@ -757,7 +780,13 @@ const NGODashboardView = () => {
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontSize: 13, fontWeight: 600, color: ACCENT_NAVY }}>{a.name}</div>
-                    <div style={{ fontSize: 11, color: "#888" }}>{a.city} · {a.availability}</div>
+                    <div style={{ display: "flex", gap: 5, marginTop: 4, flexWrap: "wrap" }}>
+                      <span style={{ fontSize: 10.5, fontWeight: 600, background: P_BLUE, color: B_BLUE, borderRadius: 100, padding: "1px 7px" }}>{a.city}</span>
+                      <span style={{ fontSize: 10.5, fontWeight: 600, background: P_TEAL, color: "#0F6E56", borderRadius: 100, padding: "1px 7px" }}>{a.availability}</span>
+                      {a.skills.slice(0, 2).map((s: string) => (
+                        <span key={s} style={{ fontSize: 10.5, fontWeight: 600, background: P_GREEN, color: B_GREEN, borderRadius: 100, padding: "1px 7px" }}>{s}</span>
+                      ))}
+                    </div>
                   </div>
                   <div style={{ textAlign: "right" }}>
                     <div style={{ fontSize: 12.5, fontWeight: 700, color: a.matchPercentage >= 90 ? B_TEAL : a.matchPercentage >= 80 ? B_GREEN : "#888" }}>{a.matchPercentage}%</div>
@@ -842,7 +871,10 @@ const NGODashboardView = () => {
                         onMouseEnter={e => (e.currentTarget.style.borderColor = B_GREEN)} onMouseLeave={e => (e.currentTarget.style.borderColor = "#e8e8f0")}>
                         <div style={{ flex: 1 }}>
                           <div style={{ fontSize: 13.5, fontWeight: 600, color: ACCENT_NAVY }}>{p.title}</div>
-                          <div style={{ fontSize: 11, color: "#888", marginTop: 2 }}>{p.volunteers ?? 0} volunteers · {p.applications ?? 0} applications</div>
+                          <div style={{ display: "flex", gap: 5, marginTop: 4 }}>
+                            <span style={{ fontSize: 10.5, fontWeight: 600, background: P_TEAL, color: "#0F6E56", borderRadius: 100, padding: "1px 7px" }}>{p.volunteers ?? 0} volunteers</span>
+                            <span style={{ fontSize: 10.5, fontWeight: 600, background: P_BLUE, color: B_BLUE, borderRadius: 100, padding: "1px 7px" }}>{p.applications ?? 0} applications</span>
+                          </div>
                         </div>
                         <Badge status={p.status} /><ChevronRight size={14} color="#aaa" />
                       </div>
@@ -878,17 +910,25 @@ const NGODashboardView = () => {
 
             {historyTab === "volunteers" && (
               <div>
-                {[{ name: "Priya Sharma", project: "Financial Literacy for Rural Women", status: "Active", hours: "12h" },{ name: "Amit Verma", project: "Digital Skills for Youth", status: "Matched", hours: "—" },{ name: "Sneha Rathore", project: "Community Health Awareness", status: "Completed", hours: "40h" }].map((v, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "9px 0", borderBottom: "1px solid #f0f0f8" }}>
+                {[
+                  { name: "Priya Sharma",  project: "Financial Literacy for Rural Women", status: "Active",    hours: "12h", skill: "Finance",    edition: "Edn 23" },
+                  { name: "Amit Verma",    project: "Digital Skills for Youth",            status: "Matched",   hours: "—",   skill: "IT",         edition: "Edn 23" },
+                  { name: "Sneha Rathore", project: "Community Health Awareness",           status: "Completed", hours: "40h", skill: "Healthcare", edition: "Edn 22" },
+                ].map((v, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 0", borderBottom: "1px solid #f0f0f8" }}>
                     <div style={{ width: 32, height: 32, borderRadius: "50%", background: P_GREEN, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, color: B_GREEN, flexShrink: 0 }}>
                       {v.name.split(" ").map(n => n[0]).join("")}
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: 13, fontWeight: 600, color: ACCENT_NAVY }}>{v.name}</div>
-                      <div style={{ fontSize: 11, color: "#888" }}>{v.project}</div>
+                      <div style={{ display: "flex", gap: 5, marginTop: 4, flexWrap: "wrap" }}>
+                        <span style={{ fontSize: 10.5, fontWeight: 600, background: P_GREEN, color: B_GREEN, borderRadius: 100, padding: "1px 7px" }}>{v.skill}</span>
+                        <span style={{ fontSize: 10.5, fontWeight: 600, background: "#f0f0f4", color: "#555", borderRadius: 100, padding: "1px 7px" }}>{v.edition}</span>
+                        <span style={{ fontSize: 10.5, color: "#888", padding: "1px 0" }}>{v.project}</span>
+                      </div>
                     </div>
                     <Badge status={v.status} />
-                    <div style={{ fontSize: 12, color: "#777", minWidth: 30 }}>{v.hours}</div>
+                    <div style={{ fontSize: 12, fontWeight: 600, color: v.hours !== "—" ? B_GREEN : "#bbb", minWidth: 30, textAlign: "right" }}>{v.hours}</div>
                   </div>
                 ))}
               </div>
@@ -896,11 +936,18 @@ const NGODashboardView = () => {
 
             {historyTab === "feedback" && (
               <div>
-                {[{ project: "Community Health Awareness", vol: "Sneha Rathore", submitted: "15-Mar-26", done: true },{ project: "Financial Literacy for Rural Women", vol: "Priya Sharma", submitted: "Pending", done: false }].map((f, i) => (
+                {[
+                  { project: "Community Health Awareness",          vol: "Sneha Rathore", submitted: "15-Mar-26", done: true,  edition: "Edn 22" },
+                  { project: "Financial Literacy for Rural Women",  vol: "Priya Sharma",  submitted: "Pending",   done: false, edition: "Edn 23" },
+                ].map((f, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 8px", borderBottom: "1px solid #f0f0f8" }}>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: 13, fontWeight: 600, color: ACCENT_NAVY }}>{f.project}</div>
-                      <div style={{ fontSize: 11, color: "#888" }}>Volunteer: {f.vol} · {f.submitted}</div>
+                      <div style={{ display: "flex", gap: 5, marginTop: 4, flexWrap: "wrap" }}>
+                        <span style={{ fontSize: 10.5, fontWeight: 600, background: P_BLUE, color: B_BLUE, borderRadius: 100, padding: "1px 7px" }}>{f.vol}</span>
+                        <span style={{ fontSize: 10.5, fontWeight: 600, background: "#f0f0f4", color: "#555", borderRadius: 100, padding: "1px 7px" }}>{f.edition}</span>
+                        {f.done && <span style={{ fontSize: 10.5, fontWeight: 600, background: "#f0f0f4", color: "#888", borderRadius: 100, padding: "1px 7px" }}>{f.submitted}</span>}
+                      </div>
                     </div>
                     <Badge status={f.done ? "Submitted" : "Pending"} />
                   </div>
@@ -930,7 +977,11 @@ const NGODashboardView = () => {
                         <div style={{ width: 36, height: 36, borderRadius: 9, background: P_GREEN, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: B_GREEN, flexShrink: 0 }}>{partner.name.charAt(0)}</div>
                         <div style={{ flex: 1 }}>
                           <div style={{ fontSize: 13.5, fontWeight: 600, color: ACCENT_NAVY }}>{partner.name}</div>
-                          <div style={{ fontSize: 11, color: "#888", marginTop: 2 }}>{partner.city} · {partner.focusArea} · {partner.projects.length} project{partner.projects.length !== 1 ? "s" : ""}</div>
+                          <div style={{ display: "flex", gap: 5, marginTop: 4, flexWrap: "wrap" }}>
+                            <span style={{ fontSize: 10.5, fontWeight: 600, background: P_BLUE, color: B_BLUE, borderRadius: 100, padding: "1px 7px" }}>{partner.city}</span>
+                            <span style={{ fontSize: 10.5, fontWeight: 600, background: P_GREEN, color: B_GREEN, borderRadius: 100, padding: "1px 7px" }}>{partner.focusArea}</span>
+                            <span style={{ fontSize: 10.5, fontWeight: 600, background: "#f0f0f4", color: "#555", borderRadius: 100, padding: "1px 7px" }}>{partner.projects.length} project{partner.projects.length !== 1 ? "s" : ""}</span>
+                          </div>
                         </div>
                         <Badge status={partner.status} />
                         {isOpen ? <ChevronUp size={14} color="#aaa" /> : <ChevronDown size={14} color="#aaa" />}
@@ -956,7 +1007,9 @@ const NGODashboardView = () => {
                               <div key={proj.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "9px 12px", background: "#fff", border: "1px solid #e8e8f0", borderRadius: 9 }}>
                                 <div style={{ flex: 1 }}>
                                   <div style={{ fontSize: 13, fontWeight: 600, color: ACCENT_NAVY }}>{proj.title}</div>
-                                  <div style={{ fontSize: 11, color: "#888", marginTop: 1 }}>{proj.volunteers} volunteer{proj.volunteers !== 1 ? "s" : ""}</div>
+                                  <div style={{ marginTop: 4 }}>
+                                    <span style={{ fontSize: 10.5, fontWeight: 600, background: P_TEAL, color: "#0F6E56", borderRadius: 100, padding: "1px 7px" }}>{proj.volunteers} volunteer{proj.volunteers !== 1 ? "s" : ""}</span>
+                                  </div>
                                 </div>
                                 <Badge status={proj.status} />
                               </div>
@@ -976,13 +1029,16 @@ const NGODashboardView = () => {
             <SH eyebrow={`${isLeadPartner ? "VI" : "V"} · Analytics`} title="Reports" />
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
               {[
-                { title: "Edition Participation Report",  desc: "Applications, matches, completions", date: "Generated 1 Apr 2026" },
-                { title: "Volunteer Engagement Summary",  desc: "Hours logged, feedback rates, certificate status", date: "Generated 1 Apr 2026" },
-                { title: "Project Health Report",         desc: "Monthly M&E status across all active projects", date: "Generated 20 Mar 2026" },
-                { title: "Feedback Completion Tracker",   desc: "Who has and hasn't submitted feedback", date: "Generated 5 Apr 2026" },
+                { title: "Edition Participation Report",  desc: "Applications, matches, completions", date: "Generated 1 Apr 2026",  tag: "Edn 23",    tagColor: B_GREEN,  tagBg: P_GREEN  },
+                { title: "Volunteer Engagement Summary",  desc: "Hours logged, feedback rates, certificate status", date: "Generated 1 Apr 2026", tag: "Edn 23", tagColor: B_TEAL, tagBg: P_TEAL },
+                { title: "Project Health Report",         desc: "Monthly M&E status across all active projects", date: "Generated 20 Mar 2026", tag: "Active projects", tagColor: KPI_LIME, tagBg: P_LIME },
+                { title: "Feedback Completion Tracker",   desc: "Who has and hasn't submitted feedback", date: "Generated 5 Apr 2026", tag: "Pending",  tagColor: "#9a6500", tagBg: P_YELLOW },
               ].map((r, i) => (
                 <div key={i} style={{ background: "#f8f9ff", border: "1px solid #e8e8f0", borderRadius: 10, padding: "14px" }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 4 }}>{r.title}</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: ACCENT_NAVY, flex: 1 }}>{r.title}</div>
+                    <span style={{ fontSize: 10.5, fontWeight: 700, background: r.tagBg, color: r.tagColor, borderRadius: 100, padding: "2px 8px", whiteSpace: "nowrap" }}>{r.tag}</span>
+                  </div>
                   <div style={{ fontSize: 12, color: "#6b6b7a", lineHeight: 1.4, marginBottom: 12 }}>{r.desc}</div>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     <span style={{ fontSize: 11, color: "#aaaabc" }}>{r.date}</span>
@@ -1023,7 +1079,7 @@ const NGODashboardView = () => {
         </div>
 
         {/* ── RIGHT RAIL ── */}
-        <div style={{ position: "sticky", top: 108, display: "flex", flexDirection: "column", gap: 10 }}>
+        <div style={{ width: 148, flexShrink: 0, position: "sticky", top: 108, alignSelf: "flex-start", display: "flex", flexDirection: "column", gap: 10 }}>
           {/* Section nav */}
           <div style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 10, padding: "10px 12px" }}>
             <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: "#aaaabc", marginBottom: 8 }}>Sections</div>
