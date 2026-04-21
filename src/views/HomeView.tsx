@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronRight, ChevronLeft, Play, BookOpen, Bell, X, Check } from "lucide-react";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { ChevronRight, ChevronLeft, Play, BookOpen } from "lucide-react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAppContext } from "@/context/AppContext";
 import { useAuth } from "@/context/AuthContext";
@@ -122,7 +121,7 @@ const SECTION_LABELS = ["Home", "Programmes", "Journey", "Numbers"];
 const HomeView = () => {
   const navigate         = useAppNavigate();
   const { triggerToast } = useAppContext();
-  const { isLoggedIn }   = useAuth();
+  
 
   const [activeSection,  setActiveSection]  = useState(0);
   const [showLabel,      setShowLabel]      = useState(false);
