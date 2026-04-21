@@ -151,7 +151,6 @@ const NGOHubView = () => {
               <p className="text-white/50 text-base font-medium tracking-wide mt-2">
                 Let's move your mission forward.
               </p>
-              <p className="text-white/30 text-xs mt-3 font-medium">{ngoData.organization} · {ngoData.tier}</p>
             </div>
 
             {/* Centre — quote */}

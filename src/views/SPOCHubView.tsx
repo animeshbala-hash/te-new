@@ -151,7 +151,6 @@ const SPOCHubView = () => {
               <p className="text-white/50 text-base font-medium tracking-wide mt-2">
                 Let's make things happen.
               </p>
-              <p className="text-white/30 text-xs mt-3 font-medium">{user?.company} · {user?.designation}</p>
             </div>
 
             {/* Centre — quote */}
