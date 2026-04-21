@@ -216,22 +216,22 @@ const hasActive = !!VOLUNTEER.activeApplication;
 function getActivitySlicers() {
   if (IS_PE_SEASON && hasActive) {
     return [
+      { id: "proengage",     label: "My ProEngage Project"},
       { id: "opportunities", label: "View Opportunities" },
       { id: "diy",           label: "DIY Activities"     },
-      { id: "proengage",     label: "My ProEngage Project"},
     ];
   }
   if (IS_PE_SEASON && !hasActive) {
     return [
+      { id: "apply",         label: "Apply for a Project"},
       { id: "opportunities", label: "View Opportunities" },
       { id: "diy",           label: "DIY Activities"     },
-      { id: "apply",         label: "Apply for a Project"},
     ];
   }
   return [
+    { id: "early",         label: "Apply Early for ProEngage"},
     { id: "opportunities", label: "View Opportunities"      },
     { id: "diy",           label: "DIY Activities"          },
-    { id: "early",         label: "Apply Early for ProEngage"},
   ];
 }
 
