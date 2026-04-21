@@ -913,9 +913,9 @@ export function TickerBar({ fixed = false }: { fixed?: boolean }) {
           <div className="te-marquee">
             {tickerDouble.map((item, i) => (
               <span key={i}
-                style={{ fontSize: 13, color: "rgba(255,255,255,0.7)", flexShrink: 0, cursor: "pointer", transition: "color 0.15s" }}
+                style={{ fontSize: 13, color: "rgba(255,255,255,1)", flexShrink: 0, cursor: "pointer", transition: "color 0.15s" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,1)")}
               >
                 {item}
               </span>
