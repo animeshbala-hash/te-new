@@ -290,9 +290,8 @@ export default function AboutProEngageView() {
               <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
                 Many non-profits have deep passion and on-ground reach but often lack access to specialised professional skills. At the same time, the Tata Group is home to a diverse pool of experienced professionals across disciplines. ProEngage bridges this gap.
               </p>
-              <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82 }}>
-                Volunteers already working independently with a non-profit can also route their projects through ProEngage by emailing <span style={{ color: COLOUR, fontWeight: 600 }}>tataengage@tata.com</span>
-              </p>
+            </div>
+          </div>
             </div>
           </div>
           <div style={{ position: "relative" }}>
