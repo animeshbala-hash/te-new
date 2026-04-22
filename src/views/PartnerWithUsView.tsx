@@ -20,9 +20,10 @@ const DIAG: React.CSSProperties = {
 
 const SECTIONS = [
   { id: "pwu-hero",    label: "Overview"     },
-  { id: "pwu-bridge",  label: "How we connect"},
+  { id: "pwu-bridge",  label: "How we bridge"},
   { id: "pwu-ngo",     label: "For NGOs"     },
   { id: "pwu-contact", label: "Contact"      },
+  { id: "pwu-social",  label: "Stay connected"},
   { id: "pwu-cta",     label: "Get started"  },
 ];
 
@@ -148,13 +149,14 @@ function Hero() {
               fontWeight: 300,
               lineHeight: 1.82,
               color: "rgba(255,255,255,0.72)",
-              maxWidth: 420,
+              maxWidth: 440,
               marginBottom: 48,
             }}
           >
-            Across the world, Tata professionals are eager to volunteer their
-            time and skills. Equally, civil society organisations doing impactful
-            work need the right support. Tata Engage is the bridge.
+            Across the world, countless Tata professionals are eager to volunteer
+            their time and skills — and equally many civil society organisations
+            doing impactful work need the right support. Tata Engage is the
+            trusted bridge between the two.
           </p>
 
           {/* Stats strip */}
@@ -261,23 +263,23 @@ function Hero() {
 // ── 2. Bridge — two-world split card ─────────────────────────────────────────
 function BridgeSection() {
   const ngoPoints = [
+    "Credible Not-for-Profit organisations",
     "Post projects requiring professional expertise",
-    "Define timelines, skills needed, and impact goals",
-    "Get matched with motivated Tata volunteers",
     "Receive structured, TSG-supported partnerships",
+    "Strengthen organisational capacity & on-ground impact",
   ];
   const volPoints = [
-    "Browse skill-matched NGO projects on Tata Engage",
-    "Apply for 1–6 month ProEngage projects year-round",
-    "Volunteer in large events during Tata Volunteering Week",
-    "Log hours, earn recognition, and get certified",
+    "Motivated professionals from across the Tata ecosystem",
+    "Apply to skill-based ProEngage projects (1–6 months)",
+    "Join large-scale Tata Volunteering Week events",
+    "Earn recognition, certificates & meaningful experience",
   ];
 
   return (
     <section id="pwu-bridge" style={{ padding: "96px 0", background: "#fff" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 56px" }}>
         <div style={{ textAlign: "center", marginBottom: 64 }}>
-          <Eyebrow text="How Tata Engage works" />
+          <Eyebrow text="How Tata Engage bridges this gap" />
           <h2
             style={{
               fontSize: 32,
@@ -296,13 +298,14 @@ function BridgeSection() {
               fontSize: 16,
               color: "#64748B",
               lineHeight: 1.8,
-              maxWidth: 560,
+              maxWidth: 600,
               margin: "20px auto 0",
             }}
           >
-            We serve as a trusted platform that connects credible not-for-profit
-            organisations with motivated professionals from across the Tata
-            ecosystem.
+            We serve as a trusted platform that connects credible
+            not-for-profit organisations with motivated professionals from
+            across the Tata ecosystem — enabling partnerships that strengthen
+            organisational capacity and deliver real, on-ground impact.
           </p>
         </div>
 
@@ -487,26 +490,34 @@ function BridgeSection() {
 
 // ── 3. For NGOs — numbered steps ──────────────────────────────────────────────
 function NGOSection() {
-  const steps = [
+  const steps: Array<{
+    num: string;
+    title: string;
+    desc: string;
+    bullets?: Array<{ heading?: string; text: string }>;
+  }> = [
     {
       num: "01",
       title: "Register on Tata Engage",
-      desc: "Interested Not-for-Profit organisations must REGISTER on the Tata Engage platform, provide necessary profile details, and upload requested documents for due diligence. Once enrolled, authorised representatives can log in and post volunteering projects requiring professional volunteers through ProEngage.",
+      desc: "Interested Not-for-Profit organisations must REGISTER on the Tata Engage platform, provide necessary profile details, and upload requested documents for due diligence.",
     },
     {
       num: "02",
-      title: "Post your projects",
-      desc: "Once enrolled, authorised representatives can log in and upload projects requiring professional volunteers — specifying skills needed, duration, and expected outcomes.",
+      title: "Post your projects, once enrolled",
+      desc: "Once enrolled on Tata Engage:",
+      bullets: [
+        { text: "Authorised non-profit representatives can log in and post volunteering projects requiring professional expertise through ProEngage." },
+        { text: "Stay informed about programme timelines, project upload windows, and other engagement opportunities." },
+      ],
     },
     {
       num: "03",
-      title: "Stay informed",
-      desc: "SUBSCRIBE to receive regular alerts and updates on Tata Engage initiatives including ProEngage (skill-based volunteering projects) and Tata Volunteering Week (large-scale, event-based volunteering). This ensures your organisation is prepared and visible when Tata volunteers are mobilised.",
-    },
-    {
-      num: "04",
-      title: "Get matched",
-      desc: "Tata Engage's matching process connects your projects with the most relevant Tata volunteers. TSG supports onboarding, orientation, and milestone tracking throughout.",
+      title: "Subscribe for alerts & updates",
+      desc: "SUBSCRIBE to receive regular alerts and updates on Tata Engage initiatives — so your organisation is prepared and visible when Tata volunteers are mobilised.",
+      bullets: [
+        { heading: "ProEngage", text: "Skill-based volunteering projects." },
+        { heading: "Tata Volunteering Week", text: "Large-scale, event-based volunteering." },
+      ],
     },
   ];
 
@@ -532,7 +543,7 @@ function NGOSection() {
                   letterSpacing: "-0.5px",
                 }}
               >
-                Need skilled volunteers?
+                Are you an NGO that needs volunteers?
               </h2>
               <DefinerBar />
               <p
@@ -543,9 +554,10 @@ function NGOSection() {
                   marginTop: 20,
                 }}
               >
-                Not-for-profit organisations associated with a Tata company are
-                eligible to partner with Tata Engage. Here's how the process
-                works.
+                Not-for-Profit organisations seeking to collaborate with the{" "}
+                <strong style={{ color: NAVY }}>Tata Sustainability Group</strong>{" "}
+                can partner with Tata Engage to access skilled and committed
+                volunteers from across the Tata ecosystem.
               </p>
             </div>
 
@@ -615,7 +627,7 @@ function NGOSection() {
                 >
                   {s.num}
                 </div>
-                <div>
+                <div style={{ flex: 1 }}>
                   <div
                     style={{
                       fontSize: 16,
@@ -635,6 +647,60 @@ function NGOSection() {
                   >
                     {s.desc}
                   </div>
+
+                  {s.bullets && (
+                    <ul
+                      style={{
+                        listStyle: "none",
+                        padding: 0,
+                        margin: "14px 0 0",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 10,
+                      }}
+                    >
+                      {s.bullets.map((b, bi) => (
+                        <li
+                          key={bi}
+                          style={{
+                            display: "flex",
+                            gap: 10,
+                            alignItems: "flex-start",
+                            background: "#fff",
+                            border: "1px solid #e8eef0",
+                            borderLeft: `3px solid ${C}`,
+                            borderRadius: 8,
+                            padding: "10px 14px",
+                          }}
+                        >
+                          <span
+                            style={{
+                              width: 6,
+                              height: 6,
+                              borderRadius: "50%",
+                              background: C,
+                              marginTop: 8,
+                              flexShrink: 0,
+                            }}
+                          />
+                          <span
+                            style={{
+                              fontSize: 13,
+                              color: "#475569",
+                              lineHeight: 1.65,
+                            }}
+                          >
+                            {b.heading && (
+                              <strong style={{ color: NAVY, fontWeight: 800 }}>
+                                {b.heading}:{" "}
+                              </strong>
+                            )}
+                            {b.text}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             ))}
@@ -713,9 +779,11 @@ function ContactSection() {
               }}
             >
               Whether you're a civil society organisation looking for volunteers,
-              or a partner exploring collaboration opportunities, the Tata Engage
-              team is here to help. Write to us with your organisation profile
-              and volunteering requirements.
+              or a partner exploring collaboration opportunities, the Tata
+              Engage team is here to help. Write to us with your organisation
+              profile, details of your association with Tata companies, and
+              your volunteering requirements — our team will guide you through
+              the next steps of the enrolment process.
             </p>
           </div>
 
@@ -769,65 +837,169 @@ function ContactSection() {
                 {copied ? "Copied ✓" : "Copy email"}
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-            {/* Social card */}
-            <div
+// ── 4b. Stay Connected — social section ───────────────────────────────────────
+function StayConnectedSection() {
+  const channels = [
+    {
+      platform: "LinkedIn",
+      handle: "Tata Engage",
+      note: "Official page",
+      url: "#",
+    },
+    {
+      platform: "X (Twitter)",
+      handle: "@TataEngage",
+      note: "Official handle",
+      url: "#",
+    },
+    {
+      platform: "Website",
+      handle: "tata.com / Tata Sustainability",
+      note: "Tata Engage on the Tata Group platforms",
+      url: "#",
+    },
+  ];
+
+  return (
+    <section
+      id="pwu-social"
+      style={{ padding: "96px 56px", background: "#fff" }}
+    >
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <Eyebrow text="Stay connected" />
+          <h2
+            style={{
+              fontSize: 30,
+              fontWeight: 900,
+              color: NAVY,
+              letterSpacing: "-0.5px",
+            }}
+          >
+            Follow Tata Engage
+          </h2>
+          <div
+            style={{ display: "flex", justifyContent: "center", marginTop: 10 }}
+          >
+            <DefinerBar />
+          </div>
+          <p
+            style={{
+              fontSize: 15,
+              color: "#64748B",
+              lineHeight: 1.8,
+              maxWidth: 600,
+              margin: "20px auto 0",
+            }}
+          >
+            Stay updated on volunteering programmes, partner opportunities, and
+            impact stories from across the Tata ecosystem.
+          </p>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 20,
+          }}
+        >
+          {channels.map((c) => (
+            <a
+              key={c.platform}
+              href={c.url}
               style={{
-                background: "rgba(255,255,255,0.08)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                borderRadius: 14,
-                padding: "20px 24px",
+                display: "block",
+                background: "#fff",
+                border: "1px solid #e8eef0",
+                borderRadius: 16,
+                padding: "24px 24px 22px",
+                textDecoration: "none",
+                color: "inherit",
+                position: "relative",
+                overflow: "hidden",
+                transition:
+                  "transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.transform =
+                  "translateY(-3px)";
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
+                  "0 12px 28px rgba(13,107,122,0.12)";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = C;
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.transform = "none";
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor =
+                  "#e8eef0";
               }}
             >
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: 3,
+                  background: C,
+                }}
+              />
               <div
                 style={{
                   fontFamily: "'DM Mono',monospace",
                   fontSize: 10,
                   fontWeight: 700,
-                  letterSpacing: "1.5px",
+                  letterSpacing: "1.8px",
                   textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.45)",
-                  marginBottom: 12,
+                  color: C,
+                  marginBottom: 10,
                 }}
               >
-                Stay connected
+                {c.platform}
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {[
-                  { platform: "LinkedIn",    handle: "Tata Engage"  },
-                  { platform: "X (Twitter)", handle: "@TataEngage"  },
-                ].map((s) => (
-                  <div
-                    key={s.platform}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: 14,
-                        color: "rgba(255,255,255,0.75)",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {s.platform}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: "'DM Mono',monospace",
-                        fontSize: 12,
-                        color: "rgba(255,255,255,0.45)",
-                      }}
-                    >
-                      {s.handle}
-                    </span>
-                  </div>
-                ))}
+              <div
+                style={{
+                  fontSize: 17,
+                  fontWeight: 800,
+                  color: NAVY,
+                  marginBottom: 6,
+                  letterSpacing: "-0.2px",
+                }}
+              >
+                {c.handle}
               </div>
-            </div>
-          </div>
+              <div
+                style={{
+                  fontSize: 13,
+                  color: "#64748B",
+                  lineHeight: 1.6,
+                }}
+              >
+                {c.note}
+              </div>
+              <div
+                style={{
+                  marginTop: 18,
+                  fontFamily: "'DM Mono',monospace",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: "1.2px",
+                  textTransform: "uppercase",
+                  color: MUSTARD,
+                }}
+              >
+                Follow ↗
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>
@@ -1045,6 +1217,7 @@ export default function PartnerWithUsView() {
       <BridgeSection />
       <NGOSection />
       <ContactSection />
+      <StayConnectedSection />
       <CTASection />
     </div>
   );
