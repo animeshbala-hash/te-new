@@ -1104,12 +1104,12 @@ function TeamSection() {
               {/* Avatar */}
               <div
                 style={{
-                  width: 96,
-                  height: 96,
+                  width: 160,
+                  height: 160,
                   borderRadius: "50%",
                   background: `linear-gradient(135deg,${C} 0%,${C_DARK} 100%)`,
                   color: "#fff",
-                  margin: "0 auto 18px",
+                  margin: "0 auto 22px",
                   position: "relative",
                   overflow: "hidden",
                 }}
@@ -1151,15 +1151,15 @@ function TeamSection() {
                     position: "absolute",
                     inset: 0,
                     background:
-                      "linear-gradient(180deg, rgba(10,61,71,0) 35%, rgba(10,61,71,0.85) 100%)",
+                      "linear-gradient(180deg, rgba(10,61,71,0) 40%, rgba(10,61,71,0.88) 100%)",
                     color: "#fff",
                     display: "flex",
                     alignItems: "flex-end",
                     justifyContent: "center",
-                    padding: "0 6px 10px",
-                    fontSize: 11,
+                    padding: "0 10px 16px",
+                    fontSize: 14,
                     fontWeight: 700,
-                    lineHeight: 1.15,
+                    lineHeight: 1.2,
                     textAlign: "center",
                     opacity: 0,
                     transition: "opacity 0.25s ease",
