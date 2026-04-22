@@ -674,7 +674,7 @@ export default function JourneyView() {
       ══════════════════════════════════════════ */}
       <div
         style={{
-          background: ACCENT_NAVY,
+          background: B_TICKER,
           padding: "72px 48px",
           marginTop: 64,
           position: "relative",
