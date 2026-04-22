@@ -53,6 +53,13 @@ const IconRetired = () => (
 );
 
 // How-it-works step icons
+const IconAnnounce = () => (
+  <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 10v6l13 5V5L3 10z"/>
+    <path d="M16 9a4 4 0 0 1 0 8"/>
+    <path d="M6 16v3a2 2 0 0 0 4 0v-2"/>
+  </svg>
+);
 const IconNGO = () => (
   <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="10" width="20" height="13" rx="2"/>
@@ -152,48 +159,47 @@ const WHO = [
 ];
 
 const HOW_STEPS = [
-  { num: "01", title: "NGO Project Upload",      Icon: IconNGO,      colour: "#1E6BB8", desc: "Credible NGOs submit project requirements addressing a real organisational need with tangible outcomes. Projects open twice yearly: 15 June and 5 December." },
-  { num: "02", title: "Volunteer Applications",   Icon: IconApply,    colour: "#0D7C52", desc: "Eligible volunteers apply to projects aligned with their skills via the ProEngage platform. Projects typically run 1–6 months, done during weekends and after-work hours." },
-  { num: "03", title: "Selection & Team",         Icon: IconMatch,    colour: "#5B21B6", desc: "Non-profits review applications and select the best-fit volunteers for each project. Bulk selection available for larger projects." },
-  { num: "04", title: "Orientation & Planning",   Icon: IconOrient,   colour: "#C14D00", desc: "A mandatory orientation workshop sets clear expectations. Action plans, objectives, and timelines are defined before work begins." },
-  { num: "05", title: "Execution & Tracking",     Icon: IconDeliver,  colour: "#0E7490", desc: "Projects are tracked periodically to ensure progress and quality outcomes. TSG provides check-ins throughout the engagement." },
-  { num: "06", title: "Closure & Recognition",    Icon: IconCert,     colour: "#B91C1C", desc: "Successful volunteers receive certificates. Learnings are documented for knowledge sharing and future impact." },
+  { num: "01", title: "Project Announcements",   Icon: IconAnnounce, colour: "#7C3AED", desc: "Projects are announced twice a year — 15 June and 5 December. Engagements typically run 1–6 months, done during weekends, holidays, and after-work hours." },
+  { num: "02", title: "NGO Project Upload",      Icon: IconNGO,      colour: "#1E6BB8", desc: "Credible NGOs submit project requirements designed to address a real organisational need and deliver tangible outcomes." },
+  { num: "03", title: "Volunteer Applications",  Icon: IconApply,    colour: "#0D7C52", desc: "Eligible volunteers apply to projects aligned with their skills via the ProEngage platform, across diverse functional areas." },
+  { num: "04", title: "Selection & Team Formation", Icon: IconMatch, colour: "#5B21B6", desc: "Non-profits review applications and select the best-fit volunteers for each project." },
+  { num: "05", title: "Orientation & Planning",  Icon: IconOrient,   colour: "#C14D00", desc: "A mandatory orientation workshop sets expectations for both volunteers and non-profits. Clear action plans, objectives, and timelines are defined." },
+  { num: "06", title: "Execution & Tracking",    Icon: IconDeliver,  colour: "#0E7490", desc: "Projects are tracked periodically to ensure progress and outcomes throughout the engagement." },
+  { num: "07", title: "Closure & Recognition",   Icon: IconCert,     colour: "#B91C1C", desc: "Successful volunteers receive certificates. Learnings are documented for knowledge sharing and future impact." },
 ];
 
 const VOLUNTEER_VALUES = [
-  { label: "Apply professional skills to real challenges",     Icon: IconImpact },
-  { label: "Lead high-impact projects beyond your day job",    Icon: IconLeadership },
-  { label: "Build leadership and problem-solving capabilities", Icon: IconGrowth },
-  { label: "Volunteer flexibly alongside work commitments",    Icon: IconFlexible },
+  { label: "Apply your professional skills to real-world social challenges", Icon: IconImpact },
+  { label: "Lead high-impact projects beyond your day-to-day role",          Icon: IconLeadership },
+  { label: "Build leadership, collaboration, and problem-solving skills",    Icon: IconGrowth },
+  { label: "Experience personal fulfilment by contributing to causes that matter", Icon: IconImpact },
+  { label: "Volunteer flexibly, alongside your work commitments",            Icon: IconFlexible },
 ];
 
 const NGO_VALUES = [
-  { label: "Access high-quality expertise, affordably",        Icon: IconAccess },
-  { label: "Strengthen long-term organisational capacity",     Icon: IconCapacity },
-  { label: "Receive structured, outcome-driven support",       Icon: IconStructured },
-  { label: "Partner with motivated, committed professionals",  Icon: IconPartner },
+  { label: "Access high-quality professional expertise that may otherwise be unaffordable", Icon: IconAccess },
+  { label: "Strengthen organisational capacity and long-term sustainability",               Icon: IconCapacity },
+  { label: "Receive structured, outcome-driven support — not just ad hoc volunteering",     Icon: IconStructured },
+  { label: "Partner with motivated professionals committed to delivering results",          Icon: IconPartner },
 ];
 
 const SKILLS = [
   { label: "Human Resources",              icon: "HR" },
-  { label: "Finance & Accounting",          icon: "FIN" },
+  { label: "Finance",                       icon: "FIN" },
   { label: "Business Planning & Strategy", icon: "STR" },
   { label: "Information Technology",       icon: "IT" },
-  { label: "Web Design & Digital",          icon: "WEB" },
+  { label: "Web Design & Digital Solutions", icon: "WEB" },
   { label: "Marketing & Social Media",     icon: "MKT" },
   { label: "Mentoring & Coaching",          icon: "MNT" },
-  { label: "Legal & Compliance",            icon: "LGL" },
-  { label: "Data & Analytics",             icon: "DAT" },
-  { label: "Project Management",           icon: "PMO" },
 ];
 
 const TSG_POINTS = [
-  "Sourcing meaningful, high-impact projects from verified NGOs",
-  "Reviewing and approving volunteer applications",
-  "Conducting orientation workshops for selected volunteers",
-  "Periodic milestone tracking throughout the project lifecycle",
-  "Recognising successful volunteers with certificates",
-  "Documenting learnings for institutional knowledge-sharing",
+  "Sourcing meaningful, high-impact projects",
+  "Inviting and managing volunteer applications",
+  "Conducting orientation workshops",
+  "Tracking progress throughout the project lifecycle",
+  "Recognising successful volunteers",
+  "Documenting learnings and building institutional knowledge",
 ];
 
 // ── DefinerBar ────────────────────────────────────────────────────────────────
@@ -392,7 +398,7 @@ export default function AboutProEngageView() {
       <section id="pe-how" style={{ padding: "96px 56px", background: "#fff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>The ProEngage journey</p>
-          <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Six steps from brief to certificate</h2>
+          <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Seven steps from announcement to certificate</h2>
           <DefinerBar colour={COLOUR} />
           <p style={{ fontSize: 15, color: "#64748B", marginTop: 18, maxWidth: 540, marginBottom: 56, lineHeight: 1.72 }}>
             Here's how the journey unfolds — from NGO submission through to volunteer recognition.
@@ -457,7 +463,7 @@ export default function AboutProEngageView() {
           <p style={{ fontSize: 15, color: "#64748B", lineHeight: 1.75, marginTop: 20, maxWidth: 540, marginBottom: 40 }}>
             NGOs seek expertise across these disciplines. Apply only for projects aligned with your professional background.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 12 }}>
             {SKILLS.map((skill) => (
               <div key={skill.label}
                 style={{ background: "#fff", border: `1.5px solid ${COLOUR}18`, borderRadius: 14, padding: "20px 16px", display: "flex", flexDirection: "column", alignItems: "center", gap: 12, textAlign: "center", cursor: "default" }}>
@@ -479,7 +485,10 @@ export default function AboutProEngageView() {
           <div>
             <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 10 }}>Tata Sustainability Group</p>
             <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>TSG's role in ProEngage</h2>
-            <div style={{ height: 3, background: "rgba(255,255,255,0.25)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 36 }} />
+            <div style={{ height: 3, background: "rgba(255,255,255,0.25)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 24 }} />
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.78)", lineHeight: 1.75, marginBottom: 32, maxWidth: 480 }}>
+              Tata Sustainability Group <strong style={{ color: "#fff", fontWeight: 700 }}>anchors and enables the ProEngage programme end-to-end</strong> by:
+            </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               {TSG_POINTS.map((p, i) => (
                 <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
