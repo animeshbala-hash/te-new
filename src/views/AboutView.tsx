@@ -531,16 +531,10 @@ function VisionSection() {
               marginBottom: 16,
             }}
           >
-            Jamsetji Tata's foresight went far beyond pure business. His
-            spirit of selfless giving and philosophy of constructive
-            philanthropy became a tradition for the group he founded.
+            Jamsetji Tata believed that business exists to serve society. That belief — rooted in selfless giving and constructive philanthropy — continues to guide the Tata Group today. Across diverse companies and geographies, Tata employees are united by shared values and a deep commitment to giving back.
           </p>
           <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.85 }}>
-            While every Tata employee and every Tata company is distinctive,
-            what binds them is the Tata values — and the ethos of giving back
-            to society. The Tata Sustainability Group conceptualised Tata
-            Engage as the unified digital vehicle to make that giving
-            structured, measurable, and far-reaching.
+            Tata Engage is the Tata Group's volunteering platform — designed to inspire, enable, and amplify employee engagement with communities and the environment. It brings together Tata employees, their families, and retired colleagues, and enables them — through its flagship programmes — to contribute their time, skills, and experience to address pressing social and environmental challenges.
           </p>
         </div>
 
