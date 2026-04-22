@@ -2,12 +2,13 @@ import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 import Footer from "@/components/layout/Footer";
+import cvpHeroImg from "@/assets/tata-motors-3.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY = "#0D1B3E";
-const COLOUR = "#5B3A8C"; // CVP purple
-const COLOUR_MID = "#46306E";
-const COLOUR_LIGHT = "#F1ECFA";
+const COLOUR = "#1F5F3A"; // Forest green
+const COLOUR_MID = "#16472B";
+const COLOUR_LIGHT = "#E8F2EC";
 
 const SECTIONS = [
   { id: "cvp-overview", label: "Overview" },
