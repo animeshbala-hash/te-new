@@ -9,31 +9,45 @@
 }
 
 /* ─── Global branded scrollbar (used across all pages and scroll containers) ── */
-/* Firefox */
+/* Firefox — applies to root viewport + any inner scrollable element */
+html,
+body,
 * {
   scrollbar-width: thin;
   scrollbar-color: #333399 transparent;
 }
 
-/* WebKit / Chromium / Safari */
+/* WebKit / Chromium / Safari — root viewport */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
 *::-webkit-scrollbar {
   width: 10px;
   height: 10px;
+  background: transparent;
 }
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
 *::-webkit-scrollbar-track {
   background: transparent;
 }
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
 *::-webkit-scrollbar-thumb {
   background-color: #333399;
   border-radius: 8px;
   border: 2px solid transparent;
   background-clip: padding-box;
+  min-height: 40px;
 }
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
 *::-webkit-scrollbar-thumb:hover {
   background-color: #252573;
   background-clip: padding-box;
   border: 2px solid transparent;
 }
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner,
 *::-webkit-scrollbar-corner {
   background: transparent;
 }
