@@ -266,7 +266,7 @@ function GCSOSection() {
                   width: "100%",
                   height: 480,
                   objectFit: "cover",
-                  objectPosition: "center top",
+                  objectPosition: "30% top",
                 }}
               />
             </div>
