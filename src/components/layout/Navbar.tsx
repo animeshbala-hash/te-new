@@ -69,11 +69,9 @@ const Navbar = ({
       : "volunteer-hub";
 
   const unreadCount = notifications.filter((n) => !n.read).length;
-  // Routes whose first viewport is a dark hero — drives white-text mode by default
-  const DARK_SCENE_ROUTES = ["/", "/hub", "/ngo/hub", "/spoc/hub", "/dashboard", "/profile", "/disaster-response", "/eoi", "/ewaste", "/tata-sustainability-month", "/cvp", "/about/tvw", "/about/proengage", "/journey"];
+  // Routes whose first viewport is genuinely dark — drives white-text mode by default
+  const DARK_SCENE_ROUTES = ["/", "/hub", "/ngo/hub", "/spoc/hub", "/dashboard", "/profile", "/disaster-response", "/eoi", "/ewaste", "/tata-sustainability-month", "/cvp", "/about/tvw", "/about/proengage"];
   const isDarkScene = DARK_SCENE_ROUTES.includes(location.pathname) && !scrolled;
-  // While not scrolled the bar is fully transparent. Once scrolled, frosted matching the scene.
-  const isTransparent = !scrolled;
 
   const dotColor = (type: string) => {
     if (type === "match" || type === "approval") return "bg-green-500";
