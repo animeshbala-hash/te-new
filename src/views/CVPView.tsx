@@ -2,12 +2,13 @@ import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 import Footer from "@/components/layout/Footer";
+import cvpHeroImg from "@/assets/tata-motors-3.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY = "#0D1B3E";
-const COLOUR = "#5B3A8C"; // CVP purple
-const COLOUR_MID = "#46306E";
-const COLOUR_LIGHT = "#F1ECFA";
+const COLOUR = "#1F5F3A"; // Forest green
+const COLOUR_MID = "#16472B";
+const COLOUR_LIGHT = "#E8F2EC";
 
 const SECTIONS = [
   { id: "cvp-overview", label: "Overview" },
@@ -80,16 +81,22 @@ export default function CVPView() {
       </div>
 
       {/* HERO */}
-      <section style={{ position: "relative", background: ACCENT_NAVY, color: "#fff", padding: "140px 24px 100px" }}>
+      <section style={{ position: "relative", background: "#0E3A22", color: "#fff", padding: "140px 24px 100px", overflow: "hidden" }}>
+        <img
+          src={cvpHeroImg}
+          alt=""
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.28 }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(14,58,34,0.92) 0%, rgba(31,95,58,0.78) 60%, rgba(14,58,34,0.85) 100%)" }} />
         <div style={DIAG} />
         <div style={{ position: "relative", maxWidth: 980, margin: "0 auto" }}>
-          <div style={{ display: "inline-block", padding: "6px 14px", borderRadius: 999, background: "rgba(255,255,255,0.08)", fontSize: 12, letterSpacing: 1, textTransform: "uppercase", marginBottom: 24, color: "#dcd6ee" }}>
+          <div style={{ display: "inline-block", padding: "6px 14px", borderRadius: 999, background: "rgba(255,255,255,0.12)", fontSize: 12, letterSpacing: 1, textTransform: "uppercase", marginBottom: 24, color: "#d8ead8" }}>
             Group-wide · Year-round
           </div>
           <h1 style={{ fontSize: 56, lineHeight: 1.05, fontWeight: 700, margin: 0, letterSpacing: -1 }}>
             Company Volunteering Programmes
           </h1>
-          <p style={{ marginTop: 24, fontSize: 18, lineHeight: 1.6, color: "#d8d4e4", maxWidth: 720 }}>
+          <p style={{ marginTop: 24, fontSize: 18, lineHeight: 1.6, color: "#e3eede", maxWidth: 720 }}>
             Each Tata company runs its own volunteering initiatives — rooted in their unique business context, employee strengths, and the communities they serve.
           </p>
         </div>
