@@ -1207,23 +1207,6 @@ function TeamSection() {
 
 // ── Main View ─────────────────────────────────────────────────────────────────
 export default function AboutView() {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-    SECTIONS.forEach(({ id }, idx) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([e]) => { if (e.isIntersecting) setActive(idx); },
-        { threshold: 0.25 }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
-
   return (
     <div
       style={{
