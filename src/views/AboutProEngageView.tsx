@@ -398,7 +398,7 @@ export default function AboutProEngageView() {
       <section id="pe-how" style={{ padding: "96px 56px", background: "#fff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>The ProEngage journey</p>
-          <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Six steps from brief to certificate</h2>
+          <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Seven steps from announcement to certificate</h2>
           <DefinerBar colour={COLOUR} />
           <p style={{ fontSize: 15, color: "#64748B", marginTop: 18, maxWidth: 540, marginBottom: 56, lineHeight: 1.72 }}>
             Here's how the journey unfolds — from NGO submission through to volunteer recognition.
@@ -463,7 +463,7 @@ export default function AboutProEngageView() {
           <p style={{ fontSize: 15, color: "#64748B", lineHeight: 1.75, marginTop: 20, maxWidth: 540, marginBottom: 40 }}>
             NGOs seek expertise across these disciplines. Apply only for projects aligned with your professional background.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 12 }}>
             {SKILLS.map((skill) => (
               <div key={skill.label}
                 style={{ background: "#fff", border: `1.5px solid ${COLOUR}18`, borderRadius: 14, padding: "20px 16px", display: "flex", flexDirection: "column", alignItems: "center", gap: 12, textAlign: "center", cursor: "default" }}>
@@ -485,7 +485,10 @@ export default function AboutProEngageView() {
           <div>
             <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 10 }}>Tata Sustainability Group</p>
             <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>TSG's role in ProEngage</h2>
-            <div style={{ height: 3, background: "rgba(255,255,255,0.25)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 36 }} />
+            <div style={{ height: 3, background: "rgba(255,255,255,0.25)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 24 }} />
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.78)", lineHeight: 1.75, marginBottom: 32, maxWidth: 480 }}>
+              Tata Sustainability Group <strong style={{ color: "#fff", fontWeight: 700 }}>anchors and enables the ProEngage programme end-to-end</strong> by:
+            </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               {TSG_POINTS.map((p, i) => (
                 <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
