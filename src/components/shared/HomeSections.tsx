@@ -92,9 +92,27 @@ const GLOBAL_STYLES = `
   @keyframes te-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
   .te-pulse { animation: te-pulse 2s ease-in-out infinite; }
 
-  /* Programme image card hover */
-  .prog-img-card { transition: transform 0.3s ease; }
-  .prog-img-card:hover { transform: scale(1.012); }
+  /* Programme tile — STYLE A (split / lighter gradient): subtle lift + image zoom */
+  .prog-style-a { transition: transform 0.35s ease, box-shadow 0.35s ease; }
+  .prog-style-a:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,0.18); }
+  .prog-style-a .prog-img-card { transition: transform 0.4s ease; }
+  .prog-style-a:hover .prog-img-card { transform: scale(1.04); }
+
+  /* Programme tile — STYLE B (full-bleed + tint): zoom + tint deepens */
+  .prog-style-b { transition: box-shadow 0.4s ease; }
+  .prog-style-b .prog-bleed-img { transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+  .prog-style-b .prog-bleed-tint { transition: opacity 0.4s ease; }
+  .prog-style-b:hover { box-shadow: 0 18px 44px rgba(0,0,0,0.22); }
+  .prog-style-b:hover .prog-bleed-img { transform: scale(1.06); }
+  .prog-style-b:hover .prog-bleed-tint { opacity: 0.55; }
+
+  /* Programme tile — STYLE C (geometric pattern): tilt + pattern parallax */
+  .prog-style-c { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease; }
+  .prog-style-c .prog-pattern { transition: transform 0.9s ease, opacity 0.4s ease; }
+  .prog-style-c .prog-bleed-img { transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+  .prog-style-c:hover { transform: perspective(900px) rotateX(1.5deg) translateY(-2px); box-shadow: 0 22px 48px rgba(0,0,0,0.24); }
+  .prog-style-c:hover .prog-pattern { transform: translate(28px, -28px); opacity: 0.55; }
+  .prog-style-c:hover .prog-bleed-img { transform: scale(1.03); }
 
   /* CVP/EOI card mini-scroll indicator */
   .prog-extra-dot {
