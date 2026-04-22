@@ -396,73 +396,116 @@ export function ProgrammeSpotlight() {
                   );
                 }
 
-                // ── STYLE C — full-bleed photo + geometric pattern overlay ──
+                // ── STYLE C — split image + tile, geometric overlay on BOTH ──
                 return (
                   <div
                     key="style-c"
                     className="prog-style-c"
                     onClick={() => navigate(p.route)}
-                    style={tileBase}
+                    style={{
+                      ...tileBase,
+                      display: "grid",
+                      gridTemplateColumns: "1fr 0.9fr",
+                      gap: 12,
+                      background: "transparent",
+                      boxShadow: "none",
+                    }}
                   >
+                    {/* IMAGE PANEL — separate tile with subtle pattern overlay */}
                     <div
-                      className="prog-bleed-img"
+                      className="prog-img-card"
                       style={{
-                        position: "absolute", inset: 0,
-                        backgroundImage: `url(${p.photo})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: p.photoPos,
-                      }}
-                    />
-                    {/* Solid colour wash */}
-                    <div style={{
-                      position: "absolute", inset: 0,
-                      background: `linear-gradient(115deg, ${p.colour}f2 0%, ${p.colour}cc 55%, ${p.colour}99 100%)`,
-                    }} />
-                    {/* Geometric pattern — diagonal stripes + dot grid */}
-                    <div
-                      className="prog-pattern"
-                      style={{
-                        position: "absolute", inset: "-40px",
-                        opacity: 0.4,
-                        backgroundImage: `
-                          repeating-linear-gradient(45deg, rgba(255,255,255,0.18) 0 2px, transparent 2px 22px),
-                          radial-gradient(rgba(255,255,255,0.35) 1.4px, transparent 1.6px)
-                        `,
-                        backgroundSize: "auto, 18px 18px",
-                        pointerEvents: "none",
-                      }}
-                    />
-                    {/* Decorative shape — large outlined hex */}
-                    <svg
-                      viewBox="0 0 100 100"
-                      style={{
-                        position: "absolute", top: -40, right: -40,
-                        width: 220, height: 220,
-                        opacity: 0.25, pointerEvents: "none",
+                        position: "relative",
+                        borderRadius: 14,
+                        overflow: "hidden",
+                        boxShadow: "0 4px 24px rgba(0,0,0,0.13)",
                       }}
                     >
-                      <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="none" stroke="#fff" strokeWidth="1.4" />
-                      <polygon points="50,18 78,34 78,66 50,82 22,66 22,34" fill="none" stroke="#fff" strokeWidth="1" />
-                    </svg>
+                      <div
+                        className="prog-bleed-img"
+                        style={{
+                          position: "absolute", inset: 0,
+                          backgroundImage: `url(${p.photo})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: p.photoPos,
+                        }}
+                      />
+                      {/* Subtle dark wash so pattern reads */}
+                      <div style={{
+                        position: "absolute", inset: 0,
+                        background: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.28) 100%)`,
+                      }} />
+                      {/* Pattern overlay — diagonal stripes + dot grid (subtle on image) */}
+                      <div
+                        className="prog-pattern"
+                        style={{
+                          position: "absolute", inset: "-30px",
+                          opacity: 0.32,
+                          backgroundImage: `
+                            repeating-linear-gradient(45deg, rgba(255,255,255,0.22) 0 2px, transparent 2px 22px),
+                            radial-gradient(rgba(255,255,255,0.4) 1.2px, transparent 1.4px)
+                          `,
+                          backgroundSize: "auto, 18px 18px",
+                          pointerEvents: "none",
+                        }}
+                      />
+                    </div>
 
-                    <div style={{
-                      position: "relative", zIndex: 2,
-                      height: "100%", minHeight: 340,
-                      display: "flex", flexDirection: "column", justifyContent: "center",
-                      padding: "36px 32px",
-                    }}>
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.78)", marginBottom: 10 }}>Style C · Geometric overlay</span>
-                      <h3 style={{
-                        fontSize: 30, fontWeight: 900, color: "#ffffff",
-                        letterSpacing: "-0.5px", lineHeight: 1.15, margin: "0 0 8px",
-                      }}>
-                        {p.title}
-                      </h3>
-                      <div style={{ width: 40, height: 2, background: "rgba(255,255,255,0.7)", borderRadius: 1, margin: "6px 0 12px" }} />
-                      <p style={{ fontSize: 13.5, color: "rgba(255,255,255,0.92)", lineHeight: 1.55, margin: "0 0 16px", maxWidth: 420 }}>
-                        {PROG_SUBS[idx]}
-                      </p>
-                      <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700, color: "#ffffff" }}>
+                    {/* COLOUR TILE — separate, with matching pattern overlay */}
+                    <div
+                      style={{
+                        position: "relative",
+                        borderRadius: 14,
+                        overflow: "hidden",
+                        background: p.colour,
+                        boxShadow: "0 4px 24px rgba(0,0,0,0.13)",
+                        padding: "32px 26px",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {/* Same pattern overlay on the tile (slightly stronger) */}
+                      <div
+                        className="prog-pattern"
+                        style={{
+                          position: "absolute", inset: "-30px",
+                          opacity: 0.4,
+                          backgroundImage: `
+                            repeating-linear-gradient(45deg, rgba(255,255,255,0.18) 0 2px, transparent 2px 22px),
+                            radial-gradient(rgba(255,255,255,0.35) 1.4px, transparent 1.6px)
+                          `,
+                          backgroundSize: "auto, 18px 18px",
+                          pointerEvents: "none",
+                        }}
+                      />
+                      {/* Decorative outlined hex */}
+                      <svg
+                        viewBox="0 0 100 100"
+                        style={{
+                          position: "absolute", top: -28, right: -28,
+                          width: 150, height: 150,
+                          opacity: 0.22, pointerEvents: "none",
+                        }}
+                      >
+                        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="none" stroke="#fff" strokeWidth="1.4" />
+                        <polygon points="50,18 78,34 78,66 50,82 22,66 22,34" fill="none" stroke="#fff" strokeWidth="1" />
+                      </svg>
+
+                      <div style={{ position: "relative", zIndex: 2, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.78)", marginBottom: 10 }}>Style C · Split + pattern</span>
+                        <h3 style={{
+                          fontSize: 26, fontWeight: 900, color: "#ffffff",
+                          letterSpacing: "-0.4px", lineHeight: 1.2, margin: "0 0 8px",
+                        }}>
+                          {p.title}
+                        </h3>
+                        <div style={{ width: 40, height: 2, background: "rgba(255,255,255,0.7)", borderRadius: 1, margin: "6px 0 10px" }} />
+                        <p style={{ fontSize: 13, color: "rgba(255,255,255,0.9)", lineHeight: 1.55, margin: 0 }}>
+                          {PROG_SUBS[idx]}
+                        </p>
+                      </div>
+                      <div style={{ position: "relative", zIndex: 2, marginTop: 16, display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700, color: "#ffffff" }}>
                         Learn more <ArrowRight size={13} />
                       </div>
                     </div>
