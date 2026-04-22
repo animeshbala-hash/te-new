@@ -222,11 +222,13 @@ const Navbar = ({
                 <>
                   {/* ABOUT */}
                   <div className="relative group">
-                    <span className={triggerCls(location.pathname.startsWith("/about") || location.pathname === "/journey")}>
+                    <span
+                      onClick={() => onNavigate("about")}
+                      className={triggerCls(location.pathname.startsWith("/about") || location.pathname === "/journey")}
+                    >
                       About <ChevronDown size={12} />
                     </span>
                     <div className={`${panelCls} w-64`}>
-                      <div className={sectionTitleCls}>About Tata Engage</div>
                       <span onClick={() => onNavigate("about")} className={itemCls}>Overview</span>
                       <span onClick={() => { onNavigate("about"); scrollAfter("about-vision"); }} className={itemCls}>TE Vision &amp; Mission</span>
                       <span onClick={() => onNavigate("journey")} className={itemCls}>Our Journey</span>
@@ -236,7 +238,6 @@ const Navbar = ({
                       {isLoggedIn && (
                         <>
                           <div className={dividerCls} />
-                          <div className={sectionTitleCls}>For Members</div>
                           <span onClick={() => { onNavigate("dashboard"); scrollAfter("resources"); }} className={itemCls}>E-Module</span>
                           <span onClick={() => { onNavigate("spoc-dashboard"); scrollAfter("spoc-mgt"); }} className={itemCls}>SPOC Directory</span>
                           <div className="relative group/nest">
@@ -244,7 +245,6 @@ const Navbar = ({
                               Campaign Kits <ChevronRight size={12} className="opacity-60" />
                             </span>
                             <div className={`${nestPanelCls} w-56`}>
-                              <div className={sectionTitleCls}>Campaign Kits</div>
                               <span onClick={() => triggerToast("ProEngage Campaign Kit available in Resource Library")} className={itemCls}>PE Kit</span>
                               <span onClick={() => triggerToast("TVW Campaign Kit available in Resource Library")} className={itemCls}>TVW Kit</span>
                               <span onClick={() => triggerToast("TSM Campaign Kit available in Resource Library")} className={itemCls}>TSM Kit</span>
@@ -257,21 +257,23 @@ const Navbar = ({
 
                   {/* PROGRAMMES */}
                   <div className="relative group">
-                    <span className={triggerCls(
-                      location.pathname.startsWith("/proengage") ||
-                      location.pathname.startsWith("/tvw") ||
-                      location.pathname.startsWith("/disaster-response") ||
-                      location.pathname.startsWith("/tata-sustainability-month") ||
-                      location.pathname.startsWith("/cvp") ||
-                      location.pathname.startsWith("/eoi") ||
-                      location.pathname.startsWith("/ewaste") ||
-                      location.pathname.startsWith("/about/proengage") ||
-                      location.pathname.startsWith("/about/tvw")
-                    )}>
+                    <span
+                      onClick={() => onNavigate("about")}
+                      className={triggerCls(
+                        location.pathname.startsWith("/proengage") ||
+                        location.pathname.startsWith("/tvw") ||
+                        location.pathname.startsWith("/disaster-response") ||
+                        location.pathname.startsWith("/tata-sustainability-month") ||
+                        location.pathname.startsWith("/cvp") ||
+                        location.pathname.startsWith("/eoi") ||
+                        location.pathname.startsWith("/ewaste") ||
+                        location.pathname.startsWith("/about/proengage") ||
+                        location.pathname.startsWith("/about/tvw")
+                      )}
+                    >
                       Programmes <ChevronDown size={12} />
                     </span>
                     <div className={`${panelCls} w-72`}>
-                      <div className={sectionTitleCls}>Programmes</div>
                       {programmesGroups.map((grp, gi) => (
                         <div key={grp.label}>
                           {gi === 3 && <div className={dividerCls} />}
@@ -280,7 +282,6 @@ const Navbar = ({
                               {grp.label} <ChevronRight size={12} className="opacity-60" />
                             </span>
                             <div className={`${nestPanelCls} w-64`}>
-                              <div className={sectionTitleCls}>{grp.label}</div>
                               {grp.items.map((it) => {
                                 if (it.label.startsWith("__SECTION__")) {
                                   return <div key={it.label} className={subSectionLabelCls}>{it.label.replace("__SECTION__", "")}</div>;
@@ -298,11 +299,13 @@ const Navbar = ({
 
                   {/* MEDIA & RESOURCES */}
                   <div className="relative group">
-                    <span className={triggerCls(location.pathname.startsWith("/media"))}>
+                    <span
+                      onClick={() => onNavigate("media")}
+                      className={triggerCls(location.pathname.startsWith("/media"))}
+                    >
                       Media &amp; Resources <ChevronDown size={12} />
                     </span>
                     <div className={`${panelCls} w-64`}>
-                      <div className={sectionTitleCls}>Media &amp; Resources</div>
                       <span onClick={() => onNavigate("media")} className={itemCls}>Impact Stories</span>
                       <span onClick={() => onNavigate("media")} className={itemCls}>Photo Gallery</span>
                       <span onClick={() => onNavigate("media")} className={itemCls}>Video Gallery</span>
