@@ -490,26 +490,34 @@ function BridgeSection() {
 
 // ── 3. For NGOs — numbered steps ──────────────────────────────────────────────
 function NGOSection() {
-  const steps = [
+  const steps: Array<{
+    num: string;
+    title: string;
+    desc: string;
+    bullets?: Array<{ heading?: string; text: string }>;
+  }> = [
     {
       num: "01",
       title: "Register on Tata Engage",
-      desc: "Interested Not-for-Profit organisations must REGISTER on the Tata Engage platform, provide necessary profile details, and upload requested documents for due diligence. Once enrolled, authorised representatives can log in and post volunteering projects requiring professional volunteers through ProEngage.",
+      desc: "Interested Not-for-Profit organisations must REGISTER on the Tata Engage platform, provide necessary profile details, and upload requested documents for due diligence.",
     },
     {
       num: "02",
-      title: "Post your projects",
-      desc: "Once enrolled, authorised representatives can log in and upload projects requiring professional volunteers — specifying skills needed, duration, and expected outcomes.",
+      title: "Post your projects, once enrolled",
+      desc: "Once enrolled on Tata Engage:",
+      bullets: [
+        { text: "Authorised non-profit representatives can log in and post volunteering projects requiring professional expertise through ProEngage." },
+        { text: "Stay informed about programme timelines, project upload windows, and other engagement opportunities." },
+      ],
     },
     {
       num: "03",
-      title: "Stay informed",
-      desc: "SUBSCRIBE to receive regular alerts and updates on Tata Engage initiatives including ProEngage (skill-based volunteering projects) and Tata Volunteering Week (large-scale, event-based volunteering). This ensures your organisation is prepared and visible when Tata volunteers are mobilised.",
-    },
-    {
-      num: "04",
-      title: "Get matched",
-      desc: "Tata Engage's matching process connects your projects with the most relevant Tata volunteers. TSG supports onboarding, orientation, and milestone tracking throughout.",
+      title: "Subscribe for alerts & updates",
+      desc: "SUBSCRIBE to receive regular alerts and updates on Tata Engage initiatives — so your organisation is prepared and visible when Tata volunteers are mobilised.",
+      bullets: [
+        { heading: "ProEngage", text: "Skill-based volunteering projects." },
+        { heading: "Tata Volunteering Week", text: "Large-scale, event-based volunteering." },
+      ],
     },
   ];
 
@@ -535,7 +543,7 @@ function NGOSection() {
                   letterSpacing: "-0.5px",
                 }}
               >
-                Need skilled volunteers?
+                Are you an NGO that needs volunteers?
               </h2>
               <DefinerBar />
               <p
@@ -546,9 +554,10 @@ function NGOSection() {
                   marginTop: 20,
                 }}
               >
-                Not-for-profit organisations associated with a Tata company are
-                eligible to partner with Tata Engage. Here's how the process
-                works.
+                Not-for-Profit organisations seeking to collaborate with the{" "}
+                <strong style={{ color: NAVY }}>Tata Sustainability Group</strong>{" "}
+                can partner with Tata Engage to access skilled and committed
+                volunteers from across the Tata ecosystem.
               </p>
             </div>
 
@@ -618,7 +627,7 @@ function NGOSection() {
                 >
                   {s.num}
                 </div>
-                <div>
+                <div style={{ flex: 1 }}>
                   <div
                     style={{
                       fontSize: 16,
@@ -638,6 +647,60 @@ function NGOSection() {
                   >
                     {s.desc}
                   </div>
+
+                  {s.bullets && (
+                    <ul
+                      style={{
+                        listStyle: "none",
+                        padding: 0,
+                        margin: "14px 0 0",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 10,
+                      }}
+                    >
+                      {s.bullets.map((b, bi) => (
+                        <li
+                          key={bi}
+                          style={{
+                            display: "flex",
+                            gap: 10,
+                            alignItems: "flex-start",
+                            background: "#fff",
+                            border: "1px solid #e8eef0",
+                            borderLeft: `3px solid ${C}`,
+                            borderRadius: 8,
+                            padding: "10px 14px",
+                          }}
+                        >
+                          <span
+                            style={{
+                              width: 6,
+                              height: 6,
+                              borderRadius: "50%",
+                              background: C,
+                              marginTop: 8,
+                              flexShrink: 0,
+                            }}
+                          />
+                          <span
+                            style={{
+                              fontSize: 13,
+                              color: "#475569",
+                              lineHeight: 1.65,
+                            }}
+                          >
+                            {b.heading && (
+                              <strong style={{ color: NAVY, fontWeight: 800 }}>
+                                {b.heading}:{" "}
+                              </strong>
+                            )}
+                            {b.text}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             ))}
