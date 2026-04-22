@@ -1,271 +1,329 @@
-import { motion } from "framer-motion";
-import { Heart, Globe, Award, LayoutGrid, ArrowRight, Zap, Activity } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
-import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import { B_RED, ACCENT_NAVY } from "@/data/homeSharedData";
+import { useAuth } from "@/context/AuthContext";
+import Footer from "@/components/layout/Footer";
+
+// ── Tokens ────────────────────────────────────────────────────────────────────
+const ACCENT_NAVY  = "#0D1B3E";
+const B_MUSTARD    = "#C8940A";
+const COLOUR       = "#007A8A";
+const COLOUR_MID   = "#005F6B";
+const COLOUR_LIGHT = "#E6F5F7";
 
 const SECTIONS = [
-  { id: "dr-hero", label: "Overview" },
-  { id: "dr-framework", label: "Framework" },
-  { id: "dr-how", label: "How to Help" },
-  { id: "dr-process", label: "Deployment" },
-  { id: "dr-register", label: "Register" },
+  { id: "dr-overview",  label: "Overview"    },
+  { id: "dr-who",       label: "Cadre"       },
+  { id: "dr-how",       label: "How it works" },
+  { id: "dr-framework", label: "Framework"   },
+  { id: "dr-tsg",       label: "TSG Role"    },
 ];
 
-const STRIPE_BG = {
-  backgroundImage: `repeating-linear-gradient(45deg, rgba(232,64,28,0.05) 0px, rgba(232,64,28,0.05) 1px, transparent 1px, transparent 20px)`,
-  backgroundSize: "20px 20px",
+const DIAG: React.CSSProperties = {
+  position: "absolute", inset: 0,
+  backgroundImage: "repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+  backgroundSize: "28px 28px",
+  pointerEvents: "none",
 };
 
-const GRID_BG = {
-  backgroundImage: `repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 32px), repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 32px)`,
-  backgroundSize: "32px 32px",
-};
-
-const PHASES = [
-  { phase: "Phase 1: Relief", desc: "Immediate provision of food, water, medical aid, and temporary shelter within the first 72 hours.", icon: Zap, color: "#f59e0b" },
-  { phase: "Phase 2: Restoration", desc: "Restoring essential services, sanitation, and supporting livelihoods in the weeks following a disaster.", icon: Activity, color: "#3b82f6" },
-  { phase: "Phase 3: Rehabilitation", desc: "Long-term reconstruction of infrastructure, schools, and resilient community systems.", icon: Heart, color: B_RED },
+const STATS = [
+  { num: "48h",    label: "Deployment target"              },
+  { num: "100+",   label: "Deployed in TN Floods 2016"     },
+  { num: "FY2016", label: "Framework adopted by TGSC"       },
 ];
 
-const HELP_TYPES = [
-  { title: "On-Ground Relief", skills: "Logistics, Medical, Distribution", icon: Globe, desc: "Direct deployment to affected areas to manage supply chains and distribution centers.", accent: "#f59e0b", pastel: "#fef3c7" },
-  { title: "Remote Support", skills: "Data, Tech, Coordination", icon: LayoutGrid, desc: "Supporting operations from your location through information management and technical aid.", accent: "#3b82f6", pastel: "#dbeafe" },
-  { title: "Specialized Skills", skills: "Engineering, Psychosocial, Legal", icon: Award, desc: "Providing professional expertise for infrastructure assessment or trauma counseling.", accent: B_RED, pastel: "#fee2e2" },
+const WHO = [
+  { label: "Pre-registered Tata Employees", icon: "🧭", desc: "Volunteers who have opted into the DR cadre on Tata Engage" },
+  { label: "Geographically Ready",          icon: "📍", desc: "Matched to disaster zones nearest to their location" },
+  { label: "TSG-Briefed Responders",        icon: "🛡️", desc: "Receive a full context briefing before deployment" },
 ];
 
 const STEPS = [
-  { step: "01", title: "Registration", desc: "Register your interest and skills in the Disaster Response pool." },
-  { step: "02", title: "Activation", desc: "Receive an alert when a crisis matches your profile and location." },
-  { step: "03", title: "Briefing", desc: "Mandatory safety and operational briefing before deployment." },
-  { step: "04", title: "Impact", desc: "Execute assigned tasks and contribute to community recovery." },
+  { num: "01", title: "Volunteer pre-registers", desc: "Employees opt into the Disaster Response cadre on Tata Engage and complete a readiness profile.", time: "Ongoing" },
+  { num: "02", title: "Alert is issued",          desc: "TSG identifies a disaster event requiring volunteer deployment and activates the One Tata Response protocol.", time: "Day 0" },
+  { num: "03", title: "Cadre is notified",        desc: "Pre-registered volunteers in relevant geographies receive an immediate alert with deployment details.", time: "< 24h" },
+  { num: "04", title: "Deployment & coordination", desc: "Volunteers are briefed, coordinated with local NGO partners, and deployed to affected communities.", time: "< 48h" },
 ];
 
-const CASES = [
-  { title: "Odisha Cyclone Relief (2024)", impact: "50,000+ Meals Distributed", desc: "Rapid deployment of volunteers to manage community kitchens and medical camps in the aftermath of Cyclone Dana.", img: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&q=80" },
-  { title: "Assam Flood Restoration (2023)", impact: "12 Schools Rebuilt", desc: "Long-term rehabilitation project focusing on restoring educational infrastructure and sanitation in flood-hit districts.", img: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80" },
+const TIME_LABELS = ["Always active", "Trigger", "Notification sent", "Deployed"];
+
+const PRINCIPLES = [
+  { label: "Readiness",    desc: "Pre-registered cadre, always ready to be activated",                   icon: "🟢" },
+  { label: "Speed",        desc: "Deployment target within 48 hours of a disaster event",                icon: "⚡" },
+  { label: "Coordination", desc: "TSG-led, with local NGO partner integration on the ground",            icon: "🔗" },
+  { label: "Coverage",     desc: "Multi-company mobilisation spanning geographies and borders",           icon: "🌏" },
 ];
 
-const HERO_STATS = [
-  { label: "48h Deployment" },
-  { label: "3 Response Phases" },
-  { label: "50,000+ Lives Touched" },
+const TSG_POINTS = [
+  "Monitoring disaster situations across India and globally",
+  "Activating the One Tata Response protocol",
+  "Coordinating with local NGO partners on the ground",
+  "Managing volunteer briefings and logistics",
+  "Documenting response impact and learnings for future readiness",
 ];
 
-const DisasterResponseView = () => {
+// ── DefinerBar ────────────────────────────────────────────────────────────────
+function DefinerBar({ colour }: { colour: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [on, setOn] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setOn(true); }, { threshold: 0.4 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <div ref={ref} style={{ height: 3, background: "#e8e8f0", borderRadius: 2, overflow: "hidden", width: 48, marginTop: 10 }}>
+      <div style={{ height: "100%", background: colour, borderRadius: 2, transition: "width 0.65s cubic-bezier(0.22,1,0.36,1)", width: on ? "100%" : "0%" }} />
+    </div>
+  );
+}
+
+// ── Component ─────────────────────────────────────────────────────────────────
+export default function DisasterResponseView() {
   const navigate = useAppNavigate();
+  const { isLoggedIn } = useAuth();
+  const [activeSection, setActiveSection] = useState(0);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    SECTIONS.forEach(({ id }, idx) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(idx); },
+        { threshold: 0.25 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
 
   return (
-    <div style={{ paddingTop: 80 }}>
-      {/* Accent line */}
-      <div style={{ background: B_RED, height: 2, width: "100%" }} />
+    <div style={{ background: "#fff", minHeight: "100vh", position: "relative" }}>
 
-      {/* Dot rail */}
-      <SubPageDotRail sections={SECTIONS} accentColor={B_RED} />
+      {/* Sticky top accent stripe */}
+      <div style={{ height: 4, background: COLOUR, position: "sticky", top: 0, zIndex: 100 }} />
 
-      {/* ═══ HERO ═══ */}
-      <section
-        id="dr-hero"
-        className="text-center py-20 px-6 md:px-16 relative overflow-hidden"
-        style={{ backgroundColor: ACCENT_NAVY, ...STRIPE_BG }}
-      >
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <div
-            className="mb-6"
-            style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 2, color: "rgba(255,255,255,0.5)" }}
-          >
-            ONE TATA RESPONSE FRAMEWORK
-          </div>
-
-          <div className="flex items-center justify-center gap-2 mb-8">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: B_RED }} />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ backgroundColor: B_RED }} />
-            </span>
-            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: B_RED }}>Response Ready</span>
-          </div>
-
-          <h1 style={{ fontSize: 52, fontWeight: 900, color: "white", letterSpacing: -1, lineHeight: 1.1 }} className="mb-6">
-            Disaster Response
-          </h1>
-
-          <p className="max-w-3xl mx-auto text-lg md:text-xl leading-relaxed mb-10" style={{ color: "rgba(255,255,255,0.65)", fontWeight: 300 }}>
-            The Tata Group's disaster response mechanism leverages our collective resources,
-            expertise, and volunteer spirit to provide immediate relief and long-term rehabilitation
-            to communities affected by natural calamities.
-          </p>
-
-          {/* Stat pills */}
-          <div className="flex items-center justify-center gap-3 mb-10 flex-wrap">
-            {HERO_STATS.map((s) => (
-              <span
-                key={s.label}
-                className="px-5 py-2 rounded-full text-xs font-semibold tracking-wide"
-                style={{ background: "rgba(255,255,255,0.1)", color: "white" }}
-              >
-                {s.label}
-              </span>
-            ))}
-          </div>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => navigate("register-role")}
-              className="w-full sm:w-auto px-10 py-5 rounded-2xl font-semibold uppercase tracking-widest hover:opacity-90 transition-all flex items-center justify-center gap-2 group cursor-pointer"
-              style={{ backgroundColor: B_RED, color: "white" }}
-            >
-              Register as Volunteer <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+      {/* ── Dot rail ── */}
+      <div style={{ position: "fixed", right: 20, top: "50%", transform: "translateY(-50%)", display: "flex", flexDirection: "column", gap: 12, zIndex: 50 }}>
+        {SECTIONS.map(({ id, label }, i) => {
+          const active = activeSection === i;
+          return (
+            <button key={id} onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })}
+              style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", background: "none", border: "none", cursor: "pointer", padding: 0 }}>
+              {active && (
+                <span style={{ fontSize: 11, fontWeight: 600, padding: "3px 10px", borderRadius: 100, marginRight: 8, whiteSpace: "nowrap", background: "#fff", border: "1px solid #e2e8f0", color: "#334155", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>{label}</span>
+              )}
+              <span style={{ display: "block", borderRadius: "50%", width: active ? 10 : 7, height: active ? 10 : 7, background: active ? COLOUR : "#CBD5E1", transition: "all 0.25s" }} />
             </button>
-            <button
-              onClick={() => document.getElementById("dr-framework")?.scrollIntoView({ behavior: "smooth" })}
-              className="w-full sm:w-auto px-10 py-5 rounded-2xl font-semibold uppercase tracking-widest hover:opacity-90 transition-all cursor-pointer"
-              style={{ background: "rgba(255,255,255,0.1)", color: "white", border: "1px solid rgba(255,255,255,0.2)" }}
-            >
-              View Framework
-            </button>
-          </div>
-        </motion.div>
-      </section>
+          );
+        })}
+      </div>
 
-      {/* ═══ FRAMEWORK ═══ */}
-      <section id="dr-framework" className="px-6 md:px-16 py-16 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-3xl font-black uppercase tracking-tight mb-4" style={{ color: ACCENT_NAVY }}>The One Tata Framework</h2>
-              <p className="text-slate-500 leading-relaxed">
-                Our response is structured into three critical phases, ensuring that we move from
-                immediate life-saving interventions to sustainable community rebuilding.
+      {/* ════════════════════ HERO ════════════════════ */}
+      <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", display: "flex", alignItems: "center" }}>
+        <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&q=80&w=1800"
+          alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} referrerPolicy="no-referrer" />
+        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(108deg, ${COLOUR}f5 0%, ${COLOUR}e8 28%, ${COLOUR}b0 52%, ${COLOUR}50 70%, ${COLOUR}18 100%)` }} />
+        <div style={DIAG} />
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 80, background: "linear-gradient(to bottom, transparent, #fff)", pointerEvents: "none" }} />
+
+        <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "120px 56px 96px", width: "100%" }}>
+          <div style={{ maxWidth: 560 }}>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 600, letterSpacing: "2.2px", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 16 }}>
+              Emergency Volunteering · One Tata Response Framework
+            </p>
+            <div style={{ width: 32, height: 2, background: "rgba(255,255,255,0.45)", borderRadius: 2, marginBottom: 22 }} />
+            <h1 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2.8rem, 5.5vw, 4.2rem)", fontWeight: 900, color: "#fff", lineHeight: 1.02, letterSpacing: "-2px", margin: "0 0 22px", whiteSpace: "pre-line" }}>
+              {"Disaster\nResponse"}
+            </h1>
+            <p style={{ fontSize: 15, fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.78)", margin: "0 0 44px", maxWidth: 460 }}>
+              When communities face a crisis — flood, cyclone, drought, or earthquake — the One Tata Response framework mobilises trained Tata volunteers within 48 hours. Rapid, organised, compassionate.
+            </p>
+            <div style={{ display: "flex", gap: 40, flexWrap: "wrap", marginBottom: 44, paddingBottom: 40, borderBottom: "1px solid rgba(255,255,255,0.12)" }}>
+              {STATS.map((s) => (
+                <div key={s.label}>
+                  <div style={{ fontSize: 28, fontWeight: 900, color: "#fff", lineHeight: 1, letterSpacing: "-0.5px" }}>{s.num}</div>
+                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 5 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: 12 }}>
+              <button onClick={() => navigate(isLoggedIn ? "dr-availability-form" : "register-role")}
+                style={{ background: B_MUSTARD, color: "#fff", border: "none", borderRadius: 10, padding: "12px 26px", fontWeight: 800, fontSize: 14, cursor: "pointer", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
+                Join the Response Cadre →
+              </button>
+              <button onClick={() => document.getElementById("dr-overview")?.scrollIntoView({ behavior: "smooth" })}
+                style={{ background: "rgba(255,255,255,0.11)", color: "#fff", border: "1.5px solid rgba(255,255,255,0.26)", borderRadius: 10, padding: "12px 22px", fontWeight: 600, fontSize: 14, cursor: "pointer" }}>
+                Learn more
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ position: "absolute", bottom: 100, right: 56, background: "rgba(0,0,0,0.28)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: 100, padding: "7px 18px", fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 600, letterSpacing: "1.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.7)" }}>
+          Rapid Action · One Tata Response
+        </div>
+      </div>
+
+      {/* ════════════════════ OVERVIEW ════════════════════ */}
+      <section id="dr-overview" style={{ padding: "88px 56px", background: "#fff" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
+          <div>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>The Disaster Response Cadre</p>
+            <h2 style={{ fontSize: 32, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Pre-registered, always ready</h2>
+            <DefinerBar colour={COLOUR} />
+            <div style={{ marginTop: 28 }}>
+              <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
+                Tata Engage's Disaster Response programme is not spontaneous — it is a pre-registered cadre of Tata volunteers who have indicated their willingness to be deployed rapidly when a crisis hits.
+              </p>
+              <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.82 }}>
+                Operating under the One Tata Response framework adopted by the Tata Group Sustainability Council, the programme ensures that when disaster strikes, Tata's volunteer response is immediate, coordinated, and effective.
               </p>
             </div>
-            <div className="space-y-4">
-              {PHASES.map((item, i) => (
-                <div key={i} className="flex gap-6 p-6 bg-white rounded-2xl border border-slate-100 transition-all hover:shadow-sm" style={{ borderLeftWidth: 3, borderLeftColor: item.color }}>
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: `${item.color}1a`, color: item.color }}>
-                    <item.icon size={24} />
-                  </div>
+          </div>
+          <div style={{ position: "relative" }}>
+            <div style={{ position: "absolute", top: -16, right: -16, zIndex: 0, width: 64, height: 64, borderRadius: 16, background: COLOUR, opacity: 0.12 }} />
+            <div style={{ borderRadius: 18, overflow: "hidden", boxShadow: "0 4px 32px rgba(0,0,0,0.10)", position: "relative", zIndex: 1 }}>
+              <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=900" alt=""
+                style={{ width: "100%", height: 380, objectFit: "cover", display: "block" }} referrerPolicy="no-referrer" />
+            </div>
+            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: COLOUR, borderRadius: "0 0 18px 18px", zIndex: 2 }} />
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════ WHO ════════════════════ */}
+      <section id="dr-who" style={{ position: "relative", overflow: "hidden", minHeight: 480 }}>
+        <img src="https://images.unsplash.com/photo-1591901206069-ed60c4429e2a?auto=format&fit=crop&q=80&w=1800" alt=""
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} referrerPolicy="no-referrer" />
+        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}f8 0%, ${COLOUR}e0 38%, ${COLOUR}c0 58%, ${COLOUR}88 78%, ${COLOUR}44 100%)` }} />
+        <div style={DIAG} />
+        <div style={{ position: "relative", zIndex: 1, padding: "88px 56px" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+            <div>
+              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 10 }}>The Cadre</p>
+              <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>Who is in the cadre?</h2>
+              <div style={{ height: 3, background: "rgba(255,255,255,0.28)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 36 }} />
+              <div style={{ marginBottom: 36 }}>
+                <div style={{ fontSize: "clamp(3.5rem, 7vw, 5.5rem)", fontWeight: 900, color: "#fff", lineHeight: 1, letterSpacing: "-3px" }}>100+</div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: "rgba(255,255,255,0.55)", marginTop: 10, letterSpacing: "0.8px", maxWidth: 260, lineHeight: 1.5 }}>volunteers deployed in Tamil Nadu Floods alone</div>
+              </div>
+              <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, maxWidth: 380 }}>
+                The cadre is made up of Tata employees who have proactively registered their availability and readiness for disaster deployment.
+              </p>
+            </div>
+            <div>
+              {WHO.map((w, i) => (
+                <div key={w.label} style={{ padding: "28px 0", borderBottom: i < WHO.length - 1 ? "1px solid rgba(255,255,255,0.14)" : "none", display: "flex", gap: 20, alignItems: "flex-start" }}>
+                  <div style={{ width: 52, height: 52, borderRadius: 14, flexShrink: 0, background: "rgba(255,255,255,0.14)", backdropFilter: "blur(4px)", border: "1px solid rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24 }}>{w.icon}</div>
                   <div>
-                    <h4 className="font-semibold uppercase tracking-wide mb-1" style={{ color: ACCENT_NAVY }}>{item.phase}</h4>
-                    <p className="text-sm text-slate-500">{item.desc}</p>
+                    <div style={{ fontSize: 17, fontWeight: 800, color: "#fff", marginBottom: 6 }}>{w.label}</div>
+                    <div style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.7 }}>{w.desc}</div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          <div className="relative">
-            <div className="absolute top-4 left-4 right-[-16px] bottom-[-16px] rounded-2xl" style={{ backgroundColor: ACCENT_NAVY }} />
-            <div className="aspect-square rounded-2xl overflow-hidden border-4 border-white shadow-2xl relative z-10">
-              <img
-                src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&q=80"
-                alt="Disaster Response"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                referrerPolicy="no-referrer"
-              />
-            </div>
+        </div>
+      </section>
+
+      {/* ════════════════════ HOW IT WORKS ════════════════════ */}
+      <section id="dr-how" style={{ padding: "88px 56px", background: "#F4F8F7" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>From alert to action</p>
+          <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>How rapid response works</h2>
+          <DefinerBar colour={COLOUR} />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginTop: 48 }}>
+            {STEPS.map((s, i) => {
+              const isFirst = i === 0;
+              return (
+                <div key={s.num}
+                  style={{ borderRadius: 16, overflow: "hidden", background: isFirst ? COLOUR : "#fff", border: `1px solid ${isFirst ? COLOUR : "#e8eef0"}`, boxShadow: isFirst ? `0 8px 28px ${COLOUR}30` : "none", transition: "transform 0.2s, box-shadow 0.2s" }}
+                  onMouseEnter={(e) => { if (!isFirst) { (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; } }}
+                  onMouseLeave={(e) => { if (!isFirst) { (e.currentTarget as HTMLElement).style.transform = "none"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; } }}
+                >
+                  <div style={{ background: isFirst ? "rgba(0,0,0,0.15)" : COLOUR_LIGHT, padding: "20px 20px 16px", borderBottom: `1px solid ${isFirst ? "rgba(255,255,255,0.12)" : COLOUR + "18"}` }}>
+                    <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 26, fontWeight: 700, lineHeight: 1, color: isFirst ? "#fff" : COLOUR, letterSpacing: "-1px" }}>{s.time}</div>
+                    <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: isFirst ? "rgba(255,255,255,0.45)" : COLOUR + "80", marginTop: 5 }}>{TIME_LABELS[i]}</div>
+                  </div>
+                  <div style={{ padding: "18px 20px 22px" }}>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: isFirst ? "#fff" : ACCENT_NAVY, marginBottom: 8 }}>{s.title}</div>
+                    <div style={{ fontSize: 12, lineHeight: 1.72, color: isFirst ? "rgba(255,255,255,0.72)" : "#64748B" }}>{s.desc}</div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ═══ HOW YOU CAN HELP ═══ */}
-      <section id="dr-how" className="px-6 md:px-16 py-16 max-w-7xl mx-auto">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl font-black uppercase tracking-tight mb-4" style={{ color: ACCENT_NAVY }}>How You Can Help</h2>
-          <p className="text-slate-500 max-w-2xl mx-auto">Different crises require different skills. We match your expertise to the specific needs on the ground.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {HELP_TYPES.map((type, i) => (
-            <div
-              key={i}
-              className="bg-white p-10 rounded-2xl border border-slate-100 flex overflow-hidden group cursor-default"
-              style={{ transition: "transform 0.2s, box-shadow 0.2s", borderLeftWidth: 3, borderLeftColor: type.accent }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 12px 28px rgba(0,0,0,0.1)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
-            >
-              <div className="flex-1">
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-8" style={{ backgroundColor: type.pastel, color: type.accent }}>
-                  <type.icon size={28} />
+      {/* ════════════════════ FRAMEWORK ════════════════════ */}
+      <section id="dr-framework" style={{ padding: "80px 56px", background: "#fff" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>One Tata Response</p>
+          <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>A Group-wide commitment to rapid action</h2>
+          <DefinerBar colour={COLOUR} />
+          <p style={{ fontSize: 15, color: "#64748B", lineHeight: 1.82, marginTop: 24, maxWidth: 680 }}>
+            The One Tata Response framework, adopted by the Tata Group Sustainability Council, provides a structured protocol for cross-company disaster response — ensuring multiple Tata companies can mobilise simultaneously with unified TSG coordination.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 40 }}>
+            {PRINCIPLES.map((p) => (
+              <div key={p.label}
+                style={{ background: "#fff", borderRadius: 14, border: "1px solid #e8eef0", padding: "26px 24px", display: "flex", gap: 18, alignItems: "flex-start", transition: "box-shadow 0.2s" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 20px rgba(0,0,0,0.07)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+              >
+                <div style={{ width: 44, height: 44, borderRadius: 11, flexShrink: 0, background: COLOUR_LIGHT, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>{p.icon}</div>
+                <div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: ACCENT_NAVY, marginBottom: 6 }}>{p.label}</div>
+                  <div style={{ fontSize: 14, color: "#64748B", lineHeight: 1.65 }}>{p.desc}</div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2" style={{ color: ACCENT_NAVY }}>{type.title}</h3>
-                <div className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: type.accent }}>{type.skills}</div>
-                <p className="text-sm text-slate-500 leading-relaxed">{type.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ═══ DEPLOYMENT JOURNEY ═══ */}
-      <section id="dr-process" className="rounded-2xl mx-4 md:mx-12 p-12 md:p-20 text-white mb-16 relative overflow-hidden" style={{ backgroundColor: ACCENT_NAVY }}>
-        <div className="absolute inset-0" style={GRID_BG} />
-        <div className="relative z-10">
-          <h2 className="text-3xl font-black uppercase tracking-tight mb-16 text-center">The Deployment Journey</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative">
-            <div className="hidden md:block absolute top-10 left-20 right-20 h-px border-t border-dashed border-white/20" />
-            {STEPS.map((item, i) => (
-              <div key={i} className="relative text-center">
-                <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8 text-2xl font-black shadow-2xl backdrop-blur-md" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: B_RED }}>
-                  {item.step}
-                </div>
-                <h4 className="font-semibold uppercase tracking-widest mb-4">{item.title}</h4>
-                <p className="text-xs text-white/50 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ CASE STUDIES ═══ */}
-      <section className="px-6 md:px-16 py-16 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-14 gap-6">
+      {/* ════════════════════ TSG ROLE ════════════════════ */}
+      <section id="dr-tsg" style={{ background: COLOUR_MID, padding: "88px 56px", position: "relative", overflow: "hidden" }}>
+        <div style={DIAG} />
+        <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 72, alignItems: "start" }}>
           <div>
-            <h2 className="text-3xl font-black uppercase tracking-tight mb-4" style={{ color: ACCENT_NAVY }}>Past Case Studies</h2>
-            <p className="text-slate-500 max-w-xl">A legacy of standing with the nation during its most challenging times.</p>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {CASES.map((c, i) => (
-            <div key={i} className="group cursor-pointer">
-              <div className="aspect-video rounded-2xl overflow-hidden mb-8 shadow-lg border border-slate-100 relative">
-                <img src={c.img} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute bottom-6 left-6 right-6 text-white translate-y-4 group-hover:translate-y-0 transition-transform opacity-0 group-hover:opacity-100">
-                  <div className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: B_RED }}>Impact Highlight</div>
-                  <div className="text-xl font-semibold">{c.impact}</div>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 10 }}>Tata Sustainability Group</p>
+            <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>TSG coordinates every response</h2>
+            <div style={{ height: 3, background: "rgba(255,255,255,0.25)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 36 }} />
+            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+              {TSG_POINTS.map((p, i) => (
+                <div key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                  <div style={{ width: 24, height: 24, borderRadius: "50%", background: "rgba(255,255,255,0.18)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", marginTop: 1 }}>
+                    <span style={{ color: "#fff", fontSize: 11, fontWeight: 800 }}>✓</span>
+                  </div>
+                  <span style={{ fontSize: 15, color: "rgba(255,255,255,0.85)", lineHeight: 1.65 }}>{p}</span>
                 </div>
-              </div>
-              <h3 className="text-2xl font-black mb-3 transition-colors" style={{ color: ACCENT_NAVY }}>{c.title}</h3>
-              <p className="text-slate-500 leading-relaxed">{c.desc}</p>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ═══ REGISTER ═══ */}
-      <section id="dr-register" className="px-6 md:px-16 py-20">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl font-black tracking-tight mb-4" style={{ color: ACCENT_NAVY }}>Ready to respond?</h2>
-          <p className="text-slate-500 text-lg mb-10">Register your interest now and be part of the Tata disaster response cadre.</p>
-          <button
-            onClick={() => navigate("register-role")}
-            className="px-12 py-5 text-white rounded-2xl font-semibold uppercase tracking-widest hover:opacity-90 transition-all shadow-xl shadow-black/10 cursor-pointer"
-            style={{ backgroundColor: B_RED }}
-          >
-            Register as Volunteer
-          </button>
-          <div className="mt-6">
-            <button
-              onClick={() => navigate("dashboard")}
-              className="text-sm font-semibold uppercase tracking-widest hover:underline transition-all cursor-pointer"
-              style={{ color: ACCENT_NAVY }}
-            >
-              Already registered? Go to your dashboard →
+          </div>
+          <div style={{ background: "rgba(0,0,0,0.22)", borderRadius: 20, padding: "40px 36px", border: "1px solid rgba(255,255,255,0.14)" }}>
+            <div style={{ fontSize: 24, fontWeight: 900, color: "#fff", marginBottom: 14, lineHeight: 1.2 }}>Ready to respond?</div>
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.68)", lineHeight: 1.78, marginBottom: 36 }}>
+              Join the pre-registered cadre and be ready to make a difference when it matters most.
+            </p>
+            <button onClick={() => navigate(isLoggedIn ? "dr-availability-form" : "register-role")}
+              style={{ background: B_MUSTARD, color: "#fff", border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 15, cursor: "pointer", width: "100%", boxShadow: "0 4px 20px rgba(0,0,0,0.22)" }}>
+              Join the Response Cadre →
+            </button>
+            <button onClick={() => navigate("about")}
+              style={{ background: "transparent", color: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.22)", borderRadius: 10, padding: "13px 28px", fontWeight: 600, fontSize: 14, cursor: "pointer", width: "100%", marginTop: 12 }}>
+              ← Back to About
             </button>
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
-};
-
-export default DisasterResponseView;
+}
