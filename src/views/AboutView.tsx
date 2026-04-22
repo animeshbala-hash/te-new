@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
+import SubPageDotRail from "@/components/shared/SubPageDotRail";
 
 // ── Colour tokens (page-local — matches HTML prototype) ──────────────────────
 const C       = "#0D6B7A";
@@ -84,74 +85,6 @@ function DefinerBar({ colour = C, light = false }: { colour?: string; light?: bo
           width: on ? "100%" : "0%",
         }}
       />
-    </div>
-  );
-}
-
-// ── Dot Rail ─────────────────────────────────────────────────────────────────
-function DotRail({ active }: { active: number }) {
-  return (
-    <div
-      style={{
-        position: "fixed",
-        right: 20,
-        top: "50%",
-        transform: "translateY(-50%)",
-        display: "flex",
-        flexDirection: "column",
-        gap: 12,
-        zIndex: 50,
-      }}
-    >
-      {SECTIONS.map(({ id, label }, i) => {
-        const isActive = active === i;
-        return (
-          <button
-            key={id}
-            onClick={() =>
-              document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
-            }
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: 0,
-            }}
-          >
-            {isActive && (
-              <span
-                style={{
-                  fontSize: 11,
-                  fontWeight: 600,
-                  padding: "3px 10px",
-                  borderRadius: 100,
-                  marginRight: 8,
-                  whiteSpace: "nowrap",
-                  background: "#fff",
-                  border: "1px solid #e2e8f0",
-                  color: "#334155",
-                  boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
-                }}
-              >
-                {label}
-              </span>
-            )}
-            <span
-              style={{
-                display: "block",
-                borderRadius: "50%",
-                width: isActive ? 10 : 7,
-                height: isActive ? 10 : 7,
-                background: isActive ? C : "#CBD5E1",
-                transition: "all 0.25s",
-              }}
-            />
-          </button>
-        );
-      })}
     </div>
   );
 }
@@ -1274,23 +1207,6 @@ function TeamSection() {
 
 // ── Main View ─────────────────────────────────────────────────────────────────
 export default function AboutView() {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-    SECTIONS.forEach(({ id }, idx) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([e]) => { if (e.isIntersecting) setActive(idx); },
-        { threshold: 0.25 }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
-
   return (
     <div
       style={{
@@ -1311,7 +1227,7 @@ export default function AboutView() {
         }}
       />
 
-      <DotRail active={active} />
+      <SubPageDotRail sections={SECTIONS} />
       <Hero />
       <GCSOSection />
       <VisionSection />
