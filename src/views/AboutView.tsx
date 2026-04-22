@@ -2,6 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import chackoThomasPortrait from "@/assets/chacko-thomas.jpg";
+import shrirangPortrait from "@/assets/team/shrirang-dhavale.png";
+import gauriPortrait from "@/assets/team/gauri-rajadhyaksha.png";
+import supriyaPortrait from "@/assets/team/supriya-ramachandran.png";
+import truptiPortrait from "@/assets/team/trupti-prabhu.png";
 
 // ── Colour tokens (page-local — matches HTML prototype) ──────────────────────
 const C       = "#0D6B7A";
