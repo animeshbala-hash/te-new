@@ -149,13 +149,14 @@ function Hero() {
               fontWeight: 300,
               lineHeight: 1.82,
               color: "rgba(255,255,255,0.72)",
-              maxWidth: 420,
+              maxWidth: 440,
               marginBottom: 48,
             }}
           >
-            Across the world, Tata professionals are eager to volunteer their
-            time and skills. Equally, civil society organisations doing impactful
-            work need the right support. Tata Engage is the bridge.
+            Across the world, countless Tata professionals are eager to volunteer
+            their time and skills — and equally many civil society organisations
+            doing impactful work need the right support. Tata Engage is the
+            trusted bridge between the two.
           </p>
 
           {/* Stats strip */}
@@ -262,23 +263,23 @@ function Hero() {
 // ── 2. Bridge — two-world split card ─────────────────────────────────────────
 function BridgeSection() {
   const ngoPoints = [
+    "Credible Not-for-Profit organisations",
     "Post projects requiring professional expertise",
-    "Define timelines, skills needed, and impact goals",
-    "Get matched with motivated Tata volunteers",
     "Receive structured, TSG-supported partnerships",
+    "Strengthen organisational capacity & on-ground impact",
   ];
   const volPoints = [
-    "Browse skill-matched NGO projects on Tata Engage",
-    "Apply for 1–6 month ProEngage projects year-round",
-    "Volunteer in large events during Tata Volunteering Week",
-    "Log hours, earn recognition, and get certified",
+    "Motivated professionals from across the Tata ecosystem",
+    "Apply to skill-based ProEngage projects (1–6 months)",
+    "Join large-scale Tata Volunteering Week events",
+    "Earn recognition, certificates & meaningful experience",
   ];
 
   return (
     <section id="pwu-bridge" style={{ padding: "96px 0", background: "#fff" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 56px" }}>
         <div style={{ textAlign: "center", marginBottom: 64 }}>
-          <Eyebrow text="How Tata Engage works" />
+          <Eyebrow text="How Tata Engage bridges this gap" />
           <h2
             style={{
               fontSize: 32,
@@ -297,13 +298,14 @@ function BridgeSection() {
               fontSize: 16,
               color: "#64748B",
               lineHeight: 1.8,
-              maxWidth: 560,
+              maxWidth: 600,
               margin: "20px auto 0",
             }}
           >
-            We serve as a trusted platform that connects credible not-for-profit
-            organisations with motivated professionals from across the Tata
-            ecosystem.
+            We serve as a trusted platform that connects credible
+            not-for-profit organisations with motivated professionals from
+            across the Tata ecosystem — enabling partnerships that strengthen
+            organisational capacity and deliver real, on-ground impact.
           </p>
         </div>
 
