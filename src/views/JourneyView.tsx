@@ -18,6 +18,7 @@ import imgInfiniti     from "@/assets/infiniti-1.jpg";
 
 // ── Brand tokens ──────────────────────────────────────────────────────────────
 const ACCENT_NAVY = "#0D1B3E";
+const B_TICKER    = "#3E7EB0"; // Chatbot blue — replaces navy banners site-wide
 const B_YELLOW    = "#F5A623";
 
 // ── Cycling colour palette per milestone ──────────────────────────────────────
