@@ -89,7 +89,7 @@ export default function MediaView() {
       <SubPageDotRail sections={SECTIONS} accentColor={B_BLUE} />
 
       {/* 1 — Hero */}
-      <div id="media-hero" style={{ background: ACCENT_NAVY, padding: "100px 24px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <div id="media-hero" style={{ background: "#F2778A", padding: "100px 24px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={DIAG_TEXTURE} />
         <div style={{ position: "relative", zIndex: 1 }}>
           <h1 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 900, fontSize: 36, color: "#fff", margin: 0 }}>Media &amp; Resources</h1>
