@@ -342,10 +342,10 @@ const Navbar = ({
               {/* Bell */}
               <div className="relative" ref={notifRef}>
                 <button onClick={() => setNotifOpen((o) => !o)}
-                  className={`p-2 rounded-full cursor-pointer relative transition-colors duration-300 ${isTransparent ? "hover:bg-white/10" : "hover:bg-zinc-100"}`}>
-                  <Bell size={20} className={`transition-colors duration-300 ${isTransparent ? "text-white/90" : "text-zinc-700"}`} />
+                  className={`p-2 rounded-full cursor-pointer relative transition-colors duration-300 ${isDarkScene ? "hover:bg-white/10" : "hover:bg-zinc-100"}`}>
+                  <Bell size={20} className={`transition-colors duration-300 ${isDarkScene ? "text-white/90" : "text-zinc-700"}`} />
                   {unreadCount > 0 && (
-                    <span className={`absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 ${isTransparent ? "border-transparent" : "border-white"}`} />
+                    <span className={`absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 ${isDarkScene ? "border-transparent" : "border-white"}`} />
                   )}
                 </button>
 
@@ -393,7 +393,7 @@ const Navbar = ({
                   <div className="w-9 h-9 rounded-full bg-[#3E7EB0] text-white flex items-center justify-center text-sm font-bold">
                     {user?.firstName?.[0]}{user?.lastName?.[0]}
                   </div>
-                  <ChevronDown size={14} className={`transition-colors duration-300 ${isTransparent ? "text-white/60 group-hover:text-white" : "text-zinc-400 group-hover:text-zinc-600"}`} />
+                  <ChevronDown size={14} className={`transition-colors duration-300 ${isDarkScene ? "text-white/60 group-hover:text-white" : "text-zinc-400 group-hover:text-zinc-600"}`} />
                 </button>
 
                 {dropdownOpen && (
@@ -425,13 +425,13 @@ const Navbar = ({
               </div>
 
               {/* Tata logo — right side when logged in */}
-              <img src={tataLogo} alt="Tata" className={`h-8 w-8 object-contain hidden md:block transition-all duration-300 ${isTransparent ? "brightness-0 invert" : ""}`} />
+              <img src={tataLogo} alt="Tata" className={`h-8 w-8 object-contain hidden md:block transition-all duration-300 ${isDarkScene ? "brightness-0 invert" : ""}`} />
             </>
           ) : (
             /* ── Public right: Log In + Register + Tata logo ── */
             <div className="flex items-center gap-4">
               <span onClick={() => onNavigate("login")}
-                className={`text-sm font-medium transition-colors duration-300 cursor-pointer ${isTransparent ? "text-white/90 hover:text-white" : "text-zinc-600 hover:text-zinc-900"}`}>
+                className={`text-sm font-medium transition-colors duration-300 cursor-pointer ${isDarkScene ? "text-white/90 hover:text-white" : "text-zinc-700 hover:text-zinc-900"}`}>
                 Log In
               </span>
               <button onClick={() => onNavigate("register-role")}
@@ -440,7 +440,7 @@ const Navbar = ({
                 Register
               </button>
               {/* Tata logo — right end */}
-              <img src={tataLogo} alt="Tata" className={`h-8 w-8 object-contain hidden md:block transition-all duration-300 ${isTransparent ? "brightness-0 invert" : ""}`} />
+              <img src={tataLogo} alt="Tata" className={`h-8 w-8 object-contain hidden md:block transition-all duration-300 ${isDarkScene ? "brightness-0 invert" : ""}`} />
             </div>
           )}
         </div>
