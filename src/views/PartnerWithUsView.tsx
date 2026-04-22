@@ -837,7 +837,6 @@ function ContactSection() {
                 {copied ? "Copied ✓" : "Copy email"}
               </button>
             </div>
-
           </div>
         </div>
       </div>
