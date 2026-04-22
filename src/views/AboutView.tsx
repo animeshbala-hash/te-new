@@ -1104,9 +1104,9 @@ function TeamSection() {
               {/* Avatar */}
               <div
                 style={{
-                  width: 160,
-                  height: 160,
-                  borderRadius: "50%",
+                  width: 180,
+                  height: 180,
+                  borderRadius: 14,
                   background: `linear-gradient(135deg,${C} 0%,${C_DARK} 100%)`,
                   color: "#fff",
                   margin: "0 auto 22px",
@@ -1136,7 +1136,7 @@ function TeamSection() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontSize: 24,
+                      fontSize: 28,
                       fontWeight: 800,
                       letterSpacing: "0.5px",
                     }}
@@ -1144,23 +1144,23 @@ function TeamSection() {
                     {initials(t.name)}
                   </div>
                 )}
-                {/* Name overlay on hover */}
+                {/* Name overlay on hover — centered */}
                 <div
                   data-portrait-name
                   style={{
                     position: "absolute",
                     inset: 0,
-                    background:
-                      "linear-gradient(180deg, rgba(10,61,71,0) 40%, rgba(10,61,71,0.88) 100%)",
+                    background: "rgba(10,61,71,0.55)",
                     color: "#fff",
                     display: "flex",
-                    alignItems: "flex-end",
+                    alignItems: "center",
                     justifyContent: "center",
-                    padding: "0 10px 16px",
-                    fontSize: 14,
-                    fontWeight: 700,
-                    lineHeight: 1.2,
+                    padding: "0 12px",
+                    fontSize: 15,
+                    fontWeight: 800,
+                    lineHeight: 1.25,
                     textAlign: "center",
+                    letterSpacing: "0.2px",
                     opacity: 0,
                     transition: "opacity 0.25s ease",
                     pointerEvents: "none",
