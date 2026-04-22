@@ -1001,7 +1001,6 @@ function StayConnectedSection() {
               </div>
             </a>
           ))}
-          </div>
         </div>
       </div>
     </section>
