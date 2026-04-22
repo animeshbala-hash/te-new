@@ -16,6 +16,7 @@ const SECTIONS = [
   { id: "pe-unique",   label: "What's unique" },
   { id: "pe-who",      label: "Who"         },
   { id: "pe-how",      label: "How it works" },
+  { id: "pe-timeline", label: "Timeline"    },
   { id: "pe-skills",   label: "Skill areas" },
   { id: "pe-tsg",      label: "TSG Role"    },
 ];
