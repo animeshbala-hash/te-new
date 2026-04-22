@@ -107,8 +107,8 @@ const Navbar = ({
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
-      <div className={`h-16 flex items-center justify-between px-6 md:px-12 transition-all duration-300 ${isTransparent ? "bg-transparent border-b border-transparent" : isDarkScene ? "bg-zinc-900/70 backdrop-blur-md border-b border-white/10 shadow-[0_1px_12px_rgba(0,0,0,0.18)]" : "bg-white/80 backdrop-blur-md border-b border-white/60 shadow-[0_1px_12px_rgba(0,0,0,0.07)]"}`}>
+    <nav className="fixed top-0 left-0 right-0 z-50 group/nav">
+      <div className={`h-16 flex items-center justify-between px-6 md:px-12 transition-all duration-300 ${scrolled ? (isDarkScene ? "bg-zinc-900/55 backdrop-blur-md border-b border-white/10 shadow-[0_1px_12px_rgba(0,0,0,0.18)]" : "bg-white/70 backdrop-blur-md border-b border-white/60 shadow-[0_1px_12px_rgba(0,0,0,0.07)]") : "bg-transparent border-b border-transparent group-hover/nav:bg-zinc-900/40 group-hover/nav:backdrop-blur-md group-hover/nav:border-white/10"}`}>
 
         {/* ── LEFT: TataEngage logo ── */}
         <div className="flex-shrink-0">
