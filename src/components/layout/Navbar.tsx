@@ -125,12 +125,12 @@ const Navbar = ({
             {(() => {
               const isHomeActive = location.pathname === "/";
               const activeBase = "border-b-2 pb-0.5";
-              const activeCls = isTransparent
+              const activeCls = isDarkScene
                 ? `text-white ${activeBase} border-white/70`
                 : `text-zinc-900 ${activeBase} border-[#333399]`;
-              const hoverCls = isTransparent
-                ? "text-white/90 hover:text-white hover:border-b-2 hover:border-white/35 hover:pb-0.5"
-                : "text-zinc-500 hover:text-zinc-900 hover:border-b-2 hover:border-[#333399]/50 hover:pb-0.5";
+              const hoverCls = isDarkScene
+                ? "text-white/85 hover:text-white"
+                : "text-zinc-700 hover:text-zinc-900";
               return (
                 <span
                   onClick={() => onNavigate("home")}
@@ -143,17 +143,24 @@ const Navbar = ({
 
             {(() => {
               const triggerCls = (isActive: boolean) => {
-                const activeCls = isTransparent
+                const activeCls = isDarkScene
                   ? "text-white border-b-2 border-white/70 pb-0.5"
                   : "text-zinc-900 border-b-2 border-[#333399] pb-0.5";
-                const hoverCls = isTransparent
-                  ? "text-white/90 hover:text-white hover:border-b-2 hover:border-white/35 hover:pb-0.5"
-                  : "text-zinc-500 hover:text-zinc-900 hover:border-b-2 hover:border-[#333399]/50 hover:pb-0.5";
+                const hoverCls = isDarkScene
+                  ? "text-white/85 hover:text-white"
+                  : "text-zinc-700 hover:text-zinc-900";
                 return `text-sm font-medium transition-colors duration-300 cursor-pointer flex items-center gap-1 ${isActive ? activeCls : hoverCls}`;
               };
 
-              const itemCls = "block w-full text-left px-4 py-2 text-sm text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 cursor-pointer transition-colors";
-              const sectionLabelCls = "text-[10px] font-bold uppercase tracking-widest text-zinc-400 px-4 pt-3 pb-1";
+              // ── Clean hover-list (Tata.com style) ─────────────────────────
+              // Dark slate panel · airy padding · plain text rows · subtle colour-only hover
+              const panelCls = "absolute top-full left-0 mt-3 bg-zinc-900/95 backdrop-blur-md border border-white/10 rounded-xl shadow-[0_12px_40px_rgba(0,0,0,0.35)] py-5 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150";
+              const sectionTitleCls = "px-6 pb-2 mb-2 text-[15px] font-semibold text-white/95 border-b border-white/10 mx-2";
+              const itemCls = "block w-full text-left px-6 py-1.5 text-[13px] text-white/70 hover:text-white cursor-pointer transition-colors";
+              const nestPanelCls = "absolute left-full top-0 ml-2 bg-zinc-900/95 backdrop-blur-md border border-white/10 rounded-xl shadow-[0_12px_40px_rgba(0,0,0,0.35)] py-5 z-[60] opacity-0 invisible group-hover/nest:opacity-100 group-hover/nest:visible transition-all duration-150";
+              const nestTriggerCls = "flex items-center justify-between w-full px-6 py-1.5 text-[13px] text-white/70 hover:text-white cursor-pointer transition-colors";
+              const dividerCls = "border-t border-white/10 my-3 mx-2";
+              const subSectionLabelCls = "text-[10px] font-semibold uppercase tracking-[0.12em] text-white/40 px-6 pt-3 pb-1";
 
               const scrollAfter = (id: string) => setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 120);
 
@@ -218,8 +225,9 @@ const Navbar = ({
                     <span className={triggerCls(location.pathname.startsWith("/about") || location.pathname === "/journey")}>
                       About <ChevronDown size={12} />
                     </span>
-                    <div className="absolute top-full left-0 mt-2 bg-white border border-zinc-100 rounded-xl shadow-sm py-2 w-56 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
-                      <span onClick={() => onNavigate("about")} className={itemCls}>About Tata Engage</span>
+                    <div className={`${panelCls} w-64`}>
+                      <div className={sectionTitleCls}>About Tata Engage</div>
+                      <span onClick={() => onNavigate("about")} className={itemCls}>Overview</span>
                       <span onClick={() => { onNavigate("about"); scrollAfter("about-vision"); }} className={itemCls}>TE Vision &amp; Mission</span>
                       <span onClick={() => onNavigate("journey")} className={itemCls}>Our Journey</span>
                       <span onClick={() => onNavigate("media")} className={itemCls}>Events</span>
@@ -227,14 +235,16 @@ const Navbar = ({
                       <span onClick={() => { onNavigate("about"); scrollAfter("about-team"); }} className={itemCls}>Team</span>
                       {isLoggedIn && (
                         <>
-                          <div className="border-t border-zinc-100 my-1" />
+                          <div className={dividerCls} />
+                          <div className={sectionTitleCls}>For Members</div>
                           <span onClick={() => { onNavigate("dashboard"); scrollAfter("resources"); }} className={itemCls}>E-Module</span>
                           <span onClick={() => { onNavigate("spoc-dashboard"); scrollAfter("spoc-mgt"); }} className={itemCls}>SPOC Directory</span>
                           <div className="relative group/nest">
-                            <span className="flex items-center justify-between w-full px-4 py-2 text-sm text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 cursor-pointer">
-                              Campaign Kits <ChevronRight size={12} />
+                            <span className={nestTriggerCls}>
+                              Campaign Kits <ChevronRight size={12} className="opacity-60" />
                             </span>
-                            <div className="absolute left-full top-0 ml-1 bg-white border border-zinc-100 rounded-xl shadow-sm py-2 w-52 z-[60] opacity-0 invisible group-hover/nest:opacity-100 group-hover/nest:visible transition-all duration-150">
+                            <div className={`${nestPanelCls} w-56`}>
+                              <div className={sectionTitleCls}>Campaign Kits</div>
                               <span onClick={() => triggerToast("ProEngage Campaign Kit available in Resource Library")} className={itemCls}>PE Kit</span>
                               <span onClick={() => triggerToast("TVW Campaign Kit available in Resource Library")} className={itemCls}>TVW Kit</span>
                               <span onClick={() => triggerToast("TSM Campaign Kit available in Resource Library")} className={itemCls}>TSM Kit</span>
@@ -260,18 +270,20 @@ const Navbar = ({
                     )}>
                       Programmes <ChevronDown size={12} />
                     </span>
-                    <div className="absolute top-full left-0 mt-2 bg-white border border-zinc-100 rounded-xl shadow-sm py-2 w-56 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
+                    <div className={`${panelCls} w-72`}>
+                      <div className={sectionTitleCls}>Programmes</div>
                       {programmesGroups.map((grp, gi) => (
                         <div key={grp.label}>
-                          {gi === 3 && <div className="border-t border-zinc-100 my-1" />}
+                          {gi === 3 && <div className={dividerCls} />}
                           <div className="relative group/nest">
-                            <span className="flex items-center justify-between w-full px-4 py-2 text-sm text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 cursor-pointer">
-                              {grp.label} <ChevronRight size={12} />
+                            <span className={nestTriggerCls}>
+                              {grp.label} <ChevronRight size={12} className="opacity-60" />
                             </span>
-                            <div className="absolute left-full top-0 ml-1 bg-white border border-zinc-100 rounded-xl shadow-sm py-2 w-56 z-[60] opacity-0 invisible group-hover/nest:opacity-100 group-hover/nest:visible transition-all duration-150">
+                            <div className={`${nestPanelCls} w-64`}>
+                              <div className={sectionTitleCls}>{grp.label}</div>
                               {grp.items.map((it) => {
                                 if (it.label.startsWith("__SECTION__")) {
-                                  return <div key={it.label} className={sectionLabelCls}>{it.label.replace("__SECTION__", "")}</div>;
+                                  return <div key={it.label} className={subSectionLabelCls}>{it.label.replace("__SECTION__", "")}</div>;
                                 }
                                 return (
                                   <span key={it.label} onClick={it.action} className={itemCls}>{it.label}</span>
@@ -289,7 +301,8 @@ const Navbar = ({
                     <span className={triggerCls(location.pathname.startsWith("/media"))}>
                       Media &amp; Resources <ChevronDown size={12} />
                     </span>
-                    <div className="absolute top-full left-0 mt-2 bg-white border border-zinc-100 rounded-xl shadow-sm py-2 w-56 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
+                    <div className={`${panelCls} w-64`}>
+                      <div className={sectionTitleCls}>Media &amp; Resources</div>
                       <span onClick={() => onNavigate("media")} className={itemCls}>Impact Stories</span>
                       <span onClick={() => onNavigate("media")} className={itemCls}>Photo Gallery</span>
                       <span onClick={() => onNavigate("media")} className={itemCls}>Video Gallery</span>
@@ -300,12 +313,12 @@ const Navbar = ({
                   {/* PARTNER WITH US */}
                   {(() => {
                     const isActive = location.pathname.startsWith("/partner");
-                    const activeCls = isTransparent
+                    const activeCls = isDarkScene
                       ? "text-white border-b-2 border-white/70 pb-0.5"
                       : "text-zinc-900 border-b-2 border-[#333399] pb-0.5";
-                    const hoverCls = isTransparent
-                      ? "text-white/90 hover:text-white hover:border-b-2 hover:border-white/35 hover:pb-0.5"
-                      : "text-zinc-500 hover:text-zinc-900 hover:border-b-2 hover:border-[#333399]/50 hover:pb-0.5";
+                    const hoverCls = isDarkScene
+                      ? "text-white/85 hover:text-white"
+                      : "text-zinc-700 hover:text-zinc-900";
                     return (
                       <span
                         onClick={() => onNavigate("partner")}
@@ -319,7 +332,7 @@ const Navbar = ({
               );
             })()}
 
-            <Search size={18} className={`cursor-pointer transition-colors duration-300 ${isTransparent ? "text-white/80 hover:text-white" : "text-zinc-400 hover:text-zinc-700"}`} />
+            <Search size={18} className={`cursor-pointer transition-colors duration-300 ${isDarkScene ? "text-white/80 hover:text-white" : "text-zinc-500 hover:text-zinc-800"}`} />
           </div>
 
         {/* ── RIGHT ── */}
