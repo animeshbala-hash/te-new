@@ -19,7 +19,6 @@ const DIAG: React.CSSProperties = {
 };
 
 const SECTIONS = [
-  { id: "team-intro", label: "Overview" },
   { id: "team-members", label: "The Team" },
 ];
 
@@ -151,7 +150,6 @@ export default function TeamView() {
     <div style={{ background: "#fff", minHeight: "100vh", fontFamily: "'DM Sans',sans-serif", paddingTop: 64 }}>
       <SubPageDotRail sections={SECTIONS} accentColour={ACCENT} />
       <Hero />
-      <IntroSection />
       <TeamSection />
     </div>
   );
