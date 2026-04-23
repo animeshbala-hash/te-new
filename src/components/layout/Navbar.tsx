@@ -32,7 +32,7 @@ const Navbar = ({
   onLogout,
   user,
 }: {
-  onNavigate: (view: View) => void;
+  onNavigate: (view: View, hash?: string) => void;
   isLoggedIn: boolean;
   onLogout: () => void;
   user: any;
