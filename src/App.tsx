@@ -58,6 +58,7 @@ import EOIView from "@/views/EOIView";
 import EWasteView from "@/views/EWasteView";
 import TataSmView from "@/views/TataSmView";
 import CVPView from "@/views/CVPView";
+import YesToAccessView from "@/views/YesToAccessView";
 import NotFound from "@/pages/NotFound";
 
 export default function App() {
@@ -231,6 +232,7 @@ export default function App() {
                 <Route path="/ewaste" element={<EWasteView />} />
                 <Route path="/tata-sustainability-month" element={<TataSmView />} />
                 <Route path="/cvp" element={<CVPView />} />
+                <Route path="/yes-to-access" element={<YesToAccessView />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
         </main>
