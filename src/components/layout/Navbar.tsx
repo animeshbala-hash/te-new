@@ -57,7 +57,7 @@ function getNavBg(pathname: string): string {
   // ProEngage + CVP — #803998 darkened
   if (pathname.startsWith("/proengage") || pathname.startsWith("/about/proengage") || pathname.startsWith("/cvp")) return "#4a1f5c";
   // NGO / SPOC / Partner
-  if (pathname.startsWith("/ngo/")) return "#7a3200";
+  if (pathname.startsWith("/ngo/")) return "#8a1e22";
   if (pathname.startsWith("/partner")) return "#1a2a4a";           // darker blue
   if (pathname.startsWith("/spoc/")) return "#1a1866";
   // About / Journey — deep navy
