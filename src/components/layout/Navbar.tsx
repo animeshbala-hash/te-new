@@ -251,12 +251,11 @@ const Navbar = ({
                 About <ChevronDown size={12} />
               </span>
               <div className={`${panelCls} w-64`}>
-                <span onClick={() => onNavigate("about")} className={itemCls}>Overview</span>
-                <span onClick={() => { onNavigate("about"); scrollAfter("about-vision"); }} className={itemCls}>TE Vision &amp; Mission</span>
+                <span onClick={() => onNavigate("about")} className={itemCls}>TE Vision &amp; Mission</span>
                 <span onClick={() => onNavigate("journey")} className={itemCls}>Our Journey</span>
-                <span onClick={() => onNavigate("media")} className={itemCls}>Events</span>
-                <span onClick={() => { onNavigate("about"); scrollAfter("about-contact"); }} className={itemCls}>Contact Us</span>
-                <span onClick={() => { onNavigate("about"); scrollAfter("about-team"); }} className={itemCls}>Team</span>
+                <span onClick={() => onNavigate("about-events")} className={itemCls}>Events</span>
+                <span onClick={() => onNavigate("about-contact")} className={itemCls}>Contact Us</span>
+                <span onClick={() => onNavigate("about-team")} className={itemCls}>Team</span>
                 {isLoggedIn && (
                   <>
                     <div className={dividerCls} />

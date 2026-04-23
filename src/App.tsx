@@ -47,6 +47,10 @@ import SPOCHubView from "@/views/SPOCHubView";
 import AboutView from "@/views/AboutView";
 import AboutTVWView from "@/views/AboutTVWView";
 import AboutProEngageView from "@/views/AboutProEngageView";
+import GCSOView from "@/views/GCSOView";
+import TeamView from "@/views/TeamView";
+import EventsView from "@/views/EventsView";
+import ContactView from "@/views/ContactView";
 import PartnerWithUsView from "@/views/PartnerWithUsView";
 import MediaView from "@/views/MediaView";
 import JourneyView from "@/views/JourneyView";
@@ -217,6 +221,10 @@ export default function App() {
                 <Route path="/about" element={<AboutView />} />
                 <Route path="/about/tvw" element={<AboutTVWView />} />
                 <Route path="/about/proengage" element={<AboutProEngageView />} />
+                <Route path="/about/gcso" element={<GCSOView />} />
+                <Route path="/about/team" element={<TeamView />} />
+                <Route path="/about/events" element={<EventsView />} />
+                <Route path="/about/contact" element={<ContactView />} />
                 <Route path="/partner" element={<PartnerWithUsView />} />
                 <Route path="/media" element={<MediaView />} />
                 <Route path="/eoi" element={<EOIView />} />
