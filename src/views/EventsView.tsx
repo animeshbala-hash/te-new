@@ -55,7 +55,7 @@ function DefinerBar({ colour = ACCENT, light = false }: { colour?: string; light
 
 // ── Slideshow ─────────────────────────────────────────────────────────────────
 interface Slide { src: string; caption: string; }
-function Slideshow({ slides, accent, accentDark }: { slides: Slide[]; accent: string; accentDark: string }) {
+function Slideshow({ slides, accent, aspect = "16/10" }: { slides: Slide[]; accent: string; accentDark?: string; aspect?: string }) {
   const [i, setI] = useState(0);
   useEffect(() => {
     if (slides.length <= 1) return;
@@ -65,7 +65,7 @@ function Slideshow({ slides, accent, accentDark }: { slides: Slide[]; accent: st
   if (!slides.length) return null;
   return (
     <div style={{ borderRadius: 16, overflow: "hidden", background: "#000", border: `1px solid ${accent}30`, position: "relative" }}>
-      <div style={{ position: "relative", aspectRatio: "16/10", background: "#000" }}>
+      <div style={{ position: "relative", aspectRatio: aspect, background: "#000" }}>
         {slides.map((s, idx) => (
           <img key={idx} src={s.src} alt={s.caption}
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: idx === i ? 1 : 0, transition: "opacity 0.6s ease" }} />
