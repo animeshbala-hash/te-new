@@ -697,9 +697,9 @@ function StayConnectedSection() {
 // ── Main View ─────────────────────────────────────────────────────────────────
 export default function PartnerWithUsView() {
   return (
-    <div
+    <div className="dot-grid-bg"
       style={{
-        background: "#fff",
+        background: "transparent",
         minHeight: "100vh",
         fontFamily: "'DM Sans', sans-serif",
         paddingTop: 64,

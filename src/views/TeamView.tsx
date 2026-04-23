@@ -147,7 +147,7 @@ function TeamSection() {
 // ── Main ──────────────────────────────────────────────────────────────────────
 export default function TeamView() {
   return (
-    <div style={{ background: "#fff", minHeight: "100vh", fontFamily: "'DM Sans',sans-serif", paddingTop: 64 }}>
+    <div className="dot-grid-bg" style={{ background: "transparent", minHeight: "100vh", fontFamily: "'DM Sans',sans-serif", paddingTop: 64 }}>
       <SubPageDotRail sections={SECTIONS} accentColour={ACCENT} />
       <Hero />
       <TeamSection />
