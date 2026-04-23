@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
@@ -154,15 +153,7 @@ const MILESTONES = [
 type Milestone = typeof MILESTONES[number];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-function tint(hex: string, amount: number) {
-  // Returns hex blended toward white by `amount` (0-1).
-  const h = hex.replace("#", "");
-  const r = parseInt(h.slice(0, 2), 16);
-  const g = parseInt(h.slice(2, 4), 16);
-  const b = parseInt(h.slice(4, 6), 16);
-  const m = (c: number) => Math.round(c + (255 - c) * amount);
-  return `rgb(${m(r)}, ${m(g)}, ${m(b)})`;
-}
+// (tint helper removed — currently unused)
 
 // ── Milestone row — text panel one side, photo panel the other ───────────────
 function MilestoneRow({
