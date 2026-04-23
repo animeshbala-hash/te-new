@@ -566,7 +566,7 @@ export default function EventsView() {
       <EventSection
         id="events-iave"
         accent={B_ORANGE_DARK}
-        accentDark="#5A7520"
+        accentDark={B_ORANGE_DARK}
         accentLight={B_ORANGE_LIGHT}
         date="October 2022"
         tag="IAVE 2022"
@@ -583,7 +583,7 @@ export default function EventsView() {
         heroMedia={
           <Slideshow
             accent={B_ORANGE_DARK}
-            accentDark="#5A7520"
+            accentDark={B_ORANGE_DARK}
             slides={[
               { src: iavePanel, caption: "Plenary panel 'Corporate Volunteering for a Post-Pandemic World' at the 26th IAVE World Volunteer Conference, Abu Dhabi — including Gauri Rajadhyaksha (Tata Sons, India)." },
             ]}
