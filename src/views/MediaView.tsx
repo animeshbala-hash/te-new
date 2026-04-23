@@ -105,7 +105,7 @@ export default function MediaView() {
             key={t}
             onClick={() => setActiveTab(t)}
             style={{
-              background: activeTab === t ? "#C2185B" : "#f5f5fa",
+              background: activeTab === t ? "#1434A4" : "#f5f5fa",
               color: activeTab === t ? "#fff" : "#6b6b7a",
               border: "none", borderRadius: 100, padding: "8px 20px", fontWeight: 600, fontSize: 14, cursor: "pointer",
             }}
