@@ -279,7 +279,7 @@ const HomeView = () => {
             {/* Eyebrow tag + definer underline */}
             <span style={{
               display: "inline-block",
-              fontSize: 10, fontWeight: 800, letterSpacing: "2px",
+              fontSize: 11.5, fontWeight: 800, letterSpacing: "2px",
               textTransform: "uppercase",
               color: "#ffffff",
               marginBottom: 0,
@@ -306,8 +306,8 @@ const HomeView = () => {
             </h1>
 
             <p style={{
-              fontSize: 15, lineHeight: 1.7, fontWeight: 300,
-              color: "rgba(255,255,255,0.65)",
+              fontSize: 17, lineHeight: 1.7, fontWeight: 300,
+              color: "#ffffff",
               margin: "0 0 32px", maxWidth: 460,
             }}>
               {slide.sub}
