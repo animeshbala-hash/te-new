@@ -29,7 +29,7 @@ const SHIMMER_STYLE = `
 /* ── Page-accent colour map — navbar bg responds to current route ── */
 function getNavBg(pathname: string): string {
   // Home
-  if (pathname === "/") return "#2a3a50";
+  if (pathname === "/") return "#3a3a44";
   // Events — indigo-purple #5B21B6
   if (pathname.startsWith("/about/events")) return "#2d0e6e";
   // Contact — olive-lime #C3DB6F
@@ -44,8 +44,10 @@ function getNavBg(pathname: string): string {
   if (pathname.startsWith("/tata-sustainability-month")) return "#3a5a1a";
   // EOEO — rose #F4838A (same family as team)
   if (pathname.startsWith("/eoeo")) return "#8a4a50";
-  // E-Waste, EOI, Media, SPOC — indigo #333399 family
-  if (pathname.startsWith("/ewaste") || pathname.startsWith("/eoi") || pathname.startsWith("/media") || pathname.startsWith("/spoc/")) return "#1a1866";
+  // E-Waste, EOI — indigo #333399 family
+  if (pathname.startsWith("/ewaste") || pathname.startsWith("/eoi") || pathname.startsWith("/spoc/")) return "#1a1866";
+  // Media & Resources — lighter indigo
+  if (pathname.startsWith("/media")) return "#2d3a7a";
   // Yes To Access — bright blue #307FE2
   if (pathname.startsWith("/yes-to-access")) return "#1a3a6a";
   // Volunteer hub + dashboard — amber #F79425 (generic dark, hero is dark)
@@ -58,8 +60,8 @@ function getNavBg(pathname: string): string {
   if (pathname.startsWith("/cvp")) return "#2d1260";
   // NGO — red #F0494E
   if (pathname.startsWith("/ngo/")) return "#8a1e22";
-  // About / Journey — #4376BB darkened
-  if (pathname.startsWith("/about") || pathname.startsWith("/journey")) return "#1e3a5f";
+  // About / Journey — deep navy
+  if (pathname.startsWith("/about") || pathname.startsWith("/journey")) return "#0a1228";
   return "#2a2a35"; // default
 }
 
