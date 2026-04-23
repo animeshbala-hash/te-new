@@ -356,12 +356,12 @@ export function ProgrammeSpotlight() {
   const renderTitle = (title: string, accentWord: string, colour: string) => {
     const parts = title.split(accentWord);
     if (parts.length < 2) {
-      return <span style={{ fontStyle: "italic", color }}>{title}</span>;
+      return <span style={{ fontStyle: "italic", color: colour }}>{title}</span>;
     }
     return (
       <>
         {parts[0]}
-        <em style={{ fontStyle: "italic", color }}>{accentWord}</em>
+        <em style={{ fontStyle: "italic", color: colour }}>{accentWord}</em>
         {parts[1]}
       </>
     );
