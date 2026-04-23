@@ -1,13 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
+import { useAuth } from "@/context/AuthContext";
+import Footer from "@/components/layout/Footer";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 
 // ── Colour tokens ─────────────────────────────────────────────────────────────
-const C       = "#0D6B7A";
-const C_LIGHT = "#E8F5F7";
-const C_DARK  = "#0A3D47";
-const NAVY    = "#0D1B3E";
-const MUSTARD = "#C8940A";
+const ACCENT_NAVY = "#0D1B3E";
+const B_YELLOW    = "#F5A623";
+const COLOUR      = "#0D6B7A";   // Partner teal
+const COLOUR_DARK = "#0A3D47";
+const COLOUR_LIGHT = "#E8F5F7";
 
 const DIAG: React.CSSProperties = {
   position: "absolute",
@@ -19,37 +21,18 @@ const DIAG: React.CSSProperties = {
 };
 
 const SECTIONS = [
-  { id: "pwu-hero",    label: "Overview"     },
-  { id: "pwu-bridge",  label: "How we bridge"},
-  { id: "pwu-ngo",     label: "For NGOs"     },
-  { id: "pwu-contact", label: "Contact"      },
-  { id: "pwu-social",  label: "Stay connected"},
-  { id: "pwu-cta",     label: "Get started"  },
+  { id: "pwu-overview", label: "Overview"     },
+  { id: "pwu-bridge",   label: "How we bridge" },
+  { id: "pwu-ngo",      label: "For NGOs"      },
+  { id: "pwu-contact",  label: "Contact"       },
+  { id: "pwu-social",   label: "Stay connected" },
+  { id: "pwu-cta",      label: "Get started"   },
 ];
 
 // ── Atoms ─────────────────────────────────────────────────────────────────────
-function Eyebrow({ text, dark = false }: { text: string; dark?: boolean }) {
-  return (
-    <p
-      style={{
-        fontFamily: "'DM Mono',monospace",
-        fontSize: 11,
-        fontWeight: 600,
-        letterSpacing: "1.8px",
-        textTransform: "uppercase",
-        color: dark ? "rgba(255,255,255,0.5)" : C + "cc",
-        marginBottom: 10,
-      }}
-    >
-      {text}
-    </p>
-  );
-}
-
 function DefinerBar({ light = false }: { light?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const [on, setOn] = useState(false);
-
   useEffect(() => {
     const obs = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) setOn(true); },
@@ -58,7 +41,6 @@ function DefinerBar({ light = false }: { light?: boolean }) {
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
-
   return (
     <div
       ref={ref}
@@ -74,7 +56,7 @@ function DefinerBar({ light = false }: { light?: boolean }) {
       <div
         style={{
           height: "100%",
-          background: light ? "rgba(255,255,255,0.7)" : C,
+          background: light ? "rgba(255,255,255,0.7)" : COLOUR,
           borderRadius: 2,
           transition: "width 0.65s cubic-bezier(0.22,1,0.36,1)",
           width: on ? "100%" : "0%",
@@ -84,36 +66,101 @@ function DefinerBar({ light = false }: { light?: boolean }) {
   );
 }
 
+// ── SVG Icons ─────────────────────────────────────────────────────────────────
+const IconRegister = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="4" y="4" width="20" height="20" rx="4"/>
+    <path d="M9 14h10M9 9h6M9 19h4"/>
+  </svg>
+);
+const IconPost = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14 4v20M4 14h20"/>
+    <circle cx="14" cy="14" r="10"/>
+  </svg>
+);
+const IconSubscribe = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 20l7-7 4 4 9-11"/>
+    <circle cx="22" cy="6" r="3" fill="currentColor" stroke="none"/>
+  </svg>
+);
 
-// ── 1. Hero — split dark / photo ──────────────────────────────────────────────
+// ── 1. Hero — full-bleed immersive (matches AboutTVWView pattern) ──────────────
 function Hero() {
+  const navigate = useAppNavigate();
+  const { isLoggedIn } = useAuth();
+
   return (
     <div
-      id="pwu-hero"
-      style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: "88vh" }}
+      style={{
+        position: "relative",
+        minHeight: "92vh",
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+      }}
     >
-      {/* Left — dark teal */}
+      {/* Background photo */}
+      <img
+        src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&q=80&w=1800"
+        alt=""
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center 30%",
+        }}
+        referrerPolicy="no-referrer"
+      />
+
+      {/* Gradient overlay — strong left, fades right */}
       <div
         style={{
-          background: C_DARK,
-          padding: "120px 64px 80px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
+          position: "absolute",
+          inset: 0,
+          background: `linear-gradient(108deg, ${COLOUR}f5 0%, ${COLOUR}e8 28%, ${COLOUR}b0 52%, ${COLOUR}50 70%, ${COLOUR}18 100%)`,
+        }}
+      />
+
+      {/* Diagonal texture */}
+      <div style={DIAG} />
+
+      {/* Bottom white fade-out — matches TVW pattern */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: 80,
+          background: "linear-gradient(to bottom, transparent, #fff)",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Content */}
+      <div
+        style={{
           position: "relative",
-          overflow: "hidden",
+          zIndex: 1,
+          maxWidth: 1100,
+          margin: "0 auto",
+          padding: "120px 56px 96px",
+          width: "100%",
         }}
       >
-        <div style={DIAG} />
-        <div style={{ position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: 640 }}>
           <p
             style={{
-              fontFamily: "'DM Mono',monospace",
-              fontSize: 10,
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 12,
               fontWeight: 600,
-              letterSpacing: "2.5px",
+              letterSpacing: "2.4px",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.45)",
+              color: "rgba(255,255,255,0.6)",
               marginBottom: 20,
             }}
           >
@@ -121,62 +168,58 @@ function Hero() {
           </p>
           <div
             style={{
-              width: 32,
-              height: 2,
-              background: "rgba(255,255,255,0.35)",
+              width: 44,
+              height: 3,
+              background: "rgba(255,255,255,0.55)",
               borderRadius: 2,
-              marginBottom: 24,
+              marginBottom: 28,
             }}
           />
           <h1
             style={{
-              fontFamily: "'DM Sans',sans-serif",
-              fontSize: "clamp(2.4rem,4.5vw,3.4rem)",
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "clamp(3.2rem, 6.4vw, 5.2rem)",
               fontWeight: 900,
               color: "#fff",
-              lineHeight: 1.08,
-              letterSpacing: "-1.5px",
-              margin: "0 0 24px",
+              lineHeight: 1.02,
+              letterSpacing: "-2.5px",
+              margin: "0 0 28px",
+              whiteSpace: "pre-line",
             }}
           >
-            Bridging intent
-            <br />
-            with impact
+            {"Bridging intent\nwith impact"}
           </h1>
           <p
             style={{
-              fontSize: 16,
+              fontSize: 18,
               fontWeight: 300,
-              lineHeight: 1.82,
-              color: "rgba(255,255,255,0.72)",
-              maxWidth: 440,
-              marginBottom: 48,
+              lineHeight: 1.75,
+              color: "rgba(255,255,255,0.88)",
+              margin: "0 0 48px",
+              maxWidth: 560,
             }}
           >
-            Across the world, countless Tata professionals are eager to volunteer
-            their time and skills — and equally many civil society organisations
-            doing impactful work need the right support. Tata Engage is the
-            trusted bridge between the two.
+            Across the world, countless Tata professionals are eager to volunteer their time and skills — and equally many civil society organisations doing impactful work need the right support. Tata Engage is the trusted bridge between the two.
           </p>
 
-          {/* Stats strip */}
+          {/* Stat strip */}
           <div
             style={{
               display: "flex",
               gap: 40,
-              paddingTop: 36,
-              borderTop: "1px solid rgba(255,255,255,0.12)",
+              paddingTop: 32,
+              borderTop: "1px solid rgba(255,255,255,0.18)",
             }}
           >
             {[
-              { num: "50,000+", label: "Tata volunteers"    },
-              { num: "85+",     label: "NGO partners"        },
-              { num: "1,200+",  label: "Projects completed"  },
+              { num: "50,000+", label: "Tata volunteers"   },
+              { num: "85+",     label: "NGO partners"       },
+              { num: "1,200+",  label: "Projects completed" },
             ].map((s) => (
               <div key={s.label}>
                 <div
                   style={{
-                    fontSize: 26,
+                    fontSize: 28,
                     fontWeight: 900,
                     color: "#fff",
                     letterSpacing: "-0.5px",
@@ -186,10 +229,11 @@ function Hero() {
                 </div>
                 <div
                   style={{
-                    fontFamily: "'DM Mono',monospace",
+                    fontFamily: "'DM Mono', monospace",
                     fontSize: 11,
-                    color: "rgba(255,255,255,0.45)",
+                    color: "rgba(255,255,255,0.5)",
                     marginTop: 6,
+                    letterSpacing: "0.5px",
                   }}
                 >
                   {s.label}
@@ -200,67 +244,150 @@ function Hero() {
         </div>
       </div>
 
-      {/* Right — photo placeholder */}
+      {/* Floating caption badge */}
       <div
         style={{
-          position: "relative",
-          overflow: "hidden",
-          background: `linear-gradient(135deg, ${C} 0%, ${C_DARK} 100%)`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          position: "absolute",
+          bottom: 100,
+          right: 56,
+          background: "rgba(0,0,0,0.28)",
+          backdropFilter: "blur(8px)",
+          border: "1px solid rgba(255,255,255,0.18)",
+          borderRadius: 100,
+          padding: "7px 18px",
+          fontFamily: "'DM Mono', monospace",
+          fontSize: 10,
+          fontWeight: 600,
+          letterSpacing: "1.5px",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.7)",
         }}
       >
-        <div style={DIAG} />
-        {/* Left-fade overlay */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to right,rgba(10,52,71,0.5) 0%,transparent 40%)",
-          }}
-        />
-        {/* Photo placeholder text */}
-        <div
-          style={{
-            position: "relative",
-            zIndex: 1,
-            fontFamily: "'DM Mono',monospace",
-            fontSize: 11,
-            color: "rgba(255,255,255,0.3)",
-            letterSpacing: "1px",
-          }}
-        >
-          [ programme photography ]
-        </div>
-        {/* Caption tag */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 32,
-            left: 32,
-            background: "rgba(0,0,0,0.45)",
-            backdropFilter: "blur(8px)",
-            border: "1px solid rgba(255,255,255,0.18)",
-            borderRadius: 100,
-            padding: "7px 18px",
-            fontFamily: "'DM Mono',monospace",
-            fontSize: 10,
-            fontWeight: 600,
-            letterSpacing: "1.5px",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.7)",
-          }}
-        >
-          Tata volunteers in action
-        </div>
+        Civil Society · Partnerships · Impact
       </div>
     </div>
   );
 }
 
-// ── 2. Bridge — two-world split card ─────────────────────────────────────────
+// ── 2. Overview — who we are (white section) ──────────────────────────────────
+function OverviewSection() {
+  return (
+    <section
+      id="pwu-overview"
+      style={{ padding: "88px 56px", background: "#fff" }}
+    >
+      <div
+        style={{
+          maxWidth: 1100,
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 72,
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <p
+            style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: "1.8px",
+              textTransform: "uppercase",
+              color: COLOUR + "cc",
+              marginBottom: 10,
+            }}
+          >
+            What is Tata Engage?
+          </p>
+          <h2
+            style={{
+              fontSize: 32,
+              fontWeight: 900,
+              color: ACCENT_NAVY,
+              letterSpacing: "-0.5px",
+            }}
+          >
+            Where skilled people meet meaningful causes
+          </h2>
+          <DefinerBar />
+          <div style={{ marginTop: 28 }}>
+            <p
+              style={{
+                fontSize: 15,
+                color: "#475569",
+                lineHeight: 1.82,
+                marginBottom: 16,
+              }}
+            >
+              We serve as a trusted platform that connects credible Not-for-Profit organisations with motivated professionals from across the Tata ecosystem — enabling partnerships that strengthen organisational capacity and deliver real, on-ground impact.
+            </p>
+            <p
+              style={{
+                fontSize: 15,
+                color: "#475569",
+                lineHeight: 1.82,
+              }}
+            >
+              Whether you are a civil society organisation looking for volunteers, or a Tata professional seeking purpose-driven work, Tata Engage has a path for you.
+            </p>
+          </div>
+        </div>
+
+        <div style={{ position: "relative" }}>
+          <div
+            style={{
+              position: "absolute",
+              top: -16,
+              right: -16,
+              zIndex: 0,
+              width: 64,
+              height: 64,
+              borderRadius: 16,
+              background: COLOUR,
+              opacity: 0.12,
+            }}
+          />
+          <div
+            style={{
+              borderRadius: 18,
+              overflow: "hidden",
+              boxShadow: "0 4px 32px rgba(0,0,0,0.10)",
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=900"
+              alt=""
+              style={{
+                width: "100%",
+                height: 380,
+                objectFit: "cover",
+                display: "block",
+              }}
+              referrerPolicy="no-referrer"
+            />
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: 4,
+              background: COLOUR,
+              borderRadius: "0 0 18px 18px",
+              zIndex: 2,
+            }}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── 3. Bridge — two-world split card (light bg section) ───────────────────────
 function BridgeSection() {
   const ngoPoints = [
     "Credible Not-for-Profit organisations",
@@ -276,37 +403,38 @@ function BridgeSection() {
   ];
 
   return (
-    <section id="pwu-bridge" style={{ padding: "96px 0", background: "#fff" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 56px" }}>
+    <section
+      id="pwu-bridge"
+      style={{ padding: "88px 56px", background: "#F0F4FA" }}
+    >
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 64 }}>
-          <Eyebrow text="How Tata Engage bridges this gap" />
+          <p
+            style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: "1.8px",
+              textTransform: "uppercase",
+              color: COLOUR + "cc",
+              marginBottom: 10,
+            }}
+          >
+            How Tata Engage bridges this gap
+          </p>
           <h2
             style={{
-              fontSize: 32,
+              fontSize: 30,
               fontWeight: 900,
-              color: NAVY,
+              color: ACCENT_NAVY,
               letterSpacing: "-0.5px",
             }}
           >
-            Where skilled people meet meaningful causes
+            Two worlds, one platform
           </h2>
           <div style={{ display: "flex", justifyContent: "center", marginTop: 10 }}>
             <DefinerBar />
           </div>
-          <p
-            style={{
-              fontSize: 16,
-              color: "#64748B",
-              lineHeight: 1.8,
-              maxWidth: 600,
-              margin: "20px auto 0",
-            }}
-          >
-            We serve as a trusted platform that connects credible
-            not-for-profit organisations with motivated professionals from
-            across the Tata ecosystem — enabling partnerships that strengthen
-            organisational capacity and deliver real, on-ground impact.
-          </p>
         </div>
 
         {/* Two-world split card */}
@@ -320,15 +448,15 @@ function BridgeSection() {
           }}
         >
           {/* NGO side */}
-          <div style={{ background: C_LIGHT, padding: "48px 44px" }}>
+          <div style={{ background: COLOUR_LIGHT, padding: "48px 44px" }}>
             <div
               style={{
-                fontFamily: "'DM Mono',monospace",
+                fontFamily: "'DM Mono', monospace",
                 fontSize: 10,
                 fontWeight: 700,
                 letterSpacing: "2px",
                 textTransform: "uppercase",
-                color: C + "99",
+                color: COLOUR + "99",
                 marginBottom: 16,
               }}
             >
@@ -338,7 +466,7 @@ function BridgeSection() {
               style={{
                 fontSize: 22,
                 fontWeight: 900,
-                color: NAVY,
+                color: ACCENT_NAVY,
                 marginBottom: 20,
                 lineHeight: 1.2,
               }}
@@ -355,7 +483,7 @@ function BridgeSection() {
                       width: 20,
                       height: 20,
                       borderRadius: "50%",
-                      background: C,
+                      background: COLOUR,
                       flexShrink: 0,
                       display: "flex",
                       alignItems: "center",
@@ -363,7 +491,9 @@ function BridgeSection() {
                       marginTop: 2,
                     }}
                   >
-                    <span style={{ color: "#fff", fontSize: 10, fontWeight: 800 }}>✓</span>
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M2 5l2 2 4-4" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </div>
                   <span style={{ fontSize: 14, color: "#475569", lineHeight: 1.65 }}>{p}</span>
                 </div>
@@ -374,7 +504,7 @@ function BridgeSection() {
           {/* Centre bridge column */}
           <div
             style={{
-              background: C,
+              background: COLOUR,
               width: 64,
               display: "flex",
               flexDirection: "column",
@@ -382,52 +512,40 @@ function BridgeSection() {
               justifyContent: "center",
               gap: 12,
               padding: "20px 0",
+              position: "relative",
             }}
           >
+            <div style={DIAG} />
             {[0, 1, 2, 3].map((i) => (
-              <div
-                key={i}
-                style={{
-                  width: 4,
-                  height: 4,
-                  borderRadius: "50%",
-                  background: "rgba(255,255,255,0.5)",
-                }}
-              />
+              <div key={i} style={{ width: 4, height: 4, borderRadius: "50%", background: "rgba(255,255,255,0.4)", position: "relative", zIndex: 1 }} />
             ))}
             <div
               style={{
                 writingMode: "vertical-lr" as const,
                 transform: "rotate(180deg)",
-                fontFamily: "'DM Mono',monospace",
+                fontFamily: "'DM Mono', monospace",
                 fontSize: 10,
                 fontWeight: 700,
                 letterSpacing: "2px",
                 textTransform: "uppercase",
                 color: "rgba(255,255,255,0.7)",
                 whiteSpace: "nowrap",
+                position: "relative",
+                zIndex: 1,
               }}
             >
               Tata Engage
             </div>
             {[0, 1, 2, 3].map((i) => (
-              <div
-                key={i}
-                style={{
-                  width: 4,
-                  height: 4,
-                  borderRadius: "50%",
-                  background: "rgba(255,255,255,0.5)",
-                }}
-              />
+              <div key={i} style={{ width: 4, height: 4, borderRadius: "50%", background: "rgba(255,255,255,0.4)", position: "relative", zIndex: 1 }} />
             ))}
           </div>
 
           {/* Volunteer side */}
-          <div style={{ background: C_DARK, padding: "48px 44px" }}>
+          <div style={{ background: COLOUR_DARK, padding: "48px 44px" }}>
             <div
               style={{
-                fontFamily: "'DM Mono',monospace",
+                fontFamily: "'DM Mono', monospace",
                 fontSize: 10,
                 fontWeight: 700,
                 letterSpacing: "2px",
@@ -467,17 +585,11 @@ function BridgeSection() {
                       marginTop: 2,
                     }}
                   >
-                    <span style={{ color: "#fff", fontSize: 10, fontWeight: 800 }}>✓</span>
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M2 5l2 2 4-4" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </div>
-                  <span
-                    style={{
-                      fontSize: 14,
-                      color: "rgba(255,255,255,0.72)",
-                      lineHeight: 1.65,
-                    }}
-                  >
-                    {p}
-                  </span>
+                  <span style={{ fontSize: 14, color: "rgba(255,255,255,0.72)", lineHeight: 1.65 }}>{p}</span>
                 </div>
               ))}
             </div>
@@ -488,23 +600,26 @@ function BridgeSection() {
   );
 }
 
-// ── 3. For NGOs — numbered steps ──────────────────────────────────────────────
+// ── 4. For NGOs — numbered steps (white, with photo) ──────────────────────────
 function NGOSection() {
   const steps: Array<{
     num: string;
     title: string;
     desc: string;
+    Icon: React.FC;
     bullets?: Array<{ heading?: string; text: string }>;
   }> = [
     {
       num: "01",
       title: "Register on Tata Engage",
-      desc: "Interested Not-for-Profit organisations must REGISTER on the Tata Engage platform, provide necessary profile details, and upload requested documents for due diligence.",
+      desc: "Interested Not-for-Profit organisations must register on the Tata Engage platform, provide necessary profile details, and upload requested documents for due diligence.",
+      Icon: IconRegister,
     },
     {
       num: "02",
       title: "Post your projects, once enrolled",
       desc: "Once enrolled on Tata Engage:",
+      Icon: IconPost,
       bullets: [
         { text: "Authorised non-profit representatives can log in and post volunteering projects requiring professional expertise through ProEngage." },
         { text: "Stay informed about programme timelines, project upload windows, and other engagement opportunities." },
@@ -513,7 +628,8 @@ function NGOSection() {
     {
       num: "03",
       title: "Subscribe for alerts & updates",
-      desc: "SUBSCRIBE to receive regular alerts and updates on Tata Engage initiatives — so your organisation is prepared and visible when Tata volunteers are mobilised.",
+      desc: "Subscribe to receive regular alerts and updates on Tata Engage initiatives — so your organisation is prepared and visible when Tata volunteers are mobilised.",
+      Icon: IconSubscribe,
       bullets: [
         { heading: "ProEngage", text: "Skill-based volunteering projects." },
         { heading: "Tata Volunteering Week", text: "Large-scale, event-based volunteering." },
@@ -522,7 +638,7 @@ function NGOSection() {
   ];
 
   return (
-    <section id="pwu-ngo" style={{ background: "#F4F8F7", padding: "96px 56px" }}>
+    <section id="pwu-ngo" style={{ padding: "88px 56px", background: "#fff" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div
           style={{
@@ -531,15 +647,27 @@ function NGOSection() {
             gap: 80,
           }}
         >
-          {/* Left: heading + photo placeholder */}
+          {/* Left: heading + photo */}
           <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
             <div>
-              <Eyebrow text="For not-for-profit organisations" />
+              <p
+                style={{
+                  fontFamily: "'DM Mono', monospace",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  letterSpacing: "1.8px",
+                  textTransform: "uppercase",
+                  color: COLOUR + "cc",
+                  marginBottom: 10,
+                }}
+              >
+                For not-for-profit organisations
+              </p>
               <h2
                 style={{
                   fontSize: 30,
                   fontWeight: 900,
-                  color: NAVY,
+                  color: ACCENT_NAVY,
                   letterSpacing: "-0.5px",
                 }}
               >
@@ -555,9 +683,8 @@ function NGOSection() {
                 }}
               >
                 Not-for-Profit organisations seeking to collaborate with the{" "}
-                <strong style={{ color: NAVY }}>Tata Sustainability Group</strong>{" "}
-                can partner with Tata Engage to access skilled and committed
-                volunteers from across the Tata ecosystem.
+                <strong style={{ color: ACCENT_NAVY }}>Tata Sustainability Group</strong>{" "}
+                can partner with Tata Engage to access skilled and committed volunteers from across the Tata ecosystem.
               </p>
             </div>
 
@@ -566,21 +693,21 @@ function NGOSection() {
               style={{
                 borderRadius: 18,
                 overflow: "hidden",
-                boxShadow: "0 4px 24px rgba(0,0,0,0.09)",
                 flex: 1,
                 minHeight: 280,
                 position: "relative",
-                background: C_LIGHT,
+                background: COLOUR_LIGHT,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
               }}
             >
               <span
                 style={{
-                  fontFamily: "'DM Mono',monospace",
+                  fontFamily: "'DM Mono', monospace",
                   fontSize: 11,
-                  color: C,
+                  color: COLOUR,
                   letterSpacing: "1px",
                 }}
               >
@@ -593,58 +720,67 @@ function NGOSection() {
                   left: 0,
                   right: 0,
                   height: 4,
-                  background: C,
+                  background: COLOUR,
                 }}
               />
             </div>
           </div>
 
-          {/* Right: numbered steps */}
+          {/* Right: numbered steps with icons */}
           <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
             {steps.map((s, i) => (
               <div
                 key={s.num}
                 style={{
-                  paddingBottom: i < steps.length - 1 ? 32 : 0,
-                  marginBottom: i < steps.length - 1 ? 32 : 0,
-                  borderBottom:
-                    i < steps.length - 1 ? "1px solid #e8eef0" : "none",
+                  paddingBottom: i < steps.length - 1 ? 36 : 0,
+                  marginBottom: i < steps.length - 1 ? 36 : 0,
+                  borderBottom: i < steps.length - 1 ? "1px solid #e8eef0" : "none",
                   display: "flex",
                   gap: 20,
                 }}
               >
+                {/* Icon circle */}
                 <div
                   style={{
-                    fontFamily: "'DM Mono',monospace",
-                    fontSize: 28,
-                    fontWeight: 500,
-                    color: C + "28",
-                    lineHeight: 1,
+                    width: 52,
+                    height: 52,
+                    borderRadius: 14,
+                    background: COLOUR_LIGHT,
+                    border: `1.5px solid ${COLOUR}22`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: COLOUR,
                     flexShrink: 0,
-                    width: 44,
-                    letterSpacing: "-1px",
                   }}
                 >
-                  {s.num}
+                  <s.Icon />
                 </div>
+
                 <div style={{ flex: 1 }}>
+                  <div
+                    style={{
+                      fontFamily: "'DM Mono', monospace",
+                      fontSize: 10,
+                      fontWeight: 700,
+                      color: COLOUR + "80",
+                      letterSpacing: "1px",
+                      marginBottom: 6,
+                    }}
+                  >
+                    Step {s.num}
+                  </div>
                   <div
                     style={{
                       fontSize: 16,
                       fontWeight: 800,
-                      color: NAVY,
+                      color: ACCENT_NAVY,
                       marginBottom: 8,
                     }}
                   >
                     {s.title}
                   </div>
-                  <div
-                    style={{
-                      fontSize: 14,
-                      color: "#64748B",
-                      lineHeight: 1.75,
-                    }}
-                  >
+                  <div style={{ fontSize: 14, color: "#64748B", lineHeight: 1.75 }}>
                     {s.desc}
                   </div>
 
@@ -668,7 +804,7 @@ function NGOSection() {
                             alignItems: "flex-start",
                             background: "#fff",
                             border: "1px solid #e8eef0",
-                            borderLeft: `3px solid ${C}`,
+                            borderLeft: `3px solid ${COLOUR}`,
                             borderRadius: 8,
                             padding: "10px 14px",
                           }}
@@ -678,20 +814,14 @@ function NGOSection() {
                               width: 6,
                               height: 6,
                               borderRadius: "50%",
-                              background: C,
+                              background: COLOUR,
                               marginTop: 8,
                               flexShrink: 0,
                             }}
                           />
-                          <span
-                            style={{
-                              fontSize: 13,
-                              color: "#475569",
-                              lineHeight: 1.65,
-                            }}
-                          >
+                          <span style={{ fontSize: 13, color: "#475569", lineHeight: 1.65 }}>
                             {b.heading && (
-                              <strong style={{ color: NAVY, fontWeight: 800 }}>
+                              <strong style={{ color: ACCENT_NAVY, fontWeight: 800 }}>
                                 {b.heading}:{" "}
                               </strong>
                             )}
@@ -711,7 +841,7 @@ function NGOSection() {
   );
 }
 
-// ── 4. Contact strip ──────────────────────────────────────────────────────────
+// ── 5. Contact — dark teal section (matches TVW TSG section pattern) ──────────
 function ContactSection() {
   const [copied, setCopied] = useState(false);
 
@@ -725,8 +855,8 @@ function ContactSection() {
     <section
       id="pwu-contact"
       style={{
-        background: C,
-        padding: "80px 56px",
+        background: COLOUR_DARK,
+        padding: "88px 56px",
         position: "relative",
         overflow: "hidden",
       }}
@@ -738,156 +868,170 @@ function ContactSection() {
           margin: "0 auto",
           position: "relative",
           zIndex: 1,
+          display: "grid",
+          gridTemplateColumns: "1.1fr 0.9fr",
+          gap: 72,
+          alignItems: "start",
         }}
       >
+        <div>
+          <p
+            style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: "1.8px",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.5)",
+              marginBottom: 10,
+            }}
+          >
+            Get in touch
+          </p>
+          <h2
+            style={{
+              fontSize: 30,
+              fontWeight: 900,
+              color: "#fff",
+              letterSpacing: "-0.5px",
+            }}
+          >
+            We'd love to hear from you
+          </h2>
+          <div
+            style={{
+              height: 3,
+              background: "rgba(255,255,255,0.25)",
+              borderRadius: 2,
+              width: 48,
+              marginTop: 10,
+              marginBottom: 32,
+            }}
+          />
+          <p
+            style={{
+              fontSize: 15,
+              color: "rgba(255,255,255,0.72)",
+              lineHeight: 1.82,
+              maxWidth: 480,
+            }}
+          >
+            Whether you're a civil society organisation looking for volunteers, or a partner exploring collaboration opportunities, the Tata Engage team is here to help. Write to us with your organisation profile, details of your association with Tata companies, and your volunteering requirements — our team will guide you through the next steps of the enrolment process.
+          </p>
+        </div>
+
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "1.2fr 0.8fr",
-            gap: 72,
-            alignItems: "center",
+            background: "rgba(0,0,0,0.22)",
+            borderRadius: 20,
+            padding: "40px 36px",
+            border: "1px solid rgba(255,255,255,0.14)",
           }}
         >
-          <div>
-            <Eyebrow text="Get in touch" dark />
-            <h2
-              style={{
-                fontSize: 30,
-                fontWeight: 900,
-                color: "#fff",
-                letterSpacing: "-0.5px",
-              }}
-            >
-              We'd love to hear from you
-            </h2>
-            <div
-              style={{
-                height: 3,
-                background: "rgba(255,255,255,0.25)",
-                borderRadius: 2,
-                width: 48,
-                marginTop: 10,
-                marginBottom: 28,
-              }}
-            />
-            <p
-              style={{
-                fontSize: 15,
-                color: "rgba(255,255,255,0.72)",
-                lineHeight: 1.82,
-                maxWidth: 480,
-              }}
-            >
-              Whether you're a civil society organisation looking for volunteers,
-              or a partner exploring collaboration opportunities, the Tata
-              Engage team is here to help. Write to us with your organisation
-              profile, details of your association with Tata companies, and
-              your volunteering requirements — our team will guide you through
-              the next steps of the enrolment process.
-            </p>
+          {/* Email card */}
+          <div
+            style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: "1.5px",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.45)",
+              marginBottom: 10,
+            }}
+          >
+            Email
           </div>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {/* Email card */}
-            <div
-              style={{
-                background: "rgba(255,255,255,0.1)",
-                border: "1px solid rgba(255,255,255,0.18)",
-                borderRadius: 14,
-                padding: "24px 24px",
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "'DM Mono',monospace",
-                  fontSize: 10,
-                  fontWeight: 700,
-                  letterSpacing: "1.5px",
-                  textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.45)",
-                  marginBottom: 10,
-                }}
-              >
-                Email
-              </div>
-              <div
-                style={{
-                  fontSize: 17,
-                  fontWeight: 800,
-                  color: "#fff",
-                  marginBottom: 14,
-                }}
-              >
-                tataengage@tata.com
-              </div>
-              <button
-                onClick={copy}
-                style={{
-                  background: copied ? "rgba(255,255,255,0.25)" : MUSTARD,
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: 8,
-                  padding: "9px 20px",
-                  fontWeight: 700,
-                  fontSize: 13,
-                  cursor: "pointer",
-                  transition: "background 0.2s",
-                }}
-              >
-                {copied ? "Copied ✓" : "Copy email"}
-              </button>
-            </div>
+          <div
+            style={{
+              fontSize: 19,
+              fontWeight: 800,
+              color: "#fff",
+              marginBottom: 20,
+            }}
+          >
+            tataengage@tata.com
           </div>
+          <button
+            onClick={copy}
+            style={{
+              background: copied ? "rgba(255,255,255,0.25)" : B_YELLOW,
+              color: copied ? "#fff" : ACCENT_NAVY,
+              border: "none",
+              borderRadius: 10,
+              padding: "13px 28px",
+              fontWeight: 800,
+              fontSize: 14,
+              cursor: "pointer",
+              transition: "background 0.2s",
+              width: "100%",
+              marginBottom: 12,
+              boxShadow: copied ? "none" : "0 4px 20px rgba(0,0,0,0.22)",
+            }}
+          >
+            {copied ? "Copied ✓" : "Copy email address"}
+          </button>
+          <button
+            onClick={() => window.open("mailto:tataengage@tata.com")}
+            style={{
+              background: "transparent",
+              color: "rgba(255,255,255,0.6)",
+              border: "1px solid rgba(255,255,255,0.22)",
+              borderRadius: 10,
+              padding: "13px 28px",
+              fontWeight: 600,
+              fontSize: 14,
+              cursor: "pointer",
+              width: "100%",
+            }}
+          >
+            Open in mail app
+          </button>
         </div>
       </div>
     </section>
   );
 }
 
-// ── 4b. Stay Connected — social section ───────────────────────────────────────
+// ── 6. Stay Connected (light bg) ──────────────────────────────────────────────
 function StayConnectedSection() {
   const channels = [
-    {
-      platform: "LinkedIn",
-      handle: "Tata Engage",
-      note: "Official page",
-      url: "#",
-    },
-    {
-      platform: "X (Twitter)",
-      handle: "@TataEngage",
-      note: "Official handle",
-      url: "#",
-    },
-    {
-      platform: "Website",
-      handle: "tata.com / Tata Sustainability",
-      note: "Tata Engage on the Tata Group platforms",
-      url: "#",
-    },
+    { platform: "LinkedIn",     handle: "Tata Engage",             note: "Official page",                                        url: "#" },
+    { platform: "X (Twitter)", handle: "@TataEngage",              note: "Official handle",                                      url: "#" },
+    { platform: "Website",     handle: "tata.com / Sustainability", note: "Tata Engage on the Tata Group platforms",              url: "#" },
   ];
 
   return (
     <section
       id="pwu-social"
-      style={{ padding: "96px 56px", background: "#fff" }}
+      style={{ padding: "88px 56px", background: "#F0F4FA" }}
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <Eyebrow text="Stay connected" />
+          <p
+            style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: "1.8px",
+              textTransform: "uppercase",
+              color: COLOUR + "cc",
+              marginBottom: 10,
+            }}
+          >
+            Stay connected
+          </p>
           <h2
             style={{
               fontSize: 30,
               fontWeight: 900,
-              color: NAVY,
+              color: ACCENT_NAVY,
               letterSpacing: "-0.5px",
             }}
           >
             Follow Tata Engage
           </h2>
-          <div
-            style={{ display: "flex", justifyContent: "center", marginTop: 10 }}
-          >
+          <div style={{ display: "flex", justifyContent: "center", marginTop: 10 }}>
             <DefinerBar />
           </div>
           <p
@@ -899,8 +1043,7 @@ function StayConnectedSection() {
               margin: "20px auto 0",
             }}
           >
-            Stay updated on volunteering programmes, partner opportunities, and
-            impact stories from across the Tata ecosystem.
+            Stay updated on volunteering programmes, partner opportunities, and impact stories from across the Tata ecosystem.
           </p>
         </div>
 
@@ -920,80 +1063,54 @@ function StayConnectedSection() {
                 background: "#fff",
                 border: "1px solid #e8eef0",
                 borderRadius: 16,
-                padding: "24px 24px 22px",
+                padding: "28px 28px 26px",
                 textDecoration: "none",
                 color: "inherit",
                 position: "relative",
                 overflow: "hidden",
-                transition:
-                  "transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(-3px)";
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                  "0 12px 28px rgba(13,107,122,0.12)";
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = C;
+                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-3px)";
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 12px 28px rgba(13,107,122,0.12)";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = COLOUR;
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.transform = "none";
                 (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
-                (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                  "#e8eef0";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "#e8eef0";
               }}
             >
+              {/* Top accent bar */}
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: COLOUR }} />
               <div
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: 3,
-                  background: C,
-                }}
-              />
-              <div
-                style={{
-                  fontFamily: "'DM Mono',monospace",
+                  fontFamily: "'DM Mono', monospace",
                   fontSize: 10,
                   fontWeight: 700,
                   letterSpacing: "1.8px",
                   textTransform: "uppercase",
-                  color: C,
+                  color: COLOUR,
                   marginBottom: 10,
                 }}
               >
                 {c.platform}
               </div>
-              <div
-                style={{
-                  fontSize: 17,
-                  fontWeight: 800,
-                  color: NAVY,
-                  marginBottom: 6,
-                  letterSpacing: "-0.2px",
-                }}
-              >
+              <div style={{ fontSize: 17, fontWeight: 800, color: ACCENT_NAVY, marginBottom: 6, letterSpacing: "-0.2px" }}>
                 {c.handle}
               </div>
-              <div
-                style={{
-                  fontSize: 13,
-                  color: "#64748B",
-                  lineHeight: 1.6,
-                }}
-              >
+              <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6 }}>
                 {c.note}
               </div>
               <div
                 style={{
                   marginTop: 18,
-                  fontFamily: "'DM Mono',monospace",
+                  fontFamily: "'DM Mono', monospace",
                   fontSize: 11,
                   fontWeight: 700,
                   letterSpacing: "1.2px",
                   textTransform: "uppercase",
-                  color: MUSTARD,
+                  color: COLOUR,
                 }}
               >
                 Follow ↗
@@ -1006,183 +1123,166 @@ function StayConnectedSection() {
   );
 }
 
-// ── 5. Two-path CTA ───────────────────────────────────────────────────────────
+// ── 7. Two-path CTA — dark NAVY closing section (matches TVW closing section) ──
 function CTASection() {
   const navigate = useAppNavigate();
 
   return (
-    <section id="pwu-cta" style={{ padding: "96px 56px", background: "#fff" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 56 }}>
-          <Eyebrow text="Get started" />
-          <h2
+    <section
+      id="pwu-cta"
+      style={{
+        background: COLOUR_DARK,
+        padding: "88px 56px",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div style={DIAG} />
+      <div
+        style={{
+          maxWidth: 1100,
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 1,
+          display: "grid",
+          gridTemplateColumns: "1.1fr 0.9fr",
+          gap: 72,
+          alignItems: "start",
+        }}
+      >
+        {/* Left: text */}
+        <div>
+          <p
             style={{
-              fontSize: 30,
-              fontWeight: 900,
-              color: NAVY,
-              letterSpacing: "-0.5px",
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: "1.8px",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.5)",
+              marginBottom: 10,
             }}
           >
+            Get started
+          </p>
+          <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>
             Two paths. One platform.
           </h2>
-          <div style={{ display: "flex", justifyContent: "center", marginTop: 10 }}>
-            <DefinerBar />
-          </div>
+          <div
+            style={{
+              height: 3,
+              background: "rgba(255,255,255,0.25)",
+              borderRadius: 2,
+              width: 48,
+              marginTop: 10,
+              marginBottom: 32,
+            }}
+          />
+          <p
+            style={{
+              fontSize: 15,
+              color: "rgba(255,255,255,0.7)",
+              lineHeight: 1.82,
+              maxWidth: 460,
+            }}
+          >
+            Whether you're an NGO looking for skilled volunteers or a Tata professional ready to make an impact, Tata Engage makes the connection easy.
+          </p>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 24,
-          }}
-        >
+        {/* Right: two CTA cards */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           {/* NGO path */}
           <div
             style={{
-              borderRadius: 20,
-              overflow: "hidden",
-              border: "1px solid #e8eef0",
+              background: "rgba(0,0,0,0.22)",
+              borderRadius: 16,
+              padding: "28px 28px 32px",
+              border: "1px solid rgba(255,255,255,0.14)",
             }}
           >
-            <div style={{ height: 6, background: C }} />
-            <div style={{ padding: "40px 40px 44px" }}>
-              <div
-                style={{
-                  fontFamily: "'DM Mono',monospace",
-                  fontSize: 10,
-                  fontWeight: 700,
-                  letterSpacing: "2px",
-                  textTransform: "uppercase",
-                  color: C + "99",
-                  marginBottom: 16,
-                }}
-              >
-                Civil society organisation
-              </div>
-              <h3
-                style={{
-                  fontSize: 22,
-                  fontWeight: 900,
-                  color: NAVY,
-                  marginBottom: 14,
-                  lineHeight: 1.2,
-                }}
-              >
-                Are you an NGO or non-profit?
-              </h3>
-              <p
-                style={{
-                  fontSize: 15,
-                  color: "#64748B",
-                  lineHeight: 1.75,
-                  marginBottom: 32,
-                }}
-              >
-                Partner with Tata Engage to access skilled, committed volunteers
-                from across the Tata ecosystem for your projects.
-              </p>
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <button
-                  onClick={() => navigate("register-role")}
-                  style={{
-                    background: C,
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: 10,
-                    padding: "12px 26px",
-                    fontWeight: 800,
-                    fontSize: 14,
-                    cursor: "pointer",
-                  }}
-                >
-                  Register as NGO partner →
-                </button>
-                <button
-                  onClick={() =>
-                    document
-                      .getElementById("pwu-contact")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
-                  style={{
-                    background: "none",
-                    color: C,
-                    border: `1.5px solid ${C}`,
-                    borderRadius: 10,
-                    padding: "12px 20px",
-                    fontWeight: 700,
-                    fontSize: 14,
-                    cursor: "pointer",
-                  }}
-                >
-                  Email us
-                </button>
-              </div>
+            <div
+              style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: 10,
+                fontWeight: 700,
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.4)",
+                marginBottom: 12,
+              }}
+            >
+              Civil society organisation
             </div>
+            <div style={{ fontSize: 18, fontWeight: 900, color: "#fff", marginBottom: 10, lineHeight: 1.2 }}>
+              Are you an NGO or non-profit?
+            </div>
+            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.75, marginBottom: 20 }}>
+              Partner with Tata Engage to access skilled, committed volunteers from across the Tata ecosystem.
+            </p>
+            <button
+              onClick={() => navigate("register-role")}
+              style={{
+                background: B_YELLOW,
+                color: ACCENT_NAVY,
+                border: "none",
+                borderRadius: 10,
+                padding: "13px 24px",
+                fontWeight: 800,
+                fontSize: 14,
+                cursor: "pointer",
+                width: "100%",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.22)",
+              }}
+            >
+              Register as NGO partner →
+            </button>
           </div>
 
           {/* Volunteer path */}
           <div
             style={{
-              borderRadius: 20,
-              overflow: "hidden",
-              background: C_DARK,
-              border: `1px solid ${C_DARK}`,
+              background: "rgba(255,255,255,0.06)",
+              borderRadius: 16,
+              padding: "28px 28px 32px",
+              border: "1px solid rgba(255,255,255,0.10)",
             }}
           >
-            <div style={{ height: 6, background: MUSTARD }} />
-            <div style={{ padding: "40px 40px 44px" }}>
-              <div
-                style={{
-                  fontFamily: "'DM Mono',monospace",
-                  fontSize: 10,
-                  fontWeight: 700,
-                  letterSpacing: "2px",
-                  textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.4)",
-                  marginBottom: 16,
-                }}
-              >
-                Tata professional
-              </div>
-              <h3
-                style={{
-                  fontSize: 22,
-                  fontWeight: 900,
-                  color: "#fff",
-                  marginBottom: 14,
-                  lineHeight: 1.2,
-                }}
-              >
-                Are you a Tata employee?
-              </h3>
-              <p
-                style={{
-                  fontSize: 15,
-                  color: "rgba(255,255,255,0.68)",
-                  lineHeight: 1.75,
-                  marginBottom: 32,
-                }}
-              >
-                Register on Tata Engage and discover volunteering opportunities
-                across TVW, ProEngage, and Disaster Response.
-              </p>
-              <button
-                onClick={() => navigate("register-role")}
-                style={{
-                  background: MUSTARD,
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: 10,
-                  padding: "12px 26px",
-                  fontWeight: 800,
-                  fontSize: 14,
-                  cursor: "pointer",
-                }}
-              >
-                Register as volunteer →
-              </button>
+            <div
+              style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: 10,
+                fontWeight: 700,
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.4)",
+                marginBottom: 12,
+              }}
+            >
+              Tata professional
             </div>
+            <div style={{ fontSize: 18, fontWeight: 900, color: "#fff", marginBottom: 10, lineHeight: 1.2 }}>
+              Are you a Tata employee?
+            </div>
+            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.75, marginBottom: 20 }}>
+              Register on Tata Engage and discover volunteering opportunities across TVW, ProEngage, and Disaster Response.
+            </p>
+            <button
+              onClick={() => navigate("register-role")}
+              style={{
+                background: "transparent",
+                color: "rgba(255,255,255,0.7)",
+                border: "1.5px solid rgba(255,255,255,0.28)",
+                borderRadius: 10,
+                padding: "13px 24px",
+                fontWeight: 700,
+                fontSize: 14,
+                cursor: "pointer",
+                width: "100%",
+              }}
+            >
+              Register as volunteer →
+            </button>
           </div>
         </div>
       </div>
@@ -1197,28 +1297,32 @@ export default function PartnerWithUsView() {
       style={{
         background: "#fff",
         minHeight: "100vh",
-        fontFamily: "'DM Sans',sans-serif",
+        fontFamily: "'DM Sans', sans-serif",
         paddingTop: 64,
       }}
     >
-      {/* Top accent line */}
+      {/* Top accent stripe — sticky at top, matching all other subpages */}
       <div
         style={{
           height: 4,
-          background: C,
+          background: COLOUR,
           position: "sticky",
-          top: 64,
-          zIndex: 100,
+          top: 0,
+          zIndex: 40,
         }}
       />
 
       <SubPageDotRail sections={SECTIONS} />
+
       <Hero />
+      <OverviewSection />
       <BridgeSection />
       <NGOSection />
       <ContactSection />
       <StayConnectedSection />
       <CTASection />
+
+      <Footer />
     </div>
   );
 }
