@@ -167,7 +167,7 @@ function Hero() {
           {[
             { date: "Nov 2022", label: "Tata Sustainability Conclave", tag: "TSC 2022", bg: ACCENT, text: "#fff" },
             { date: "Mar 2024", label: "Tata Volunteerism Conference", tag: "VOLCON 2024", bg: B_PINK, text: "#fff" },
-            { date: "Oct 2022", label: "IAVE World Volunteer Conference", tag: "Abu Dhabi", bg: B_ORANGE, text: NAVY },
+            { date: "Oct 2022", label: "IAVE World Volunteer Conference", tag: "Abu Dhabi", bg: B_ORANGE, text: "#fff" },
           ].map((b, i) => (
             <div
               key={b.tag}
