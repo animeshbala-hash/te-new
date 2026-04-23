@@ -6,7 +6,7 @@ import { useAppNavigate } from "@/hooks/useAppNavigate";
 import PageShell from "@/components/shared/PageShell";
 import { B_TEAL, ACCENT_NAVY } from "@/data/homeSharedData";
 
-const B_ORANGE = "#C14D00";
+const B_ORANGE = "#F16323";
 
 const SECTIONS = [
   { id: "cp-details", label: "Details" },
@@ -211,7 +211,7 @@ const CreateProjectView = () => {
                           <input
                             type="text"
                             placeholder="e.g., Financial Literacy Module for Rural Women"
-                            className="form-input focus:ring-[#C14D00]/20 focus:border-[#C14D00]"
+                            className="form-input focus:ring-[#F16323]/20 focus:border-[#F16323]"
                             value={projectData.title}
                             onChange={e => setProjectData({ ...projectData, title: e.target.value })}
                           />
@@ -221,7 +221,7 @@ const CreateProjectView = () => {
                           <div id="cp-skills">
                             <label className="form-label">Skill Area*</label>
                             <select
-                              className="form-input focus:ring-[#C14D00]/20 focus:border-[#C14D00]"
+                              className="form-input focus:ring-[#F16323]/20 focus:border-[#F16323]"
                               value={projectData.skillArea}
                               onChange={handleSkillAreaChange}
                             >
@@ -270,7 +270,7 @@ const CreateProjectView = () => {
                         <div>
                           <label className="form-label">Duration*</label>
                           <select
-                            className="form-input focus:ring-[#C14D00]/20 focus:border-[#C14D00]"
+                            className="form-input focus:ring-[#F16323]/20 focus:border-[#F16323]"
                             value={projectData.duration}
                             onChange={e => setProjectData({ ...projectData, duration: e.target.value })}
                           >
@@ -285,7 +285,7 @@ const CreateProjectView = () => {
                           <input
                             type="number"
                             min="1"
-                            className="form-input focus:ring-[#C14D00]/20 focus:border-[#C14D00]"
+                            className="form-input focus:ring-[#F16323]/20 focus:border-[#F16323]"
                             value={projectData.volunteers}
                             onChange={e => setProjectData({ ...projectData, volunteers: parseInt(e.target.value) })}
                           />
@@ -298,7 +298,7 @@ const CreateProjectView = () => {
                             <input
                               type="text"
                               placeholder="Enter city or 'Virtual'"
-                              className="form-input pl-12 focus:ring-[#C14D00]/20 focus:border-[#C14D00]"
+                              className="form-input pl-12 focus:ring-[#F16323]/20 focus:border-[#F16323]"
                               value={projectData.location}
                               onChange={e => setProjectData({ ...projectData, location: e.target.value })}
                             />
@@ -328,7 +328,7 @@ const CreateProjectView = () => {
                           </button>
                         </div>
                         <textarea
-                          className="form-input min-h-[300px] font-mono text-sm leading-relaxed focus:ring-[#C14D00]/20 focus:border-[#C14D00]"
+                          className="form-input min-h-[300px] font-mono text-sm leading-relaxed focus:ring-[#F16323]/20 focus:border-[#F16323]"
                           placeholder="Describe your project in detail..."
                           value={projectData.brief}
                           onChange={e => setProjectData({ ...projectData, brief: e.target.value })}
@@ -369,7 +369,7 @@ const CreateProjectView = () => {
                           </div>
                         )}
                         <textarea
-                          className="form-input min-h-[200px] focus:ring-[#C14D00]/20 focus:border-[#C14D00]"
+                          className="form-input min-h-[200px] focus:ring-[#F16323]/20 focus:border-[#F16323]"
                           placeholder="List the key deliverables and impact metrics..."
                           value={projectData.outcomes}
                           onChange={e => setProjectData({ ...projectData, outcomes: e.target.value })}

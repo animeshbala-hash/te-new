@@ -30,13 +30,13 @@ const P_BLUE      = "#EBF4FF";
 const P_RED       = "#FFF0EE";
 
 // NGO-specific greens — replaces orange as primary interactive
-const B_GREEN       = "#1A6B3C";   // forest green — primary interactive
+const B_GREEN       = "#0A8246";   // forest green — primary interactive
 const B_LIME        = "#3D7A1A";   // lime-forest — secondary
 const P_GREEN       = "#E6F5EE";   // forest green pastel
 const P_LIME        = "#F0F7E8";   // lime pastel
 
 // KPI tile colours — match Volunteer/SPOC bold tile system
-const KPI_GREEN     = "#1A6B3C";   // primary ProEngage green
+const KPI_GREEN     = "#0A8246";   // primary ProEngage green
 const KPI_TEAL      = "#00A896";   // teal — matched/active
 const KPI_LIME      = "#5A9E1A";   // lime — completions
 const KPI_BLUE      = "#1E6BB8";   // blue — pending/review
@@ -196,11 +196,11 @@ function AITextarea({ value, onChange, placeholder, rows = 3, label }: {
 // ─── Status badge ─────────────────────────────────────────────────────────────
 function Badge({ status }: { status: string }) {
   const map: Record<string, [string, string]> = {
-    Approved:       [P_TEAL,    "#0F6E56"],
-    Active:         [P_TEAL,    "#0F6E56"],
-    Live:           [P_TEAL,    "#0F6E56"],
-    Matched:        [P_TEAL,    "#0F6E56"],
-    Submitted:      [P_TEAL,    "#0F6E56"],
+    Approved:       [P_TEAL,    "#0A8246"],
+    Active:         [P_TEAL,    "#0A8246"],
+    Live:           [P_TEAL,    "#0A8246"],
+    Matched:        [P_TEAL,    "#0A8246"],
+    Submitted:      [P_TEAL,    "#0A8246"],
     Completed:      ["#f0f0f4", "#888"],
     Closed:         ["#f0f0f4", "#888"],
     Draft:          ["#f0f0f4", "#888"],
@@ -511,7 +511,7 @@ const NGODashboardView = () => {
     <div style={{ background: "#f8f9ff", minHeight: "100vh", paddingBottom: 80 }}>
 
       {/* Full-bleed greeting banner — matches Volunteer/SPOC exactly */}
-      <div style={{ background: "linear-gradient(135deg, #0A4A26 0%, #1A6B3C 55%, #2D9A56 100%)", padding: "92px 40px 28px", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24, flexWrap: "wrap" }}>
+      <div style={{ background: "linear-gradient(135deg, #0A4A26 0%, #0A8246 55%, #2D9A56 100%)", padding: "92px 40px 28px", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24, flexWrap: "wrap" }}>
         <div>
           <div style={{ fontSize: 24, fontWeight: 900, color: "#fff", letterSpacing: -0.5 }}>
             {ngoData.organization ?? "Pratham Foundation"}, this is your NGO space.
@@ -715,7 +715,7 @@ const NGODashboardView = () => {
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                     {p.healthUpdates.map((h: any, i: number) => {
                       const bg    = h.status === "Healthy" ? P_TEAL : h.status === "At Risk" ? P_RED : "#f0f0f4";
-                      const color = h.status === "Healthy" ? "#0F6E56" : h.status === "At Risk" ? B_RED : "#888";
+                      const color = h.status === "Healthy" ? "#0A8246" : h.status === "At Risk" ? B_RED : "#888";
                       return (
                         <div key={i} style={{ background: bg, borderRadius: 7, padding: "6px 10px", minWidth: 78 }}>
                           <div style={{ fontSize: 10, fontWeight: 700, color: "#888", marginBottom: 2 }}>{h.month}</div>
@@ -782,7 +782,7 @@ const NGODashboardView = () => {
                     <div style={{ fontSize: 13, fontWeight: 600, color: ACCENT_NAVY }}>{a.name}</div>
                     <div style={{ display: "flex", gap: 5, marginTop: 4, flexWrap: "wrap" }}>
                       <span style={{ fontSize: 10.5, fontWeight: 600, background: P_BLUE, color: B_BLUE, borderRadius: 100, padding: "1px 7px" }}>{a.city}</span>
-                      <span style={{ fontSize: 10.5, fontWeight: 600, background: P_TEAL, color: "#0F6E56", borderRadius: 100, padding: "1px 7px" }}>{a.availability}</span>
+                      <span style={{ fontSize: 10.5, fontWeight: 600, background: P_TEAL, color: "#0A8246", borderRadius: 100, padding: "1px 7px" }}>{a.availability}</span>
                       {a.skills.slice(0, 2).map((s: string) => (
                         <span key={s} style={{ fontSize: 10.5, fontWeight: 600, background: P_GREEN, color: B_GREEN, borderRadius: 100, padding: "1px 7px" }}>{s}</span>
                       ))}
@@ -872,7 +872,7 @@ const NGODashboardView = () => {
                         <div style={{ flex: 1 }}>
                           <div style={{ fontSize: 13.5, fontWeight: 600, color: ACCENT_NAVY }}>{p.title}</div>
                           <div style={{ display: "flex", gap: 5, marginTop: 4 }}>
-                            <span style={{ fontSize: 10.5, fontWeight: 600, background: P_TEAL, color: "#0F6E56", borderRadius: 100, padding: "1px 7px" }}>{p.volunteers ?? 0} volunteers</span>
+                            <span style={{ fontSize: 10.5, fontWeight: 600, background: P_TEAL, color: "#0A8246", borderRadius: 100, padding: "1px 7px" }}>{p.volunteers ?? 0} volunteers</span>
                             <span style={{ fontSize: 10.5, fontWeight: 600, background: P_BLUE, color: B_BLUE, borderRadius: 100, padding: "1px 7px" }}>{p.applications ?? 0} applications</span>
                           </div>
                         </div>
@@ -1008,7 +1008,7 @@ const NGODashboardView = () => {
                                 <div style={{ flex: 1 }}>
                                   <div style={{ fontSize: 13, fontWeight: 600, color: ACCENT_NAVY }}>{proj.title}</div>
                                   <div style={{ marginTop: 4 }}>
-                                    <span style={{ fontSize: 10.5, fontWeight: 600, background: P_TEAL, color: "#0F6E56", borderRadius: 100, padding: "1px 7px" }}>{proj.volunteers} volunteer{proj.volunteers !== 1 ? "s" : ""}</span>
+                                    <span style={{ fontSize: 10.5, fontWeight: 600, background: P_TEAL, color: "#0A8246", borderRadius: 100, padding: "1px 7px" }}>{proj.volunteers} volunteer{proj.volunteers !== 1 ? "s" : ""}</span>
                                   </div>
                                 </div>
                                 <Badge status={proj.status} />

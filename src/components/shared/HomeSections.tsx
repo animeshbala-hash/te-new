@@ -29,7 +29,7 @@ export { SectionDivider };
 // ─────────────────────────────────────────────────────────────────────────────
 // DESIGN TOKENS
 // ─────────────────────────────────────────────────────────────────────────────
-// Accent for changed tiles: #E8401C (TSG red-orange), replacing forest green
+// Accent for changed tiles: #D84926 (TSG red-orange), replacing forest green
 const B_ACCENT = "#F93822";
 // All eyebrow / mono text → Noto Sans (no DM Mono)
 const FONT_SANS = "'Noto Sans', 'DM Sans', ui-sans-serif, system-ui, sans-serif";
@@ -259,7 +259,7 @@ const PROG_CONFIG = [
     title: "Tata Volunteering Week",
     label: "Bi-annual · Global",
     stat1: "12 Editions", stat2: "50K+ Volunteers",
-    colour: "#3E7EB0",
+    colour: "#3B7ABD",
     photo: airIndia, photoPos: "center 25%",
     accentWord: "Volunteering",         // word to italicise in card title
   },
@@ -277,7 +277,7 @@ const PROG_CONFIG = [
     title: "Disaster Response",
     label: "Rapid Action",
     stat1: "24 Responses", stat2: "8 States",
-    colour: "#00A896",
+    colour: "#13BBB4",
     photo: drPhoto, photoPos: "center 20%",
     accentWord: "Response",
   },
@@ -463,10 +463,10 @@ export function ProgrammeSpotlight() {
             {/* RIGHT: CVP + EOI tiles — B_ACCENT replaces forest green */}
             <div style={{ position: "relative", overflow: "hidden", borderRadius: 14, minHeight: 340 }}>
 
-              {/* CVP tile — B_ACCENT (#E8401C) */}
+              {/* CVP tile — B_ACCENT (#D84926) */}
               <div style={{
                 position: "absolute", inset: 0,
-                background: "#1434A4",
+                background: "#333399",
                 padding: "28px 20px 16px",
                 display: "flex", flexDirection: "column",
                 justifyContent: "center",
@@ -514,7 +514,7 @@ export function ProgrammeSpotlight() {
               {/* EOI tile — pink */}
               <div style={{
                 position: "absolute", inset: 0,
-                background: "#F2778A",
+                background: "#F4838A",
                 padding: "28px 20px 16px",
                 display: "flex", flexDirection: "column",
                 justifyContent: "center",
@@ -736,7 +736,7 @@ export function NumbersSection() {
           <div style={{
             borderRadius: 14,
             position: "relative", overflow: "hidden", minHeight: 280,
-            background: "#F2778A",
+            background: "#F4838A",
             boxShadow: "6px 0 24px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.08)",
             alignSelf: "center",
           }}>
@@ -796,7 +796,7 @@ export function NumbersSection() {
                   display: "flex",
                   flexDirection: "column", justifyContent: "flex-start", alignItems: "center", textAlign: "center",
                   borderRadius: 14, padding: "20px 28px",
-                  background: "#1434A4",
+                  background: "#333399",
                   boxShadow: "6px 0 24px rgba(0,0,0,0.10), 0 4px 20px rgba(0,0,0,0.12)",
                   opacity: i === 0 ? 1 : 0,
                   transition: "opacity 0.5s ease",

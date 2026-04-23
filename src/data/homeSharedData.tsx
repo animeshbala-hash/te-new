@@ -3,11 +3,11 @@ import drPhoto from "@/assets/dr_photo.jpg";
 
 // ── Brand tokens ──────────────────────────────────────────────────────────────
 export const B_INDIGO = "#333399";
-export const B_YELLOW = "#F5A623";
-export const B_RED    = "#E8401C";
-export const B_TEAL   = "#00A896";
-export const B_BLUE   = "#1E6BB8";
-export const B_TICKER = "#3E7EB0";
+export const B_YELLOW = "#F79425";
+export const B_RED    = "#D84926";
+export const B_TEAL   = "#13BBB4";
+export const B_BLUE   = "#135EA9";
+export const B_TICKER = "#3B7ABD";
 export const ACCENT_NAVY = "#0D1B3E";
 
 // ── Pastel surface palette ────────────────────────────────────────────────────

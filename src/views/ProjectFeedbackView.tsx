@@ -7,7 +7,7 @@ import { useAppNavigate } from "@/hooks/useAppNavigate";
 import PageShell from "@/components/shared/PageShell";
 import { B_YELLOW, B_TEAL, B_RED, B_INDIGO, ACCENT_NAVY } from "@/data/homeSharedData";
 
-const B_ORANGE = "#C14D00";
+const B_ORANGE = "#F16323";
 
 const ProjectFeedbackView = ({ project }: { project: any }) => {
   const { setNgoData, triggerToast } = useAppContext();
