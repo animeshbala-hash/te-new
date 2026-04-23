@@ -7,9 +7,9 @@ import peHeroImg from "@/assets/tce-2.jpg";
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
 const B_YELLOW     = "#F79425";
-const COLOUR       = "#0D7C52";   // ProEngage green
-const COLOUR_DARK  = "#0A5C3E";
-const COLOUR_LIGHT = "#E6F5EE";
+const COLOUR       = "#803998";   // ProEngage purple
+const COLOUR_DARK  = "#4a1f5c";
+const COLOUR_LIGHT = "#F3EEFF";
 
 const SECTIONS = [
   { id: "pe-overview", label: "Overview"    },
@@ -158,7 +158,7 @@ const WHO = [
 const HOW_STEPS = [
   { num: "01", title: "Project Announcements",   Icon: IconAnnounce, colour: "#7C3AED", desc: "Projects are announced twice a year — 15 June and 5 December. Engagements typically run 1–6 months, done during weekends, holidays, and after-work hours." },
   { num: "02", title: "NGO Project Upload",      Icon: IconNGO,      colour: "#135EA9", desc: "Credible NGOs submit project requirements designed to address a real organisational need and deliver tangible outcomes." },
-  { num: "03", title: "Volunteer Applications",  Icon: IconApply,    colour: "#0D7C52", desc: "Eligible volunteers apply to projects aligned with their skills via the ProEngage platform, across diverse functional areas." },
+  { num: "03", title: "Volunteer Applications",  Icon: IconApply,    colour: "#803998", desc: "Eligible volunteers apply to projects aligned with their skills via the ProEngage platform, across diverse functional areas." },
   { num: "04", title: "Selection & Team Formation", Icon: IconMatch, colour: "#5B21B6", desc: "Non-profits review applications and select the best-fit volunteers for each project." },
   { num: "05", title: "Orientation & Planning",  Icon: IconOrient,   colour: "#F16323", desc: "A mandatory orientation workshop sets expectations for both volunteers and non-profits. Clear action plans, objectives, and timelines are defined." },
   { num: "06", title: "Execution & Tracking",    Icon: IconDeliver,  colour: "#0E7490", desc: "Projects are tracked periodically to ensure progress and outcomes throughout the engagement." },
