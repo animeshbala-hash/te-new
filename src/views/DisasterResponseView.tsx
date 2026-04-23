@@ -122,7 +122,7 @@ export default function DisasterResponseView() {
   const { isLoggedIn } = useAuth();
 
   return (
-    <div style={{ background: "#fff", minHeight: "100vh", position: "relative" }}>
+    <div className="dot-grid-bg" style={{ background: "transparent", minHeight: "100vh", position: "relative" }}>
 
       <SubPageDotRail sections={SECTIONS} />
 
@@ -166,7 +166,7 @@ export default function DisasterResponseView() {
       </div>
 
       {/* ════════════════════ OVERVIEW ════════════════════ */}
-      <section id="dr-overview" style={{ padding: "88px 56px", background: "#fff" }}>
+      <section id="dr-overview" style={{ padding: "88px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
           <div>
             <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>About the programme</p>
@@ -289,7 +289,7 @@ export default function DisasterResponseView() {
       </section>
 
       {/* ════════════════════ HOW IT WORKS ════════════════════ */}
-      <section id="dr-how" style={{ padding: "88px 56px", background: "#fff" }}>
+      <section id="dr-how" style={{ padding: "88px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>The process</p>
           <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>How do we go about it?</h2>

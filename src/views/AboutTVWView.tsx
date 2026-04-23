@@ -154,7 +154,7 @@ export default function AboutTVWView() {
   const { triggerToast } = useAppContext();
 
   return (
-    <div style={{ background: "#fff", minHeight: "100vh", position: "relative" }}>
+    <div className="dot-grid-bg" style={{ background: "transparent", minHeight: "100vh", position: "relative" }}>
 
       <SubPageDotRail sections={SECTIONS} />
 
@@ -198,7 +198,7 @@ export default function AboutTVWView() {
       </div>
 
       {/* ════════════════════ OVERVIEW ════════════════════ */}
-      <section id="tvw-overview" style={{ padding: "88px 56px", background: "#fff" }}>
+      <section id="tvw-overview" style={{ padding: "88px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
           <div>
             <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>What is TVW?</p>
@@ -262,7 +262,7 @@ export default function AboutTVWView() {
       </section>
 
       {/* ════════════════════ HOW IT WORKS — Creative visual ════════════════════ */}
-      <section id="tvw-how" style={{ padding: "96px 56px", background: "#fff" }}>
+      <section id="tvw-how" style={{ padding: "96px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>
             The Volunteer Journey

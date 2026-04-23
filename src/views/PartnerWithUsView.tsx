@@ -207,7 +207,7 @@ function Hero() {
 // ── 2. Intro — what Tata Engage does (white) ──────────────────────────────────
 function IntroSection() {
   return (
-    <section id="pwu-intro" style={{ padding: "88px 56px", background: "#fff" }}>
+    <section id="pwu-intro" style={{ padding: "88px 56px", background: "transparent" }}>
       <div
         style={{
           maxWidth: 1100,
@@ -602,7 +602,7 @@ function StayConnectedSection() {
   ];
 
   return (
-    <section id="pwu-social" style={{ padding: "88px 56px", background: "#fff" }}>
+    <section id="pwu-social" style={{ padding: "88px 56px", background: "transparent" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ marginBottom: 48 }}>
           <p
@@ -697,9 +697,9 @@ function StayConnectedSection() {
 // ── Main View ─────────────────────────────────────────────────────────────────
 export default function PartnerWithUsView() {
   return (
-    <div
+    <div className="dot-grid-bg"
       style={{
-        background: "#fff",
+        background: "transparent",
         minHeight: "100vh",
         fontFamily: "'DM Sans', sans-serif",
         paddingTop: 64,

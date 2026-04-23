@@ -58,7 +58,7 @@ export default function CVPView() {
   }, []);
 
   return (
-    <div style={{ fontFamily: "'Noto Sans', sans-serif", background: "#fff", minHeight: "100vh" }}>
+    <div className="dot-grid-bg" style={{ fontFamily: "'Noto Sans', sans-serif", background: "transparent", minHeight: "100vh" }}>
       {/* Sticky top accent stripe */}
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 4, background: COLOUR, zIndex: 60 }} />
 
@@ -102,7 +102,7 @@ export default function CVPView() {
       </section>
 
       {/* OVERVIEW */}
-      <section id="cvp-overview" style={{ background: "#fff", padding: "96px 24px" }}>
+      <section id="cvp-overview" style={{ background: "transparent", padding: "96px 24px" }}>
         <div style={{ maxWidth: 980, margin: "0 auto" }}>
           <DefinerBar colour={COLOUR} />
           <h2 style={{ fontSize: 36, fontWeight: 700, color: ACCENT_NAVY, margin: "0 0 24px", letterSpacing: -0.5 }}>
@@ -140,7 +140,7 @@ export default function CVPView() {
       </section>
 
       {/* EXPLORE */}
-      <section id="cvp-explore" style={{ background: "#fff", padding: "96px 24px" }}>
+      <section id="cvp-explore" style={{ background: "transparent", padding: "96px 24px" }}>
         <div style={{ maxWidth: 980, margin: "0 auto" }}>
           <DefinerBar colour={COLOUR} />
           <h2 style={{ fontSize: 36, fontWeight: 700, color: ACCENT_NAVY, margin: "0 0 24px", letterSpacing: -0.5 }}>
