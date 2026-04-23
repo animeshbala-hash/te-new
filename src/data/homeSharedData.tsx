@@ -68,11 +68,11 @@ export const COMPANY_PROGRAMMES = [
 ];
 
 export const JOURNEY_MILESTONES = [
-  { year: "2015", title: "Tata Engage Launches", desc: "Platform goes live, uniting Tata Group volunteers for the first time.", colour: B_INDIGO },
-  { year: "2018", title: "First Tata VolCon", desc: "Inaugural volunteer conference brings together changemakers across the Group.", colour: B_YELLOW },
-  { year: "2019", title: "IAVE Global Award", desc: "Recognised as Best Global Volunteer Program by the International Association for Volunteer Effort.", colour: B_BLUE },
-  { year: "2020", title: "1.5 Million Hours", desc: "Volunteers collectively cross 1.5 million hours of impact.", colour: B_RED },
-  { year: "2025", title: "10.87 Million Hours", desc: "Highest ever annual volunteering hours clocked across the Tata Group.", colour: B_TICKER },
+  { year: "2015", title: "Tata Engage Launches", desc: "Platform goes live, uniting Tata Group volunteers for the first time.", colour: "#FFFFFF" },
+  { year: "2018", title: "First Tata VolCon", desc: "Inaugural volunteer conference brings together changemakers across the Group.", colour: "#A4E057" },
+  { year: "2019", title: "IAVE Global Award", desc: "Recognised as Best Global Volunteer Program by the International Association for Volunteer Effort.", colour: "#F9A8D4" },
+  { year: "2020", title: "1.5 Million Hours", desc: "Volunteers collectively cross 1.5 million hours of impact.", colour: "#5EEAD4" },
+  { year: "2025", title: "10.87 Million Hours", desc: "Highest ever annual volunteering hours clocked across the Tata Group.", colour: "#FFFFFF" },
 ];
 
 export const FUN_FACTS = [
