@@ -44,14 +44,16 @@ function Hero() {
       <div style={DIAG} />
       <div style={{ position: "absolute", top: -80, right: -60, width: 440, height: 440, background: `radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 68%)`, pointerEvents: "none" }} />
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto" }}>
-        <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.85)", marginBottom: 18 }}>
+        <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 14, fontWeight: 800, letterSpacing: "2.3px", textTransform: "uppercase", color: "#fff", marginBottom: 4 }}>
           Tata Engage · Get in Touch
         </p>
-        <div style={{ width: 40, height: 3, background: "rgba(255,255,255,0.85)", borderRadius: 2, marginBottom: 24 }} />
-        <h1 style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(2.2rem,4.5vw,3.2rem)", fontWeight: 900, color: "#fff", lineHeight: 1.08, letterSpacing: "-1.5px", margin: "0 0 18px", maxWidth: 620 }}>
+        <div style={{ height: 1.4, width: 80, borderRadius: 2, background: "rgba(255,255,255,0.25)", marginBottom: 24, overflow: "hidden" }}>
+          <div style={{ height: "100%", width: "100%", borderRadius: 2, background: "#fff" }} />
+        </div>
+        <h1 style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px", maxWidth: 620 }}>
           Contact &amp; Connect with Tata Engage
         </h1>
-        <p style={{ fontSize: 15, fontWeight: 300, color: "rgba(255,255,255,0.9)", maxWidth: 520, lineHeight: 1.6 }}>
+        <p style={{ fontSize: 17, fontWeight: 300, color: "#fff", maxWidth: 520, lineHeight: 1.7 }}>
           Whether you're a civil society organisation, a Tata colleague, or a partner exploring collaboration — the Tata Engage team is here to help.
         </p>
       </div>
@@ -70,11 +72,11 @@ function EmailSection() {
         <h2 style={{ fontSize: 30, fontWeight: 900, color: NAVY, letterSpacing: "-0.5px" }}>Email the Tata Engage team</h2>
         <DefinerBar />
 
-        <div style={{ marginTop: 44, background: NAVY, borderRadius: 20, padding: "48px 52px", position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32 }}>
+        <div style={{ marginTop: 44, background: `linear-gradient(135deg, ${ACCENT_DARK} 0%, ${ACCENT} 100%)`, borderRadius: 20, padding: "48px 52px", position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32 }}>
           <div style={DIAG} />
-          <div style={{ position: "absolute", bottom: -60, right: -60, width: 300, height: 300, background: `radial-gradient(circle,${ACCENT}33 0%,transparent 68%)`, pointerEvents: "none" }} />
+          <div style={{ position: "absolute", bottom: -60, right: -60, width: 300, height: 300, background: `radial-gradient(circle,rgba(255,255,255,0.18) 0%,transparent 68%)`, pointerEvents: "none" }} />
           <div style={{ position: "relative", zIndex: 1, maxWidth: 560 }}>
-            <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: 14 }}>
+            <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.85)", marginBottom: 14 }}>
               Drop us a line
             </p>
             <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 20, fontStyle: "italic", color: "#fff", lineHeight: 1.65, marginBottom: 0 }}>
@@ -83,7 +85,7 @@ function EmailSection() {
           </div>
           <div style={{ position: "relative", zIndex: 1, flexShrink: 0 }}>
             <a href="mailto:tataengage@tata.com"
-              style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#fff", color: NAVY, padding: "16px 24px", borderRadius: 12, fontSize: 14, fontWeight: 800, textDecoration: "none", boxShadow: "0 6px 20px rgba(0,0,0,0.25)", transition: "transform 0.2s" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#fff", color: ACCENT_DARK, padding: "16px 24px", borderRadius: 12, fontSize: 14, fontWeight: 800, textDecoration: "none", boxShadow: "0 6px 20px rgba(0,0,0,0.25)", transition: "transform 0.2s" }}
               onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"}
               onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.transform = "none"}
             >
@@ -135,34 +137,35 @@ function SocialSection() {
   ];
 
   return (
-    <section id="contact-social" style={{ position: "relative", background: `linear-gradient(135deg, ${ACCENT_DARK} 0%, ${ACCENT} 100%)`, padding: "96px 56px", overflow: "hidden" }}>
-      <div style={DIAG} />
-      <div style={{ position: "absolute", top: -120, right: -80, width: 480, height: 480, background: "radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 68%)", pointerEvents: "none" }} />
+    <section id="contact-social" style={{ position: "relative", background: "#fff", padding: "32px 56px 96px", overflow: "hidden" }}>
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto" }}>
-        <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", marginBottom: 10 }}>
+        <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: ACCENT_DARK, marginBottom: 10 }}>
           Stay connected
         </p>
-        <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>Follow Tata Engage</h2>
-        <DefinerBar light />
+        <h2 style={{ fontSize: 30, fontWeight: 900, color: NAVY, letterSpacing: "-0.5px" }}>Follow Tata Engage</h2>
+        <DefinerBar />
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, marginTop: 44 }}>
           {channels.map(c => (
             <a
               key={c.label}
               href="#"
-              style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: 18, padding: "32px 28px", textDecoration: "none", display: "block", transition: "transform 0.2s, background 0.2s" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.14)"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "none"; (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.08)"; }}
+              style={{ background: `linear-gradient(135deg, ${ACCENT_DARK} 0%, ${ACCENT} 100%)`, borderRadius: 18, padding: "32px 28px", textDecoration: "none", display: "block", transition: "transform 0.2s, box-shadow 0.2s", position: "relative", overflow: "hidden", boxShadow: "0 4px 16px rgba(216,73,38,0.18)" }}
+              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 10px 28px rgba(216,73,38,0.28)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "none"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 16px rgba(216,73,38,0.18)"; }}
             >
-              <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(255,255,255,0.15)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
-                {c.icon}
+              <div style={DIAG} />
+              <div style={{ position: "relative", zIndex: 1 }}>
+                <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(255,255,255,0.18)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
+                  {c.icon}
+                </div>
+                <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, fontWeight: 700, letterSpacing: "1.2px", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginBottom: 10 }}>{c.label}</p>
+                <h3 style={{ fontSize: 17, fontWeight: 800, color: "#fff", marginBottom: 10, lineHeight: 1.3 }}>{c.heading}</h3>
+                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.9)", lineHeight: 1.7, marginBottom: 20 }}>{c.body}</p>
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#fff", display: "inline-flex", alignItems: "center", gap: 4 }}>
+                  {c.detail} ↗
+                </span>
               </div>
-              <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, fontWeight: 700, letterSpacing: "1.2px", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", marginBottom: 10 }}>{c.label}</p>
-              <h3 style={{ fontSize: 17, fontWeight: 800, color: "#fff", marginBottom: 10, lineHeight: 1.3 }}>{c.heading}</h3>
-              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.8)", lineHeight: 1.7, marginBottom: 20 }}>{c.body}</p>
-              <span style={{ fontSize: 13, fontWeight: 700, color: "#fff", display: "inline-flex", alignItems: "center", gap: 4 }}>
-                {c.detail} ↗
-              </span>
             </a>
           ))}
         </div>

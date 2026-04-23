@@ -236,14 +236,16 @@ export default function AboutProEngageView() {
 
         <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "120px 56px 110px", width: "100%" }}>
           <div style={{ maxWidth: 720 }}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 600, letterSpacing: "2.4px", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", marginBottom: 20 }}>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 14, fontWeight: 800, letterSpacing: "2.3px", textTransform: "uppercase", color: "#fff", marginBottom: 4 }}>
               Skill-Based Volunteering · Since 2014
             </p>
-            <div style={{ width: 44, height: 3, background: "rgba(255,255,255,0.65)", borderRadius: 2, marginBottom: 28 }} />
-            <h1 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(3.4rem, 6.8vw, 5.4rem)", fontWeight: 900, color: "#fff", lineHeight: 1.02, letterSpacing: "-2.5px", margin: "0 0 28px" }}>
+            <div style={{ height: 1.4, width: 80, borderRadius: 2, background: "rgba(255,255,255,0.25)", marginBottom: 24, overflow: "hidden" }}>
+              <div style={{ height: "100%", width: "100%", borderRadius: 2, background: "#fff" }} />
+            </div>
+            <h1 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2.4rem, 5vw, 3.8rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px" }}>
               ProEngage
             </h1>
-            <p style={{ fontSize: 18, fontWeight: 300, lineHeight: 1.75, color: "rgba(255,255,255,0.92)", margin: "0 0 48px", maxWidth: 600 }}>
+            <p style={{ fontSize: 17, fontWeight: 300, lineHeight: 1.7, color: "#fff", margin: "0 0 32px", maxWidth: 560 }}>
               ProEngage is the Tata Group's flagship part-time, skill-based volunteering programme — bringing together Tata talent and civil society organisations to create meaningful, long-term impact. Volunteers don't just give back. They lead, problem-solve, and create lasting change.
             </p>
             <div style={{ display: "flex", gap: 14 }}>

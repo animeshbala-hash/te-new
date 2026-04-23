@@ -167,14 +167,16 @@ export default function AboutTVWView() {
 
         <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "120px 56px 110px", width: "100%" }}>
           <div style={{ maxWidth: 720 }}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 600, letterSpacing: "2.4px", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", marginBottom: 20 }}>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 14, fontWeight: 800, letterSpacing: "2.3px", textTransform: "uppercase", color: "#fff", marginBottom: 4 }}>
               Flagship Programme · Since 2014
             </p>
-            <div style={{ width: 44, height: 3, background: "rgba(255,255,255,0.65)", borderRadius: 2, marginBottom: 28 }} />
-            <h1 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(3.4rem, 6.8vw, 5.4rem)", fontWeight: 900, color: "#fff", lineHeight: 1.02, letterSpacing: "-2.5px", margin: "0 0 28px", whiteSpace: "pre-line" }}>
-              {"Tata\nVolunteering\nWeek"}
+            <div style={{ height: 1.4, width: 80, borderRadius: 2, background: "rgba(255,255,255,0.25)", marginBottom: 24, overflow: "hidden" }}>
+              <div style={{ height: "100%", width: "100%", borderRadius: 2, background: "#fff" }} />
+            </div>
+            <h1 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2.4rem, 5vw, 3.8rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px", whiteSpace: "pre-line" }}>
+              {"Tata Volunteering Week"}
             </h1>
-            <p style={{ fontSize: 18, fontWeight: 300, lineHeight: 1.75, color: "rgba(255,255,255,0.92)", margin: "0 0 48px", maxWidth: 600 }}>
+            <p style={{ fontSize: 17, fontWeight: 300, lineHeight: 1.7, color: "#fff", margin: "0 0 32px", maxWidth: 540 }}>
               A Celebration of Collective Action. Held twice every year, TVW is a time when the Tata volunteering tribe comes together — turning intent into action by volunteering time, skills, and compassion for causes close to their heart.
             </p>
             <div style={{ display: "flex", gap: 14 }}>
