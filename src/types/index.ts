@@ -8,6 +8,6 @@ export type View = "home" | "login" | "register-role" | "register-form" | "otp" 
   | "disaster-response" | "dr-availability-form" | "dr-confirmation"
   | "about" | "about-tvw" | "about-proengage" | "about-gcso" | "about-team" | "about-events" | "about-contact" | "partner" | "media" | "journey"
   | "contact" | "faq" | "policy"
-  | "eoi" | "ewaste" | "tata-sm" | "cvp" | "yes-to-access";
+  | "eoi" | "eoeo" | "ewaste" | "tata-sm" | "cvp" | "yes-to-access";
 
 export type Role = "volunteer" | "ngo" | "tata_employee" | "family_member" | "corporate_spoc" | "platform_admin" | "retired_employee";
