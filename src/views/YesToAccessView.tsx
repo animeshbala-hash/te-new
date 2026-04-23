@@ -1,6 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { useAppNavigate } from "@/hooks/useAppNavigate";
-import { useAuth } from "@/context/AuthContext";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
@@ -50,8 +48,6 @@ function DefinerBar({ colour }: { colour: string }) {
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function YesToAccessView() {
-  const navigate = useAppNavigate();
-  const { isLoggedIn } = useAuth();
 
   return (
     <div className="dot-grid-bg" style={{ background: "transparent", minHeight: "100vh", position: "relative" }}>

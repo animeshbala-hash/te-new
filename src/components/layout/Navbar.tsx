@@ -185,7 +185,7 @@ const Navbar = ({
         { label: "__SECTION__Explore", action: () => {} },
         { label: "TCS Each One Empowers One", action: () => onNavigate("eoi") },
         { label: "Infiniti Retail E-Waste Warrior", action: () => onNavigate("ewaste") },
-        { label: "Yes To Access", action: () => triggerToast("Yes To Access — coming soon") },
+        { label: "Yes To Access", action: () => onNavigate("yes-to-access") },
       ],
     },
     {
