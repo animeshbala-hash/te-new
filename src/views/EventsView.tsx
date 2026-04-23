@@ -230,30 +230,31 @@ function EventSection({
     : bg;
 
   return (
-    <section id={id} style={{ background: sectionBg, padding: "96px 56px", position: "relative", overflow: "hidden" }}>
+    <section id={id} style={{ background: sectionBg, position: "relative", overflow: "hidden", paddingTop: topGap, scrollMarginTop: 80 }}>
       {accentBg && (
-        <>
-          {/* Top accent rule + soft corner glow for definition without full bleed */}
-          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: accent, opacity: 0.85 }} />
-          <div style={{ position: "absolute", top: -120, right: -80, width: 360, height: 360, background: `radial-gradient(circle, ${accent}22 0%, transparent 70%)`, pointerEvents: "none" }} />
-        </>
+        <div style={{ position: "absolute", top: topGap, right: -80, width: 360, height: 360, background: `radial-gradient(circle, ${accent}22 0%, transparent 70%)`, pointerEvents: "none" }} />
       )}
-      <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto" }}>
 
-        {/* Section header */}
-        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 52 }}>
-          <div style={{ width: 4, height: 56, background: accent, borderRadius: 2, flexShrink: 0 }} />
+      {/* Full-width coloured header bar — edge-to-edge — distinguishes events */}
+      <div style={{ background: `linear-gradient(135deg, ${accentDark} 0%, ${accent} 100%)`, padding: "32px 56px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(45deg,rgba(255,255,255,0.05) 1px,transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: -60, right: -40, width: 240, height: 240, background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 68%)", pointerEvents: "none" }} />
+        <div style={{ position: "relative", maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", gap: 16 }}>
+          <div style={{ width: 4, height: 56, background: "rgba(255,255,255,0.85)", borderRadius: 2, flexShrink: 0 }} />
           <div>
-            <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: accent, marginBottom: 6 }}>{date} · {tag}</p>
-            <h2 style={{ fontSize: 26, fontWeight: 900, color: NAVY, letterSpacing: "-0.4px", lineHeight: 1.2 }}>{title}</h2>
-            <p style={{ fontSize: 14, color: "#64748B", marginTop: 4 }}>{subtitle}</p>
+            <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", marginBottom: 6 }}>{date} · {tag}</p>
+            <h2 style={{ fontSize: 26, fontWeight: 900, color: "#fff", letterSpacing: "-0.4px", lineHeight: 1.2, margin: 0 }}>{title}</h2>
+            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", marginTop: 4 }}>{subtitle}</p>
           </div>
         </div>
+      </div>
 
-        {/* Body layout — IAVE-style "full hero" puts the image full-width across the top
+      <div style={{ padding: "72px 56px 96px", position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto" }}>
+
+        {/* Body layout — heroFullWidth puts the image full-width across the top
             and renders paragraphs (left) + quote (right) below. Default keeps the
             existing 2-column text + media layout. */}
-        {accentBg && heroMedia ? (
+        {heroFullWidth && heroMedia ? (
           <>
             <div style={{ marginBottom: 48 }}>{heroMedia}</div>
             <div style={{ display: "grid", gridTemplateColumns: quote ? "1.15fr 0.85fr" : "1fr", gap: 48, alignItems: "start", marginBottom: highlights || awardsTable || children ? 48 : 0 }}>
