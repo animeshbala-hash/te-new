@@ -238,13 +238,13 @@ function SectionEyebrow({ label, dark = false }: { label: string; dark?: boolean
   return (
     <p style={{
       fontFamily: FONT_SANS,
-      fontSize: 12,
+      fontSize: 14,
       fontWeight: 700,
       letterSpacing: "1.8px",
       textTransform: "uppercase",
-      color: dark ? "rgba(255,255,255,0.55)" : B_INDIGO,
+      color: "#ffffff",
       margin: "0 0 8px",
-      opacity: dark ? 1 : 0.75,
+      opacity: 1,
     }}>
       {label}
     </p>
@@ -1123,20 +1123,17 @@ export function JourneySection() {
           ))}
         </div>
 
-        <div style={{ marginTop: 28, display: "flex", justifyContent: "center" }}>
+        <div style={{ marginTop: 28, display: "flex", justifyContent: "flex-end" }}>
           <button
             onClick={() => navigate("journey")}
-            className="hover-lift"
             style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              fontFamily: FONT_SANS, fontSize: 13, fontWeight: 800,
-              padding: "10px 24px", borderRadius: 10,
-              background: B_TICKER, color: "white",
-              border: "none", cursor: "pointer",
-              boxShadow: `0 4px 16px ${B_TICKER}40`,
+              display: "inline-flex", alignItems: "center", gap: 6,
+              fontFamily: FONT_SANS, fontSize: 13, fontWeight: 700,
+              background: "none", color: "#ffffff",
+              border: "none", cursor: "pointer", padding: 0,
             }}
           >
-            Read our full story <ArrowRight size={13} />
+            Learn more <ArrowRight size={13} />
           </button>
         </div>
       </div>
