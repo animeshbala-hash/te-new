@@ -17,12 +17,12 @@ const ACCENT       = "#F0494E";   // red — Events page (TSC 2022)
 const ACCENT_DARK  = "#C53035";
 const ACCENT_LIGHT = "#FEF2F2";
 const NAVY         = "#0D1B3E";
-const B_BLUE       = "#4376BB";
-const B_BLUE_DARK  = "#2D5494";
-const B_BLUE_LIGHT = "#EBF1FB";
-const B_GREEN      = "#C3DB6F";
-const B_GREEN_DARK = "#7A9A2A";
-const B_GREEN_LIGHT = "#F4FAE8";
+const B_PINK       = "#F4838A";   // VOLCON 2024
+const B_PINK_DARK  = "#C95F66";
+const B_PINK_LIGHT = "#FEF1F2";
+const B_ORANGE     = "#D84926";   // IAVE 2022
+const B_ORANGE_DARK = "#A8341A";
+const B_ORANGE_LIGHT = "#FDF1ED";
 
 const DIAG: React.CSSProperties = {
   position: "absolute", inset: 0,
