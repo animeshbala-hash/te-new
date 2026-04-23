@@ -1308,33 +1308,35 @@ export default function SPOCDashboardView() {
               </div>
             </CollapsiblePanel>
 
-            {/* Orientation module */}
-            <div style={{ background: "#fff", border: "1.5px solid #c8c6f0", borderLeft: `3.5px solid ${B_VOL}`, borderRadius: 14, marginBottom: 12, padding: "18px 20px", display: "flex", alignItems: "center", gap: 16 }}>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: B_VOL + "bb", marginBottom: 4 }}>SPOC Orientation</div>
-                <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 8 }}>
-                  {spocData.orientationProgress < spocData.totalOrientationModules ? "Continue your orientation" : "Orientation complete"}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 0 }}>
+              {/* Orientation module */}
+              <div style={{ background: "#fff", border: "1.5px solid #c8c6f0", borderLeft: `3.5px solid ${B_VOL}`, borderRadius: 14, padding: "18px 20px", display: "flex", flexDirection: "column", gap: 12 }}>
+                <div>
+                  <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: B_VOL + "bb", marginBottom: 4 }}>SPOC Orientation</div>
+                  <div style={{ fontSize: 13.5, fontWeight: 700, color: ACCENT_NAVY }}>
+                    {spocData.orientationProgress < spocData.totalOrientationModules ? "Continue your orientation" : "Orientation complete"}
+                  </div>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, height: 6, background: "#e8e8f0", borderRadius: 3, overflow: "hidden" }}>
                     <div style={{ height: "100%", width: `${(spocData.orientationProgress / spocData.totalOrientationModules) * 100}%`, background: B_VOL, borderRadius: 3 }} />
                   </div>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: B_VOL, whiteSpace: "nowrap" }}>{spocData.orientationProgress}/{spocData.totalOrientationModules} modules</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: B_VOL, whiteSpace: "nowrap" }}>{spocData.orientationProgress}/{spocData.totalOrientationModules}</span>
                 </div>
+                <button onClick={() => setShowOrientationModal(true)} style={{ background: B_VOL, color: "#fff", border: "none", borderRadius: 10, padding: "9px 16px", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", alignSelf: "flex-start" }}>
+                  {spocData.orientationProgress < spocData.totalOrientationModules ? "Continue" : "Review"}
+                </button>
               </div>
-              <button onClick={() => setShowOrientationModal(true)} style={{ background: B_VOL, color: "#fff", border: "none", borderRadius: 10, padding: "10px 18px", fontSize: 13, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap", fontFamily: "'DM Sans', sans-serif" }}>
-                {spocData.orientationProgress < spocData.totalOrientationModules ? "Continue" : "Review"}
-              </button>
-            </div>
 
-            {/* Annual Reporting */}
-            <div style={{ background: "#fff", border: "1.5px solid #c8c6f0", borderLeft: `3.5px solid ${ACCENT_NAVY}`, borderRadius: 14, marginTop: 0, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, padding: "18px 20px" }}>
-              <div>
-                <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: ACCENT_NAVY + "88", marginBottom: 4 }}>Annual Reporting</div>
-                <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 4 }}>Submit Annual Volunteering Report</div>
-                <div style={{ fontSize: 12.5, color: "#8888a0", lineHeight: 1.5 }}>Compile and submit the annual volunteering data for TCS to the TSG reporting portal.</div>
+              {/* Annual Reporting */}
+              <div style={{ background: "#fff", border: "1.5px solid #c8c6f0", borderLeft: `3.5px solid ${ACCENT_NAVY}`, borderRadius: 14, padding: "18px 20px", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 12 }}>
+                <div>
+                  <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: ACCENT_NAVY + "88", marginBottom: 4 }}>Annual Reporting</div>
+                  <div style={{ fontSize: 13.5, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 4 }}>Submit Annual Volunteering Report</div>
+                  <div style={{ fontSize: 12, color: "#8888a0", lineHeight: 1.5 }}>Compile and submit the annual volunteering data for TCS to the TSG reporting portal.</div>
+                </div>
+                <button onClick={() => triggerToast("Opening annual reporting portal...")} style={{ background: ACCENT_NAVY, color: "#fff", border: "none", borderRadius: 10, padding: "9px 16px", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", alignSelf: "flex-start" }}>Open Portal ↗</button>
               </div>
-              <button onClick={() => triggerToast("Opening annual reporting portal...")} style={{ background: ACCENT_NAVY, color: "#fff", border: "none", borderRadius: 10, padding: "10px 18px", fontSize: 13, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap", fontFamily: "'DM Sans', sans-serif" }}>Open Portal ↗</button>
             </div>
           </section>
         </div>
@@ -1408,23 +1410,19 @@ export default function SPOCDashboardView() {
             {/* Mode toggle */}
             <div style={{
               marginBottom: 24,
-              background: spocMode
-                ? "linear-gradient(135deg, #1a2a5e 0%, #333399 100%)"
-                : "linear-gradient(135deg, #065666 0%, #0B7285 100%)",
+              background: ACCENT_NAVY,
               borderRadius: 12,
               padding: "10px 10px 10px",
-              transition: "background 0.3s",
             }}>
               <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "1.6px", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginBottom: 8, paddingLeft: 2 }}>View</div>
-              <div style={{ position: "relative", background: "rgba(0,0,0,0.18)", borderRadius: 8, padding: 3, display: "flex" }}>
-                {/* Sliding pill */}
+              <div style={{ position: "relative", background: "rgba(0,0,0,0.22)", borderRadius: 8, padding: 3, display: "flex" }}>
                 <div style={{
                   position: "absolute", top: 3, left: spocMode ? "calc(50% + 1.5px)" : 3,
                   width: "calc(50% - 4.5px)", bottom: 3,
-                  background: "rgba(255,255,255,0.18)",
+                  background: "rgba(255,255,255,0.16)",
                   borderRadius: 6,
-                  transition: "left 0.22s cubic-bezier(0.4,0,0.2,1)",
-                  boxShadow: "0 1px 4px rgba(0,0,0,0.18)",
+                  transition: "left 0.25s cubic-bezier(0.4,0,0.2,1)",
+                  boxShadow: "0 1px 4px rgba(0,0,0,0.22)",
                 }} />
                 {[{ id: false, label: "My Space" }, { id: true, label: "SPOC" }].map(t => (
                   <button key={String(t.id)}
@@ -1434,9 +1432,9 @@ export default function SPOCDashboardView() {
                       background: "none", border: "none", borderRadius: 6,
                       padding: "7px 4px",
                       fontSize: 11.5, fontWeight: spocMode === t.id ? 700 : 400,
-                      color: spocMode === t.id ? "#fff" : "rgba(255,255,255,0.45)",
+                      color: spocMode === t.id ? "#fff" : "rgba(255,255,255,0.4)",
                       cursor: "pointer", fontFamily: "'DM Sans', sans-serif",
-                      transition: "color 0.22s",
+                      transition: "color 0.25s, font-weight 0.25s",
                       whiteSpace: "nowrap",
                     }}>
                     {t.label}
