@@ -37,18 +37,18 @@ function DefinerBar({ colour = ACCENT_DARK }: { colour?: string }) {
 // ── Hero ──────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <div id="contact-hero" style={{ position: "relative", background: NAVY, padding: "100px 56px 72px", overflow: "hidden" }}>
+    <div id="contact-hero" style={{ position: "relative", background: `linear-gradient(135deg, ${ACCENT_DARK} 0%, ${ACCENT} 100%)`, padding: "100px 56px 72px", overflow: "hidden" }}>
       <div style={DIAG} />
-      <div style={{ position: "absolute", top: -80, right: -60, width: 440, height: 440, background: `radial-gradient(circle,${ACCENT}33 0%,transparent 68%)`, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: -80, right: -60, width: 440, height: 440, background: `radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 68%)`, pointerEvents: "none" }} />
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto" }}>
-        <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: 18 }}>
+        <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", textTransform: "uppercase", color: "rgba(0,0,0,0.45)", marginBottom: 18 }}>
           Tata Engage · Get in Touch
         </p>
         <div style={{ width: 40, height: 3, background: ACCENT, borderRadius: 2, marginBottom: 24 }} />
-        <h1 style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(2.2rem,4.5vw,3.2rem)", fontWeight: 900, color: "#fff", lineHeight: 1.08, letterSpacing: "-1.5px", margin: "0 0 18px", maxWidth: 560 }}>
+        <h1 style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(2.2rem,4.5vw,3.2rem)", fontWeight: 900, color: NAVY, lineHeight: 1.08, letterSpacing: "-1.5px", margin: "0 0 18px", maxWidth: 560 }}>
           Contact & Connect with Tata Engage
         </h1>
-        <p style={{ fontSize: 15, fontWeight: 300, color: "rgba(255,255,255,0.6)", maxWidth: 480 }}>
+        <p style={{ fontSize: 15, fontWeight: 300, color: "rgba(13,27,62,0.7)", maxWidth: 480 }}>
           Whether you're a civil society organisation, a Tata colleague, or a partner exploring collaboration — the Tata Engage team is here to help.
         </p>
       </div>
@@ -57,7 +57,7 @@ function Hero() {
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "40px auto 0" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 0, borderRadius: 14, overflow: "hidden", boxShadow: "0 8px 32px rgba(0,0,0,0.25)" }}>
           {[
-            { label: "Email us", value: "tataengage@tata.com", icon: "✉", bg: ACCENT, text: NAVY },
+            { label: "Email us", value: "tataengage@tata.com", icon: "✉", bg: ACCENT_DARK, text: "#fff" },
             { label: "LinkedIn", value: "Tata Engage (official page)", icon: "in", bg: "#fff", text: NAVY },
             { label: "X / Twitter", value: "Tata Engage (official handle)", icon: "✕", bg: NAVY, text: "#fff", border: true },
           ].map((b, i) => (
