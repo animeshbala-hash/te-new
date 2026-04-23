@@ -59,7 +59,7 @@ export const AdminCommandCentre = () => {
               <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{stat.label}</div>
               <div className="flex items-center gap-2">
                 <span className="text-2xl font-black text-slate-900 tracking-tight">{stat.value}</span>
-                {stat.badge && <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "#E8401C" }} />}
+                {stat.badge && <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "#D84926" }} />}
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@ export const AdminCommandCentre = () => {
           <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
             <div className="p-6 border-b border-slate-50 flex items-center justify-between">
               <h3 className="font-semibold text-slate-900 uppercase tracking-widest text-xs">Pending Actions</h3>
-              <span className="text-white text-xs font-semibold px-2 py-0.5 rounded-full uppercase tracking-widest" style={{ backgroundColor: "#E8401C" }}>12 Alerts</span>
+              <span className="text-white text-xs font-semibold px-2 py-0.5 rounded-full uppercase tracking-widest" style={{ backgroundColor: "#D84926" }}>12 Alerts</span>
             </div>
             <div className="p-4 space-y-3">
               {pendingActions.map((action) => (

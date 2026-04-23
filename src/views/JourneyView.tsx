@@ -18,15 +18,15 @@ import imgInfiniti     from "@/assets/infiniti-1.jpg";
 
 // ── Brand tokens ──────────────────────────────────────────────────────────────
 const ACCENT_NAVY = "#0D1B3E";
-const B_TICKER    = "#3E7EB0"; // Chatbot blue — replaces navy banners site-wide
-const B_YELLOW    = "#F5A623";
+const B_TICKER    = "#3B7ABD"; // Chatbot blue — replaces navy banners site-wide
+const B_YELLOW    = "#F79425";
 
 // ── Cycling colour palette per milestone ──────────────────────────────────────
 const PALETTE = [
   "#2A7A4F", // forest
   "#C8940A", // amber
   "#0D7A8A", // teal
-  "#1E6BB8", // blue
+  "#135EA9", // blue
   "#7A2E8F", // plum
   "#B0411F", // rust
   "#1F6F4A", // emerald

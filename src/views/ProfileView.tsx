@@ -9,7 +9,7 @@ import { useAppContext } from "@/context/AppContext";
 
 // ─── Brand tokens ──────────────────────────────────────────────────────────────
 // ── Banner: teal-blue primary + complementary green accent ──────
-const BANNER        = "#0B7285";   // teal-blue primary — banner, subheaders
+const BANNER        = "#135EA9";   // teal-blue primary — banner, subheaders
 const BANNER_DARK   = "#065666";   // darker teal for gradient
 const BANNER_DEEP   = "#044a56";   // deepest teal
 const B_GREEN       = "#2E7D32";   // complementary green accent
@@ -18,15 +18,15 @@ const B_CYAN        = "#0891b2";   // mid cyan for highlights
 const P_CYAN        = "#E0F7FA";   // cyan pastel
 
 // ── Active-state / pill accent colours ──────────────────────────
-const ACCENT_ACTIVE = "#0B7285";   // teal-blue for tab active, section headings
+const ACCENT_ACTIVE = "#135EA9";   // teal-blue for tab active, section headings
 const PILL_BG       = "#E0F7FA";   // cyan-light for pills/chips
-const PILL_FG       = "#0B7285";   // teal text on pills
+const PILL_FG       = "#135EA9";   // teal text on pills
 
 // ── Standard brand tokens ────────────────────────────────────────
 const B_INDIGO      = "#333399";
-const B_RED         = "#E8401C";
-const B_BLUE        = "#1E6BB8";
-const B_ORANGE      = "#C14D00";
+const B_RED         = "#D84926";
+const B_BLUE        = "#135EA9";
+const B_ORANGE      = "#F16323";
 const ACCENT_NAVY   = "#0D1B3E";
 const P_INDIGO      = "#EEF0FF";
 const P_RED         = "#FFF0EE";
@@ -38,7 +38,7 @@ const C_MIDBLUE     = "#1565C0";   const CP_MIDBLUE = "#E3F2FD";
 const C_AMBER       = "#A16207";   const CP_AMBER   = "#FEF9C3";
 const C_PINK        = "#C2185B";   const CP_PINK    = "#FCE4EC";
 // Cert tile uses teal-blue theme
-const C_TEAL_CERT   = "#0B7285";   const CP_TEAL_CERT = "#E0F7FA";
+const C_TEAL_CERT   = "#135EA9";   const CP_TEAL_CERT = "#E0F7FA";
 
 // ─── Dropdown data ─────────────────────────────────────────────────────────────
 const TITLES         = ["Mr","Ms","Mrs","Dr","Prof"];

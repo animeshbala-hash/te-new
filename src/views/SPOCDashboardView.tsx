@@ -20,10 +20,10 @@ import imgStories from "@/assets/trent.jpg";
 import imgEvents  from "@/assets/IHCL.jpg";
 import imgEModule from "@/assets/Tata_international.jpeg";
 
-const B_YELLOW    = "#F5A623";
-const B_TEAL      = "#00A896";
-const B_RED       = "#E8401C";
-const B_BLUE      = "#1E6BB8";
+const B_YELLOW    = "#F79425";
+const B_TEAL      = "#13BBB4";
+const B_RED       = "#D84926";
+const B_BLUE      = "#135EA9";
 const B_PINK      = "#E91E80";
 const ACCENT_NAVY = "#0D1B3E";
 
@@ -33,13 +33,13 @@ const P_BLUE      = "#EBF4FF";
 const P_RED       = "#FFF0EE";
 const P_PINK      = "#FCE4F3";
 
-const KPI_PINK       = "#F2778A";
-const KPI_YELLOW     = "#F5A623";
+const KPI_PINK       = "#F4838A";
+const KPI_YELLOW     = "#F79425";
 const KPI_PROENGAGE  = "#1A6B3C";
-const KPI_TVW        = "#3E7EB0";
+const KPI_TVW        = "#3B7ABD";
 const KPI_NUMBERS    = "#A8C94A";
-const KPI_TEAL       = "#00A896";
-const KPI_CVP        = "#F5A623";
+const KPI_TEAL       = "#13BBB4";
+const KPI_CVP        = "#F79425";
 const B_LIME_DARK    = "#365314";
 const B_TEAL_DARK    = "#0F766E";
 const P_TEAL_DARK    = "#D1FAE5";
@@ -70,19 +70,19 @@ const SPOC_VOL_FEEDBACK = [
 const PE_EDITIONS_SPOC = ["ProEngage 2025 | 02","ProEngage 2025 | 01","ProEngage 2024 | 02","ProEngage 2024 | 01","ProEngage 2023 | 02","ProEngage 2022 | 01"];
 
 const DIY_ACTIVITIES = [
-  { id: "d1", title: "Create Awareness on Social Entitlements", desc: "TCS' 'Each One Empowers One' initiative. Help citizens understand key entitlements and empower semi-literate individuals with legal and social literacy.", theme: "Citizen Empowerment", org: "TCS Empowers", accentColor: "#00A896", pastel: "#E6F8F5" },
+  { id: "d1", title: "Create Awareness on Social Entitlements", desc: "TCS' 'Each One Empowers One' initiative. Help citizens understand key entitlements and empower semi-literate individuals with legal and social literacy.", theme: "Citizen Empowerment", org: "TCS Empowers", accentColor: "#13BBB4", pastel: "#E6F8F5" },
   { id: "d2", title: "Donate Blood, Save Lives", desc: "By choosing to donate blood you're not just giving blood — you're giving hope and a chance at life. Sign up at your nearest Tata blood drive.", theme: "Health", org: "SDG Goal 3", accentColor: "#65A30D", pastel: "#F7FEE7" },
 ];
 
 const TVW_OPPORTUNITIES_SPOC = [
   { id: "t1", title: "Tree Plantation Drive — Aarey Forest",         company: "Tata Motors", date: "18 Apr 2026", mode: "In-person · Mumbai", theme: "Environment", accentColor: "#65A30D", pastel: "#F7FEE7" },
-  { id: "t2", title: "Digital Literacy Workshop for Senior Citizens", company: "TCS",         date: "25 Apr 2026", mode: "Online · Pan-India", theme: "Education",   accentColor: "#1E6BB8", pastel: "#EBF4FF" },
+  { id: "t2", title: "Digital Literacy Workshop for Senior Citizens", company: "TCS",         date: "25 Apr 2026", mode: "Online · Pan-India", theme: "Education",   accentColor: "#135EA9", pastel: "#EBF4FF" },
 ];
 
 const PE_OPPORTUNITIES_SPOC = [
-  { id: "p1", title: "Build a Fundraising Dashboard for Child Rights NGO", ngo: "Butterflies India",     skillArea: "Finance / Data",   duration: "3 months", mode: "Online",          closes: "15 Jul 2025", applicants: 14, match: 94, accentColor: "#1E6BB8", pastel: "#EBF4FF" },
+  { id: "p1", title: "Build a Fundraising Dashboard for Child Rights NGO", ngo: "Butterflies India",     skillArea: "Finance / Data",   duration: "3 months", mode: "Online",          closes: "15 Jul 2025", applicants: 14, match: 94, accentColor: "#135EA9", pastel: "#EBF4FF" },
   { id: "p2", title: "Marketing Strategy for Women's Skilling Programme",  ngo: "Stree Mukti Sanghatna", skillArea: "Marketing",        duration: "4 months", mode: "Hybrid · Mumbai", closes: "20 Jul 2025", applicants: 9,  match: 89, accentColor: "#65A30D", pastel: "#F7FEE7" },
-  { id: "p3", title: "Product Roadmap for Disability Employment Platform", ngo: "Samarthanam Trust",     skillArea: "Product Strategy", duration: "6 months", mode: "Online",          closes: "30 Jul 2025", applicants: 6,  match: 97, accentColor: "#00A896", pastel: "#E6F8F5" },
+  { id: "p3", title: "Product Roadmap for Disability Employment Platform", ngo: "Samarthanam Trust",     skillArea: "Product Strategy", duration: "6 months", mode: "Online",          closes: "30 Jul 2025", applicants: 6,  match: 97, accentColor: "#13BBB4", pastel: "#E6F8F5" },
 ];
 
 const notifDot: React.CSSProperties = {

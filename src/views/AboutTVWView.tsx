@@ -7,8 +7,8 @@ import tvwHeroImg from "@/assets/tata-motors-3.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
-const B_YELLOW     = "#F5A623";
-const COLOUR       = "#1E6BB8";   // TVW blue
+const B_YELLOW     = "#F79425";
+const COLOUR       = "#135EA9";   // TVW blue
 const COLOUR_DARK  = "#154E8A";
 const COLOUR_LIGHT = "#EEF4FF";
 
@@ -90,7 +90,7 @@ const HOW_STEPS = [
     title: "Register on Tata Engage",
     desc: "Create your profile, add your interests, and indicate your location. Takes just a few minutes.",
     Icon: IconRegister,
-    colour: "#1E6BB8",
+    colour: "#135EA9",
   },
   {
     num: "02",
@@ -111,7 +111,7 @@ const HOW_STEPS = [
     title: "Share your story",
     desc: "After volunteering, share your experience. Your story inspires others across the Tata Group.",
     Icon: IconShare,
-    colour: "#C14D00",
+    colour: "#F16323",
   },
 ];
 

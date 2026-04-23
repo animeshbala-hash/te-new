@@ -4,10 +4,10 @@ import { useAppContext } from "@/context/AppContext";
 import { SOCIAL_POSTS } from "@/data/homeSharedData";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 
-const B_INDIGO = "#1434A4";
-const B_YELLOW = "#1434A4";
-const B_TEAL = "#1434A4";
-const B_BLUE = "#1434A4";
+const B_INDIGO = "#333399";
+const B_YELLOW = "#333399";
+const B_TEAL = "#333399";
+const B_BLUE = "#333399";
 const ACCENT_NAVY = "#0D1B3E";
 const HERO_BG = "#2389BD";
 
@@ -124,7 +124,7 @@ export default function MediaView() {
             key={t}
             onClick={() => setActiveTab(t)}
             style={{
-              background: activeTab === t ? "#1434A4" : "#f5f5fa",
+              background: activeTab === t ? "#333399" : "#f5f5fa",
               color: activeTab === t ? "#fff" : "#6b6b7a",
               border: "none", borderRadius: 100, padding: "8px 20px", fontWeight: 600, fontSize: 14, cursor: "pointer",
             }}
