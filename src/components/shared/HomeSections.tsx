@@ -347,7 +347,7 @@ export function ProgrammeSpotlight() {
         className="section-block"
         style={{
           background: "#fafafa",
-          padding: "72px 48px",
+          padding: "72px 28px",
           backgroundImage: "radial-gradient(circle, rgba(51,51,153,0.09) 1.2px, transparent 1.2px)",
           backgroundSize: "20px 20px",
         }}
@@ -594,7 +594,7 @@ export function QuoteBanner() {
       {/* Dark overlay — heavier than journey for quote legibility */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "linear-gradient(135deg, rgba(5,5,20,0.70) 0%, rgba(5,5,20,0.60) 100%)",
+        background: "linear-gradient(135deg, rgba(5,5,20,0.55) 0%, rgba(5,5,20,0.45) 100%)",
         pointerEvents: "none",
       }} />
 
@@ -708,7 +708,7 @@ export function NumbersSection() {
     // Radial dot grid texture on the Numbers white section
     <section className="section-block" style={{
       background: "#fafafa",
-      padding: "72px 48px",
+      padding: "72px 28px",
       backgroundImage: "radial-gradient(circle, rgba(51,51,153,0.09) 1.2px, transparent 1.2px)",
       backgroundSize: "20px 20px",
     }}>
@@ -967,7 +967,7 @@ export function JourneySection() {
       {/* Dark overlay */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "linear-gradient(135deg, rgba(5,5,20,0.70) 0%, rgba(5,5,20,0.60) 100%)",
+        background: "linear-gradient(135deg, rgba(5,5,20,0.55) 0%, rgba(5,5,20,0.45) 100%)",
         pointerEvents: "none",
       }} />
 
