@@ -5,9 +5,9 @@ import SubPageDotRail from "@/components/shared/SubPageDotRail";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
-const COLOUR       = "#2A7A4F"; // Green accent for TSM
-const COLOUR_MID   = "#1F5C3B";
-const COLOUR_LIGHT = "#E8F5EE";
+const COLOUR       = "#C3DB6F"; // TSM lime-green
+const COLOUR_MID   = "#8aad2a";
+const COLOUR_LIGHT = "#f2f8dc";
 
 const SECTIONS = [
   { id: "tsm-overview",      label: "Overview" },
@@ -89,7 +89,7 @@ export default function TataSmView() {
             </p>
             <div style={{ display: "flex", gap: 12 }}>
               <button onClick={() => navigate(isLoggedIn ? "dashboard" : "register-role")}
-                style={{ background: "#2A7A4F", color: "#fff", border: "none", borderRadius: 10, padding: "12px 26px", fontWeight: 800, fontSize: 14, cursor: "pointer", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
+                style={{ background: "#C3DB6F", color: "#fff", border: "none", borderRadius: 10, padding: "12px 26px", fontWeight: 800, fontSize: 14, cursor: "pointer", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
                 Explore Opportunities →
               </button>
               <button onClick={() => document.getElementById("tsm-overview")?.scrollIntoView({ behavior: "smooth" })}

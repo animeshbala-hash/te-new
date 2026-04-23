@@ -8,13 +8,13 @@ import {
 import { PROENGAGE_PROJECTS } from "@/data/mockData";
 import { useAppContext } from "@/context/AppContext";
 
-const B_INDIGO    = "#333399";
+const B_INDIGO    = "#803998";
 const B_YELLOW    = "#F5A623";
 const B_TEAL      = "#00A896";
 const B_RED       = "#E8401C";
 const B_BLUE      = "#1E6BB8";
 const ACCENT_NAVY = "#0D1B3E";
-const P_INDIGO    = "#EEF0FF";
+const P_INDIGO    = "#F3EEFF";
 const P_YELLOW    = "#FEF6E4";
 const P_TEAL      = "#E6F8F5";
 const P_BLUE      = "#EBF4FF";
