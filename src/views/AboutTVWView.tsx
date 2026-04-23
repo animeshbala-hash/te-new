@@ -347,11 +347,11 @@ export default function AboutTVWView() {
               { date: "3 March", label: "Spring Edition", desc: "Marks the beginning of the volunteering year across the Tata Group." },
               { date: "5 September", label: "Autumn Edition", desc: "Carried forward from the momentum of the spring edition." },
             ].map((ed) => (
-              <div key={ed.date} style={{ background: "#fff", borderRadius: 16, padding: "28px 26px", border: `1px solid ${COLOUR}20`, boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.2px", color: COLOUR, textTransform: "uppercase", marginBottom: 10 }}>{ed.label}</div>
-                <div style={{ fontSize: 30, fontWeight: 900, color: COLOUR, letterSpacing: "-0.5px", marginBottom: 8 }}>{ed.date}</div>
-                <div style={{ width: 24, height: 3, background: COLOUR, borderRadius: 2, marginBottom: 14 }} />
-                <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.65 }}>{ed.desc}</div>
+              <div key={ed.date} style={{ background: COLOUR, borderRadius: 16, padding: "28px 26px", border: `1px solid ${COLOUR}`, boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.2px", color: "rgba(255,255,255,0.75)", textTransform: "uppercase", marginBottom: 10 }}>{ed.label}</div>
+                <div style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px", marginBottom: 8 }}>{ed.date}</div>
+                <div style={{ width: 24, height: 3, background: "rgba(255,255,255,0.6)", borderRadius: 2, marginBottom: 14 }} />
+                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.85)", lineHeight: 1.65 }}>{ed.desc}</div>
               </div>
             ))}
           </div>
