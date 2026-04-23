@@ -166,8 +166,8 @@ function Hero() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 0, borderRadius: 14, overflow: "hidden", boxShadow: "0 8px 32px rgba(0,0,0,0.25)" }}>
           {[
             { date: "Nov 2022", label: "Tata Sustainability Conclave", tag: "TSC 2022", bg: ACCENT, text: "#fff" },
-            { date: "Mar 2024", label: "Tata Volunteerism Conference", tag: "VOLCON 2024", bg: B_BLUE, text: "#fff" },
-            { date: "Oct 2022", label: "IAVE World Volunteer Conference", tag: "Abu Dhabi", bg: B_GREEN, text: NAVY },
+            { date: "Mar 2024", label: "Tata Volunteerism Conference", tag: "VOLCON 2024", bg: B_PINK, text: "#fff" },
+            { date: "Oct 2022", label: "IAVE World Volunteer Conference", tag: "Abu Dhabi", bg: B_ORANGE, text: NAVY },
           ].map((b, i) => (
             <div
               key={b.tag}
@@ -408,9 +408,9 @@ export default function EventsView() {
       {/* VOLCON 2024 — white bg with sub-events keeping VOLCON blue accent */}
       <EventSection
         id="events-volcon"
-        accent={B_BLUE}
-        accentDark={B_BLUE_DARK}
-        accentLight={B_BLUE_LIGHT}
+        accent={B_PINK}
+        accentDark={B_PINK_DARK}
+        accentLight={B_PINK_LIGHT}
         date="March 2024"
         tag="VOLCON 2024"
         title="TATA VOLCON 2024"
@@ -423,8 +423,8 @@ export default function EventsView() {
         bg="#fff"
         heroMedia={
           <Slideshow
-            accent={B_BLUE}
-            accentDark={B_BLUE_DARK}
+            accent={B_PINK}
+            accentDark={B_PINK_DARK}
             slides={[
               { src: volconChacko, caption: "Mr. Chacko Thomas, Group Chief Sustainability Officer, delivered the inaugural address at the TATA VOLCON 2024." },
             ]}
@@ -439,9 +439,9 @@ export default function EventsView() {
       >
         {/* Sub-event: Chacko Thomas inaugural quote */}
         <SubEvent
-          accent={B_BLUE}
-          accentDark={B_BLUE_DARK}
-          accentLight={B_BLUE_LIGHT}
+          accent={B_PINK}
+          accentDark={B_PINK_DARK}
+          accentLight={B_PINK_LIGHT}
           title="Inaugural Address — Mr. Chacko Thomas"
           body={[
             "The opening address was delivered by Mr. Chacko Thomas, Group Chief Sustainability Officer at Tata Sons, who highlighted the remarkable volunteering journey of the Tata Group — rooted in Jamsetji Tata's vision of keeping the community central, and the Tata core value of responsibility.",
@@ -451,9 +451,9 @@ export default function EventsView() {
 
         {/* Sub-event: Nichole Cirillo — YouTube embed */}
         <SubEvent
-          accent={B_BLUE}
-          accentDark={B_BLUE_DARK}
-          accentLight={B_BLUE_LIGHT}
+          accent={B_PINK}
+          accentDark={B_PINK_DARK}
+          accentLight={B_PINK_LIGHT}
           title="Special Address — Nichole Cirillo, IAVE"
           mediaSide="left"
           body={[
@@ -463,7 +463,7 @@ export default function EventsView() {
           media={
             <YouTubeEmbed
               id="ld0-X5_fEGA"
-              accent={B_BLUE}
+              accent={B_PINK}
               caption="Executive Director of the International Association for Volunteer Efforts (IAVE), Nichole Cirillo, delivering the special address at TATA VOLCON 2024."
             />
           }
@@ -471,9 +471,9 @@ export default function EventsView() {
 
         {/* Sub-event: Leaders Speak Panel */}
         <SubEvent
-          accent={B_BLUE}
-          accentDark={B_BLUE_DARK}
-          accentLight={B_BLUE_LIGHT}
+          accent={B_PINK}
+          accentDark={B_PINK_DARK}
+          accentLight={B_PINK_LIGHT}
           title="Leaders Speak — Panel Discussion"
           body={[
             "The power-packed session highlighted how a culture of volunteering had been built within different business realities, and how it had brought alive the core Tata value of responsibility.",
@@ -481,8 +481,8 @@ export default function EventsView() {
           ]}
           media={
             <Slideshow
-              accent={B_BLUE}
-              accentDark={B_BLUE_DARK}
+              accent={B_PINK}
+              accentDark={B_PINK_DARK}
               slides={[
                 { src: volconPanel, caption: "Discussing culture of volunteering within different business realities at TATA VOLCON 2024 — L–R: Mr. Adrian Terron (Tata Group); Mr. Neelesh Garg (Tata AIG); Dr. Praveer Sinha (Tata Power); Mr. Sanjay Dutt (Tata Realty & Infrastructure); Mr. Milind Lakkad (TCS)." },
               ]}
@@ -492,9 +492,9 @@ export default function EventsView() {
 
         {/* Sub-event: Tata Engage Awards */}
         <SubEvent
-          accent={B_BLUE}
-          accentDark={B_BLUE_DARK}
-          accentLight={B_BLUE_LIGHT}
+          accent={B_PINK}
+          accentDark={B_PINK_DARK}
+          accentLight={B_PINK_LIGHT}
           title="Tata Engage Awards"
           mediaSide="left"
           body={[
@@ -504,8 +504,8 @@ export default function EventsView() {
           ]}
           media={
             <Slideshow
-              accent={B_BLUE}
-              accentDark={B_BLUE_DARK}
+              accent={B_PINK}
+              accentDark={B_PINK_DARK}
               slides={[
                 { src: volconAwardsTCS, caption: "Tata Consultancy Services, one of the winners of the Tata Engage Awards, at TATA VOLCON 2024." },
                 { src: volconNitin, caption: "Nitin Yadav from Tata Motors — recipient of the prestigious Exemplary Volunteering Award at TATA VOLCON 2024." },
@@ -517,17 +517,17 @@ export default function EventsView() {
 
         {/* Sub-event: Cultural celebration */}
         <SubEvent
-          accent={B_BLUE}
-          accentDark={B_BLUE_DARK}
-          accentLight={B_BLUE_LIGHT}
+          accent={B_PINK}
+          accentDark={B_PINK_DARK}
+          accentLight={B_PINK_LIGHT}
           title="Cultural Celebration — Kalasagar & Tribal Home Chefs"
           body={[
             "The evening was made even more special with a power-packed musical performance by Kalasagar, the cultural society of Tata Motors, and Tribal Home Chefs supported by Tata Steel Foundation — from 5 states (Meghalaya, Arunachal Pradesh, Himachal Pradesh, Telangana, and Jharkhand) — who served exquisite culinary delights.",
           ]}
           media={
             <Slideshow
-              accent={B_BLUE}
-              accentDark={B_BLUE_DARK}
+              accent={B_PINK}
+              accentDark={B_PINK_DARK}
               slides={[
                 { src: volconMusic1, caption: "Kalasagar, the cultural society of Tata Motors, delivered an enthralling musical performance at TATA VOLCON 2024." },
                 { src: volconMusic2, caption: "Performers and guests on stage at TATA VOLCON 2024." },
@@ -541,9 +541,9 @@ export default function EventsView() {
       {/* IAVE 2022 — accent (green) bg */}
       <EventSection
         id="events-iave"
-        accent={B_GREEN_DARK}
+        accent={B_ORANGE_DARK}
         accentDark="#5A7520"
-        accentLight={B_GREEN_LIGHT}
+        accentLight={B_ORANGE_LIGHT}
         date="October 2022"
         tag="IAVE 2022"
         title="Tata Sustainability Group at the 26th IAVE World Volunteer Conference"
@@ -558,7 +558,7 @@ export default function EventsView() {
         ]}
         heroMedia={
           <Slideshow
-            accent={B_GREEN_DARK}
+            accent={B_ORANGE_DARK}
             accentDark="#5A7520"
             slides={[
               { src: iavePanel, caption: "Plenary panel 'Corporate Volunteering for a Post-Pandemic World' at the 26th IAVE World Volunteer Conference, Abu Dhabi — including Gauri Rajadhyaksha (Tata Sons, India)." },
