@@ -1410,31 +1410,26 @@ export default function SPOCDashboardView() {
             {/* Mode toggle */}
             <div style={{
               marginBottom: 24,
-              background: ACCENT_NAVY,
+              background: "#fff",
+              border: "1px solid #e8e8f0",
               borderRadius: 12,
-              padding: "10px 10px 10px",
+              padding: "10px",
             }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "1.6px", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginBottom: 8, paddingLeft: 2 }}>View</div>
-              <div style={{ position: "relative", background: "rgba(0,0,0,0.22)", borderRadius: 8, padding: 3, display: "flex" }}>
-                <div style={{
-                  position: "absolute", top: 3, left: spocMode ? "calc(50% + 1.5px)" : 3,
-                  width: "calc(50% - 4.5px)", bottom: 3,
-                  background: "rgba(255,255,255,0.16)",
-                  borderRadius: 6,
-                  transition: "left 0.25s cubic-bezier(0.4,0,0.2,1)",
-                  boxShadow: "0 1px 4px rgba(0,0,0,0.22)",
-                }} />
-                {[{ id: false, label: "My Space" }, { id: true, label: "SPOC" }].map(t => (
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "1.6px", textTransform: "uppercase", color: "#c0c0cc", marginBottom: 8, paddingLeft: 2 }}>View</div>
+              <div style={{ display: "flex", gap: 6 }}>
+                {[{ id: false, label: "My Space", color: "#0B7285" }, { id: true, label: "SPOC", color: ACCENT_NAVY }].map(t => (
                   <button key={String(t.id)}
                     onClick={() => { setSpocMode(t.id); setStatsStarted(false); setTimeout(() => setStatsStarted(true), 300); }}
                     style={{
-                      flex: 1, position: "relative", zIndex: 1,
-                      background: "none", border: "none", borderRadius: 6,
+                      flex: 1,
+                      background: spocMode === t.id ? t.color : "transparent",
+                      border: `1.5px solid ${spocMode === t.id ? t.color : "#dddde8"}`,
+                      borderRadius: 8,
                       padding: "7px 4px",
                       fontSize: 11.5, fontWeight: spocMode === t.id ? 700 : 400,
-                      color: spocMode === t.id ? "#fff" : "rgba(255,255,255,0.4)",
+                      color: spocMode === t.id ? "#fff" : "#9090a8",
                       cursor: "pointer", fontFamily: "'DM Sans', sans-serif",
-                      transition: "color 0.25s, font-weight 0.25s",
+                      transition: "all 0.22s cubic-bezier(0.4,0,0.2,1)",
                       whiteSpace: "nowrap",
                     }}>
                     {t.label}
