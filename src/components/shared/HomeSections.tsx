@@ -382,7 +382,7 @@ export function ProgrammeSpotlight() {
           <div className="section-header">
             <SectionEyebrow label="Our Programmes" />
             <SectionH2>
-              Volunteering <em style={{ fontStyle: "italic", color: B_ACCENT }}>Opportunities</em>
+              Volunteering <em style={{ fontStyle: "italic", color: "#4B4DB8" }}>Opportunities</em>
             </SectionH2>
             <div style={{ width: 120, height: 1.4, borderRadius: 2, background: "#e8e8f0", marginTop: 10, overflow: "hidden" }}>
               <div className="te-draw" style={{ height: "100%", background: B_INDIGO, borderRadius: 2 }} />
@@ -665,9 +665,9 @@ export function QuoteBanner() {
           letterSpacing: "-0.2px",
         }}>
           Volunteering is not about doing more. It is about{" "}
-          <em style={{ fontStyle: "italic", color: B_ACCENT, fontWeight: 600 }}>refusing to look away</em>
+          <em style={{ fontStyle: "italic", color: B_YELLOW, fontWeight: 600 }}>refusing to look away</em>
           {" "}— and choosing, consistently, to be part of something{" "}
-          <em style={{ fontStyle: "italic", color: B_ACCENT, fontWeight: 600 }}>larger than ourselves</em>.
+          <em style={{ fontStyle: "italic", color: B_YELLOW, fontWeight: 600 }}>larger than ourselves</em>.
         </blockquote>
 
         {/* Attribution */}
@@ -736,7 +736,7 @@ export function NumbersSection() {
         <div className="section-header">
           <SectionEyebrow label="By the numbers" />
           <SectionH2>
-            In the <em style={{ fontStyle: "italic", color: B_ACCENT }}>Spotlight</em>
+            In the <em style={{ fontStyle: "italic", color: "#4B4DB8" }}>Spotlight</em>
           </SectionH2>
           <div style={{ width: 48, height: 1.4, borderRadius: 2, background: B_TEAL, marginTop: 10 }} />
         </div>
@@ -1003,7 +1003,7 @@ export function JourneySection() {
         <div style={{ marginBottom: 28 }}>
           <SectionEyebrow label="Our Journey" dark />
           <SectionH2 dark>
-            A <em style={{ fontStyle: "italic", color: B_ACCENT }}>Decade</em> of Giving Back
+            A <em style={{ fontStyle: "italic", color: B_YELLOW }}>Decade</em> of Giving Back
           </SectionH2>
           <div style={{ width: 48, height: 1.4, borderRadius: 2, background: B_YELLOW, marginTop: 10 }} />
         </div>
