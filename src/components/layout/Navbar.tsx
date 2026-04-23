@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Bell, ChevronDown, ChevronRight, User, LogOut, Share2, LayoutDashboard, Search } from "lucide-react";
-import tataLogo from "@/assets/Tata-removebg-preview.png";
+import tataLogo from "@/assets/tata-logo.png";
 import tataEngageLogo from "@/assets/tata-engage-logo-nobg.png";
 import type { View } from "@/types";
 import { NOTIFICATIONS_VOLUNTEER, NOTIFICATIONS_NGO, NOTIFICATIONS_SPOC, NOTIFICATIONS_ADMIN } from "@/data/mockData";
@@ -202,7 +202,7 @@ const Navbar = ({
           {/* ── LEFT: TataEngage logo as full-height white accent block ── */}
           <div
             style={{
-              background: "#ffffff",
+              background: "transparent",
               height: "64px",
               padding: "0 20px",
               display: "flex",
@@ -210,7 +210,6 @@ const Navbar = ({
               position: "absolute",
               top: 0,
               left: 0,
-              borderRadius: "0 0 12px 0",
               zIndex: 10,
               cursor: "pointer",
               overflow: "hidden",
