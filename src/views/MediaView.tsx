@@ -4,11 +4,12 @@ import { SOCIAL_POSTS } from "@/data/homeSharedData";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import Footer from "@/components/layout/Footer";
 
-const B_INDIGO = "#333399";
-const B_YELLOW = "#E8A817";
-const B_TEAL = "#0D9488";
-const B_BLUE = "#1E6BB8";
+const B_INDIGO = "#1434A4";
+const B_YELLOW = "#1434A4";
+const B_TEAL = "#1434A4";
+const B_BLUE = "#1434A4";
 const ACCENT_NAVY = "#0D1B3E";
+const HERO_BG = "#2389BD";
 
 const TABS = ["Photos", "Videos", "Impact Stories", "Social Media", "Events"] as const;
 
@@ -89,7 +90,7 @@ export default function MediaView() {
       <SubPageDotRail sections={SECTIONS} accentColor={B_BLUE} />
 
       {/* 1 — Hero */}
-      <div id="media-hero" style={{ background: "#F2778A", padding: "100px 24px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <div id="media-hero" style={{ background: HERO_BG, padding: "100px 24px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={DIAG_TEXTURE} />
         <div style={{ position: "relative", zIndex: 1 }}>
           <h1 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 900, fontSize: 36, color: "#fff", margin: 0 }}>Media &amp; Resources</h1>
@@ -104,7 +105,7 @@ export default function MediaView() {
             key={t}
             onClick={() => setActiveTab(t)}
             style={{
-              background: activeTab === t ? "#C2185B" : "#f5f5fa",
+              background: activeTab === t ? "#1434A4" : "#f5f5fa",
               color: activeTab === t ? "#fff" : "#6b6b7a",
               border: "none", borderRadius: 100, padding: "8px 20px", fontWeight: 600, fontSize: 14, cursor: "pointer",
             }}
