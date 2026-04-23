@@ -208,24 +208,28 @@ function StatusBadge({ status }: { status: string }) {
   return <span style={{ background: bg, color, fontSize: 11, fontWeight: 700, padding: "3px 10px", borderRadius: 100, letterSpacing: "0.3px", whiteSpace: "nowrap" }}>{label}</span>;
 }
 
-function CollapsiblePanel({ title, eyebrow, defaultOpen = false, accentColor = B_VOL, badge, children }: {
-  title: string; eyebrow?: string; defaultOpen?: boolean; accentColor?: string; badge?: string | number; children: React.ReactNode;
+function CollapsiblePanel({ title, eyebrow, defaultOpen = false, accentColor = B_VOL, badge, badgeLabel, children }: {
+  title: string; eyebrow?: string; defaultOpen?: boolean; accentColor?: string; badge?: string | number; badgeLabel?: string; children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(defaultOpen);
+  const pastel = accentColor + "14"; // ~8% opacity tint for header band
   return (
-    <div style={{ ...spocCard, padding: 0, overflow: "hidden", marginBottom: 12 }}>
-      <div onClick={() => setOpen(x => !x)} style={{ display: "flex", alignItems: "center", gap: 12, padding: "16px 20px", cursor: "pointer", userSelect: "none", background: open ? "#fafafa" : "#fff", transition: "background 0.15s" }}>
-        <div style={{ width: 6, height: 6, borderRadius: "50%", background: accentColor, flexShrink: 0 }} />
+    <div style={{ background: "#fff", border: "1.5px solid #c8c6f0", borderRadius: 14, overflow: "hidden", marginBottom: 12, borderLeft: `3.5px solid ${accentColor}` }}>
+      <div onClick={() => setOpen(x => !x)}
+        style={{ display: "flex", alignItems: "center", gap: 12, padding: "13px 18px", cursor: "pointer", userSelect: "none",
+          background: open ? pastel : "#fff", transition: "background 0.18s" }}>
         <div style={{ flex: 1 }}>
-          {eyebrow && <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#aaaabc", marginBottom: 2 }}>{eyebrow}</div>}
+          {eyebrow && <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: accentColor + "bb", marginBottom: 2 }}>{eyebrow}</div>}
           <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT_NAVY }}>{title}</div>
         </div>
         {badge !== undefined && (
-          <span style={{ background: accentColor, color: "#fff", fontSize: 11, fontWeight: 700, padding: "2px 9px", borderRadius: 100, marginRight: 6 }}>{badge}</span>
+          <span style={{ background: accentColor + "18", color: accentColor, fontSize: 11, fontWeight: 700, padding: "3px 10px", borderRadius: 100, marginRight: 4, border: `1px solid ${accentColor}30`, whiteSpace: "nowrap" }}>
+            {badge}{badgeLabel ? ` ${badgeLabel}` : ""}
+          </span>
         )}
         <span style={{ fontSize: 18, color: "#dddde8", transform: open ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0 }}>›</span>
       </div>
-      {open && <div style={{ padding: "0 20px 20px", borderTop: "1px solid #e8e8f0" }}>{children}</div>}
+      {open && <div style={{ padding: "0 20px 20px", borderTop: `1px solid ${accentColor}20` }}>{children}</div>}
     </div>
   );
 }
@@ -1146,14 +1150,30 @@ export default function SPOCDashboardView() {
             </select>
           </div>
 
-          <CollapsiblePanel title="ProEngage Volunteer Pipeline" eyebrow="Real-time" defaultOpen accentColor={KPI_PROENGAGE} badge={filteredPipeline.length}>
-            <div style={{ paddingTop: 16 }}>
+          <CollapsiblePanel title="ProEngage Volunteer Pipeline" eyebrow="Real-time" defaultOpen accentColor={KPI_PROENGAGE} badge={filteredPipeline.length} badgeLabel="volunteers">
+            <div style={{ paddingTop: 12, marginBottom: 4 }}>
+              {/* Mini inline progress — matched vs applied */}
+              {(() => {
+                const matched = filteredPipeline.filter((v: any) => v.status === "Matched" || v.status === "Active").length;
+                const total = filteredPipeline.length;
+                const pct = total > 0 ? Math.round((matched / total) * 100) : 0;
+                return total > 0 ? (
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, background: "#f8f9fc", border: "1px solid #e8e8f0", borderRadius: 10, padding: "10px 14px", marginBottom: 14 }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ height: 6, background: "#e8e8f0", borderRadius: 3, overflow: "hidden" }}>
+                        <div style={{ height: "100%", width: `${pct}%`, background: KPI_PROENGAGE, borderRadius: 3, transition: "width 0.6s ease" }} />
+                      </div>
+                    </div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: KPI_PROENGAGE, whiteSpace: "nowrap" }}>{matched}/{total} matched</div>
+                  </div>
+                ) : null;
+              })()}
               {filteredPipeline.map((v: any) => <PipelineRow key={v.id} v={v} />)}
               {filteredPipeline.length === 0 && <div style={{ ...card, textAlign: "center", padding: "24px", color: "#aaaabc", fontSize: 13.5 }}>No volunteers for this filter.</div>}
             </div>
           </CollapsiblePanel>
 
-          <CollapsiblePanel title="Feedback Monitor" eyebrow="Overdue submissions" accentColor={KPI_YELLOW} badge={FEEDBACK_MONITOR_DATA.length}>
+          <CollapsiblePanel title="Feedback Monitor" eyebrow="Overdue submissions" accentColor={KPI_YELLOW} badge={FEEDBACK_MONITOR_DATA.length} badgeLabel="overdue">
             <div style={{ paddingTop: 16, display: "flex", flexDirection: "column", gap: 10 }}>
               {FEEDBACK_MONITOR_DATA.map((f: any) => (
                 <div key={f.id} style={{ ...card, display: "flex", gap: 12, alignItems: "center", padding: "13px 16px" }}>
@@ -1175,7 +1195,7 @@ export default function SPOCDashboardView() {
             </div>
           </CollapsiblePanel>
 
-          <CollapsiblePanel title="Pending Registrations" eyebrow="Retirees & no-email employees" accentColor={KPI_PINK} badge={PENDING_APPROVALS_DATA.filter((p: any) => p.status === "Pending").length}>
+          <CollapsiblePanel title="Pending Registrations" eyebrow="Retirees & no-email employees" accentColor={KPI_PINK} badge={PENDING_APPROVALS_DATA.filter((p: any) => p.status === "Pending").length} badgeLabel="pending">
             <div style={{ paddingTop: 16 }}>
               <Slicers options={[{ id: "all", label: "All" }, { id: "pending", label: "Pending" }, { id: "approved", label: "Approved" }]} active={pendingFilter} onChange={setPendingFilter} accentColor={KPI_PINK} />
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -1201,7 +1221,7 @@ export default function SPOCDashboardView() {
             </div>
           </CollapsiblePanel>
 
-          <CollapsiblePanel title="Volunteer Certificates" eyebrow="Current edition" accentColor={KPI_TVW} badge={VOLUNTEER_CERTIFICATES.length}>
+          <CollapsiblePanel title="Volunteer Certificates" eyebrow="Current edition" accentColor={KPI_TVW} badge={VOLUNTEER_CERTIFICATES.length} badgeLabel="certs">
             <div style={{ paddingTop: 16 }}>
               <Slicers options={[{ id: "all", label: "All" }, { id: "generated", label: "Generated" }, { id: "pending", label: "Pending" }]} active={certFilter} onChange={setCertFilter} accentColor={KPI_TVW} />
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -1288,10 +1308,29 @@ export default function SPOCDashboardView() {
               </div>
             </CollapsiblePanel>
 
+            {/* Orientation module */}
+            <div style={{ background: "#fff", border: "1.5px solid #c8c6f0", borderLeft: `3.5px solid ${B_VOL}`, borderRadius: 14, marginBottom: 12, padding: "18px 20px", display: "flex", alignItems: "center", gap: 16 }}>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: B_VOL + "bb", marginBottom: 4 }}>SPOC Orientation</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 8 }}>
+                  {spocData.orientationProgress < spocData.totalOrientationModules ? "Continue your orientation" : "Orientation complete"}
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{ flex: 1, height: 6, background: "#e8e8f0", borderRadius: 3, overflow: "hidden" }}>
+                    <div style={{ height: "100%", width: `${(spocData.orientationProgress / spocData.totalOrientationModules) * 100}%`, background: B_VOL, borderRadius: 3 }} />
+                  </div>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: B_VOL, whiteSpace: "nowrap" }}>{spocData.orientationProgress}/{spocData.totalOrientationModules} modules</span>
+                </div>
+              </div>
+              <button onClick={() => setShowOrientationModal(true)} style={{ background: B_VOL, color: "#fff", border: "none", borderRadius: 10, padding: "10px 18px", fontSize: 13, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap", fontFamily: "'DM Sans', sans-serif" }}>
+                {spocData.orientationProgress < spocData.totalOrientationModules ? "Continue" : "Review"}
+              </button>
+            </div>
+
             {/* Annual Reporting */}
-            <div style={{ ...spocCard, marginTop: 12, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, padding: "18px 20px" }}>
+            <div style={{ background: "#fff", border: "1.5px solid #c8c6f0", borderLeft: `3.5px solid ${ACCENT_NAVY}`, borderRadius: 14, marginTop: 0, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, padding: "18px 20px" }}>
               <div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#aaaabc", marginBottom: 5 }}>Annual Reporting</div>
+                <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: ACCENT_NAVY + "88", marginBottom: 4 }}>Annual Reporting</div>
                 <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 4 }}>Submit Annual Volunteering Report</div>
                 <div style={{ fontSize: 12.5, color: "#8888a0", lineHeight: 1.5 }}>Compile and submit the annual volunteering data for TCS to the TSG reporting portal.</div>
               </div>
@@ -1310,20 +1349,6 @@ export default function SPOCDashboardView() {
               <ResourceCard key={r.id} r={r} onClick={() => { if (r.id === "emodule") setShowOrientationModal(true); else onNavigate("media"); }} />
             ))}
           </div>
-          <div style={{ ...spocCard }}>
-            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#aaaabc", marginBottom: 12 }}>SPOC Orientation Progress</div>
-            <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 12 }}>
-              <div style={{ flex: 1 }}>
-                <div style={{ height: 8, background: "#e8e8f0", borderRadius: 4, overflow: "hidden" }}>
-                  <div style={{ height: "100%", width: `${(spocData.orientationProgress / spocData.totalOrientationModules) * 100}%`, background: B_VOL, borderRadius: 4 }} />
-                </div>
-              </div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: B_VOL, whiteSpace: "nowrap" }}>{spocData.orientationProgress}/{spocData.totalOrientationModules} modules</div>
-            </div>
-            <button onClick={() => setShowOrientationModal(true)} style={{ background: B_VOL, color: "#fff", border: "none", borderRadius: 10, padding: "10px 20px", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans', sans-serif" }}>
-              {spocData.orientationProgress < spocData.totalOrientationModules ? "Continue Orientation" : "Review Orientation"}
-            </button>
-          </div>
         </section>
       </div>
     </>
@@ -1340,7 +1365,7 @@ export default function SPOCDashboardView() {
               {spocData.firstName}, {spocMode ? "take charge." : "this is your volunteering space."}
             </div>
             <div style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", marginTop: 6, fontWeight: 300 }}>
-              {spocMode ? `${spocData.company} · ${spocData.tier}` : "Your story, Your impact."}
+              {spocMode ? "This is your chance to shine." : "Your story, Your impact."}
             </div>
           </div>
 
@@ -1381,18 +1406,25 @@ export default function SPOCDashboardView() {
           <div style={{ width: 148, flexShrink: 0, position: "sticky", top: 108, alignSelf: "flex-start" }}>
 
             {/* Mode toggle */}
-            <div style={{ marginBottom: 24, background: "#fff", border: "1px solid #e8e8f0", borderRadius: 12, padding: "10px 10px 10px" }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "1.6px", textTransform: "uppercase", color: "#c0c0cc", marginBottom: 8, paddingLeft: 2 }}>View</div>
-              {/* Slider track */}
-              <div style={{ position: "relative", background: "#f0f1f7", borderRadius: 8, padding: 3, display: "flex", gap: 0 }}>
+            <div style={{
+              marginBottom: 24,
+              background: spocMode
+                ? "linear-gradient(135deg, #1a2a5e 0%, #333399 100%)"
+                : "linear-gradient(135deg, #065666 0%, #0B7285 100%)",
+              borderRadius: 12,
+              padding: "10px 10px 10px",
+              transition: "background 0.3s",
+            }}>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "1.6px", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginBottom: 8, paddingLeft: 2 }}>View</div>
+              <div style={{ position: "relative", background: "rgba(0,0,0,0.18)", borderRadius: 8, padding: 3, display: "flex" }}>
                 {/* Sliding pill */}
                 <div style={{
                   position: "absolute", top: 3, left: spocMode ? "calc(50% + 1.5px)" : 3,
                   width: "calc(50% - 4.5px)", bottom: 3,
-                  background: spocMode ? B_SPOC_TOG : B_VOL,
+                  background: "rgba(255,255,255,0.18)",
                   borderRadius: 6,
-                  transition: "left 0.22s cubic-bezier(0.4,0,0.2,1), background 0.22s",
-                  boxShadow: "0 1px 4px rgba(0,0,0,0.14)",
+                  transition: "left 0.22s cubic-bezier(0.4,0,0.2,1)",
+                  boxShadow: "0 1px 4px rgba(0,0,0,0.18)",
                 }} />
                 {[{ id: false, label: "My Space" }, { id: true, label: "SPOC" }].map(t => (
                   <button key={String(t.id)}
@@ -1401,8 +1433,8 @@ export default function SPOCDashboardView() {
                       flex: 1, position: "relative", zIndex: 1,
                       background: "none", border: "none", borderRadius: 6,
                       padding: "7px 4px",
-                      fontSize: 11.5, fontWeight: spocMode === t.id ? 700 : 500,
-                      color: spocMode === t.id ? "#fff" : "#9090a8",
+                      fontSize: 11.5, fontWeight: spocMode === t.id ? 700 : 400,
+                      color: spocMode === t.id ? "#fff" : "rgba(255,255,255,0.45)",
                       cursor: "pointer", fontFamily: "'DM Sans', sans-serif",
                       transition: "color 0.22s",
                       whiteSpace: "nowrap",
