@@ -387,7 +387,6 @@ export default function EventsView() {
           "Comparing the sustainability journey to an ultra-marathon, the Chairman encouraged companies to sharpen their sustainability agendas, lay out decarbonisation plans as the world transitions to a low-carbon economy, and invest in innovative solutions.",
           "The volunteering session aimed to celebrate the Tata Group legacy of giving back, seek leadership perspectives on enterprise-level efforts to institutionalise volunteering while ensuring scale and quality, and cross-share challenges and opportunities on the journey towards 4 per capita volunteering hours (PCVH) by 2025.",
         ]}
-        accentBg
         heroMedia={
           <Slideshow
             accent={ACCENT}
@@ -590,6 +589,7 @@ export default function EventsView() {
           <Slideshow
             accent={B_ORANGE_DARK}
             accentDark={B_ORANGE_DARK}
+            aspect="3.5/1"
             slides={[
               { src: iavePanel, caption: "Plenary panel 'Corporate Volunteering for a Post-Pandemic World' at the 26th IAVE World Volunteer Conference, Abu Dhabi — including Gauri Rajadhyaksha (Tata Sons, India)." },
             ]}
@@ -600,7 +600,8 @@ export default function EventsView() {
           { label: "Best Global Volunteer Programme", value: "2019" },
           { label: "Cumulative volunteering hours", value: "8M+" },
         ]}
-        accentBg
+        heroFullWidth
+        topGap={32}
       />
     </div>
   );
