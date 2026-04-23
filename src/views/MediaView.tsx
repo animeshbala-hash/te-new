@@ -4,11 +4,12 @@ import { SOCIAL_POSTS } from "@/data/homeSharedData";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import Footer from "@/components/layout/Footer";
 
-const B_INDIGO = "#333399";
-const B_YELLOW = "#E8A817";
-const B_TEAL = "#0D9488";
-const B_BLUE = "#1E6BB8";
+const B_INDIGO = "#1434A4";
+const B_YELLOW = "#1434A4";
+const B_TEAL = "#1434A4";
+const B_BLUE = "#1434A4";
 const ACCENT_NAVY = "#0D1B3E";
+const HERO_BG = "#2389BD";
 
 const TABS = ["Photos", "Videos", "Impact Stories", "Social Media", "Events"] as const;
 
