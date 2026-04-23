@@ -242,7 +242,7 @@ function SectionEyebrow({ label, dark = false }: { label: string; dark?: boolean
       fontWeight: 700,
       letterSpacing: "1.8px",
       textTransform: "uppercase",
-      color: "#ffffff",
+      color: dark ? "#ffffff" : ACCENT_NAVY,
       margin: "0 0 8px",
       opacity: 1,
     }}>
@@ -756,7 +756,16 @@ export function NumbersSection() {
               display: "flex", flexDirection: "column",
               justifyContent: "space-between", height: "100%", minHeight: 280, gap: 14,
             }}>
-              {blockEyebrow("Did you know?", true)}
+              <span style={{
+                fontFamily: FONT_SANS,
+                fontSize: 11, fontWeight: 800, letterSpacing: "1.6px",
+                textTransform: "uppercase",
+                color: "#F2778A",
+                display: "block",
+                marginBottom: 10,
+              }}>
+                Did you know?
+              </span>
               <p style={{
                 fontFamily: FONT_SANS,
                 color: "#ffffff", fontSize: 19, fontWeight: 600,
