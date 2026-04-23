@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
-import cvpHeroImg from "@/assets/tata-motors-3.jpg";
+import cvpHeroImg from "@/assets/tata-elxsi.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY = "#0D1B3E";
@@ -58,51 +58,71 @@ export default function CVPView() {
   }, []);
 
   return (
-    <div className="dot-grid-bg" style={{ fontFamily: "'Noto Sans', sans-serif", background: "transparent", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'DM Sans', sans-serif", background: "#f5f5fa", minHeight: "100vh" }}>
       {/* Sticky top accent stripe */}
-      <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 4, background: COLOUR, zIndex: 60 }} />
+      <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 3, background: COLOUR, zIndex: 60 }} />
 
       {/* Right-side dot rail */}
       <div style={{ position: "fixed", right: 24, top: "50%", transform: "translateY(-50%)", display: "flex", flexDirection: "column", gap: 16, zIndex: 50 }}>
         {SECTIONS.map((s) => (
-          <a
+          <button
             key={s.id}
-            href={`#${s.id}`}
             title={s.label}
+            onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth" })}
             style={{
-              width: 10, height: 10, borderRadius: "50%",
+              width: 10, height: 10, borderRadius: "50%", border: "none", padding: 0, cursor: "pointer",
               background: activeId === s.id ? COLOUR : "#cfcfd8",
-              border: activeId === s.id ? `2px solid ${COLOUR_MID}` : "2px solid transparent",
+              outline: activeId === s.id ? `2px solid ${COLOUR_MID}` : "2px solid transparent",
               transition: "all 200ms ease",
             }}
           />
         ))}
       </div>
 
-      {/* HERO */}
-      <section style={{ position: "relative", background: "#0E3A22", color: "#fff", padding: "140px 24px 100px", overflow: "hidden" }}>
+      {/* ── HERO (full-bleed, matching AboutTVWView) ── */}
+      <section style={{ position: "relative", minHeight: "60vh", display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 80 }}>
+        {/* Background image */}
         <img
           src={cvpHeroImg}
           alt=""
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.28 }}
+          style={{
+            position: "absolute", inset: 0,
+            width: "100%", height: "100%",
+            objectFit: "cover", objectPosition: "center",
+          }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(14,58,34,0.92) 0%, rgba(31,95,58,0.78) 60%, rgba(14,58,34,0.85) 100%)" }} />
+        {/* Dark gradient overlay */}
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(to right, rgba(14,58,34,0.92) 0%, rgba(14,58,34,0.78) 50%, rgba(14,58,34,0.55) 100%)",
+        }} />
+        {/* Diagonal texture */}
         <div style={DIAG} />
-        <div style={{ position: "relative", maxWidth: 980, margin: "0 auto" }}>
-          <div style={{ display: "inline-block", padding: "6px 14px", borderRadius: 999, background: "rgba(255,255,255,0.12)", fontSize: 12, letterSpacing: 1, textTransform: "uppercase", marginBottom: 24, color: "#d8ead8" }}>
+
+        {/* Content */}
+        <div style={{ position: "relative", zIndex: 1, maxWidth: 980, margin: "0 auto", padding: "80px 56px" }}>
+          <div style={{
+            display: "inline-block", padding: "6px 14px", borderRadius: 999,
+            background: "rgba(255,255,255,0.12)", fontSize: 11, letterSpacing: 2,
+            textTransform: "uppercase" as const, marginBottom: 24, color: "rgba(255,255,255,0.75)",
+            fontWeight: 700,
+          }}>
             Group-wide · Year-round
           </div>
-          <h1 style={{ fontSize: 56, lineHeight: 1.05, fontWeight: 700, margin: 0, letterSpacing: -1 }}>
+          <h1 style={{
+            fontSize: 52, lineHeight: 1.08, fontWeight: 900,
+            margin: "0 0 20px", letterSpacing: -1, color: "#fff", maxWidth: 700,
+          }}>
             Company Volunteering Programmes
           </h1>
-          <p style={{ marginTop: 24, fontSize: 18, lineHeight: 1.6, color: "#e3eede", maxWidth: 720 }}>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: "rgba(255,255,255,0.78)", maxWidth: 580, margin: 0 }}>
             Each Tata company runs its own volunteering initiatives — rooted in their unique business context, employee strengths, and the communities they serve.
           </p>
         </div>
       </section>
 
       {/* OVERVIEW */}
-      <section id="cvp-overview" style={{ background: "transparent", padding: "96px 24px" }}>
+      <section id="cvp-overview" style={{ background: "#fff", padding: "96px 56px" }}>
         <div style={{ maxWidth: 980, margin: "0 auto" }}>
           <DefinerBar colour={COLOUR} />
           <h2 style={{ fontSize: 36, fontWeight: 700, color: ACCENT_NAVY, margin: "0 0 24px", letterSpacing: -0.5 }}>
@@ -118,7 +138,7 @@ export default function CVPView() {
       </section>
 
       {/* EXAMPLES */}
-      <section id="cvp-examples" style={{ background: "#f5f5fa", padding: "96px 24px" }}>
+      <section id="cvp-examples" style={{ background: "#f5f5fa", padding: "96px 56px" }}>
         <div style={{ maxWidth: 980, margin: "0 auto" }}>
           <DefinerBar colour={COLOUR} />
           <h2 style={{ fontSize: 36, fontWeight: 700, color: ACCENT_NAVY, margin: "0 0 32px", letterSpacing: -0.5 }}>
@@ -140,7 +160,7 @@ export default function CVPView() {
       </section>
 
       {/* EXPLORE */}
-      <section id="cvp-explore" style={{ background: "transparent", padding: "96px 24px" }}>
+      <section id="cvp-explore" style={{ background: "#fff", padding: "96px 56px" }}>
         <div style={{ maxWidth: 980, margin: "0 auto" }}>
           <DefinerBar colour={COLOUR} />
           <h2 style={{ fontSize: 36, fontWeight: 700, color: ACCENT_NAVY, margin: "0 0 24px", letterSpacing: -0.5 }}>
@@ -149,7 +169,7 @@ export default function CVPView() {
           <p style={{ fontSize: 17, lineHeight: 1.7, color: "#3a3a4a", margin: "0 0 32px" }}>
             To learn more about your company's volunteering programme, reach out to your CSR or Volunteering SPOC. Tata Engage facilitates collaboration and visibility across the Group.
           </p>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
             <button
               onClick={() => navigate(isLoggedIn ? "dashboard" : "register-role")}
               style={{ background: COLOUR, color: "#fff", border: "none", padding: "14px 28px", borderRadius: 8, fontSize: 15, fontWeight: 600, cursor: "pointer" }}
@@ -168,8 +188,6 @@ export default function CVPView() {
           </p>
         </div>
       </section>
-
-      
     </div>
   );
 }
