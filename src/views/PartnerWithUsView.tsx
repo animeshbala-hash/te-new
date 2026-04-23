@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
-import Footer from "@/components/layout/Footer";
+
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import partnerHero from "@/assets/tata-comm-2.jpeg";
 
@@ -713,8 +713,6 @@ export default function PartnerWithUsView() {
       <NGOSection />
       <ContactSection />
       <StayConnectedSection />
-
-      <Footer />
     </div>
   );
 }
