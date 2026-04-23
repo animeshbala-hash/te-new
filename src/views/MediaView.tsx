@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { useAppContext } from "@/context/AppContext";
 import { SOCIAL_POSTS } from "@/data/homeSharedData";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import Footer from "@/components/layout/Footer";
 
 const B_INDIGO = "#1434A4";
 const B_YELLOW = "#1434A4";
@@ -259,7 +258,7 @@ export default function MediaView() {
         )}
       </div>
 
-      <Footer />
+      
     </div>
   );
 }

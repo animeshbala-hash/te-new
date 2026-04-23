@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
-import Footer from "@/components/layout/Footer";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
@@ -219,7 +218,7 @@ export default function EWasteView() {
         </div>
       </section>
 
-      <Footer />
+      
     </div>
   );
 }

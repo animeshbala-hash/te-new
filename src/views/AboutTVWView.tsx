@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 import { useAppContext } from "@/context/AppContext";
-import Footer from "@/components/layout/Footer";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
@@ -399,7 +398,7 @@ export default function AboutTVWView() {
         </div>
       </section>
 
-      <Footer />
+      
     </div>
   );
 }

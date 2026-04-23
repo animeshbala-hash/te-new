@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
-import Footer from "@/components/layout/Footer";
 import cvpHeroImg from "@/assets/tata-motors-3.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
@@ -170,7 +169,7 @@ export default function CVPView() {
         </div>
       </section>
 
-      <Footer />
+      
     </div>
   );
 }
