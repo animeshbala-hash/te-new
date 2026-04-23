@@ -449,8 +449,8 @@ const Navbar = ({
                   )}
                 </div>
 
-                {/* Tata logo — right side when logged in, always white */}
-                <img src={tataLogo} alt="Tata" className="h-8 w-8 object-contain hidden md:block brightness-0 invert" />
+                {/* Tata logo — right side, native blue */}
+                <img src={tataLogo} alt="Tata" className="h-8 w-8 object-contain hidden md:block" />
               </>
             ) : (
               /* ── Public right: Log In + Register + Tata logo ── */
