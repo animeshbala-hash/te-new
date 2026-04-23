@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import chackoThomasPortrait from "@/assets/chacko-thomas.jpg";
+import tcsForestImg from "@/assets/tcs-forest.png";
 
 const ACCENT      = "#4376BB";
 const ACCENT_DARK = "#2D5494";
@@ -35,8 +36,9 @@ function DefinerBar({ colour = ACCENT }: { colour?: string }) {
 // ── Hero ──────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <div style={{ position: "relative", minHeight: "92vh", display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 64, background: "#0D1B3E" }}>
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(155deg, rgba(8,12,22,0.62) 0%, rgba(8,12,22,0.38) 100%)" }} />
+    <div style={{ position: "relative", minHeight: "75vh", display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 64 }}>
+      <img src={tcsForestImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(155deg, rgba(67,118,187,0.88) 0%, rgba(67,118,187,0.60) 100%)" }} />
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
         <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", margin: "0 0 12px" }}>
           Tata Sustainability Group
@@ -45,7 +47,7 @@ function Hero() {
         <h1 style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: "clamp(2.4rem,5vw,3.8rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px", maxWidth: 560 }}>
           From the Desk of the Group Chief Sustainability Officer
         </h1>
-        <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 16, fontWeight: 300, color: "rgba(255,255,255,0.65)", maxWidth: 440, margin: 0 }}>
+        <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 16, fontWeight: 300, color: "rgba(255,255,255,0.80)", maxWidth: 440, margin: 0 }}>
           Chacko Thomas · Group Chief Sustainability Officer, Tata Sons
         </p>
       </div>

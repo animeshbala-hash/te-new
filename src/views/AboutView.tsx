@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import chackoThomasPortrait from "@/assets/chacko-thomas.jpg";
 import aboutHeroImg from "@/assets/happy-eyes.jpg";
 
 // ── Colour tokens ─────────────────────────────────────────────────────────────
@@ -23,7 +22,6 @@ const DIAG: React.CSSProperties = {
 
 const SECTIONS = [
   { id: "about-hero",       label: "Overview"   },
-  { id: "about-gcso",       label: "GCSO"       },
   { id: "about-legacy",     label: "Legacy"     },
   { id: "about-what",       label: "Tata Engage" },
   { id: "about-impact",     label: "Impact"     },
@@ -82,61 +80,6 @@ function Hero() {
   );
 }
 
-// ── GCSO Message (full letter inline) ─────────────────────────────────────────
-function GCSOMessageSection() {
-  return (
-    <section id="about-gcso" style={{ background: "#F4F8F7", padding: "96px 56px" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: 72, alignItems: "start" }}>
-        {/* Photo */}
-        <div style={{ position: "relative", marginBottom: 32 }}>
-          <div style={{ borderRadius: 18, overflow: "hidden", boxShadow: "0 8px 40px rgba(0,0,0,0.12)" }}>
-            <img
-              src={chackoThomasPortrait}
-              alt="Chacko Thomas, Group Chief Sustainability Officer, Tata Sons"
-              style={{ display: "block", width: "100%", height: 480, objectFit: "cover", objectPosition: "30% top" }}
-            />
-          </div>
-          <div style={{ position: "absolute", bottom: -20, left: 24, right: 24, background: "#fff", borderRadius: 12, padding: "16px 20px", boxShadow: "0 4px 20px rgba(0,0,0,0.10)", display: "flex", alignItems: "center", gap: 16 }}>
-            <div style={{ width: 4, height: 40, background: ACCENT, borderRadius: 2, flexShrink: 0 }} />
-            <div>
-              <div style={{ fontSize: 15, fontWeight: 800, color: NAVY }}>Chacko Thomas</div>
-              <div style={{ fontSize: 12, color: "#64748B", marginTop: 2 }}>Group Chief Sustainability Officer, Tata Sons</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Full letter */}
-        <div style={{ paddingTop: 8 }}>
-          <Eyebrow text="From the desk of the GCSO" />
-          <h2 style={{ fontSize: 28, fontWeight: 900, color: NAVY, letterSpacing: "-0.5px", lineHeight: 1.2 }}>
-            A letter from<br />Chacko Thomas
-          </h2>
-          <DefinerBar />
-
-          <div style={{ margin: "32px 0 24px" }}>
-            <div style={{ fontSize: 72, lineHeight: 0.6, color: ACCENT + "30", fontFamily: "Georgia,serif", marginBottom: 20, marginLeft: -4 }}>"</div>
-            <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 19, fontStyle: "italic", color: NAVY, lineHeight: 1.72, marginBottom: 20 }}>
-              Volunteering has always been integral to the Tata ethos — not as an act separate from business, but as a way of staying closely connected to communities, realities, and responsibilities that shape our shared future.
-            </p>
-          </div>
-
-          <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
-            Across the Tata Group, volunteering continues to evolve from acts of compassion to expressions of thoughtful engagement, where time, skills, and intent come together to create meaningful outcomes.
-          </p>
-          <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
-            Through Tata Engage, we see this spirit come alive every day — in Tata colleagues, family members and retirees choosing to step forward, to contribute consistently, and to work alongside communities with empathy and purpose.
-          </p>
-          <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
-            What makes this journey especially powerful is the diversity of ways in which Tata volunteers engage. From large, collective movements to deeply personal initiatives; from hands-on volunteering to skill-based problem solving — each form of engagement strengthens our understanding of impact and reinforces the belief that sustainable progress is built through participation. As we look ahead, our aspiration is to continue nurturing this culture — one that enables action, learning, and recognises that lasting change often begins with individuals choosing to engage, again and again.
-          </p>
-          <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82 }}>
-            Tata Engage remains a vital platform in this journey — not just as an enabler of volunteering, but as a reflection of who we are as a Group: committed, compassionate, and connected by a shared sense of purpose.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // ── Our Legacy of Giving ──────────────────────────────────────────────────────
 function LegacySection() {
@@ -364,7 +307,6 @@ export default function AboutView() {
     <div className="dot-grid-bg" style={{ background: "transparent", minHeight: "100vh", fontFamily: "'DM Sans',sans-serif", paddingTop: 64 }}>
       <SubPageDotRail sections={SECTIONS} accentColour={ACCENT} />
       <Hero />
-      <GCSOMessageSection />
       <LegacySection />
       <WhatSection />
       <ImpactSection />
