@@ -9,7 +9,7 @@ import heroImg from "@/assets/infiniti-1.jpg";
 import { B_TICKER, B_YELLOW, B_TEAL, ACCENT_NAVY } from "@/data/homeSharedData";
 import { ProgrammeSpotlight, JourneySection, NumbersSection, QuoteBanner, TickerBar, SectionDivider } from "@/components/shared/HomeSections";
 
-const B_ORANGE = "#F16323";
+const B_NGO = "#F0494E";
 
 const DOT_SECTIONS = [
   { id: "hub-hero", label: "Home" },
@@ -17,7 +17,7 @@ const DOT_SECTIONS = [
   { id: "journey", label: "Journey" },
   { id: "numbers", label: "Numbers" },
 ];
-const ACCENT = B_TEAL;
+const ACCENT = B_NGO;
 
 const greeting = () => {
   const h = new Date().getHours();
@@ -135,10 +135,10 @@ const NGOHubView = () => {
 
         {/* Left-heavy dark gradient */}
         <div className="absolute inset-0" style={{
-          background: "linear-gradient(105deg, rgba(20,8,5,0.92) 0%, rgba(20,8,5,0.78) 35%, rgba(20,8,5,0.38) 62%, rgba(20,8,5,0.08) 100%)"
+          background: "linear-gradient(105deg, rgba(80,8,10,0.88) 0%, rgba(80,8,10,0.72) 35%, rgba(80,8,10,0.32) 62%, rgba(80,8,10,0.06) 100%)"
         }} />
         <div className="absolute inset-0" style={{
-          background: "linear-gradient(to top, rgba(20,8,5,0.55) 0%, transparent 40%)"
+          background: "linear-gradient(to top, rgba(80,8,10,0.50) 0%, transparent 40%)"
         }} />
 
         <div className="relative z-10 flex flex-col justify-between px-8 md:px-16 py-8" style={{ minHeight: "92vh", paddingTop: 80 }}>
@@ -169,7 +169,7 @@ const NGOHubView = () => {
               <button
                 onClick={() => navigate("ngo-dashboard")}
                 className="flex items-center gap-2 text-white text-sm font-bold px-6 py-2.5 rounded-xl hover:brightness-110 transition-all cursor-pointer shadow-lg"
-                style={{ backgroundColor: B_ORANGE }}
+                style={{ backgroundColor: B_NGO }}
               >
                 My Space <ArrowRight size={15} />
               </button>
