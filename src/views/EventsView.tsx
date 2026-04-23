@@ -41,9 +41,9 @@ function DefinerBar({ colour = ACCENT, light = false }: { colour?: string; light
 // ── Hero ──────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <div style={{ position: "relative", background: NAVY, padding: "100px 56px 72px", overflow: "hidden" }}>
+    <div style={{ position: "relative", background: `linear-gradient(135deg, ${ACCENT_DARK} 0%, ${ACCENT} 100%)`, padding: "100px 56px 72px", overflow: "hidden" }}>
       <div style={DIAG} />
-      <div style={{ position: "absolute", top: -80, right: -60, width: 440, height: 440, background: `radial-gradient(circle,${ACCENT}44 0%,transparent 68%)`, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: -80, right: -60, width: 440, height: 440, background: `radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 68%)`, pointerEvents: "none" }} />
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto" }}>
         <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: 18 }}>
           Tata Engage · Events & Conclaves
