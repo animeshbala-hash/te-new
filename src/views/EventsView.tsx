@@ -570,7 +570,7 @@ export default function EventsView() {
       {/* IAVE 2022 — accent (green) bg */}
       <EventSection
         id="events-iave"
-        accent={B_ORANGE_DARK}
+        accent={B_ORANGE}
         accentDark={B_ORANGE_DARK}
         accentLight={B_ORANGE_LIGHT}
         date="October 2022"
