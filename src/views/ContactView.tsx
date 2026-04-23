@@ -64,7 +64,7 @@ function Hero() {
 // ── Email banner (Stay-in-the-loop style) ────────────────────────────────────
 function EmailSection() {
   return (
-    <section id="contact-email" style={{ background: "#fff", padding: "96px 56px" }}>
+    <section id="contact-email" style={{ background: "transparent", padding: "96px 56px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: ACCENT_DARK, marginBottom: 10 }}>
           Get in touch directly
@@ -137,7 +137,7 @@ function SocialSection() {
   ];
 
   return (
-    <section id="contact-social" style={{ position: "relative", background: "#fff", padding: "32px 56px 96px", overflow: "hidden" }}>
+    <section id="contact-social" style={{ position: "relative", background: "transparent", padding: "32px 56px 96px", overflow: "hidden" }}>
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto" }}>
         <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: ACCENT_DARK, marginBottom: 10 }}>
           Stay connected

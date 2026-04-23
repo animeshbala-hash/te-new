@@ -106,7 +106,7 @@ export default function TataSmView() {
       </div>
 
       {/* ════════════════════ OVERVIEW ════════════════════ */}
-      <section id="tsm-overview" style={{ padding: "88px 56px", background: "#fff" }}>
+      <section id="tsm-overview" style={{ padding: "88px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
           <div>
             <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>About TSM</p>
@@ -136,7 +136,7 @@ export default function TataSmView() {
       </section>
 
       {/* ════════════════════ TSM AIMS ════════════════════ */}
-      <section id="tsm-aims" style={{ padding: "88px 56px", background: "#fff" }}>
+      <section id="tsm-aims" style={{ padding: "88px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>Our Purpose</p>
           <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>TSM aims to</h2>

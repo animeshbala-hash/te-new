@@ -267,7 +267,7 @@ export default function AboutProEngageView() {
       </div>
 
       {/* ════════════════════ OVERVIEW ════════════════════ */}
-      <section id="pe-overview" style={{ padding: "88px 56px", background: "#fff" }}>
+      <section id="pe-overview" style={{ padding: "88px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
           <div>
             <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>What is ProEngage?</p>
@@ -382,7 +382,7 @@ export default function AboutProEngageView() {
       </section>
 
       {/* ════════════════════ HOW IT WORKS ════════════════════ */}
-      <section id="pe-how" style={{ padding: "96px 56px", background: "#fff" }}>
+      <section id="pe-how" style={{ padding: "96px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>The ProEngage journey</p>
           <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Seven steps from announcement to certificate</h2>
@@ -442,7 +442,7 @@ export default function AboutProEngageView() {
       </section>
 
       {/* ════════════════════ TIMELINE ════════════════════ */}
-      <section id="pe-timeline" style={{ padding: "88px 56px", background: "#fff" }}>
+      <section id="pe-timeline" style={{ padding: "88px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>Annual cycle</p>
           <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Two announcement windows each year</h2>

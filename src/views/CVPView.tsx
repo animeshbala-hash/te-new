@@ -102,7 +102,7 @@ export default function CVPView() {
       </section>
 
       {/* OVERVIEW */}
-      <section id="cvp-overview" style={{ background: "#fff", padding: "96px 24px" }}>
+      <section id="cvp-overview" style={{ background: "transparent", padding: "96px 24px" }}>
         <div style={{ maxWidth: 980, margin: "0 auto" }}>
           <DefinerBar colour={COLOUR} />
           <h2 style={{ fontSize: 36, fontWeight: 700, color: ACCENT_NAVY, margin: "0 0 24px", letterSpacing: -0.5 }}>
@@ -140,7 +140,7 @@ export default function CVPView() {
       </section>
 
       {/* EXPLORE */}
-      <section id="cvp-explore" style={{ background: "#fff", padding: "96px 24px" }}>
+      <section id="cvp-explore" style={{ background: "transparent", padding: "96px 24px" }}>
         <div style={{ maxWidth: 980, margin: "0 auto" }}>
           <DefinerBar colour={COLOUR} />
           <h2 style={{ fontSize: 36, fontWeight: 700, color: ACCENT_NAVY, margin: "0 0 24px", letterSpacing: -0.5 }}>

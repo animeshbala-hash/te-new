@@ -145,7 +145,7 @@ function GCSOMessageSection() {
 // ── Our Legacy of Giving ──────────────────────────────────────────────────────
 function LegacySection() {
   return (
-    <section id="about-legacy" style={{ padding: "96px 56px", background: "#fff" }}>
+    <section id="about-legacy" style={{ padding: "96px 56px", background: "transparent" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "start" }}>
         <div>
           <Eyebrow text="Our Legacy of Giving" />
@@ -276,7 +276,7 @@ function ImpactSection() {
   ];
 
   return (
-    <section id="about-impact" style={{ padding: "96px 56px", background: "#fff" }}>
+    <section id="about-impact" style={{ padding: "96px 56px", background: "transparent" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <Eyebrow text="How Tata Engage creates impact" />
         <h2 style={{ fontSize: 30, fontWeight: 900, color: NAVY, letterSpacing: "-0.5px" }}>Five ways we create impact</h2>
