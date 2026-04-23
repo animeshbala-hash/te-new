@@ -47,14 +47,16 @@ function Hero() {
       <div style={DIAG} />
       <div style={{ position: "absolute", top: -80, right: -60, width: 440, height: 440, background: `radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 68%)`, pointerEvents: "none" }} />
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto" }}>
-        <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", marginBottom: 18 }}>
+        <p style={{ fontFamily: "'DM Mono',monospace", fontSize: 14, fontWeight: 800, letterSpacing: "2.3px", textTransform: "uppercase", color: "#fff", marginBottom: 4 }}>
           Social Services Cluster · Tata Sustainability Group
         </p>
-        <div style={{ width: 40, height: 3, background: "#fff", borderRadius: 2, marginBottom: 24 }} />
-        <h1 style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(2.2rem,4.5vw,3.2rem)", fontWeight: 900, color: "#fff", lineHeight: 1.08, letterSpacing: "-1.5px", margin: "0 0 18px", maxWidth: 560 }}>
+        <div style={{ height: 1.4, width: 80, borderRadius: 2, background: "rgba(255,255,255,0.25)", marginBottom: 24, overflow: "hidden" }}>
+          <div style={{ height: "100%", width: "100%", borderRadius: 2, background: "#fff" }} />
+        </div>
+        <h1 style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px", maxWidth: 560 }}>
           Meet Tata Engage
         </h1>
-        <p style={{ fontSize: 15, fontWeight: 300, color: "rgba(255,255,255,0.88)", maxWidth: 460 }}>
+        <p style={{ fontSize: 17, fontWeight: 300, color: "#fff", lineHeight: 1.7, maxWidth: 460 }}>
           The people behind the Tata Group's volunteering platform — driving scale, quality, and impact across 100+ companies.
         </p>
       </div>
