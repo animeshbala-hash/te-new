@@ -5,6 +5,13 @@ import tsc22Chairman from "@/assets/events/tsc-2022-chairman.png";
 import tsc22Awards from "@/assets/events/tsc-2022-awards.png";
 import volconChacko from "@/assets/events/volcon-2024-chacko.png";
 import volconPanel from "@/assets/events/volcon-2024-panel.png";
+import volconAwardsTCS from "@/assets/events/volcon-2024-awards.png";
+import volconNitin from "@/assets/events/volcon-2024-nitin.png";
+import volconArjinder from "@/assets/events/volcon-2024-arjinder.png";
+import volconMusic1 from "@/assets/events/volcon-2024-music1.png";
+import volconMusic2 from "@/assets/events/volcon-2024-music2.png";
+import volconTribalChefs from "@/assets/events/volcon-2024-tribal-chefs.png";
+import iavePanel from "@/assets/events/iave-2022-panel.png";
 
 const ACCENT       = "#F0494E";   // red — Events page (TSC 2022)
 const ACCENT_DARK  = "#C53035";
