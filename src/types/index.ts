@@ -6,7 +6,7 @@ export type View = "home" | "login" | "register-role" | "register-form" | "otp" 
   | "create-project" | "active-project-management" | "project-feedback"
   | "profile" | "tvw" | "proengage"
   | "disaster-response" | "dr-availability-form" | "dr-confirmation"
-  | "about" | "about-tvw" | "about-proengage" | "partner" | "media" | "journey"
+  | "about" | "about-tvw" | "about-proengage" | "about-gcso" | "about-team" | "about-events" | "about-contact" | "partner" | "media" | "journey"
   | "contact" | "faq" | "policy"
   | "eoi" | "ewaste" | "tata-sm" | "cvp";
 
