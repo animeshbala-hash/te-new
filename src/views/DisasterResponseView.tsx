@@ -6,7 +6,7 @@ import drHeroImg from "@/assets/dr_photo.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
-const B_YELLOW     = "#F5A623";
+const B_YELLOW     = "#F79425";
 const COLOUR       = "#007A8A";
 const COLOUR_MID   = "#005F6B";
 const COLOUR_LIGHT = "#E6F5F7";
