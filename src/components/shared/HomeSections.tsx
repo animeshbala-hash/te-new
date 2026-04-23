@@ -593,7 +593,7 @@ export function QuoteBanner() {
       {/* Dark overlay — heavier than journey for quote legibility */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "linear-gradient(135deg, rgba(5,5,20,0.82) 0%, rgba(5,5,20,0.76) 100%)",
+        background: "linear-gradient(135deg, rgba(5,5,20,0.70) 0%, rgba(5,5,20,0.60) 100%)",
         pointerEvents: "none",
       }} />
 
@@ -693,7 +693,7 @@ export function NumbersSection() {
   const blockEyebrow = (label: string, dark = false) => (
     <span style={{
       fontFamily: FONT_SANS,
-      fontSize: 11, fontWeight: 800, letterSpacing: "1.6px",
+      fontSize: 14, fontWeight: 800, letterSpacing: "1.6px",
       textTransform: "uppercase",
       color: dark ? "#ffffff" : "#64748b",
       display: "block",
@@ -738,7 +738,7 @@ export function NumbersSection() {
             }}>
               <span style={{
                 fontFamily: FONT_SANS,
-                fontSize: 11, fontWeight: 800, letterSpacing: "1.6px",
+                fontSize: 14, fontWeight: 800, letterSpacing: "1.6px",
                 textTransform: "uppercase",
                 color: "#ffffff",
                 display: "block",
@@ -800,7 +800,7 @@ export function NumbersSection() {
                   }} />
                   <p style={{
                     fontFamily: FONT_SANS,
-                    fontSize: 10, fontWeight: 800, textTransform: "uppercase",
+                    fontSize: 14, fontWeight: 800, textTransform: "uppercase",
                     letterSpacing: "1.4px", margin: 0, color: "#ffffff",
                     alignSelf: "flex-start", textAlign: "left",
                   }}>
@@ -956,7 +956,7 @@ export function JourneySection() {
 
   return (
     <section ref={ref} className="section-block" style={{
-      backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(255,255,255,0.016) 24px, rgba(255,255,255,0.016) 25px), url(${titanImg})`,
+      backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(255,255,255,0.016) 24px, rgba(255,255,255,0.016) 25px), url(${infiniti})`,
       backgroundSize: "auto, cover",
       backgroundPosition: "center, center",
       position: "relative", overflow: "hidden",
@@ -966,7 +966,7 @@ export function JourneySection() {
       {/* Dark overlay */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "linear-gradient(135deg, rgba(5,5,20,0.68) 0%, rgba(5,5,20,0.60) 100%)",
+        background: "linear-gradient(135deg, rgba(5,5,20,0.70) 0%, rgba(5,5,20,0.60) 100%)",
         pointerEvents: "none",
       }} />
 
