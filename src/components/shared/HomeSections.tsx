@@ -1020,15 +1020,15 @@ export function JourneySection() {
                 >
                   <span style={{
                     fontFamily: FONT_SANS,
-                    fontSize: 16, fontWeight: 900, color: m.colour,
+                    fontSize: 22, fontWeight: 900, color: m.colour,
                     background: `${m.colour}14`,
-                    borderRadius: 5, padding: "2px 7px",
+                    borderRadius: 5, padding: "3px 9px",
                     letterSpacing: "-0.3px", marginBottom: 4,
                     display: "inline-block",
                   }}>
                     {m.year}
                   </span>
-                  <div style={{ fontFamily: FONT_SANS, fontSize: 11, fontWeight: 800, color: "white", lineHeight: 1.3, marginBottom: 6 }}>
+                  <div style={{ fontFamily: FONT_SANS, fontSize: 13, fontWeight: 800, color: "white", lineHeight: 1.3, marginBottom: 6 }}>
                     {m.title}
                   </div>
                   <div style={{
@@ -1086,15 +1086,15 @@ export function JourneySection() {
                   }} />
                   <span style={{
                     fontFamily: FONT_SANS,
-                    fontSize: 16, fontWeight: 900, color: m.colour,
+                    fontSize: 22, fontWeight: 900, color: m.colour,
                     background: `${m.colour}14`,
-                    borderRadius: 5, padding: "2px 7px",
+                    borderRadius: 5, padding: "3px 9px",
                     letterSpacing: "-0.3px", marginTop: 6, marginBottom: 3,
                     display: "inline-block",
                   }}>
                     {m.year}
                   </span>
-                  <div style={{ fontFamily: FONT_SANS, fontSize: 11, fontWeight: 800, color: "white", lineHeight: 1.3 }}>
+                  <div style={{ fontFamily: FONT_SANS, fontSize: 13, fontWeight: 800, color: "white", lineHeight: 1.3 }}>
                     {m.title}
                   </div>
                 </div>
