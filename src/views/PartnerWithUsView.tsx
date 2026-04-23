@@ -3,6 +3,7 @@ import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 import Footer from "@/components/layout/Footer";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
+import partnerHero from "@/assets/tata-comm-2.jpeg";
 
 // ── Colour tokens ─────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
@@ -98,7 +99,7 @@ function Hero() {
       }}
     >
       <img
-        src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&q=80&w=1800"
+        src={partnerHero}
         alt=""
         style={{
           position: "absolute",
