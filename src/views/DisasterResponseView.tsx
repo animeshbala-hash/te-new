@@ -127,7 +127,7 @@ export default function DisasterResponseView() {
       <SubPageDotRail sections={SECTIONS} />
 
       {/* ════════════════════ HERO — photo + accent overlay ════════════════════ */}
-      <div style={{ position: "relative", minHeight: "75vh", overflow: "hidden", display: "flex", alignItems: "center", paddingTop: 64 }}>
+      <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", display: "flex", alignItems: "center", paddingTop: 64 }}>
         <img src={drHeroImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}e8 0%, ${COLOUR}cc 38%, ${COLOUR}aa 58%, ${COLOUR}77 78%, ${COLOUR}44 100%)` }} />
 
