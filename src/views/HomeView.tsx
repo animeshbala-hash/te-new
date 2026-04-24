@@ -7,13 +7,13 @@ import tataLogo from "@/assets/Tata-removebg-preview.png";
 import tataEngageLogo from "@/assets/tata-engage-logo-nobg.png";
 import tataAIG from "@/assets/Tata_AIG_2.jpg";
 import tataMotors1 from "@/assets/Tata_Motors_1.jpg";
-import voltasImg from "@/assets/Voltas.JPG";
 import tajSats from "@/assets/Taj_Sats.jpeg";
 import drHeroPhoto from "@/assets/dr_photo_2.jpg";
 import {
   B_INDIGO, B_YELLOW, B_TEAL, B_BLUE, B_TICKER, ACCENT_NAVY,
 } from "@/data/homeSharedData";
 import { IMPACT_STORIES } from "@/data/impactStoriesData";
+import beyondHero from "@/assets/tata-communications-1.jpg"; // Story 3 hero — replace when photos arrive
 import { ProgrammeSpotlight, JourneySection, NumbersSection, QuoteBanner, TickerBar, SectionDivider } from "@/components/shared/HomeSections";
 
 // ── Ink doodle SVGs ───────────────────────────────────────────────────────────
@@ -49,8 +49,9 @@ const InkSwish = ({ className = "", style = {} }: { className?: string; style?: 
 
 // ── HomeView-only data ────────────────────────────────────────────────────────
 
-const wayanad = IMPACT_STORIES.find((s) => s.slug === "wayanad-2024")!;
-const melghat = IMPACT_STORIES.find((s) => s.slug === "melghat-mitra")!;
+const wayanad  = IMPACT_STORIES.find((s) => s.slug === "wayanad-2024")!;
+const melghat  = IMPACT_STORIES.find((s) => s.slug === "melghat-mitra")!;
+const beyond   = IMPACT_STORIES.find((s) => s.slug === "beyond-the-boardroom")!;
 
 const HERO_SLIDES = [
   {
@@ -79,10 +80,11 @@ const HERO_SLIDES = [
     },
   },
   {
-    photo: voltasImg,
-    accent: B_YELLOW, tag: "Environment", cta: "story" as const,
-    headline: "1 million trees planted across Tata campuses nationwide",
-    sub: "A greener legacy, growing branch by branch.",
+    photo: beyondHero,
+    accent: B_YELLOW, tag: "Leadership Volunteering", cta: "story" as const,
+    storySlug: "beyond-the-boardroom",
+    headline: beyond.slideHeadline,
+    sub: beyond.slideSub,
     doodles: {
       spiral: { top: "15%",    right: "40%", size: 50, opacity: 0.18 },
       dots:   { top: "65%",    right: "34%", size: 58, opacity: 0.20 },

@@ -14,44 +14,29 @@ const DIAG: React.CSSProperties = {
   pointerEvents: "none",
 };
 
-const ImagePlaceholder = ({ height, caption }: { height: number; caption?: string }) => (
-  <figure style={{ margin: "8px 0 32px" }}>
-    <div style={{
-      width: "100%", height, borderRadius: 12,
-      background: "linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      overflow: "hidden", position: "relative",
-    }}>
-      <div style={{ textAlign: "center", padding: 16 }}>
-        <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 10px" }}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.32)" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        </div>
-        <span style={{ fontSize: 12, color: "rgba(0,0,0,0.32)", fontWeight: 600 }}>Image placeholder</span>
-        {caption && (
-          <div style={{
-            marginTop: 10,
-            fontFamily: "'Playfair Display', Georgia, serif",
-            fontStyle: "italic",
-            fontSize: 14,
-            color: "rgba(13,27,62,0.65)",
-            maxWidth: 460,
-            lineHeight: 1.5,
-          }}>
-            “{caption}”
-          </div>
-        )}
-      </div>
-    </div>
-    {caption && (
-      <figcaption style={{
-        marginTop: 10,
-        fontSize: 12,
-        fontWeight: 700,
-        letterSpacing: "0.6px",
-        textTransform: "uppercase",
-        color: "#64748b",
+const StoryImage = ({ src, caption, height = 300 }: { src?: string; caption?: string; height?: number }) => (
+  <figure style={{ margin: "8px 0 36px" }}>
+    {src ? (
+      <img
+        src={src}
+        alt={caption ?? ""}
+        style={{ width: "100%", height, objectFit: "cover", borderRadius: 12, display: "block" }}
+      />
+    ) : (
+      <div style={{
+        width: "100%", height, borderRadius: 12,
+        background: "linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)",
+        display: "flex", alignItems: "center", justifyContent: "center",
       }}>
-        Caption · {caption}
+        <div style={{ textAlign: "center" }}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.28)" strokeWidth="1.5" style={{ display: "block", margin: "0 auto 8px" }}><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span style={{ fontSize: 11, color: "rgba(0,0,0,0.28)", fontWeight: 600 }}>Photo coming soon</span>
+        </div>
+      </div>
+    )}
+    {caption && (
+      <figcaption style={{ marginTop: 10, fontSize: 13, fontStyle: "italic", color: "#64748b", lineHeight: 1.5 }}>
+        {caption}
       </figcaption>
     )}
   </figure>
@@ -142,18 +127,6 @@ export default function ImpactStoryView() {
               {story.subtitle}
             </p>
           )}
-
-          {/* Stats — only shown if story has them */}
-          {story.stats && (
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-              {story.stats.map((s) => (
-                <div key={s.label} style={{ background: "rgba(255,255,255,0.10)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: 8, padding: "8px 16px", textAlign: "center" }}>
-                  <div style={{ fontSize: 20, fontWeight: 900, color: "#fff", lineHeight: 1 }}>{s.num}</div>
-                  <div style={{ fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.8px", marginTop: 3 }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
       </div>
 
@@ -173,15 +146,21 @@ export default function ImpactStoryView() {
             {story.openingPara}
           </p>
 
-          {/* Body sections — render with optional headings, bullets, sub-blocks, tables, and image slots. */}
+          {/* Body sections — 4 photos distributed evenly from story.photos array */}
           {(() => {
-            // If any section explicitly defines an imageAfter, the story controls placement;
-            // otherwise we auto-distribute three placeholders across the section count.
-            const hasExplicitImages = story.sections.some((s) => s.imageAfter);
-            const total = story.sections.length;
-            const slot1 = 0;
-            const slot2 = Math.min(Math.max(Math.floor(total / 2), 1), total - 1);
-            const slot3 = total - 1;
+            const photos = story.photos ?? [];
+            const total  = story.sections.length;
+            // Place photo after sections at ~25%, 50%, 75%, 100% of content
+            const slots  = total <= 1
+              ? [0]
+              : [
+                  Math.floor(total * 0.25),
+                  Math.floor(total * 0.5),
+                  Math.floor(total * 0.75),
+                  total - 1,
+                ].filter((v, i, a) => a.indexOf(v) === i); // dedupe
+
+            let photoIdx = 0;
 
             const renderSection = (sec: typeof story.sections[number], i: number) => (
               <div key={i} style={{ marginBottom: 8 }}>
@@ -281,20 +260,11 @@ export default function ImpactStoryView() {
             const out: React.ReactNode[] = [];
             story.sections.forEach((sec, i) => {
               out.push(renderSection(sec, i));
-              if (hasExplicitImages) {
-                if (sec.imageAfter) {
-                  out.push(
-                    <ImagePlaceholder
-                      key={`img-explicit-${i}`}
-                      height={sec.imageAfter.height ?? 300}
-                      caption={sec.imageAfter.caption}
-                    />,
-                  );
-                }
-              } else {
-                if (i === slot1) out.push(<ImagePlaceholder key={`img-1-${i}`} height={320} />);
-                else if (i === slot2 && slot2 !== slot1 && slot2 !== slot3) out.push(<ImagePlaceholder key={`img-2-${i}`} height={260} />);
-                else if (i === slot3 && slot3 !== slot1) out.push(<ImagePlaceholder key={`img-3-${i}`} height={300} />);
+              if (slots.includes(i) && photoIdx < photos.length) {
+                const p = photos[photoIdx++];
+                out.push(
+                  <StoryImage key={`photo-${i}`} src={p.src || undefined} caption={p.caption} height={300} />
+                );
               }
             });
             return out;
