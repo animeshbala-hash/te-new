@@ -120,7 +120,7 @@ export default function ImpactStoryView() {
       <div id="story-body" style={{ background: "#fff" }}>
         <div style={{ maxWidth: 740, margin: "0 auto", padding: "64px 32px 56px" }}>
 
-          {/* i. Opening paragraph — Playfair italic, no border, IS the cursive opening */}
+          {/* i. Opening paragraph — Playfair italic, no border */}
           <p style={{
             fontFamily: "'Playfair Display', Georgia, serif",
             fontSize: 20,
@@ -132,37 +132,83 @@ export default function ImpactStoryView() {
             {story.openingPara}
           </p>
 
-          {/* ii. First body section */}
-          {story.sections[0] && (
-            <p style={{ fontFamily: FONT, fontSize: 16, color: "#374151", lineHeight: 1.85, margin: "0 0 24px", fontWeight: 400 }}>
-              {story.sections[0].body}
-            </p>
-          )}
+          {/* Body sections — render with optional headings, bullets, sub-blocks. Image slots inserted after sections 1, 3, and the last section. */}
+          {(() => {
+            const total = story.sections.length;
+            // Pick image insertion points: after first, middle, and last section.
+            const slot1 = 0;
+            const slot2 = Math.min(Math.max(Math.floor(total / 2), 1), total - 1);
+            const slot3 = total - 1;
 
-          {/* iii. Image slot 1 */}
-          <ImagePlaceholder height={320} />
+            const renderSection = (sec: typeof story.sections[number], i: number) => (
+              <div key={i} style={{ marginBottom: 8 }}>
+                {sec.heading && (
+                  <h2 style={{
+                    fontFamily: FONT,
+                    fontSize: 22,
+                    fontWeight: 800,
+                    color: ACCENT_NAVY,
+                    lineHeight: 1.3,
+                    margin: "12px 0 16px",
+                    letterSpacing: "-0.2px",
+                  }}>
+                    {sec.heading}
+                  </h2>
+                )}
+                {sec.body && sec.body.split("\n\n").map((para, pi) => (
+                  <p key={pi} style={{ fontFamily: FONT, fontSize: 16, color: "#374151", lineHeight: 1.85, margin: "0 0 20px", fontWeight: 400 }}>
+                    {para}
+                  </p>
+                ))}
+                {sec.bullets && sec.bullets.length > 0 && (
+                  <ul style={{ margin: "0 0 24px", paddingLeft: 22 }}>
+                    {sec.bullets.map((b, bi) => (
+                      <li key={bi} style={{
+                        fontFamily: FONT, fontSize: 16, color: "#374151",
+                        lineHeight: 1.75, margin: "0 0 12px", fontWeight: 400,
+                      }}>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {sec.subBlocks && sec.subBlocks.map((sb, sbi) => (
+                  <div key={sbi} style={{ margin: "20px 0 24px" }}>
+                    <div style={{
+                      fontFamily: FONT,
+                      fontSize: 11,
+                      fontWeight: 800,
+                      letterSpacing: "1.6px",
+                      textTransform: "uppercase",
+                      color: accent,
+                      marginBottom: 10,
+                    }}>
+                      {sb.heading}
+                    </div>
+                    <ul style={{ margin: 0, paddingLeft: 22 }}>
+                      {sb.bullets.map((b, bi) => (
+                        <li key={bi} style={{
+                          fontFamily: FONT, fontSize: 16, color: "#374151",
+                          lineHeight: 1.75, margin: "0 0 10px", fontWeight: 400,
+                        }}>
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            );
 
-          {/* iv. Sections[1], Sections[2] */}
-          {[1, 2].map((idx) =>
-            story.sections[idx] ? (
-              <p key={idx} style={{ fontFamily: FONT, fontSize: 16, color: "#374151", lineHeight: 1.85, margin: "0 0 24px", fontWeight: 400 }}>
-                {story.sections[idx].body}
-              </p>
-            ) : null,
-          )}
-
-          {/* v. Image slot 2 */}
-          <ImagePlaceholder height={260} />
-
-          {/* vi. Remaining sections (from index 3 onwards) */}
-          {story.sections.slice(3).map((sec, i) => (
-            <p key={`r-${i}`} style={{ fontFamily: FONT, fontSize: 16, color: "#374151", lineHeight: 1.85, margin: "0 0 24px", fontWeight: 400 }}>
-              {sec.body}
-            </p>
-          ))}
-
-          {/* vii. Image slot 3 */}
-          <ImagePlaceholder height={300} />
+            const out: React.ReactNode[] = [];
+            story.sections.forEach((sec, i) => {
+              out.push(renderSection(sec, i));
+              if (i === slot1) out.push(<ImagePlaceholder key={`img-1-${i}`} height={320} />);
+              else if (i === slot2 && slot2 !== slot1 && slot2 !== slot3) out.push(<ImagePlaceholder key={`img-2-${i}`} height={260} />);
+              else if (i === slot3 && slot3 !== slot1) out.push(<ImagePlaceholder key={`img-3-${i}`} height={300} />);
+            });
+            return out;
+          })()}
         </div>
       </div>
 
