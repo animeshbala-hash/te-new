@@ -934,60 +934,59 @@ export function NumbersSection() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// JOURNEY SECTION — 5 photo cards, each with integrated text + colour tint
-// Each milestone = a card where the photo IS the background, tinted by accent colour
-// Layout: overlapping stagger like a mood board / collage
+// JOURNEY SECTION — moodboard / collage layout
+// Photos, year labels, and text snippets are separate floating pieces,
+// overlapping and lightly rotated like cut-outs pinned to a board.
+// Dark background with a subtle texture underneath everything.
 // ─────────────────────────────────────────────────────────────────────────────
 
-const JOURNEY_CARDS = [
+// Each photo piece: [left%, top%, width%, rotate(deg), zIndex]
+type PieceLayout = { left: number; top: number; w: number; rot: number; z: number };
+
+const PHOTO_PIECES: PieceLayout[] = [
+  { left:  1, top:  6, w: 22, rot: -4, z: 1 },  // FY2015 photo — top-left
+  { left: 20, top: 38, w: 19, rot:  3, z: 2 },  // FY2017 photo — mid-left
+  { left: 36, top:  4, w: 24, rot: -2, z: 1 },  // FY2019 photo — top-centre
+  { left: 54, top: 30, w: 20, rot:  5, z: 2 },  // FY2022 photo — mid-right
+  { left: 72, top:  8, w: 23, rot: -3, z: 1 },  // FY2025 photo — top-right
+];
+
+// Each text label: position, the FY, the lines, accent colour
+const TEXT_PIECES = [
   {
-    fy: "FY 2015",
-    colour: "#333399",   // B_INDIGO
-    photo: tataElxsiImg,
-    bullets: [
-      "Launched Tata Engage with two volunteering formats",
-      "Tata Volunteering Week and ProEngage",
-    ],
+    left: 3, top: 54, rot: 2, z: 3,
+    fy: "FY 2015", colour: "#333399",
+    lines: ["Launched TVW", "& ProEngage"],
   },
   {
-    fy: "FY 2017",
-    colour: "#1E6BB8",   // B_BLUE
-    photo: airIndia,
-    bullets: [
-      "Launched Tata Group volunteering guidelines",
-    ],
+    left: 21, top: 10, rot: -3, z: 3,
+    fy: "FY 2017", colour: "#1E6BB8",
+    lines: ["Group volunteering", "guidelines launched"],
   },
   {
-    fy: "FY 2019",
-    colour: "#00A896",   // B_TEAL
-    photo: tataCommunications,
-    bullets: [
-      "Won Best Global Volunteer Program — IAVE",
-    ],
+    left: 37, top: 62, rot: 1, z: 3,
+    fy: "FY 2019", colour: "#00A896",
+    lines: ["Best Global Volunteer", "Program — IAVE"],
   },
   {
-    fy: "FY 2022",
-    colour: "#C14D00",   // orange
-    photo: drPhoto,
-    bullets: [
-      "1.34 million hours clocked",
-      "Pivoted to phygital volunteering",
-    ],
+    left: 57, top: 6, rot: -2, z: 3,
+    fy: "FY 2022", colour: "#C14D00",
+    lines: ["1.34M hours clocked", "Phygital pivot"],
   },
   {
-    fy: "FY 2025",
-    colour: "#E8401C",   // B_RED
-    photo: trentImg,
-    bullets: [
-      "10.87 million hours — highest ever",
-      "PCVH of 10.67 achieved",
-    ],
+    left: 72, top: 56, rot: 3, z: 3,
+    fy: "FY 2025", colour: "#E8401C",
+    lines: ["10.87M hours —", "highest ever"],
   },
 ];
 
+const COLLAGE_PHOTOS = [
+  tataElxsiImg, airIndia, tataCommunications, drPhoto, trentImg,
+];
+
 export function JourneySection() {
-  const navigate    = useAppNavigate();
-  const ref         = useRef<HTMLElement>(null);
+  const navigate = useAppNavigate();
+  const ref      = useRef<HTMLElement>(null);
   const [vis, setVis] = useState(false);
 
   useEffect(() => {
@@ -1004,20 +1003,21 @@ export function JourneySection() {
   return (
     <section ref={ref} className="section-block" style={{
       position: "relative", overflow: "hidden",
-      padding: "60px 48px",
+      padding: "56px 48px 64px",
       background: "#0a0e1a",
     }}>
-      {/* faint dot-grid texture */}
+
+      {/* Subtle dot-grid texture */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
-        backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)",
-        backgroundSize: "28px 28px",
+        backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)",
+        backgroundSize: "26px 26px",
       }} />
 
       <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", zIndex: 2 }}>
 
-        {/* Header */}
-        <div style={{ marginBottom: 36 }}>
+        {/* Section header */}
+        <div style={{ marginBottom: 28 }}>
           <SectionEyebrow label="Our Journey" dark />
           <SectionH2 dark>
             A <em style={{ fontStyle: "italic", color: B_YELLOW }}>Decade</em> of Giving Back
@@ -1025,136 +1025,124 @@ export function JourneySection() {
           <div style={{ width: 48, height: 1.4, borderRadius: 2, background: B_YELLOW, marginTop: 10 }} />
         </div>
 
-        {/* ── 5 integrated photo-text cards ── */}
+        {/* ── COLLAGE CANVAS ── fixed-height relative container */}
         <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
-          gap: 10,
-          alignItems: "stretch",
-        }}
-          className="te-journey-grid"
-        >
-          {JOURNEY_CARDS.map((card, i) => (
+          position: "relative",
+          height: 340,
+          marginBottom: 24,
+        }}>
+
+          {/* Photo pieces — scattered, rotated */}
+          {PHOTO_PIECES.map((p, i) => (
             <div
-              key={card.fy}
+              key={`photo-${i}`}
               style={{
-                position: "relative",
-                borderRadius: 14,
+                position: "absolute",
+                left: `${p.left}%`,
+                top: `${p.top}%`,
+                width: `${p.w}%`,
+                aspectRatio: "4 / 3",
+                transform: `rotate(${p.rot}deg)`,
+                zIndex: p.z,
+                borderRadius: 6,
                 overflow: "hidden",
-                minHeight: 260,
+                boxShadow: "0 6px 28px rgba(0,0,0,0.55)",
+                border: "2.5px solid rgba(255,255,255,0.12)",
                 opacity: vis ? 1 : 0,
-                transform: vis
-                  ? `translateY(${i % 2 === 0 ? 0 : 8}px)`
-                  : `translateY(${i % 2 === 0 ? -18 : 24}px)`,
-                transition: `opacity 0.55s ease ${i * 0.1}s, transform 0.55s ease ${i * 0.1}s`,
-                boxShadow: "0 8px 32px rgba(0,0,0,0.40)",
-                border: "1.5px solid rgba(255,255,255,0.08)",
-                // slight stagger in height for collage feel
-                marginTop: i % 2 !== 0 ? 18 : 0,
+                transition: `opacity 0.5s ease ${i * 0.08}s`,
               }}
             >
-              {/* Photo fill */}
               <img
-                src={card.photo}
+                src={COLLAGE_PHOTOS[i]}
                 alt=""
-                style={{
-                  position: "absolute", inset: 0,
-                  width: "100%", height: "100%",
-                  objectFit: "cover", objectPosition: "center",
-                  display: "block",
-                }}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
+            </div>
+          ))}
 
-              {/* Colour tint overlay — lighter at top, heavier at bottom for text */}
+          {/* Text label pieces — each is a separate floating cut-out */}
+          {TEXT_PIECES.map((t, i) => (
+            <div
+              key={`text-${i}`}
+              style={{
+                position: "absolute",
+                left: `${t.left}%`,
+                top: `${t.top}%`,
+                transform: `rotate(${t.rot}deg)`,
+                zIndex: t.z,
+                opacity: vis ? 1 : 0,
+                transition: `opacity 0.5s ease ${i * 0.08 + 0.25}s`,
+              }}
+            >
+              {/* FY year badge */}
               <div style={{
-                position: "absolute", inset: 0,
-                background: `linear-gradient(
-                  to bottom,
-                  ${card.colour}55 0%,
-                  ${card.colour}99 40%,
-                  ${card.colour}ee 100%
-                )`,
-              }} />
-
-              {/* Torn-edge top strip accent */}
-              <div style={{
-                position: "absolute", top: 0, left: 0, right: 0,
-                height: 3,
-                background: card.colour,
-              }} />
-
-              {/* Text content — sticks to bottom */}
-              <div style={{
-                position: "absolute", inset: 0,
-                display: "flex", flexDirection: "column",
-                justifyContent: "flex-end",
-                padding: "16px 16px 20px",
+                display: "inline-block",
+                background: t.colour,
+                color: "#fff",
+                fontFamily: FONT_SANS,
+                fontSize: 10, fontWeight: 800,
+                letterSpacing: "1.4px",
+                textTransform: "uppercase",
+                padding: "3px 9px",
+                borderRadius: 100,
+                marginBottom: 5,
+                boxShadow: `0 2px 10px ${t.colour}80`,
               }}>
-                {/* FY badge */}
-                <div style={{
-                  alignSelf: "flex-start",
-                  background: "rgba(255,255,255,0.15)",
-                  backdropFilter: "blur(4px)",
-                  border: "1px solid rgba(255,255,255,0.25)",
-                  borderRadius: 100,
-                  padding: "3px 10px",
-                  fontFamily: FONT_SANS,
-                  fontSize: 10, fontWeight: 800,
-                  letterSpacing: "1.5px",
-                  textTransform: "uppercase",
-                  color: "#ffffff",
-                  marginBottom: 10,
-                }}>
-                  {card.fy}
-                </div>
+                {t.fy}
+              </div>
 
-                {/* Divider */}
-                <div style={{ height: 1, background: "rgba(255,255,255,0.30)", borderRadius: 1, marginBottom: 10 }} />
-
-                {/* Bullet items */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                  {card.bullets.map((b, bi) => (
-                    <div key={bi} style={{ display: "flex", gap: 7, alignItems: "flex-start" }}>
-                      <span style={{
-                        width: 4, height: 4, borderRadius: "50%",
-                        background: "#ffffff",
-                        flexShrink: 0, marginTop: 5,
-                        opacity: 0.8,
-                      }} />
-                      <span style={{
-                        fontFamily: FONT_SANS,
-                        fontSize: 12, fontWeight: 600,
-                        color: "rgba(255,255,255,0.95)",
-                        lineHeight: 1.5,
-                      }}>
-                        {b}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+              {/* Text snippet — like a torn paper label */}
+              <div style={{
+                background: "rgba(255,255,255,0.08)",
+                backdropFilter: "blur(6px)",
+                border: "1px solid rgba(255,255,255,0.14)",
+                borderRadius: 8,
+                padding: "8px 12px",
+                maxWidth: 140,
+              }}>
+                {t.lines.map((line, li) => (
+                  <div key={li} style={{
+                    fontFamily: FONT_SANS,
+                    fontSize: 11.5, fontWeight: li === 0 ? 700 : 500,
+                    color: li === 0 ? "#ffffff" : "rgba(255,255,255,0.72)",
+                    lineHeight: 1.45,
+                  }}>
+                    {line}
+                  </div>
+                ))}
               </div>
             </div>
           ))}
+
+          {/* Connecting dashed timeline thread — purely decorative SVG */}
+          <svg
+            style={{
+              position: "absolute", inset: 0,
+              width: "100%", height: "100%",
+              zIndex: 0, pointerEvents: "none",
+              opacity: vis ? 0.25 : 0,
+              transition: "opacity 0.8s ease 0.4s",
+            }}
+            preserveAspectRatio="none"
+          >
+            <polyline
+              points="10,50 22,55 38,20 56,45 76,30"
+              fill="none"
+              stroke="rgba(255,255,255,0.6)"
+              strokeWidth="1"
+              strokeDasharray="5 5"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
         </div>
 
-        {/* Responsive styles */}
-        <style>{`
-          @media (max-width: 900px) {
-            .te-journey-grid { grid-template-columns: repeat(2, 1fr) !important; }
-            .te-journey-grid > div { margin-top: 0 !important; }
-          }
-          @media (max-width: 520px) {
-            .te-journey-grid { grid-template-columns: 1fr !important; }
-          }
-        `}</style>
-
-        <div style={{ marginTop: 32, display: "flex", justifyContent: "flex-end" }}>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <button
             onClick={() => navigate("journey")}
             style={{
               display: "inline-flex", alignItems: "center", gap: 6,
               fontFamily: FONT_SANS, fontSize: 13, fontWeight: 700,
-              background: "none", color: "rgba(255,255,255,0.75)",
+              background: "none", color: "rgba(255,255,255,0.65)",
               border: "none", cursor: "pointer", padding: 0,
             }}
           >
