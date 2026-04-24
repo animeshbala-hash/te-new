@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useAppContext } from "@/context/AppContext";
+import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { SOCIAL_POSTS } from "@/data/homeSharedData";
+import { IMPACT_STORIES } from "@/views/ImpactStoryView";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import heroImg from "@/assets/tata-projects.jpg";
 
@@ -63,15 +65,6 @@ const VIDEOS = [
   { title: "GCSO Message TVW25", duration: "2:55" },
 ];
 
-const STORIES = [
-  { title: "How a TCS Engineer Helped 200 Students Learn to Code", category: "Education", excerpt: "A six-month ProEngage project transformed digital literacy at a rural school in Maharashtra." },
-  { title: "Tree Plantation Drive: 10,000 Trees in 4 Days", category: "Environment", excerpt: "Tata Steel volunteers set a new record during TVW24 across Jamshedpur and Kalinganagar." },
-  { title: "Bridging the Skill Gap: Tata Steel's ProEngage Journey", category: "Skills", excerpt: "How skilled volunteers helped an NGO build a full HR and finance operating system." },
-  { title: "Blood Donation Camp: 500 Units in One Morning", category: "Health", excerpt: "TCS Hyderabad organised the largest single-site blood donation in TVW history." },
-  { title: "Teaching Financial Literacy to Rural Women", category: "Finance", excerpt: "Tata Capital volunteers delivered a 12-week programme reaching 800 women in Gujarat." },
-  { title: "From Mumbai to Jamshedpur: One Volunteer's Story", category: "Community", excerpt: "A personal account of cross-company volunteering and the bonds it creates." },
-];
-
 const UPCOMING_EVENTS = [
   { title: "VolCon 2026", date: "Sep 2026", location: "Mumbai", status: "Upcoming" },
   { title: "TVW26", date: "Mar 2026", location: "Pan-India", status: "Upcoming" },
@@ -89,6 +82,7 @@ export default function MediaView() {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState<typeof TABS[number]>("Impact Stories");
   const { triggerToast } = useAppContext();
+  const navigate = useAppNavigate();
 
   useEffect(() => {
     const raw = location.hash.replace(/^#/, "");
@@ -197,19 +191,24 @@ export default function MediaView() {
         {/* 5 — Impact Stories */}
         {activeTab === "Impact Stories" && (
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}>
-            {STORIES.map((s, i) => (
+            {IMPACT_STORIES.map((s) => (
               <div
-                key={i}
-                onClick={() => triggerToast("Opening story...")}
+                key={s.slug}
+                onClick={() => navigate("stories", s.slug)}
                 style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 14, overflow: "hidden", cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s" }}
                 {...cardHover}
               >
-                <div style={{ height: 140, background: "#e2e8f0" }} />
+                <div style={{ height: 140, overflow: "hidden" }}>
+                  <img src={s.heroImage} alt={s.heroImageAlt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
+                </div>
                 <div style={{ padding: 20 }}>
-                  <span style={{ display: "inline-block", background: B_TEAL, color: "#fff", fontSize: 11, fontWeight: 700, padding: "3px 10px", borderRadius: 4, marginBottom: 10 }}>{s.category}</span>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 8, lineHeight: 1.4 }}>{s.title}</div>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                    <span style={{ display: "inline-block", background: `${s.accentColor}15`, color: s.accentColor, fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 4, textTransform: "uppercase", letterSpacing: "0.5px" }}>{s.tag}</span>
+                    <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 500 }}>{s.date}</span>
+                  </div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 8, lineHeight: 1.4 }}>{s.title}</div>
                   <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6, marginBottom: 12 }}>{s.excerpt}</p>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: B_INDIGO }}>Read more →</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: B_INDIGO }}>Read story →</span>
                 </div>
               </div>
             ))}

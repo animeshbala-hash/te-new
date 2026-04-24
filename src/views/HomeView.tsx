@@ -51,9 +51,10 @@ const InkSwish = ({ className = "", style = {} }: { className?: string; style?: 
 const HERO_SLIDES = [
   {
     photo: tataAIG,
-    accent: B_YELLOW, tag: "Education", cta: "story" as const,
-    headline: "Teaching skills that change what young people think is possible",
-    sub: "Tata volunteers are in classrooms, training centres, and communities — every day.",
+    accent: B_YELLOW, tag: "Community", cta: "story" as const,
+    storySlug: "melghat-mitra",
+    headline: "Twenty-five years of showing up — and why Melghat Mitra won't stop",
+    sub: "From hunger deaths to zero malnutrition: a Tata Motors volunteer group that built trust one monsoon at a time.",
     doodles: {
       spiral: { top: "12%",    right: "36%", size: 52, opacity: 0.18 },
       dots:   { top: "60%",    right: "42%", size: 60, opacity: 0.20 },
@@ -87,9 +88,10 @@ const HERO_SLIDES = [
   },
   {
     photo: drHeroPhoto,
-    accent: B_BLUE, tag: "Disaster Response", cta: "video" as const,
-    headline: "Volunteers on-ground within 48 hours of the Kerala floods",
-    sub: "Organised, rapid, human — Tata's fastest ever humanitarian response.",
+    accent: B_BLUE, tag: "Disaster Response", cta: "story" as const,
+    storySlug: "wayanad-2024",
+    headline: "34 volunteers. 12 companies. One response in Wayanad.",
+    sub: "How the ONE Tata Disaster Response Framework mobilised across companies within hours of the 2024 Kerala landslides.",
     doodles: {
       spiral: { top: "10%",    right: "36%", size: 52, opacity: 0.16 },
       dots:   { bottom: "20%", right: "40%", size: 60, opacity: 0.18 },
@@ -316,7 +318,7 @@ const HomeView = () => {
             {/* CTA button */}
             <div style={{ marginBottom: 36 }}>
               {slide.cta === "story" ? (
-                <button onClick={() => triggerToast("Opening full story...")}
+                <button onClick={() => slide.storySlug ? navigate("stories", slide.storySlug) : triggerToast("Opening full story...")}
                   className="flex items-center gap-2 cursor-pointer cta-btn"
                   style={{
                     padding: "11px 24px", borderRadius: 10,
