@@ -1342,18 +1342,18 @@ export function JourneySection() {
       ref={ref}
       className="section-block"
       style={{
-        background: "#0b0f1a",
-        padding: "64px 48px",
+        background: "#f3f4f8",
+        padding: "56px 48px",
       }}
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         {/* Header */}
-        <div style={{ marginBottom: 28 }}>
-          <SectionEyebrow label="Our Journey" dark />
-          <SectionH2 dark>
-            A <em style={{ fontStyle: "italic", color: "#F2C94C" }}>Decade</em> of Giving Back
+        <div style={{ marginBottom: 24 }}>
+          <SectionEyebrow label="Our Journey" />
+          <SectionH2>
+            A <em style={{ fontStyle: "italic", color: B_INDIGO }}>Decade</em> of Giving Back
           </SectionH2>
-          <div style={{ width: 48, height: 1.4, background: "#F2C94C", marginTop: 10 }} />
+          <div style={{ width: 48, height: 1.4, background: B_INDIGO, marginTop: 10 }} />
         </div>
 
         {/* Grid */}
@@ -1361,24 +1361,36 @@ export function JourneySection() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(6, 1fr)",
-            gridAutoRows: "90px",
-            gap: 6,
+            gridAutoRows: "78px",
+            gap: 5,
           }}
         >
           {/* Images */}
-          {imgs.map((img, i) => (
-            <div
-              key={"img" + i}
-              style={{
-                borderRadius: 6,
-                overflow: "hidden",
-                opacity: vis ? 1 : 0,
-                transition: `opacity 0.4s ease ${i * 0.02}s`,
-              }}
-            >
-              <img src={img} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-            </div>
-          ))}
+          {imgs.map((img, i) => {
+            const spans = [
+              { col: "span 2", row: "span 2" },
+              { col: "span 1", row: "span 1" },
+              { col: "span 1", row: "span 1" },
+              { col: "span 2", row: "span 1" },
+            ];
+            const s = spans[i % spans.length];
+
+            return (
+              <div
+                key={"img" + i}
+                style={{
+                  gridColumn: s.col,
+                  gridRow: s.row,
+                  borderRadius: 5,
+                  overflow: "hidden",
+                  opacity: vis ? 1 : 0,
+                  transition: `opacity 0.35s ease ${i * 0.02}s`,
+                }}
+              >
+                <img src={img} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              </div>
+            );
+          })}
 
           {/* Milestones */}
           {milestones.map((m, i) => {
@@ -1387,7 +1399,7 @@ export function JourneySection() {
               { col: "4 / span 2", row: "2 / span 2" },
               { col: "3 / span 2", row: "4 / span 2" },
               { col: "1 / span 2", row: "5 / span 2" },
-              { col: "5 / span 2", row: "6 / span 2" }, // FY25 bottom right
+              { col: "5 / span 2", row: "6 / span 2" },
             ];
 
             const p = positions[i];
@@ -1399,26 +1411,26 @@ export function JourneySection() {
                   gridColumn: p.col,
                   gridRow: p.row,
                   background: m.colour,
-                  borderRadius: 8,
-                  padding: "12px",
+                  borderRadius: 6,
+                  padding: "10px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
                   textAlign: "center",
                   opacity: vis ? 1 : 0,
-                  transition: `opacity 0.45s ease ${i * 0.08}s`,
+                  transition: `opacity 0.4s ease ${i * 0.08}s`,
                 }}
               >
                 <div
                   style={{
                     fontFamily: FONT_SANS,
-                    fontSize: 12,
+                    fontSize: 10,
                     fontWeight: 800,
-                    letterSpacing: "1.5px",
+                    letterSpacing: "1.4px",
                     textTransform: "uppercase",
                     color: "#ffffff",
-                    marginBottom: 6,
+                    marginBottom: 4,
                   }}
                 >
                   {m.fy}
@@ -1427,8 +1439,8 @@ export function JourneySection() {
                 <div
                   style={{
                     fontFamily: FONT_SANS,
-                    fontSize: 14,
-                    lineHeight: 1.5,
+                    fontSize: 12.5,
+                    lineHeight: 1.4,
                     color: "#ffffff",
                     whiteSpace: "pre-line",
                     fontWeight: 600,
@@ -1442,7 +1454,7 @@ export function JourneySection() {
         </div>
 
         {/* CTA */}
-        <div style={{ marginTop: 16, display: "flex", justifyContent: "flex-end" }}>
+        <div style={{ marginTop: 14, display: "flex", justifyContent: "flex-end" }}>
           <button
             onClick={() => navigate("journey")}
             style={{
@@ -1450,7 +1462,7 @@ export function JourneySection() {
               fontWeight: 700,
               background: "none",
               border: "none",
-              color: "rgba(255,255,255,0.7)",
+              color: "#475569",
               cursor: "pointer",
             }}
           >
