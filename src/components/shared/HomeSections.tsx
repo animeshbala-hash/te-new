@@ -1285,6 +1285,7 @@ export function NumbersSection() {
     </section>
   );
 }
+// JourneySection — collage style, image-heavy with embedded milestone tiles
 
 export function JourneySection() {
   const navigate = useAppNavigate();
@@ -1301,41 +1302,44 @@ export function JourneySection() {
           obs.disconnect();
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.08 },
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
   const milestones = [
-    {
-      fy: "FY 2015",
-      colour: "#333399",
-      text: "Tata Engage launched\nTVW & ProEngage introduced",
-    },
-    {
-      fy: "FY 2017",
-      colour: "#1E6BB8",
-      text: "Group volunteering guidelines launched",
-    },
-    {
-      fy: "FY 2019",
-      colour: "#00A896",
-      text: "Best Global Volunteer Program — IAVE",
-    },
-    {
-      fy: "FY 2022",
-      colour: "#C14D00",
-      text: "1.34M hours clocked\nPhygital volunteering pivot",
-    },
-    {
-      fy: "FY 2025",
-      colour: "#E8401C",
-      text: "10.87M hours — highest ever",
-    },
+    { fy: "FY 2015", colour: "#333399", text: "Launched Tata Engage — TVW & ProEngage" },
+    { fy: "FY 2017", colour: "#1E6BB8", text: "Group volunteering guidelines launched" },
+    { fy: "FY 2019", colour: "#00A896", text: "Best Global Volunteer Program — IAVE" },
+    { fy: "FY 2022", colour: "#C14D00", text: "1.34M hours clocked\nPhygital volunteering pivot" },
+    { fy: "FY 2025", colour: "#E8401C", text: "10.87M hours — highest ever" },
   ];
 
-  const bottomImages = [tataElxsiImg, airIndia, tataCommunications, drPhoto, tataMotors3];
+  const tiles = [
+    { type: "img", src: tataElxsiImg, col: 2, row: 2 },
+    { type: "text", idx: 0, col: 1, row: 1 },
+    { type: "img", src: airIndia, col: 2, row: 1 },
+    { type: "img", src: tataCommunications, col: 1, row: 1 },
+    { type: "img", src: tataProjects, col: 1, row: 1 },
+    { type: "text", idx: 1, col: 2, row: 1 },
+    { type: "img", src: tataBball, col: 1, row: 1 },
+
+    { type: "img", src: drPhoto, col: 1, row: 2 },
+    { type: "img", src: tataMotors3, col: 2, row: 1 },
+    { type: "text", idx: 2, col: 1, row: 1 },
+
+    { type: "img", src: happyEyes, col: 2, row: 2 },
+    { type: "img", src: tataAig, col: 1, row: 1 },
+    { type: "img", src: tataInfinit, col: 1, row: 1 },
+    { type: "text", idx: 3, col: 2, row: 1 },
+
+    { type: "img", src: drPhoto2, col: 1, row: 1 },
+    { type: "img", src: tataComm2, col: 1, row: 1 },
+    { type: "img", src: tataMotors1, col: 1, row: 1 },
+    { type: "img", src: trent1, col: 1, row: 1 },
+    { type: "text", idx: 4, col: 2, row: 1 },
+  ];
 
   return (
     <section
@@ -1351,80 +1355,95 @@ export function JourneySection() {
         <div style={{ marginBottom: 28 }}>
           <SectionEyebrow label="Our Journey" />
           <SectionH2>
-            Built <em style={{ fontStyle: "italic", color: B_INDIGO }}>over time</em>, shaped by people
+            A <em style={{ fontStyle: "italic", color: B_INDIGO }}>Decade</em> of Giving Back
           </SectionH2>
           <div style={{ width: 48, height: 1.4, background: B_INDIGO, marginTop: 10 }} />
         </div>
 
-        {/* Timeline */}
+        {/* Collage Grid */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
-            gap: 12,
-            marginBottom: 20,
-          }}
-        >
-          {milestones.map((m, i) => (
-            <div
-              key={i}
-              style={{
-                opacity: vis ? 1 : 0,
-                transform: vis ? "translateY(0)" : "translateY(12px)",
-                transition: `all 0.4s ease ${i * 0.06}s`,
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 10,
-                  fontWeight: 800,
-                  letterSpacing: "1.4px",
-                  textTransform: "uppercase",
-                  color: m.colour,
-                  marginBottom: 6,
-                }}
-              >
-                {m.fy}
-              </div>
-
-              <div
-                style={{
-                  fontSize: 12,
-                  lineHeight: 1.45,
-                  color: "#1f2937",
-                  whiteSpace: "pre-line",
-                  fontWeight: 600,
-                }}
-              >
-                {m.text}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom image strip */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
+            gridTemplateColumns: "repeat(6, 1fr)",
+            gridAutoRows: "90px",
             gap: 6,
-            borderRadius: 10,
-            overflow: "hidden",
           }}
         >
-          {bottomImages.map((img, i) => (
-            <div key={i} style={{ height: 110 }}>
-              <img
-                src={img}
-                alt=""
+          {tiles.map((t, i) => {
+            const delay = i * 0.03;
+
+            if (t.type === "img") {
+              return (
+                <div
+                  key={i}
+                  style={{
+                    gridColumn: `span ${t.col}`,
+                    gridRow: `span ${t.row}`,
+                    overflow: "hidden",
+                    borderRadius: 6,
+                    opacity: vis ? 1 : 0,
+                    transform: vis ? "scale(1)" : "scale(0.97)",
+                    transition: `all 0.4s ease ${delay}s`,
+                  }}
+                >
+                  <img
+                    src={t.src}
+                    alt=""
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                </div>
+              );
+            }
+
+            const m = milestones[t.idx];
+            return (
+              <div
+                key={i}
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
+                  gridColumn: `span ${t.col}`,
+                  gridRow: `span ${t.row}`,
+                  background: "#ffffff",
+                  borderRadius: 6,
+                  padding: "10px 12px",
+                  border: `1px solid ${m.colour}22`,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  opacity: vis ? 1 : 0,
+                  transition: `opacity 0.45s ease ${delay + 0.1}s`,
                 }}
-              />
-            </div>
-          ))}
+              >
+                <div
+                  style={{
+                    fontSize: 10,
+                    fontWeight: 800,
+                    letterSpacing: "1.4px",
+                    textTransform: "uppercase",
+                    color: m.colour,
+                    marginBottom: 4,
+                  }}
+                >
+                  {m.fy}
+                </div>
+
+                <div
+                  style={{
+                    fontSize: 12,
+                    lineHeight: 1.4,
+                    color: "#1f2937",
+                    whiteSpace: "pre-line",
+                    fontWeight: 600,
+                  }}
+                >
+                  {m.text}
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* CTA */}
@@ -1447,6 +1466,7 @@ export function JourneySection() {
     </section>
   );
 }
+
 // ─────────────────────────────────────────────────────────────────────────────
 // TICKER BAR
 // ─────────────────────────────────────────────────────────────────────────────
