@@ -166,22 +166,34 @@ export default function MediaView() {
 
         {/* 4 — Videos */}
         {activeTab === "Videos" && (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+          <div style={{ columns: 3, columnGap: 16 }}>
             {VIDEOS.map((v, i) => (
               <div
                 key={i}
                 onClick={() => triggerToast("Opening video player...")}
-                style={{ background: ACCENT_NAVY, borderRadius: 12, overflow: "hidden", cursor: "pointer", position: "relative", transition: "transform 0.2s, box-shadow 0.2s" }}
-                {...cardHover}
+                style={{
+                  breakInside: "avoid", marginBottom: 16,
+                  borderRadius: 12, overflow: "hidden", cursor: "pointer",
+                  position: "relative", background: ACCENT_NAVY,
+                  transition: "transform 0.2s, box-shadow 0.2s",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 10px 28px rgba(0,0,0,0.18)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "none"; }}
               >
-                <div style={{ height: 180, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <div style={{ width: 56, height: 56, borderRadius: "50%", background: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <span style={{ fontSize: 24, color: "#fff", marginLeft: 4 }}>▶</span>
+                {/* Thumbnail area — height varies by index for rhythm */}
+                <div style={{
+                  height: [200, 150, 240, 170, 220, 160][i % 6],
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  background: `linear-gradient(135deg, ${ACCENT_NAVY} 0%, #1a3560 100%)`,
+                  position: "relative",
+                }}>
+                  <div style={{ width: 48, height: 48, borderRadius: "50%", background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span style={{ fontSize: 18, color: "#fff", marginLeft: 3 }}>▶</span>
                   </div>
+                  <span style={{ position: "absolute", bottom: 10, right: 12, background: "rgba(0,0,0,0.55)", color: "#fff", fontSize: 11, fontWeight: 700, padding: "3px 8px", borderRadius: 4 }}>{v.duration}</span>
                 </div>
-                <span style={{ position: "absolute", top: 12, right: 12, background: "rgba(0,0,0,0.6)", color: "#fff", fontSize: 11, fontWeight: 600, padding: "3px 8px", borderRadius: 4 }}>{v.duration}</span>
-                <div style={{ padding: "12px 16px", background: "#fff" }}>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY }}>{v.title}</div>
+                <div style={{ padding: "14px 16px 16px", background: "#fff" }}>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT_NAVY, lineHeight: 1.4 }}>{v.title}</div>
                 </div>
               </div>
             ))}
@@ -190,25 +202,41 @@ export default function MediaView() {
 
         {/* 5 — Impact Stories */}
         {activeTab === "Impact Stories" && (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}>
+          <div style={{ columns: 2, columnGap: 20 }}>
             {IMPACT_STORIES.map((s) => (
               <div
                 key={s.slug}
                 onClick={() => navigate("stories", s.slug)}
-                style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 14, overflow: "hidden", cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s" }}
-                {...cardHover}
+                style={{
+                  breakInside: "avoid", marginBottom: 20,
+                  background: "#fff", border: "1px solid #e8e8f0",
+                  borderRadius: 14, overflow: "hidden", cursor: "pointer",
+                  transition: "transform 0.2s, box-shadow 0.2s",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
               >
-                <div style={{ height: 140, overflow: "hidden" }}>
+                <div style={{ height: 180, overflow: "hidden" }}>
                   <img src={s.heroImage} alt={s.heroImageAlt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
                 </div>
-                <div style={{ padding: 20 }}>
+                <div style={{ padding: "20px 22px 22px" }}>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
                     <span style={{ display: "inline-block", background: `${s.accentColor}15`, color: s.accentColor, fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 4, textTransform: "uppercase", letterSpacing: "0.5px" }}>{s.tag}</span>
                     <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 500 }}>{s.date}</span>
                   </div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 8, lineHeight: 1.4 }}>{s.title}</div>
-                  <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6, marginBottom: 12 }}>{s.excerpt}</p>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: B_INDIGO }}>Read story →</span>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 10, lineHeight: 1.4 }}>{s.title}</div>
+                  <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7, marginBottom: 16 }}>{s.excerpt}</p>
+                  {s.stats && (
+                    <div style={{ display: "flex", gap: 12, marginBottom: 16, flexWrap: "wrap" }}>
+                      {s.stats.slice(0, 3).map((st) => (
+                        <div key={st.label} style={{ background: "#f7f8fc", borderRadius: 8, padding: "6px 12px", textAlign: "center" }}>
+                          <div style={{ fontSize: 15, fontWeight: 900, color: s.accentColor, lineHeight: 1 }}>{st.num}</div>
+                          <div style={{ fontSize: 10, color: "#94a3b8", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.5px", marginTop: 2 }}>{st.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <span style={{ fontSize: 13, fontWeight: 700, color: B_INDIGO }}>Read story →</span>
                 </div>
               </div>
             ))}
