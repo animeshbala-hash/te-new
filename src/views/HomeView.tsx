@@ -306,7 +306,7 @@ const HomeView = () => {
 
             <h1 style={{
               fontFamily: "'DM Sans', ui-sans-serif, sans-serif",
-              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontSize: "clamp(2.4rem, 5vw, 3.8rem)",
               lineHeight: 1.12, letterSpacing: "-0.5px",
               color: "white", margin: "0 0 10px", fontWeight: 400,
             }}>
@@ -315,14 +315,13 @@ const HomeView = () => {
 
             {"titleSub" in slide && slide.titleSub && (
               <p style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                fontStyle: "italic",
+                fontFamily: "'DM Sans', ui-sans-serif, sans-serif",
                 fontSize: "clamp(1rem, 1.6vw, 1.25rem)",
                 color: "rgba(255,255,255,0.82)",
-                lineHeight: 1.4,
+                lineHeight: 1.5,
                 margin: "0 0 32px",
                 maxWidth: 460,
-                fontWeight: 400,
+                fontWeight: 300,
               }}>
                 {slide.titleSub}
               </p>
