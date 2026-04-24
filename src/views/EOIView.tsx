@@ -56,7 +56,7 @@ export default function EOIView() {
       <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", display: "flex", alignItems: "center", paddingTop: 64 }}>
         <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1800"
           alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} referrerPolicy="no-referrer" />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(8,12,22,0.82) 0%, rgba(8,12,22,0.65) 40%, rgba(8,12,22,0.18) 75%, rgba(8,12,22,0.10) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}e8 0%, ${COLOUR}cc 38%, ${COLOUR}aa 58%, ${COLOUR}77 78%, ${COLOUR}44 100%)` }} />
 
         <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
           <div style={{ maxWidth: 600 }}>

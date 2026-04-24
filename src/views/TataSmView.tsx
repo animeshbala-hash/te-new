@@ -68,7 +68,7 @@ export default function TataSmView() {
       <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", display: "flex", alignItems: "center", paddingTop: 64 }}>
         <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=1800"
           alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} referrerPolicy="no-referrer" />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(8,12,22,0.82) 0%, rgba(8,12,22,0.65) 40%, rgba(8,12,22,0.18) 75%, rgba(8,12,22,0.10) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}e8 0%, ${COLOUR}cc 38%, ${COLOUR}aa 58%, ${COLOUR}77 78%, ${COLOUR}44 100%)` }} />
 
         <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
           <div style={{ maxWidth: 560 }}>
@@ -156,7 +156,7 @@ export default function TataSmView() {
       <section id="tsm-2024" style={{ position: "relative", overflow: "hidden", minHeight: 480 }}>
         <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=1800" alt=""
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} referrerPolicy="no-referrer" />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(5,5,20,0.82) 0%, rgba(5,5,20,0.75) 50%, rgba(5,5,20,0.70) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}e8 0%, ${COLOUR}cc 38%, ${COLOUR}aa 58%, ${COLOUR}77 78%, ${COLOUR}44 100%)` }} />
         <div style={{ position: "relative", zIndex: 1, padding: "88px 56px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 10 }}>2024 Edition</p>
