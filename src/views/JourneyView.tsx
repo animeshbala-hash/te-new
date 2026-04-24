@@ -472,6 +472,13 @@ export default function JourneyView() {
             background: "linear-gradient(to right, rgba(8,12,22,0.82) 0%, rgba(8,12,22,0.65) 40%, rgba(8,12,22,0.18) 75%, rgba(8,12,22,0.10) 100%)",
           }}
         />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to right, rgba(20,58,120,0.50) 0%, rgba(20,58,120,0.22) 50%, transparent 100%)",
+          }}
+        />
 
         <div
           style={{
