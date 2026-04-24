@@ -534,7 +534,7 @@ export function ProgrammeSpotlight() {
                           color: "#ffffff",
                         }}
                       >
-                        Learn more <ArrowRight size={13} />
+                        Learn More <ArrowRight size={13} />
                       </div>
                     </div>
                   </div>
@@ -1474,7 +1474,7 @@ export function JourneySection() {
             onClick={() => navigate("journey")}
             style={{ fontSize: 12, fontWeight: 700, background: "none", border: "none", color: "#475569", cursor: "pointer", display: "flex", alignItems: "center", gap: 4 }}
           >
-            View full journey <ArrowRight size={12} />
+            Learn More <ArrowRight size={12} />
           </button>
         </div>
       </div>
