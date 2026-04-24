@@ -1304,11 +1304,11 @@ export function JourneySection() {
   }, []);
 
   const milestones = [
-    { fy: "FY 2015", colour: "#333399", text: "Launched Tata Engage\\nTVW & ProEngage" },
-    { fy: "FY 2017", colour: "#1E6BB8", text: "Group volunteering\\nguidelines launched" },
-    { fy: "FY 2019", colour: "#00A896", text: "Best Global Volunteer\\nProgram — IAVE" },
-    { fy: "FY 2022", colour: "#C14D00", text: "1.34M hours clocked\\nPhygital pivot" },
-    { fy: "FY 2025", colour: "#E8401C", text: "10.87M hours\\nhighest ever" },
+    { fy: "FY 2015", colour: "#333399", text: "Launched Tata Engage\nTVW & ProEngage" },
+    { fy: "FY 2017", colour: "#1E6BB8", text: "Group volunteering\nguidelines launched" },
+    { fy: "FY 2019", colour: "#00A896", text: "Best Global Volunteer\nProgram — IAVE" },
+    { fy: "FY 2022", colour: "#C14D00", text: "1.34M hours clocked\nPhygital pivot" },
+    { fy: "FY 2025", colour: "#E8401C", text: "10.87M hours\nhighest ever" },
   ];
 
   const imgs = [
@@ -1329,6 +1329,7 @@ export function JourneySection() {
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
 
+        {/* Header */}
         <div style={{ marginBottom: 28 }}>
           <SectionEyebrow label="Our Journey" dark />
           <SectionH2 dark>
@@ -1337,6 +1338,7 @@ export function JourneySection() {
           <div style={{ width: 48, height: 1.4, background: "#F2C94C", marginTop: 10 }} />
         </div>
 
+        {/* Grid */}
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(6, 1fr)",
@@ -1344,8 +1346,10 @@ export function JourneySection() {
           gap: 6,
         }}>
 
+          {/* Images */}
           {imgs.map((img, i) => (
-            <div key={"img"+i}
+            <div
+              key={"img" + i}
               style={{
                 borderRadius: 6,
                 overflow: "hidden",
@@ -1353,23 +1357,29 @@ export function JourneySection() {
                 transition: `opacity 0.4s ease ${i * 0.02}s`,
               }}
             >
-              <img src={img} style={{ width:"100%", height:"100%", objectFit:"cover" }} />
+              <img
+                src={img}
+                alt=""
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
             </div>
           ))}
 
+          {/* Milestones */}
           {milestones.map((m, i) => {
             const positions = [
               { col: "2 / span 2", row: "1 / span 2" },
               { col: "4 / span 2", row: "2 / span 2" },
               { col: "3 / span 2", row: "4 / span 2" },
               { col: "1 / span 2", row: "5 / span 2" },
-              { col: "5 / span 2", row: "6 / span 2" },
+              { col: "5 / span 2", row: "6 / span 2" }, // FY25 bottom right
             ];
 
             const p = positions[i];
 
             return (
-              <div key={"text"+i}
+              <div
+                key={"text" + i}
                 style={{
                   gridColumn: p.col,
                   gridRow: p.row,
@@ -1412,6 +1422,7 @@ export function JourneySection() {
           })}
         </div>
 
+        {/* CTA */}
         <div style={{ marginTop: 16, display: "flex", justifyContent: "flex-end" }}>
           <button
             onClick={() => navigate("journey")}
@@ -1431,13 +1442,6 @@ export function JourneySection() {
     </section>
   );
 }
-"""
-
-path = "/mnt/data/JourneySection_Final_v2.tsx"
-with open(path, "w") as f:
-    f.write(content)
-
-path
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TICKER BAR
