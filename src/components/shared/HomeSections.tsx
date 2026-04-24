@@ -1330,8 +1330,8 @@ export function JourneySection() {
     { fy: "FY 2015", colour: "#135EA9", text: "Launched Tata Engage\nTVW & ProEngage" },
     { fy: "FY 2017", colour: "#307FE2", text: "Group volunteering\nguidelines launched" },
     { fy: "FY 2019", colour: "#00A896", text: "Best Global Volunteer\nProgram — IAVE" },
-    { fy: "FY 2022", colour: "#C14D00", text: "1.34M hours clocked\nPhygital pivot" },
-    { fy: "FY 2025", colour: "#E8401C", text: "10.87M hours\nhighest ever" },
+    { fy: "FY 2022", colour: "#803998", text: "1.34M hours clocked\nPhygital pivot" },
+    { fy: "FY 2025", colour: "#F4838A", text: "10.87M hours\nhighest ever" },
   ];
 
   // All available images — will be distributed to fill every gap
