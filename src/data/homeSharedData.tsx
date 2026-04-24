@@ -76,17 +76,17 @@ export const JOURNEY_MILESTONES = [
 ];
 
 export const FUN_FACTS = [
-  "Tata volunteers have collectively logged over 2.5 million hours of service since 2007.",
-  "1 in 4 ProEngage projects directly benefits children's education in rural India.",
-  "85% of volunteers say their professional skills grew through ProEngage.",
-  "Tata companies have planted 1.2 million trees through volunteering drives.",
-  "NGOs report 3× faster project delivery when paired with skilled Tata volunteers.",
+  "The Tata Group is a global leader in corporate volunteering.",
+  "Tata Engage has been uniting Tata volunteers across the globe since 2014.",
+  "Tata Engage was recognised as the \"Best Global Volunteer Program\" by IAVE in 2018.",
+  "10.87 million volunteering hours logged by Tata volunteers.",
+  "2.8 lakh Tata volunteers have contributed through Tata Engage.",
 ];
 
 export const HERO_STATS = [
-  { num: "50,000+", label: "Active Volunteers", sub: "Across 100+ Tata companies", colour: "#1A4731", pastel: "#1A4731" },
-  { num: "85",      label: "NGO Partners",       sub: "Across 15 states in India",  colour: "#003580", pastel: "#003580" },
-  { num: "2.5M+",   label: "Volunteer Hours",    sub: "Logged since 2007",           colour: "#C8850A", pastel: "#C8850A" },
+  { num: "10.87M",  label: "Volunteering Hours",          sub: "And counting",                    colour: "#1A4731", pastel: "#1A4731" },
+  { num: "2.8L",    label: "Tata Volunteers",             sub: "Across the Tata Group",            colour: "#003580", pastel: "#003580" },
+  { num: "10.67",   label: "Hours per Employee",          sub: "Average contribution",             colour: "#C8850A", pastel: "#C8850A" },
 ];
 
 export interface SocialPost {

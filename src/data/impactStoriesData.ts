@@ -1,6 +1,19 @@
-import tataAIG from "@/assets/Tata_AIG_2.jpg";
-import tataMotors1 from "@/assets/Tata_Motors_1.jpg";
-import tataComms from "@/assets/tata-communications-1.jpg";
+// Story hero banners
+import wayanadHero  from "@/assets/story_photos/Impact Story 1 - Wayanad/IMG-20240929-WA0025.jpg";
+import melghatHero  from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/Photo12.jpg";
+import tataComms    from "@/assets/tata-communications-1.jpg"; // Story 3 — awaiting photos
+
+// Wayanad body photos (4 slots)
+import wayanadP1 from "@/assets/story_photos/Impact Story 1 - Wayanad/IMG-20241001-WA0085.jpg";
+import wayanadP2 from "@/assets/story_photos/Impact Story 1 - Wayanad/IMG-20241002-WA0021.jpg";
+import wayanadP3 from "@/assets/story_photos/Impact Story 1 - Wayanad/IMG20240923114707.jpg";
+import wayanadP4 from "@/assets/story_photos/Impact Story 1 - Wayanad/IMG20240923125913.jpg";
+
+// Melghat body photos (4 slots)
+import melghatP1 from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/0023.jpg";
+import melghatP2 from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/DSC04868.jpg";
+import melghatP3 from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/IMG_20151128_144750.jpg";
+import melghatP4 from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/DSC05870.JPG";
 
 const ACCENT_NAVY = "#0D1B3E";
 const B_INDIGO    = "#333399";
@@ -24,6 +37,11 @@ export interface StorySection {
   imageAfter?: { caption: string; height?: number };
 }
 
+export interface StoryPhoto {
+  src: string;
+  caption: string;
+}
+
 export interface ImpactStory {
   slug: string;
   title: string;
@@ -33,6 +51,8 @@ export interface ImpactStory {
   accentColor: string;
   heroImage: string;
   heroImageAlt: string;
+  /** 4 body photos with captions, in order */
+  photos: StoryPhoto[];
   date: string;
   excerpt: string;
   openingPara: string;
@@ -53,8 +73,14 @@ export const IMPACT_STORIES: ImpactStory[] = [
     eyebrow: "Disaster Response",
     tag: "Disaster Response",
     accentColor: B_RED,
-    heroImage: tataAIG,
+    heroImage: wayanadHero,
     heroImageAlt: "Tata volunteers on the ground in Wayanad",
+    photos: [
+      { src: wayanadP1, caption: "Relief operations at the Meppadi camp" },
+      { src: wayanadP2, caption: "Doorstep delivery of family kits to tribal communities" },
+      { src: wayanadP3, caption: "Needs assessment with affected families" },
+      { src: wayanadP4, caption: "Volunteers coordinate with government response teams" },
+    ],
     date: "July–August 2024",
     excerpt: "Volunteer voices from the ONE Tata Wayanad Landslide Response 2024 — 34 volunteers, 12 Tata companies, 1,000 tribal families, 45 days.",
     openingPara:
@@ -123,8 +149,14 @@ export const IMPACT_STORIES: ImpactStory[] = [
     eyebrow: "Long-form Volunteering",
     tag: "Community",
     accentColor: B_INDIGO,
-    heroImage: tataMotors1,
+    heroImage: melghatHero,
     heroImageAlt: "Tata Motors volunteers in Melghat",
+    photos: [
+      { src: melghatP1, caption: "Boko Mitras with the tribal youth of Melghat" },
+      { src: melghatP2, caption: "Health outreach in the monsoon villages" },
+      { src: melghatP3, caption: "Community engagement during the annual visit" },
+      { src: melghatP4, caption: "Grain bank and livelihood support in action" },
+    ],
     date: "2000–Present",
     excerpt: "When service becomes stewardship — over two decades, a group of Tata Motors employees has transformed 50 villages in Melghat, with 40,000 volunteer hours and zero hunger deaths.",
     openingPara:
@@ -240,23 +272,26 @@ export const IMPACT_STORIES: ImpactStory[] = [
     accentColor: B_INDIGO,
     heroImage: tataComms,
     heroImageAlt: "Tata Communications leaders in the Garo Hills, Meghalaya",
+    photos: [
+      { src: "", caption: "Leadership That Listens, Learns, and Acts" },
+      { src: "", caption: "Lighting Homes. Powering Possibilities." },
+      { src: "", caption: "Cleaner Kitchens, Healthier Futures" },
+      { src: "", caption: "Leading with purpose in Mandal Nokat" },
+    ],
     date: "2024",
     excerpt: "11 Tata Communications leaders stepped into Meghalaya's Garo Hills — installing solar power and clean cookstoves under the Climate Resilient Village Programme.",
     openingPara:
       "True leadership is defined not in boardrooms, but in the choices leaders make on the ground. Living this belief, senior leaders from Tata Communications led from the front by stepping into the remote villages of Meghalaya's Garo Hills through Beyond the Boardroom — a first-of-its-kind immersive experience under the company's flagship Climate Resilient Village Programme. Over two days, these leaders moved beyond strategy and oversight to engage directly with communities, translating vision into action and purpose into tangible change.",
     sections: [
       {
-        imageAfter: { caption: "Leadership That Listens, Learns, and Acts", height: 320 },
         body: "Set in the villages of Buripara Akilang and Mandal Nokat in the West Garo Hills district, Beyond the Boardroom offered Tata Communications' leaders an unfiltered window into rural realities. Immersed in everyday village life, leaders witnessed first-hand the challenges of limited infrastructure, energy access, and health risks — while also experiencing the community's resilience, warmth, and cultural richness. These moments of connection deepened empathy and reinforced the role of leadership in driving inclusive and sustainable development.",
       },
       {
         heading: "Lighting homes. Powering possibilities.",
-        imageAfter: { caption: "Lighting Homes. Powering Possibilities.", height: 280 },
         body: "In Buripara Akilang, Tata Communications leaders and volunteers conducted on-ground energy assessments and personally installed solar panels, batteries, and electrical connections. Each of the 13 households received six solar lights and a table fan, while four solar streetlights were installed along key village pathways — improving safety and mobility after dusk.\n\nFor families accustomed to darkness once the sun set, access to solar power brought dignity, security, and new possibilities — extending productive hours and transforming everyday life through clean, reliable energy.",
       },
       {
         heading: "Cleaner kitchens, healthier futures",
-        imageAfter: { caption: "Cleaner Kitchens, Healthier Futures", height: 280 },
         body: "The journey continued in Mandal Nokat, where the focus shifted to clean cooking solutions. Traditional chulhas were replaced with energy-efficient cookstoves designed to reduce smoke emissions and lower reliance on firewood. With improved combustion efficiency and sturdy construction, the new cookstoves are creating healthier kitchens, reducing respiratory risks, and minimizing environmental impact.",
       },
       {
