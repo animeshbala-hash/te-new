@@ -14,6 +14,22 @@ const DIAG: React.CSSProperties = {
   pointerEvents: "none",
 };
 
+const ImagePlaceholder = ({ height }: { height: number }) => (
+  <div style={{
+    width: "100%", height, borderRadius: 12,
+    background: "linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)",
+    display: "flex", alignItems: "center", justifyContent: "center",
+    margin: "8px 0 32px", overflow: "hidden",
+  }}>
+    <div style={{ textAlign: "center" }}>
+      <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 10px" }}>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.32)" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <span style={{ fontSize: 12, color: "rgba(0,0,0,0.32)", fontWeight: 600 }}>Image placeholder</span>
+    </div>
+  </div>
+);
+
 export default function ImpactStoryView() {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id") ?? undefined;
