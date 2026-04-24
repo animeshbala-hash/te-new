@@ -14,6 +14,22 @@ const DIAG: React.CSSProperties = {
   pointerEvents: "none",
 };
 
+const ImagePlaceholder = ({ height }: { height: number }) => (
+  <div style={{
+    width: "100%", height, borderRadius: 12,
+    background: "linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)",
+    display: "flex", alignItems: "center", justifyContent: "center",
+    margin: "8px 0 32px", overflow: "hidden",
+  }}>
+    <div style={{ textAlign: "center" }}>
+      <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 10px" }}>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.32)" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <span style={{ fontSize: 12, color: "rgba(0,0,0,0.32)", fontWeight: 600 }}>Image placeholder</span>
+    </div>
+  </div>
+);
+
 export default function ImpactStoryView() {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id") ?? undefined;
@@ -104,65 +120,94 @@ export default function ImpactStoryView() {
       <div id="story-body" style={{ background: "#fff" }}>
         <div style={{ maxWidth: 740, margin: "0 auto", padding: "64px 32px 56px" }}>
 
-          {/* Image placeholder */}
-          <div style={{
-            width: "100%", height: 380, borderRadius: 14,
-            background: "linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            marginBottom: 48, overflow: "hidden",
-          }}>
-            <div style={{ textAlign: "center" }}>
-              <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 10px" }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.28)" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              </div>
-              <span style={{ fontSize: 12, color: "rgba(0,0,0,0.28)", fontWeight: 600 }}>Image — swap before publish</span>
-            </div>
-          </div>
-
-          {/* Opening paragraph — Playfair italic with accent left border */}
+          {/* i. Opening paragraph — Playfair italic, no border, IS the cursive opening */}
           <p style={{
             fontFamily: "'Playfair Display', Georgia, serif",
-            fontSize: 19,
+            fontSize: 20,
             fontStyle: "italic",
             color: ACCENT_NAVY,
             lineHeight: 1.78,
-            margin: "0 0 32px",
-            borderLeft: `3px solid ${accent}`,
-            paddingLeft: 20,
+            margin: "0 0 36px",
           }}>
             {story.openingPara}
           </p>
 
-          {/* Body sections */}
-          {story.sections.map((sec, i) => (
-            <p key={i} style={{ fontFamily: FONT, fontSize: 16, color: "#374151", lineHeight: 1.85, margin: "0 0 24px", fontWeight: 400 }}>
+          {/* ii. First body section */}
+          {story.sections[0] && (
+            <p style={{ fontFamily: FONT, fontSize: 16, color: "#374151", lineHeight: 1.85, margin: "0 0 24px", fontWeight: 400 }}>
+              {story.sections[0].body}
+            </p>
+          )}
+
+          {/* iii. Image slot 1 */}
+          <ImagePlaceholder height={320} />
+
+          {/* iv. Sections[1], Sections[2] */}
+          {[1, 2].map((idx) =>
+            story.sections[idx] ? (
+              <p key={idx} style={{ fontFamily: FONT, fontSize: 16, color: "#374151", lineHeight: 1.85, margin: "0 0 24px", fontWeight: 400 }}>
+                {story.sections[idx].body}
+              </p>
+            ) : null,
+          )}
+
+          {/* v. Image slot 2 */}
+          <ImagePlaceholder height={260} />
+
+          {/* vi. Remaining sections (from index 3 onwards) */}
+          {story.sections.slice(3).map((sec, i) => (
+            <p key={`r-${i}`} style={{ fontFamily: FONT, fontSize: 16, color: "#374151", lineHeight: 1.85, margin: "0 0 24px", fontWeight: 400 }}>
               {sec.body}
             </p>
           ))}
+
+          {/* vii. Image slot 3 */}
+          <ImagePlaceholder height={300} />
         </div>
       </div>
 
-      {/* ── Quotes ────────────────────────────────────────────────────────── */}
+      {/* ── Quotes — styled like About founder card ───────────────────────── */}
       {story.quotes && story.quotes.length > 0 && (
-        <div id="story-quotes" style={{ background: ACCENT_NAVY, padding: "64px 32px", position: "relative" }}>
-          <div style={DIAG} />
-          <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
-
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: 8 }}>
+        <div id="story-quotes" style={{ background: "#f7f8fc", padding: "56px 32px" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "#94a3b8", marginBottom: 8 }}>
               Voices from the Field
             </p>
-            <div style={{ width: 36, height: 2, borderRadius: 2, background: accent, marginBottom: 40 }} />
+            <div style={{ width: 36, height: 2, borderRadius: 2, background: accent, marginBottom: 28 }} />
 
-            <div style={{ display: "grid", gridTemplateColumns: story.quotes.length === 1 ? "1fr" : "1fr 1fr", gap: 24 }}>
+            <div style={{ display: "grid", gridTemplateColumns: story.quotes.length === 1 ? "1fr" : "1fr 1fr", gap: 20 }}>
               {story.quotes.map((q, i) => (
-                <div key={i} style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: "28px 28px 24px", position: "relative" }}>
-                  <div style={{ position: "absolute", top: 12, left: 20, fontFamily: "Georgia, serif", fontSize: 64, color: accent, opacity: 0.18, lineHeight: 1, userSelect: "none", pointerEvents: "none" }}>"</div>
-                  <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 15, fontStyle: "italic", color: "rgba(255,255,255,0.88)", lineHeight: 1.75, margin: "0 0 20px", position: "relative", zIndex: 1 }}>
-                    {q.text}
-                  </p>
-                  <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 14 }}>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>{q.attribution}</div>
-                    {q.role && <div style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>{q.role}</div>}
+                <div key={i} style={{
+                  background: ACCENT_NAVY,
+                  borderRadius: 20,
+                  padding: "40px",
+                  position: "relative",
+                  overflow: "hidden",
+                }}>
+                  <div style={DIAG} />
+                  <div style={{ position: "relative", zIndex: 1 }}>
+                    <div style={{
+                      fontFamily: "Georgia, serif",
+                      fontSize: 56,
+                      lineHeight: 0.7,
+                      color: "rgba(255,255,255,0.15)",
+                      marginBottom: 18,
+                      userSelect: "none",
+                    }}>"</div>
+                    <p style={{
+                      fontFamily: "'Playfair Display', Georgia, serif",
+                      fontSize: 19,
+                      fontStyle: "italic",
+                      color: "rgba(255,255,255,0.92)",
+                      lineHeight: 1.75,
+                      margin: "0 0 28px",
+                    }}>
+                      {q.text}
+                    </p>
+                    <div style={{ borderTop: "1px solid rgba(255,255,255,0.18)", paddingTop: 18 }}>
+                      <div style={{ fontSize: 15, fontWeight: 800, color: "#fff" }}>{q.attribution}</div>
+                      {q.role && <div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 4 }}>{q.role}</div>}
+                    </div>
                   </div>
                 </div>
               ))}
