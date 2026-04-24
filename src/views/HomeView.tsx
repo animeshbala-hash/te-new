@@ -13,7 +13,7 @@ import {
   B_INDIGO, B_YELLOW, B_TEAL, B_BLUE, B_TICKER, ACCENT_NAVY,
 } from "@/data/homeSharedData";
 import { IMPACT_STORIES } from "@/data/impactStoriesData";
-import beyondHero from "@/assets/tata-communications-1.jpg"; // Story 3 hero — replace when photos arrive
+import beyondHero from "@/assets/story_photos/beyond-the-boardroom/110A2356 - FY 25.JPG";
 import { ProgrammeSpotlight, JourneySection, NumbersSection, QuoteBanner, TickerBar, SectionDivider } from "@/components/shared/HomeSections";
 
 // ── Ink doodle SVGs ───────────────────────────────────────────────────────────
@@ -58,8 +58,8 @@ const HERO_SLIDES = [
     photo: melghat.heroImage,
     accent: B_YELLOW, tag: "Community", cta: "story" as const,
     storySlug: "melghat-mitra",
-    headline: melghat.slideHeadline,
-    sub: melghat.slideSub,
+    headline: melghat.title,
+    titleSub: melghat.subtitle,
     doodles: {
       spiral: { top: "12%",    right: "36%", size: 52, opacity: 0.18 },
       dots:   { top: "60%",    right: "42%", size: 60, opacity: 0.20 },
@@ -68,23 +68,11 @@ const HERO_SLIDES = [
     },
   },
   {
-    photo: tataMotors1,
-    accent: B_BLUE, tag: "Community", cta: "video" as const,
-    headline: "10,000 rural families reached through free health camps",
-    sub: "When professionals volunteer their expertise, communities transform.",
-    doodles: {
-      spiral: { top: "8%",     right: "38%", size: 48, opacity: 0.16 },
-      dots:   { bottom: "22%", right: "44%", size: 56, opacity: 0.18 },
-      star:   { top: "55%",    right: "32%", size: 24, opacity: 0.20 },
-      swish:  { top: "30%",    right: "26%", size: 68, opacity: 0.14 },
-    },
-  },
-  {
     photo: beyondHero,
-    accent: B_YELLOW, tag: "Leadership Volunteering", cta: "story" as const,
+    accent: B_BLUE, tag: "Leadership Volunteering", cta: "story" as const,
     storySlug: "beyond-the-boardroom",
-    headline: beyond.slideHeadline,
-    sub: beyond.slideSub,
+    headline: beyond.title,
+    titleSub: beyond.subtitle,
     doodles: {
       spiral: { top: "15%",    right: "40%", size: 50, opacity: 0.18 },
       dots:   { top: "65%",    right: "34%", size: 58, opacity: 0.20 },
@@ -94,15 +82,27 @@ const HERO_SLIDES = [
   },
   {
     photo: wayanad.heroImage,
-    accent: B_BLUE, tag: "Disaster Response", cta: "story" as const,
+    accent: B_YELLOW, tag: "Disaster Response", cta: "story" as const,
     storySlug: "wayanad-2024",
-    headline: wayanad.slideHeadline,
-    sub: wayanad.slideSub,
+    headline: wayanad.title,
+    titleSub: wayanad.subtitle,
     doodles: {
       spiral: { top: "10%",    right: "36%", size: 52, opacity: 0.16 },
       dots:   { bottom: "20%", right: "40%", size: 60, opacity: 0.18 },
       star:   { top: "48%",    right: "30%", size: 28, opacity: 0.20 },
       swish:  { top: "28%",    right: "24%", size: 72, opacity: 0.14 },
+    },
+  },
+  {
+    photo: tataMotors1,
+    accent: B_BLUE, tag: "Community", cta: "video" as const,
+    headline: "10,000 Families",
+    titleSub: "Rural communities reached through free professional health camps",
+    doodles: {
+      spiral: { top: "8%",     right: "38%", size: 48, opacity: 0.16 },
+      dots:   { bottom: "22%", right: "44%", size: 56, opacity: 0.18 },
+      star:   { top: "55%",    right: "32%", size: 24, opacity: 0.20 },
+      swish:  { top: "30%",    right: "26%", size: 68, opacity: 0.14 },
     },
   },
 ];
@@ -308,18 +308,29 @@ const HomeView = () => {
               fontFamily: "'DM Sans', ui-sans-serif, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               lineHeight: 1.12, letterSpacing: "-0.5px",
-              color: "white", margin: "0 0 18px", fontWeight: 400,
+              color: "white", margin: "0 0 10px", fontWeight: 400,
             }}>
               {slide.headline}
             </h1>
 
-            <p style={{
-              fontSize: 17, lineHeight: 1.7, fontWeight: 300,
-              color: "#ffffff",
-              margin: "0 0 32px", maxWidth: 460,
-            }}>
-              {slide.sub}
-            </p>
+            {"titleSub" in slide && slide.titleSub && (
+              <p style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontStyle: "italic",
+                fontSize: "clamp(1rem, 1.6vw, 1.25rem)",
+                color: "rgba(255,255,255,0.82)",
+                lineHeight: 1.4,
+                margin: "0 0 32px",
+                maxWidth: 460,
+                fontWeight: 400,
+              }}>
+                {slide.titleSub}
+              </p>
+            )}
+
+            {!("titleSub" in slide) && (
+              <div style={{ marginBottom: 32 }} />
+            )}
 
             {/* CTA button */}
             <div style={{ marginBottom: 36 }}>

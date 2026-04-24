@@ -14,13 +14,17 @@ const DIAG: React.CSSProperties = {
   pointerEvents: "none",
 };
 
-const StoryImage = ({ src, caption, height = 300 }: { src?: string; caption?: string; height?: number }) => (
+const StoryImage = ({ src, caption, height }: { src?: string; caption?: string; height?: number }) => (
   <figure style={{ margin: "8px 0 36px" }}>
     {src ? (
       <img
         src={src}
         alt={caption ?? ""}
-        style={{ width: "100%", height, objectFit: "cover", borderRadius: 12, display: "block" }}
+        style={{
+          width: "100%",
+          ...(height ? { height, objectFit: "cover" as const } : { display: "block" }),
+          borderRadius: 12,
+        }}
       />
     ) : (
       <div style={{
@@ -134,17 +138,25 @@ export default function ImpactStoryView() {
       <div id="story-body" style={{ background: "#fff" }}>
         <div style={{ maxWidth: 740, margin: "0 auto", padding: "64px 32px 56px" }}>
 
-          {/* i. Opening paragraph — Playfair italic, no border */}
-          <p style={{
-            fontFamily: "'Playfair Display', Georgia, serif",
-            fontSize: 20,
-            fontStyle: "italic",
-            color: ACCENT_NAVY,
-            lineHeight: 1.78,
+          {/* i. Opening paragraph — Playfair italic, accent tinted box */}
+          <div style={{
+            background: `${accent}12`,
+            borderLeft: `3px solid ${accent}`,
+            borderRadius: "0 10px 10px 0",
+            padding: "20px 24px",
             margin: "0 0 36px",
           }}>
-            {story.openingPara}
-          </p>
+            <p style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: 20,
+              fontStyle: "italic",
+              color: ACCENT_NAVY,
+              lineHeight: 1.78,
+              margin: 0,
+            }}>
+              {story.openingPara}
+            </p>
+          </div>
 
           {/* Body sections — 4 photos distributed evenly from story.photos array */}
           {(() => {
