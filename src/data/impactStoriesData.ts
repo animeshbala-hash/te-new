@@ -49,6 +49,7 @@ export const IMPACT_STORIES: ImpactStory[] = [
   {
     slug: "wayanad-2024",
     title: "United in Action",
+    subtitle: "Volunteer voices from the ONE Tata Wayanad Landslide Response 2024",
     eyebrow: "Disaster Response",
     tag: "Disaster Response",
     accentColor: B_RED,
