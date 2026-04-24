@@ -30,40 +30,40 @@ const SHIMMER_STYLE = `
 /* All values are intentionally darkened + will be rendered at partial opacity via the nav style */
 function getNavBg(pathname: string): string {
   // Home
-  if (pathname === "/") return "rgba(58,58,68,0.82)";
+  if (pathname === "/") return "rgba(58,58,68,0.90)";
   // Events — indigo-purple
-  if (pathname.startsWith("/about/events")) return "rgba(45,14,110,0.82)";
+  if (pathname.startsWith("/about/events")) return "rgba(45,14,110,0.90)";
   // Contact — olive
-  if (pathname.startsWith("/about/contact")) return "rgba(122,143,42,0.82)";
+  if (pathname.startsWith("/about/contact")) return "rgba(122,143,42,0.90)";
   // Team — rose
-  if (pathname.startsWith("/about/team")) return "rgba(138,74,80,0.82)";
+  if (pathname.startsWith("/about/team")) return "rgba(138,74,80,0.90)";
   // GCSO — blue
-  if (pathname.startsWith("/about/gcso")) return "rgba(30,58,95,0.82)";
+  if (pathname.startsWith("/about/gcso")) return "rgba(30,58,95,0.90)";
   // Disaster response + Partner With Us — teal
-  if (pathname.startsWith("/disaster-response") || pathname.startsWith("/dr-") || pathname.startsWith("/partner")) return "rgba(10,90,84,0.82)";
+  if (pathname.startsWith("/disaster-response") || pathname.startsWith("/dr-") || pathname.startsWith("/partner")) return "rgba(10,90,84,0.90)";
   // TSM — olive
-  if (pathname.startsWith("/tata-sustainability-month")) return "rgba(58,90,26,0.82)";
+  if (pathname.startsWith("/tata-sustainability-month")) return "rgba(58,90,26,0.90)";
   // EOEO — rose
-  if (pathname.startsWith("/eoeo")) return "rgba(138,74,80,0.82)";
+  if (pathname.startsWith("/eoeo")) return "rgba(138,74,80,0.90)";
   // E-Waste, EOI, SPOC — indigo
-  if (pathname.startsWith("/ewaste") || pathname.startsWith("/eoi") || pathname.startsWith("/spoc/")) return "rgba(26,24,102,0.82)";
+  if (pathname.startsWith("/ewaste") || pathname.startsWith("/eoi") || pathname.startsWith("/spoc/")) return "rgba(26,24,102,0.90)";
   // Media & Resources — lighter indigo
-  if (pathname.startsWith("/media")) return "rgba(45,58,122,0.82)";
+  if (pathname.startsWith("/media")) return "rgba(45,58,122,0.90)";
   // Yes To Access — bright blue
-  if (pathname.startsWith("/yes-to-access")) return "rgba(26,58,106,0.82)";
+  if (pathname.startsWith("/yes-to-access")) return "rgba(26,58,106,0.90)";
   // Volunteer hub + dashboard
-  if (pathname.startsWith("/hub") || pathname.startsWith("/dashboard") || pathname.startsWith("/volunteer")) return "rgba(42,53,96,0.82)";
+  if (pathname.startsWith("/hub") || pathname.startsWith("/dashboard") || pathname.startsWith("/volunteer")) return "rgba(42,53,96,0.90)";
   // TVW — blue
-  if (pathname.startsWith("/tvw") || pathname.startsWith("/about/tvw")) return "rgba(13,58,110,0.82)";
+  if (pathname.startsWith("/tvw") || pathname.startsWith("/about/tvw")) return "rgba(13,58,110,0.90)";
   // ProEngage — purple
-  if (pathname.startsWith("/proengage") || pathname.startsWith("/about/proengage")) return "rgba(74,31,92,0.82)";
+  if (pathname.startsWith("/proengage") || pathname.startsWith("/about/proengage")) return "rgba(74,31,92,0.90)";
   // CVP — indigo-purple
-  if (pathname.startsWith("/cvp")) return "rgba(45,18,96,0.82)";
+  if (pathname.startsWith("/cvp")) return "rgba(45,18,96,0.90)";
   // NGO — red
-  if (pathname.startsWith("/ngo/")) return "rgba(138,30,34,0.82)";
+  if (pathname.startsWith("/ngo/")) return "rgba(138,30,34,0.90)";
   // About / Journey — deep navy
-  if (pathname.startsWith("/about") || pathname.startsWith("/journey")) return "rgba(10,18,40,0.82)";
-  return "rgba(42,42,53,0.82)"; // default
+  if (pathname.startsWith("/about") || pathname.startsWith("/journey")) return "rgba(10,18,40,0.90)";
+  return "rgba(42,42,53,0.90)"; // default
 }
 
 const Navbar = ({
@@ -267,8 +267,8 @@ const Navbar = ({
               justifyContent: "center",
               padding: "6px 14px",
               borderRadius: "8px",
-              background: "rgba(255,255,255,0.07)",
-              boxShadow: "0 1px 0 rgba(255,255,255,0.08) inset, 0 2px 8px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.12)",
+              background: "rgba(255,255,255,0.95)",
+              boxShadow: "0 1px 0 rgba(255,255,255,0.9) inset, 0 2px 8px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.2)",
             }}>
               <img
                 src={tataEngageLogo}
