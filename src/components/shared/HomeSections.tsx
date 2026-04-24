@@ -50,6 +50,24 @@ import tataMotors1 from "@/assets/Tata_Motors_1.jpg";
 import tajSats1 from "@/assets/Taj_Sats.jpeg";
 import trent1 from "@/assets/trent.jpg";
 
+// Journey collage — homepagebanner folder
+import hb_jcapcpl22 from "@/assets/homepagebanner/JCAPCPL22.JPG";
+import hb_antarang from "@/assets/homepagebanner/Antarang Foundation - Project Horizon - Mentoring Session by Leadership - Tata AIA.jpg";
+import hb_ihcl from "@/assets/homepagebanner/IHCL 1.jpg";
+import hb_tvw6 from "@/assets/homepagebanner/TVW 6  - 7th Day 7.JPG";
+import hb_roadSafety from "@/assets/homepagebanner/Road Safety Awareness by HRM (2).JPG";
+import hb_eyeScanning from "@/assets/homepagebanner/Eye Scanning Camp Joda 1.jpg";
+import hb_images3 from "@/assets/homepagebanner/images3.jpg";
+import hb_titan from "@/assets/homepagebanner/General_Titan Company Ltd_01.jpg";
+import hb_voltas from "@/assets/homepagebanner/Voltas.jpg";
+import hb_volunteeringInAction from "@/assets/homepagebanner/Volunteering in Action 5.jpg";
+import hb_jcapcpl3 from "@/assets/homepagebanner/JCAPCPL 3 (2).JPG";
+import hb_2021 from "@/assets/homepagebanner/2021-09-08T17_58_56.4567530+05_30.jpg";
+import hb_img20230211 from "@/assets/homepagebanner/IMG-20230211-WA0080.jpg";
+import hb_bluescope from "@/assets/homepagebanner/Tata Bluescope Steel (2).jpg";
+import hb_westside from "@/assets/homepagebanner/Westside Store employees_Paint an Orphanage - Trent.JPG";
+import hb_mithapur from "@/assets/homepagebanner/4. Mithapur_Eco-Tourism_LEEPEN_Harivan Farm_2022-23_Lipan Work (5).jpeg";
+
 export { SectionDivider };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1317,46 +1335,24 @@ export function JourneySection() {
   ];
 
   // All available images — will be distributed to fill every gap
-  // Slot index → image mapping:
-  // Large 2×2: idx 0,3,7,10,14  → best landscape
-  // Tall 1×2:  idx 1,2,8,9,15,16 → portrait preferred
-  // Wide 2×1:  idx 4,13          → landscape
-  // Small 1×1: idx 5,6,11,12     → any
   const imgs = [
-    // idx 0  — large 2×2 (col 1/3, row 3/5)
-    "/assets/homepagebanner/JCAPCPL22.JPG",
-    // idx 1  — tall 1×2 (col 1/2, row 5/7)
-    "/assets/homepagebanner/Antarang Foundation - Project Horizon - Mentoring Session by Leadership - Tata AIA.jpg",
-    // idx 2  — tall 1×2 (col 2/3, row 5/7)
-    "/assets/homepagebanner/IHCL 1.jpg",
-    // idx 3  — large 2×2 (col 3/5, row 4/6)
-    "/assets/homepagebanner/TVW 6  - 7th Day 7.JPG",
-    // idx 4  — wide 2×1 (col 3/5, row 6/7)
-    "/assets/homepagebanner/Road Safety Awareness by HRM (2).JPG",
-    // idx 5  — small 1×1 (col 3/4, row 1/2)
-    "/assets/homepagebanner/Eye Scanning Camp Joda 1.jpg",
-    // idx 6  — small 1×1 (col 4/5, row 1/2)
-    "/assets/homepagebanner/images3.jpg",
-    // idx 7  — large 2×2 (col 5/7, row 1/3)
-    "/assets/homepagebanner/General_Titan Company Ltd_01.jpg",
-    // idx 8  — tall 1×2 (col 5/6, row 5/7)
-    "/assets/homepagebanner/Voltas.jpg",
-    // idx 9  — tall 1×2 (col 6/7, row 5/7)
-    "/assets/homepagebanner/Volunteering in Action 5.jpg",
-    // idx 10 — large 2×2 (col 7/9, row 1/3)
-    "/assets/homepagebanner/JCAPCPL 3 (2).JPG",
-    // idx 11 — small 1×1 (col 7/8, row 3/4)
-    "/assets/homepagebanner/2021-09-08T17_58_56.4567530+05_30.jpg",
-    // idx 12 — small 1×1 (col 8/9, row 3/4)
-    "/assets/homepagebanner/IMG-20230211-WA0080.jpg",
-    // idx 13 — wide 2×1 (col 7/9, row 6/7)
-    "/assets/homepagebanner/Tata Bluescope Steel (2).jpg",
-    // idx 14 — large 2×2 (col 9/11, row 1/3)
-    "/assets/homepagebanner/Westside Store employees_Paint an Orphanage - Trent.JPG",
-    // idx 15 — tall 1×2 (col 9/10, row 3/5)
-    "/assets/homepagebanner/4. Mithapur_Eco-Tourism_LEEPEN_Harivan Farm_2022-23_Lipan Work (5).jpeg",
-    // idx 16 — tall 1×2 (col 10/11, row 3/5)
-    "/assets/homepagebanner/Volunteering in Action 5.jpg",
+    hb_jcapcpl22,           // idx 0  — large 2×2 (col 1/3, row 3/5)
+    hb_antarang,            // idx 1  — tall 1×2 (col 1/2, row 5/7)
+    hb_ihcl,                // idx 2  — tall 1×2 (col 2/3, row 5/7)
+    hb_tvw6,                // idx 3  — large 2×2 (col 3/5, row 4/6)
+    hb_roadSafety,          // idx 4  — wide 2×1 (col 3/5, row 6/7)
+    hb_eyeScanning,         // idx 5  — small 1×1 (col 3/4, row 1/2)
+    hb_images3,             // idx 6  — small 1×1 (col 4/5, row 1/2)
+    hb_titan,               // idx 7  — large 2×2 (col 5/7, row 1/3)
+    hb_voltas,              // idx 8  — tall 1×2 (col 5/6, row 5/7)
+    hb_volunteeringInAction, // idx 9  — tall 1×2 (col 6/7, row 5/7)
+    hb_jcapcpl3,            // idx 10 — large 2×2 (col 7/9, row 1/3)
+    hb_2021,                // idx 11 — small 1×1 (col 7/8, row 3/4)
+    hb_img20230211,         // idx 12 — small 1×1 (col 8/9, row 3/4)
+    hb_bluescope,           // idx 13 — wide 2×1 (col 7/9, row 6/7)
+    hb_westside,            // idx 14 — large 2×2 (col 9/11, row 1/3)
+    hb_mithapur,            // idx 15 — tall 1×2 (col 9/10, row 3/5)
+    tataCommunications,     // idx 16 — tall 1×2 (col 10/11, row 3/5)
   ];
 
   // Grid: 10 cols × 6 rows of 52px. Milestones placed left→right on a gentle zigzag.
