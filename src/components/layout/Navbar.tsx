@@ -43,11 +43,15 @@ function getNavBg(pathname: string): string {
   if (pathname.startsWith("/about/team") || pathname.startsWith("/team")) return "rgba(90,30,36,0.82)";
   // Contact — lime-green dark
   if (pathname.startsWith("/about/contact") || pathname.startsWith("/contact")) return "rgba(48,62,14,0.82)";
-  // GCSO — blue
-  if (pathname.startsWith("/about/gcso")) return "rgba(18,40,72,0.82)";
-  // Journey — blue
-  if (pathname.startsWith("/journey")) return "rgba(28,52,90,0.82)";
-  // About (main + sub) — about blue
+  // GCSO — deeper blue
+  if (pathname.startsWith("/about/gcso")) return "rgba(10,34,72,0.85)";
+  // Journey — mid blue
+  if (pathname.startsWith("/journey")) return "rgba(20,48,100,0.85)";
+  // About (main) — steel blue
+  if (pathname === "/about") return "rgba(30,56,110,0.82)";
+  // Events — slate blue
+  if (pathname.startsWith("/about/events")) return "rgba(24,44,88,0.85)";
+  // About catch-all (sub-pages not explicitly listed)
   if (pathname.startsWith("/about")) return "rgba(28,52,90,0.82)";
   // TSM — olive
   if (pathname.startsWith("/tata-sustainability-month")) return "rgba(40,62,18,0.80)";
@@ -255,7 +259,7 @@ const Navbar = ({
               height: 80,
               zIndex: 60,
               cursor: "pointer",
-              filter: "drop-shadow(0 6px 20px rgba(0,0,0,0.40)) drop-shadow(0 2px 5px rgba(0,0,0,0.25))",
+              filter: "drop-shadow(0 8px 28px rgba(0,0,0,0.65)) drop-shadow(0 3px 8px rgba(0,0,0,0.40))",
             }}
             onClick={() => isLoggedIn ? onNavigate(hubView()) : onNavigate("home")}
           >
