@@ -133,12 +133,9 @@ const NGOHubView = () => {
           style={{ objectPosition: "center 40%" }}
         />
 
-        {/* Left-heavy dark gradient */}
+        {/* ACCENT-tinted gradient */}
         <div className="absolute inset-0" style={{
-          background: "linear-gradient(105deg, rgba(80,8,10,0.88) 0%, rgba(80,8,10,0.72) 35%, rgba(80,8,10,0.32) 62%, rgba(80,8,10,0.06) 100%)"
-        }} />
-        <div className="absolute inset-0" style={{
-          background: "linear-gradient(to top, rgba(80,8,10,0.50) 0%, transparent 40%)"
+          background: `linear-gradient(110deg, ${B_NGO}e8 0%, ${B_NGO}cc 38%, ${B_NGO}aa 58%, ${B_NGO}77 78%, ${B_NGO}44 100%)`
         }} />
 
         <div className="relative z-10 flex flex-col justify-between px-8 md:px-16 py-8" style={{ minHeight: "92vh", paddingTop: 80 }}>

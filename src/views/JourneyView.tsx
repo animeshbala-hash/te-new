@@ -447,7 +447,7 @@ export default function JourneyView() {
       <div
         style={{
           position: "relative",
-          minHeight: "75vh",
+          minHeight: "92vh",
           overflow: "hidden",
           background: ACCENT_NAVY,
         }}
@@ -469,14 +469,7 @@ export default function JourneyView() {
           style={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(to right, rgba(8,12,22,0.82) 0%, rgba(8,12,22,0.65) 40%, rgba(8,12,22,0.18) 75%, rgba(8,12,22,0.10) 100%)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(to right, rgba(20,58,120,0.50) 0%, rgba(20,58,120,0.22) 50%, transparent 100%)",
+            background: "linear-gradient(110deg, #0D1B3Ee8 0%, #0D1B3Ecc 38%, #0D1B3Eaa 58%, #0D1B3E77 78%, #0D1B3E44 100%)",
           }}
         />
 
@@ -529,7 +522,6 @@ export default function JourneyView() {
             <em
               style={{
                 fontStyle: "italic",
-                fontFamily: "'Playfair Display', serif",
                 fontWeight: 700,
               }}
             >

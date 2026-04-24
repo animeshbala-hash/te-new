@@ -139,13 +139,9 @@ const VolunteerHubView = () => {
           style={{ objectPosition: "center 30%", transform: "scaleX(-1)" }}
         />
 
-        {/* Left-heavy dark gradient — lets image breathe on the right */}
+        {/* ACCENT-tinted gradient */}
         <div className="absolute inset-0" style={{
-          background: "linear-gradient(105deg, rgba(5,5,20,0.92) 0%, rgba(5,5,20,0.78) 35%, rgba(5,5,20,0.38) 62%, rgba(5,5,20,0.08) 100%)"
-        }} />
-        {/* Subtle bottom vignette for CTA legibility */}
-        <div className="absolute inset-0" style={{
-          background: "linear-gradient(to top, rgba(5,5,20,0.55) 0%, transparent 40%)"
+          background: `linear-gradient(110deg, #135EA9e8 0%, #135EA9cc 38%, #135EA9aa 58%, #135EA977 78%, #135EA944 100%)`
         }} />
 
         <div className="relative z-10 flex flex-col justify-between px-8 md:px-16 py-8" style={{ minHeight: "92vh", paddingTop: 80 }}>

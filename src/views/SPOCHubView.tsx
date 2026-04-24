@@ -133,12 +133,9 @@ const SPOCHubView = () => {
           style={{ objectPosition: "center 35%" }}
         />
 
-        {/* Left-heavy dark gradient */}
+        {/* ACCENT-tinted gradient */}
         <div className="absolute inset-0" style={{
-          background: "linear-gradient(105deg, rgba(5,5,20,0.92) 0%, rgba(5,5,20,0.78) 35%, rgba(5,5,20,0.38) 62%, rgba(5,5,20,0.08) 100%)"
-        }} />
-        <div className="absolute inset-0" style={{
-          background: "linear-gradient(to top, rgba(5,5,20,0.55) 0%, transparent 40%)"
+          background: `linear-gradient(110deg, ${B_INDIGO}e8 0%, ${B_INDIGO}cc 38%, ${B_INDIGO}aa 58%, ${B_INDIGO}77 78%, ${B_INDIGO}44 100%)`
         }} />
 
         <div className="relative z-10 flex flex-col justify-between px-8 md:px-16 py-8" style={{ minHeight: "92vh", paddingTop: 80 }}>

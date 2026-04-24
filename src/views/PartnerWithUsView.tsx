@@ -92,7 +92,7 @@ function Hero() {
     <div
       style={{
         position: "relative",
-        minHeight: "75vh",
+        minHeight: "92vh",
         overflow: "hidden",
         display: "flex",
         alignItems: "center",
@@ -115,7 +115,7 @@ function Hero() {
         style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(155deg, rgba(8,12,22,0.62) 0%, rgba(8,12,22,0.38) 100%)",
+          background: `linear-gradient(110deg, ${COLOUR}e8 0%, ${COLOUR}cc 38%, ${COLOUR}aa 58%, ${COLOUR}77 78%, ${COLOUR}44 100%)`,
         }}
       />
 
@@ -147,7 +147,7 @@ function Hero() {
           <div style={{ width: 48, height: 2, background: "rgba(255,255,255,0.6)", borderRadius: 2, margin: "12px 0 22px" }} />
           <h1
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
               fontSize: "clamp(2.4rem, 5vw, 3.8rem)",
               fontWeight: 400,
               color: "#fff",
@@ -160,7 +160,7 @@ function Hero() {
           </h1>
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
               fontSize: 16,
               fontWeight: 300,
               lineHeight: 1.7,
@@ -183,7 +183,7 @@ function Hero() {
             }}
           >
             <div style={{ width: 8, height: 8, borderRadius: "50%", background: B_YELLOW, flexShrink: 0 }} />
-            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 600, color: "#fff" }}>
+            <span style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 15, fontWeight: 600, color: "#fff" }}>
               Tata Engage bridges this gap.
             </span>
           </div>
@@ -690,7 +690,7 @@ export default function PartnerWithUsView() {
       style={{
         background: "transparent",
         minHeight: "100vh",
-        fontFamily: "'DM Sans', sans-serif",
+        fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
         paddingTop: 64,
       }}
     >

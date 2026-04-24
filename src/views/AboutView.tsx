@@ -61,19 +61,18 @@ function DefinerBar({ colour = ACCENT, light = false }: { colour?: string; light
 // ── Hero ──────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <div id="about-hero" style={{ position: "relative", minHeight: "75vh", display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 64 }}>
+    <div id="about-hero" style={{ position: "relative", minHeight: "92vh", display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 64 }}>
       <img src={aboutHeroImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(155deg, rgba(8,12,22,0.65) 0%, rgba(8,12,22,0.40) 100%)" }} />
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(45,84,148,0.55) 0%, rgba(45,84,148,0.20) 60%, transparent 100%)" }} />
+      <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${ACCENT}e8 0%, ${ACCENT}cc 38%, ${ACCENT}aa 58%, ${ACCENT}77 78%, ${ACCENT}44 100%)` }} />
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
         <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 12, margin: "0 0 12px" }}>
           Tata Sustainability Group · Est. 2014
         </p>
         <div style={{ height: 2, width: 48, borderRadius: 2, background: "rgba(255,255,255,0.6)", margin: "12px 0 22px" }} />
-        <h1 style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(2.4rem,5vw,3.8rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px", maxWidth: 640 }}>
+        <h1 style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: "clamp(2.4rem,5vw,3.8rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px", maxWidth: 640 }}>
           About Tata Engage
         </h1>
-        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 16, fontWeight: 300, lineHeight: 1.7, color: "rgba(255,255,255,0.65)", maxWidth: 520, margin: 0 }}>
+        <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 16, fontWeight: 300, lineHeight: 1.7, color: "rgba(255,255,255,0.65)", maxWidth: 520, margin: 0 }}>
           The Tata Group's volunteering platform — designed to inspire, enable, and amplify employee engagement with communities and the environment.
         </p>
       </div>
