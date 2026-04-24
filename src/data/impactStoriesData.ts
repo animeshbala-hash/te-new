@@ -1,5 +1,6 @@
 import tataAIG from "@/assets/Tata_AIG_2.jpg";
 import tataMotors1 from "@/assets/Tata_Motors_1.jpg";
+import tataComms from "@/assets/tata-communications-1.jpg";
 
 const ACCENT_NAVY = "#0D1B3E";
 const B_INDIGO    = "#333399";
@@ -17,11 +18,16 @@ export interface StorySection {
   bullets?: string[];
   /** Optional sub-blocks rendered inside the section (used for grouped lists like Health/Education/Governance). */
   subBlocks?: { heading: string; bullets: string[] }[];
+  /** Optional table rendered inside the section (e.g. team rosters). */
+  table?: { headers: string[]; rows: string[][] };
+  /** If set, an image placeholder with this caption is rendered AFTER this section. */
+  imageAfter?: { caption: string; height?: number };
 }
 
 export interface ImpactStory {
   slug: string;
   title: string;
+  subtitle?: string;
   eyebrow: string;
   tag: string;
   accentColor: string;
