@@ -13,6 +13,7 @@ import drHeroPhoto from "@/assets/dr_photo_2.jpg";
 import {
   B_INDIGO, B_YELLOW, B_TEAL, B_BLUE, B_TICKER, ACCENT_NAVY,
 } from "@/data/homeSharedData";
+import { IMPACT_STORIES } from "@/data/impactStoriesData";
 import { ProgrammeSpotlight, JourneySection, NumbersSection, QuoteBanner, TickerBar, SectionDivider } from "@/components/shared/HomeSections";
 
 // ── Ink doodle SVGs ───────────────────────────────────────────────────────────
@@ -48,13 +49,16 @@ const InkSwish = ({ className = "", style = {} }: { className?: string; style?: 
 
 // ── HomeView-only data ────────────────────────────────────────────────────────
 
+const wayanad = IMPACT_STORIES.find((s) => s.slug === "wayanad-2024")!;
+const melghat = IMPACT_STORIES.find((s) => s.slug === "melghat-mitra")!;
+
 const HERO_SLIDES = [
   {
-    photo: tataAIG,
+    photo: melghat.heroImage,
     accent: B_YELLOW, tag: "Community", cta: "story" as const,
     storySlug: "melghat-mitra",
-    headline: "Twenty-five years of showing up — and why Melghat Mitra won't stop",
-    sub: "From hunger deaths to zero malnutrition: a Tata Motors volunteer group that built trust one monsoon at a time.",
+    headline: melghat.slideHeadline,
+    sub: melghat.slideSub,
     doodles: {
       spiral: { top: "12%",    right: "36%", size: 52, opacity: 0.18 },
       dots:   { top: "60%",    right: "42%", size: 60, opacity: 0.20 },
@@ -87,11 +91,11 @@ const HERO_SLIDES = [
     },
   },
   {
-    photo: drHeroPhoto,
+    photo: wayanad.heroImage,
     accent: B_BLUE, tag: "Disaster Response", cta: "story" as const,
     storySlug: "wayanad-2024",
-    headline: "34 volunteers. 12 companies. One response in Wayanad.",
-    sub: "How the ONE Tata Disaster Response Framework mobilised across companies within hours of the 2024 Kerala landslides.",
+    headline: wayanad.slideHeadline,
+    sub: wayanad.slideSub,
     doodles: {
       spiral: { top: "10%",    right: "36%", size: 52, opacity: 0.16 },
       dots:   { bottom: "20%", right: "40%", size: 60, opacity: 0.18 },
