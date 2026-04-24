@@ -1285,7 +1285,6 @@ export function NumbersSection() {
     </section>
   );
 }
-content = """// JourneySection — equal text tiles, centered typography, consistent sizing
 
 export function JourneySection() {
   const navigate = useAppNavigate();
@@ -1296,8 +1295,13 @@ export function JourneySection() {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVis(true); obs.disconnect(); } },
-      { threshold: 0.08 }
+      ([e]) => {
+        if (e.isIntersecting) {
+          setVis(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.08 },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -1312,10 +1316,25 @@ export function JourneySection() {
   ];
 
   const imgs = [
-    tataElxsiImg, airIndia, tataCommunications, tataProjects, tataBball,
-    drPhoto, tataMotors3, happyEyes, tataAig, tataInfinit,
-    drPhoto2, tataComm2, tataMotors1, trent1, titanImg,
-    tajSatsImg, trentImg, infiniti, tataPower
+    tataElxsiImg,
+    airIndia,
+    tataCommunications,
+    tataProjects,
+    tataBball,
+    drPhoto,
+    tataMotors3,
+    happyEyes,
+    tataAig,
+    tataInfinit,
+    drPhoto2,
+    tataComm2,
+    tataMotors1,
+    trent1,
+    titanImg,
+    tajSatsImg,
+    trentImg,
+    infiniti,
+    tataPower,
   ];
 
   return (
@@ -1328,7 +1347,6 @@ export function JourneySection() {
       }}
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-
         {/* Header */}
         <div style={{ marginBottom: 28 }}>
           <SectionEyebrow label="Our Journey" dark />
@@ -1339,13 +1357,14 @@ export function JourneySection() {
         </div>
 
         {/* Grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(6, 1fr)",
-          gridAutoRows: "90px",
-          gap: 6,
-        }}>
-
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(6, 1fr)",
+            gridAutoRows: "90px",
+            gap: 6,
+          }}
+        >
           {/* Images */}
           {imgs.map((img, i) => (
             <div
@@ -1357,11 +1376,7 @@ export function JourneySection() {
                 transition: `opacity 0.4s ease ${i * 0.02}s`,
               }}
             >
-              <img
-                src={img}
-                alt=""
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
+              <img src={img} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             </div>
           ))}
 
@@ -1395,26 +1410,30 @@ export function JourneySection() {
                   transition: `opacity 0.45s ease ${i * 0.08}s`,
                 }}
               >
-                <div style={{
-                  fontFamily: FONT_SANS,
-                  fontSize: 12,
-                  fontWeight: 800,
-                  letterSpacing: "1.5px",
-                  textTransform: "uppercase",
-                  color: "#ffffff",
-                  marginBottom: 6,
-                }}>
+                <div
+                  style={{
+                    fontFamily: FONT_SANS,
+                    fontSize: 12,
+                    fontWeight: 800,
+                    letterSpacing: "1.5px",
+                    textTransform: "uppercase",
+                    color: "#ffffff",
+                    marginBottom: 6,
+                  }}
+                >
                   {m.fy}
                 </div>
 
-                <div style={{
-                  fontFamily: FONT_SANS,
-                  fontSize: 14,
-                  lineHeight: 1.5,
-                  color: "#ffffff",
-                  whiteSpace: "pre-line",
-                  fontWeight: 600,
-                }}>
+                <div
+                  style={{
+                    fontFamily: FONT_SANS,
+                    fontSize: 14,
+                    lineHeight: 1.5,
+                    color: "#ffffff",
+                    whiteSpace: "pre-line",
+                    fontWeight: 600,
+                  }}
+                >
                   {m.text}
                 </div>
               </div>
