@@ -14,20 +14,47 @@ const DIAG: React.CSSProperties = {
   pointerEvents: "none",
 };
 
-const ImagePlaceholder = ({ height }: { height: number }) => (
-  <div style={{
-    width: "100%", height, borderRadius: 12,
-    background: "linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)",
-    display: "flex", alignItems: "center", justifyContent: "center",
-    margin: "8px 0 32px", overflow: "hidden",
-  }}>
-    <div style={{ textAlign: "center" }}>
-      <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 10px" }}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.32)" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+const ImagePlaceholder = ({ height, caption }: { height: number; caption?: string }) => (
+  <figure style={{ margin: "8px 0 32px" }}>
+    <div style={{
+      width: "100%", height, borderRadius: 12,
+      background: "linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)",
+      display: "flex", alignItems: "center", justifyContent: "center",
+      overflow: "hidden", position: "relative",
+    }}>
+      <div style={{ textAlign: "center", padding: 16 }}>
+        <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 10px" }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.32)" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <span style={{ fontSize: 12, color: "rgba(0,0,0,0.32)", fontWeight: 600 }}>Image placeholder</span>
+        {caption && (
+          <div style={{
+            marginTop: 10,
+            fontFamily: "'Playfair Display', Georgia, serif",
+            fontStyle: "italic",
+            fontSize: 14,
+            color: "rgba(13,27,62,0.65)",
+            maxWidth: 460,
+            lineHeight: 1.5,
+          }}>
+            “{caption}”
+          </div>
+        )}
       </div>
-      <span style={{ fontSize: 12, color: "rgba(0,0,0,0.32)", fontWeight: 600 }}>Image placeholder</span>
     </div>
-  </div>
+    {caption && (
+      <figcaption style={{
+        marginTop: 10,
+        fontSize: 12,
+        fontWeight: 700,
+        letterSpacing: "0.6px",
+        textTransform: "uppercase",
+        color: "#64748b",
+      }}>
+        Caption · {caption}
+      </figcaption>
+    )}
+  </figure>
 );
 
 export default function ImpactStoryView() {
@@ -98,9 +125,23 @@ export default function ImpactStoryView() {
           </p>
           <div style={{ height: 2, width: 52, borderRadius: 2, background: accent, marginBottom: 20 }} />
 
-          <h1 style={{ fontFamily: FONT, fontSize: "clamp(1.9rem, 3.8vw, 3rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.4px", margin: "0 0 24px", maxWidth: 680 }}>
+          <h1 style={{ fontFamily: FONT, fontSize: "clamp(1.9rem, 3.8vw, 3rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.4px", margin: "0 0 12px", maxWidth: 720 }}>
             {story.title}
           </h1>
+
+          {story.subtitle && (
+            <p style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontStyle: "italic",
+              fontSize: "clamp(1.05rem, 1.7vw, 1.35rem)",
+              color: "rgba(255,255,255,0.85)",
+              lineHeight: 1.4,
+              margin: "0 0 24px",
+              maxWidth: 720,
+            }}>
+              {story.subtitle}
+            </p>
+          )}
 
           {/* Stats — only shown if story has them */}
           {story.stats && (
