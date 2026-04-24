@@ -40,7 +40,7 @@ function DefinerBar({ colour = ACCENT }: { colour?: string }) {
 // ── Hero ──────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <div style={{ position: "relative", minHeight: "92vh", display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 64 }}>
+    <div style={{ position: "relative", minHeight: "75vh", display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 64 }}>
       <img src={teamHeroImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(155deg, rgba(8,12,22,0.62) 0%, rgba(8,12,22,0.38) 100%)" }} />
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
