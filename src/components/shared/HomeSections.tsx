@@ -566,6 +566,7 @@ export function ProgrammeSpotlight() {
             <div style={{ position: "relative", overflow: "hidden", borderRadius: 14, minHeight: 340 }}>
               {/* CVP tile — B_ACCENT (#D84926) */}
               <div
+                onClick={() => navigate("cvp")}
                 style={{
                   position: "absolute",
                   inset: 0,
@@ -580,6 +581,7 @@ export function ProgrammeSpotlight() {
                   transition: "opacity 0.3s ease, transform 0.3s ease",
                   pointerEvents: rightBox === 0 ? "auto" : "none",
                   boxShadow: "6px 0 24px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.08)",
+                  cursor: "pointer",
                 }}
               >
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
@@ -619,19 +621,16 @@ export function ProgrammeSpotlight() {
                   </p>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 16 }}>
-                  <div
+                  <button
+                    onClick={(e) => { e.stopPropagation(); navigate("cvp"); }}
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 6,
-                      fontFamily: FONT_SANS,
-                      fontSize: 13,
-                      fontWeight: 700,
-                      color: "#ffffff",
+                      display: "flex", alignItems: "center", gap: 6,
+                      fontFamily: FONT_SANS, fontSize: 13, fontWeight: 700,
+                      color: "#ffffff", background: "none", border: "none", cursor: "pointer", padding: 0,
                     }}
                   >
                     Learn More <ArrowRight size={13} />
-                  </div>
+                  </button>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -657,6 +656,7 @@ export function ProgrammeSpotlight() {
 
               {/* EOI tile — pink */}
               <div
+                onClick={() => navigate("eoi")}
                 style={{
                   position: "absolute",
                   inset: 0,
@@ -671,6 +671,7 @@ export function ProgrammeSpotlight() {
                   transition: "opacity 0.3s ease, transform 0.3s ease",
                   pointerEvents: rightBox === 1 ? "auto" : "none",
                   boxShadow: "6px 0 24px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.08)",
+                  cursor: "pointer",
                 }}
               >
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
@@ -709,19 +710,16 @@ export function ProgrammeSpotlight() {
                   </p>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 16 }}>
-                  <div
+                  <button
+                    onClick={(e) => { e.stopPropagation(); navigate("eoi"); }}
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 6,
-                      fontFamily: FONT_SANS,
-                      fontSize: 13,
-                      fontWeight: 700,
-                      color: "#ffffff",
+                      display: "flex", alignItems: "center", gap: 6,
+                      fontFamily: FONT_SANS, fontSize: 13, fontWeight: 700,
+                      color: "#ffffff", background: "none", border: "none", cursor: "pointer", padding: 0,
                     }}
                   >
                     Learn More <ArrowRight size={13} />
-                  </div>
+                  </button>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -1493,7 +1491,7 @@ export function JourneySection() {
               fontWeight: 700,
               background: "none",
               border: "none",
-              color: "#475569",
+              color: "#ffffff",
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
