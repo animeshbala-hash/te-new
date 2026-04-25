@@ -109,14 +109,14 @@ export default function MediaView() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(105deg, rgba(8,12,22,0.88) 0%, rgba(8,12,22,0.70) 40%, rgba(8,12,22,0.28) 75%, rgba(8,12,22,0.08) 100%)" }} />
         <div style={DIAG_TEXTURE} />
         <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
-          <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 12 }}>
+          <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 12 }}>
             Tata Engage · Media &amp; Resources
           </p>
           <div style={{ width: 48, height: 2, borderRadius: 2, background: B_BLUE, marginBottom: 22 }} />
-          <h1 style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: "clamp(2.2rem, 4vw, 3.4rem)", fontWeight: 400, letterSpacing: "-0.5px", lineHeight: 1.12, color: "#fff", margin: "0 0 18px" }}>
+          <h1 style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: "clamp(2.2rem, 4vw, 3.4rem)", fontWeight: 400, letterSpacing: "-0.5px", lineHeight: 1.12, color: "#fff", margin: "0 0 18px" }}>
             Stories, photos and moments<br />from the Tata Engage community
           </h1>
-          <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 16, fontWeight: 300, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, maxWidth: 480, margin: 0 }}>
+          <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 15, fontWeight: 300, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, maxWidth: 480, margin: 0 }}>
             Capturing the spirit of volunteering across every edition, company and cause.
           </p>
         </div>
@@ -224,7 +224,7 @@ export default function MediaView() {
                     <span style={{ display: "inline-block", background: `${s.accentColor}15`, color: s.accentColor, fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 4, textTransform: "uppercase", letterSpacing: "0.5px" }}>{s.tag}</span>
                     <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 500 }}>{s.date}</span>
                   </div>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 10, lineHeight: 1.4 }}>{s.title}</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 10, lineHeight: 1.4 }}>{s.title}</div>
                   <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7, marginBottom: 16 }}>{s.excerpt}</p>
                   {s.stats && (
                     <div style={{ display: "flex", gap: 12, marginBottom: 16, flexWrap: "wrap" }}>
@@ -275,7 +275,7 @@ export default function MediaView() {
               {UPCOMING_EVENTS.map((e, i) => (
                 <div key={i} style={{ border: "1px solid #e8e8f0", borderRadius: 14, padding: 20, transition: "transform 0.2s, box-shadow 0.2s" }} {...cardHover}>
                   <span style={{ display: "inline-block", background: B_YELLOW, color: "#fff", fontSize: 12, fontWeight: 700, padding: "4px 12px", borderRadius: 4, marginBottom: 12 }}>{e.date}</span>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 4 }}>{e.title}</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 4 }}>{e.title}</div>
                   <div style={{ fontSize: 13, color: "#64748B" }}>{e.location}</div>
                   <span style={{ display: "inline-block", marginTop: 10, fontSize: 11, fontWeight: 600, color: B_INDIGO, background: "#eef0ff", padding: "3px 10px", borderRadius: 4 }}>{e.status}</span>
                 </div>
@@ -286,7 +286,7 @@ export default function MediaView() {
               {PAST_EVENTS.map((e, i) => (
                 <div key={i} style={{ border: "1px solid #e8e8f0", borderRadius: 14, padding: 20, transition: "transform 0.2s, box-shadow 0.2s" }} {...cardHover}>
                   <span style={{ display: "inline-block", background: "#e2e8f0", color: "#475569", fontSize: 12, fontWeight: 700, padding: "4px 12px", borderRadius: 4, marginBottom: 12 }}>{e.date}</span>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 4 }}>{e.title}</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 4 }}>{e.title}</div>
                   <div style={{ fontSize: 13, color: "#64748B" }}>{e.location}</div>
                   <span style={{ display: "inline-block", marginTop: 10, fontSize: 11, fontWeight: 600, color: "#64748B", background: "#f5f5fa", padding: "3px 10px", borderRadius: 4 }}>Past</span>
                 </div>

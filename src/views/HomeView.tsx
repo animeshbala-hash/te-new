@@ -179,7 +179,7 @@ const HomeView = () => {
   return (
     <div className="relative font-sans">
 
-      {/* ── Section dot rail — dotted vertical line + square label pill ──────── */}
+      {/* ── Section dot rail — white nodes + connector lines (sits over dark hero) */}
       <div className="fixed right-4 top-1/2 -translate-y-1/2 z-40 flex flex-col items-end" style={{ gap: 0 }}>
         {SECTION_IDS.map((id, i) => {
           const active = activeSection === i;
@@ -198,35 +198,35 @@ const HomeView = () => {
                       fontSize: 11, fontWeight: 700, letterSpacing: "0.3px",
                       padding: "3px 9px",
                       borderRadius: 4,
-                      backgroundColor: "rgba(13,27,62,0.92)",
-                      border: `1px solid ${ACCENT_NAVY}`,
+                      backgroundColor: "rgba(255,255,255,0.15)",
+                      border: "1px solid rgba(255,255,255,0.35)",
                       color: "#ffffff",
                     }}>
                     {SECTION_LABELS[i]}
                   </span>
                 )}
-                {/* Node dot */}
+                {/* Node dot — white */}
                 <span
                   className="transition-all duration-300"
                   style={{
                     width: active ? 9 : 6, height: active ? 9 : 6,
                     borderRadius: 2,
-                    backgroundColor: ACCENT_NAVY,
-                    border: `1px solid rgba(13,27,62,0.25)`,
+                    backgroundColor: "#ffffff",
+                    border: "1px solid rgba(255,255,255,0.45)",
                     display: "block",
                     flexShrink: 0,
                   }}
                 />
               </button>
 
-              {/* Dotted connector line between nodes */}
+              {/* Dotted connector line — white */}
               {!isLast && (
                 <div style={{
                   width: 1,
                   height: 28,
                   marginLeft: "auto",
                   marginRight: active ? "4px" : "2.5px",
-                  backgroundImage: `repeating-linear-gradient(to bottom, ${ACCENT_NAVY}50 0px, ${ACCENT_NAVY}50 3px, transparent 3px, transparent 7px)`,
+                  backgroundImage: "repeating-linear-gradient(to bottom, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 3px, transparent 3px, transparent 7px)",
                   transition: "all 0.3s",
                 }} />
               )}
@@ -291,7 +291,7 @@ const HomeView = () => {
               textTransform: "uppercase",
               color: "#ffffff",
               marginBottom: 0,
-              fontFamily: "'DM Mono', monospace",
+              fontFamily: "'DM Sans', 'Noto Sans', ui-sans-serif, system-ui, sans-serif",
             }}>
               {slide.tag}
             </span>
@@ -305,7 +305,7 @@ const HomeView = () => {
             </div>
 
             <h1 style={{
-              fontFamily: "'DM Sans', ui-sans-serif, sans-serif",
+              fontFamily: "'DM Sans', 'Noto Sans', ui-sans-serif, system-ui, sans-serif",
               fontSize: "clamp(2.4rem, 5vw, 3.8rem)",
               lineHeight: 1.12, letterSpacing: "-0.5px",
               color: "white", margin: "0 0 10px", fontWeight: 400,
@@ -315,7 +315,7 @@ const HomeView = () => {
 
             {"titleSub" in slide && slide.titleSub && (
               <p style={{
-                fontFamily: "'DM Sans', ui-sans-serif, sans-serif",
+                fontFamily: "'DM Sans', 'Noto Sans', ui-sans-serif, system-ui, sans-serif",
                 fontSize: "clamp(1rem, 1.6vw, 1.25rem)",
                 color: "rgba(255,255,255,0.82)",
                 lineHeight: 1.5,

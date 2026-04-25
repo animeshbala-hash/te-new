@@ -233,15 +233,15 @@ export default function AboutProEngageView() {
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}e8 0%, ${COLOUR}cc 38%, ${COLOUR}aa 58%, ${COLOUR}77 78%, ${COLOUR}44 100%)` }} />
 
         <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
-          <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", margin: "0 0 12px" }}>
+          <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", margin: "0 0 12px" }}>
             Skill-Based Volunteering · Since 2014
           </p>
           <div style={{ height: 2, width: 48, borderRadius: 2, background: "rgba(255,255,255,0.6)", margin: "12px 0 22px" }} />
-          <h1 style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: "clamp(2.4rem, 5vw, 3.8rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px" }}>
+          <h1 style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: "clamp(2.4rem, 5vw, 3.8rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px" }}>
             ProEngage
           </h1>
-          <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 16, fontWeight: 300, lineHeight: 1.7, color: "rgba(255,255,255,0.65)", margin: "0 0 32px", maxWidth: 520 }}>
-            ProEngage is the Tata Group's flagship part-time, skill-based volunteering programme — bringing together Tata talent and civil society organisations to create meaningful, long-term impact. Volunteers don't just give back. They lead, problem-solve, and create lasting change.
+          <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 15, fontWeight: 300, lineHeight: 1.7, color: "rgba(255,255,255,0.65)", margin: "0 0 32px", maxWidth: 520 }}>
+            ProEngage is the Tata Group's flagship part-time, skill-based volunteering programme that brings together Tata talent and civil society organisations to create meaningful, long-term impact. Through ProEngage, volunteers don't just give back — they lead, problem-solve, and create lasting change.
           </p>
           <div style={{ display: "flex", gap: 14 }}>
             <button onClick={() => navigate(isLoggedIn ? "proengage" : "register-role")}
@@ -255,7 +255,7 @@ export default function AboutProEngageView() {
           </div>
         </div>
 
-        <div style={{ position: "absolute", bottom: 32, right: 56, background: "rgba(0,0,0,0.22)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 100, padding: "7px 18px", fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.75)" }}>
+        <div style={{ position: "absolute", bottom: 32, right: 56, background: "rgba(0,0,0,0.22)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 100, padding: "7px 18px", fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.75)" }}>
           Skill-based · Bi-annual · Year-round
         </div>
       </div>
@@ -264,10 +264,13 @@ export default function AboutProEngageView() {
       <section id="pe-overview" style={{ padding: "88px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
           <div>
-            <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>What is ProEngage?</p>
-            <h2 style={{ fontSize: 32, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Skill as a force for social good</h2>
+            <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>What is ProEngage?</p>
+            <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Skill as a force for social good</h2>
             <DefinerBar colour={COLOUR} />
             <div style={{ marginTop: 28 }}>
+              <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
+                ProEngage enables Tata employees, their families, and retired colleagues to contribute their professional expertise to purpose-driven projects — helping non-profits accelerate their goals while offering volunteers a deeply fulfilling personal and professional experience.
+              </p>
               <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
                 Many non-profits have deep passion and on-ground reach but often lack access to specialised professional skills. At the same time, the Tata Group is home to a diverse pool of experienced professionals across disciplines. ProEngage bridges this gap.
               </p>
@@ -290,7 +293,7 @@ export default function AboutProEngageView() {
       {/* ════════════════════ WHAT MAKES IT UNIQUE ════════════════════ */}
       <section id="pe-unique" style={{ padding: "80px 56px", background: "#F0F8F4" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>The ProEngage difference</p>
+          <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>The ProEngage difference</p>
           <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>What makes ProEngage unique?</h2>
           <DefinerBar colour={COLOUR} />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginTop: 48 }}>
@@ -347,15 +350,15 @@ export default function AboutProEngageView() {
         <div style={{ position: "relative", zIndex: 1, padding: "88px 56px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
             <div>
-              <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 10 }}>Eligibility</p>
+              <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 10 }}>Eligibility</p>
               <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>Who can participate?</h2>
               <div style={{ height: 3, background: "rgba(255,255,255,0.28)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 36 }} />
               <div style={{ marginBottom: 36 }}>
                 <div style={{ fontSize: "clamp(3.5rem, 7vw, 5.5rem)", fontWeight: 900, color: "#fff", lineHeight: 1, letterSpacing: "-3px" }}>8,735+</div>
-                <div style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 12, color: "rgba(255,255,255,0.55)", marginTop: 10, letterSpacing: "0.8px", maxWidth: 260, lineHeight: 1.5 }}>professionals who have donated their skills</div>
+                <div style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 12, color: "rgba(255,255,255,0.55)", marginTop: 10, letterSpacing: "0.8px", maxWidth: 260, lineHeight: 1.5 }}>professionals who have donated their skills</div>
               </div>
               <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, maxWidth: 380 }}>
-                ProEngage projects are skill-based. Volunteers are expected to apply only to projects aligned with their professional expertise.
+                ProEngage projects are skill-based. Volunteers are expected to apply only to projects aligned with their expertise. Volunteers already working independently with a non-profit can also route their projects through ProEngage by emailing tataengage@tata.com
               </p>
             </div>
             <div>
@@ -378,7 +381,7 @@ export default function AboutProEngageView() {
       {/* ════════════════════ HOW IT WORKS ════════════════════ */}
       <section id="pe-how" style={{ padding: "96px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>The ProEngage journey</p>
+          <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>The ProEngage journey</p>
           <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Seven steps from announcement to certificate</h2>
           <DefinerBar colour={COLOUR} />
           <p style={{ fontSize: 15, color: "#64748B", marginTop: 18, maxWidth: 540, marginBottom: 56, lineHeight: 1.72 }}>
@@ -398,7 +401,7 @@ export default function AboutProEngageView() {
                 {/* Left content */}
                 {idx % 2 === 0 ? (
                   <div style={{ padding: "28px 36px 28px 0", textAlign: "right" }}>
-                    <div style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", color: step.colour, textTransform: "uppercase", marginBottom: 8, opacity: 0.7 }}>{step.num}</div>
+                    <div style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", color: step.colour, textTransform: "uppercase", marginBottom: 8, opacity: 0.7 }}>{step.num}</div>
                     <div style={{ fontSize: 16, fontWeight: 800, color: ACCENT_NAVY, marginBottom: 8 }}>{step.title}</div>
                     <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7, maxWidth: 320, marginLeft: "auto" }}>{step.desc}</div>
                   </div>
@@ -424,7 +427,7 @@ export default function AboutProEngageView() {
                 {/* Right content */}
                 {idx % 2 !== 0 ? (
                   <div style={{ padding: "28px 0 28px 36px" }}>
-                    <div style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", color: step.colour, textTransform: "uppercase", marginBottom: 8, opacity: 0.7 }}>{step.num}</div>
+                    <div style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", color: step.colour, textTransform: "uppercase", marginBottom: 8, opacity: 0.7 }}>{step.num}</div>
                     <div style={{ fontSize: 16, fontWeight: 800, color: ACCENT_NAVY, marginBottom: 8 }}>{step.title}</div>
                     <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7, maxWidth: 320 }}>{step.desc}</div>
                   </div>
@@ -438,7 +441,7 @@ export default function AboutProEngageView() {
       {/* ════════════════════ TIMELINE ════════════════════ */}
       <section id="pe-timeline" style={{ padding: "88px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>Annual cycle</p>
+          <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>Annual cycle</p>
           <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Two announcement windows each year</h2>
           <DefinerBar colour={COLOUR} />
           <p style={{ fontSize: 15, color: "#64748B", lineHeight: 1.75, marginTop: 20, maxWidth: 560, marginBottom: 48 }}>
@@ -456,8 +459,8 @@ export default function AboutProEngageView() {
               <div key={t.date} style={{ position: "relative", zIndex: 1, background: COLOUR, border: `1.5px solid ${COLOUR}`, borderRadius: 18, padding: "28px 28px 30px", boxShadow: "0 4px 20px rgba(13,124,82,0.15)" }}>
                 {/* Marker dot */}
                 <div style={{ position: "absolute", top: -10, left: 28, width: 20, height: 20, borderRadius: "50%", background: "#fff", border: `4px solid ${COLOUR}`, boxShadow: `0 0 0 2px ${COLOUR}40` }} />
-                <div style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1.8px", color: "rgba(255,255,255,0.75)", textTransform: "uppercase", marginTop: 10, marginBottom: 8 }}>{t.cycle}</div>
-                <div style={{ fontSize: 32, fontWeight: 900, color: "#fff", letterSpacing: "-1px", lineHeight: 1, marginBottom: 14 }}>{t.date}</div>
+                <div style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1.8px", color: "rgba(255,255,255,0.75)", textTransform: "uppercase", marginTop: 10, marginBottom: 8 }}>{t.cycle}</div>
+                <div style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-1px", lineHeight: 1, marginBottom: 14 }}>{t.date}</div>
                 <div style={{ width: 32, height: 2, background: "rgba(255,255,255,0.6)", borderRadius: 2, marginBottom: 16 }} />
                 <p style={{ fontSize: 14, color: "rgba(255,255,255,0.88)", lineHeight: 1.7, margin: 0 }}>{t.desc}</p>
               </div>
@@ -473,7 +476,7 @@ export default function AboutProEngageView() {
       {/* ════════════════════ SKILLS ════════════════════ */}
       <section id="pe-skills" style={{ padding: "80px 56px", background: "#F0F8F4" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>Skill areas</p>
+          <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>Skill areas</p>
           <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>What skills are needed?</h2>
           <DefinerBar colour={COLOUR} />
           <p style={{ fontSize: 15, color: "#64748B", lineHeight: 1.75, marginTop: 20, maxWidth: 540, marginBottom: 40 }}>
@@ -485,7 +488,7 @@ export default function AboutProEngageView() {
                 style={{ background: "#fff", border: `1.5px solid ${COLOUR}18`, borderRadius: 14, padding: "20px 16px", display: "flex", flexDirection: "column", alignItems: "center", gap: 12, textAlign: "center", cursor: "default" }}>
                 {/* Monogram badge instead of emoji */}
                 <div style={{ width: 36, height: 36, borderRadius: 8, background: COLOUR_LIGHT, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <span style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 800, color: COLOUR, letterSpacing: "0.5px" }}>{skill.icon}</span>
+                  <span style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 800, color: COLOUR, letterSpacing: "0.5px" }}>{skill.icon}</span>
                 </div>
                 <div style={{ fontSize: 12, fontWeight: 700, color: ACCENT_NAVY, lineHeight: 1.3 }}>{skill.label}</div>
               </div>
@@ -499,7 +502,7 @@ export default function AboutProEngageView() {
         <div style={DIAG} />
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 72, alignItems: "start" }}>
           <div>
-            <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 10 }}>Tata Sustainability Group</p>
+            <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 10 }}>Tata Sustainability Group</p>
             <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>TSG's role in ProEngage</h2>
             <div style={{ height: 3, background: "rgba(255,255,255,0.25)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 24 }} />
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.78)", lineHeight: 1.75, marginBottom: 32, maxWidth: 480 }}>

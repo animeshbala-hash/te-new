@@ -133,7 +133,7 @@ function Hero() {
         <div style={{ maxWidth: 640 }}>
           <p
             style={{
-              fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+              fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
               fontSize: 14,
               fontWeight: 700,
               letterSpacing: "1.8px",
@@ -147,7 +147,7 @@ function Hero() {
           <div style={{ width: 48, height: 2, background: "rgba(255,255,255,0.6)", borderRadius: 2, margin: "12px 0 22px" }} />
           <h1
             style={{
-              fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+              fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
               fontSize: "clamp(2.4rem, 5vw, 3.8rem)",
               fontWeight: 400,
               color: "#fff",
@@ -160,7 +160,7 @@ function Hero() {
           </h1>
           <p
             style={{
-              fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+              fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
               fontSize: 16,
               fontWeight: 300,
               lineHeight: 1.7,
@@ -183,7 +183,7 @@ function Hero() {
             }}
           >
             <div style={{ width: 8, height: 8, borderRadius: "50%", background: B_YELLOW, flexShrink: 0 }} />
-            <span style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 15, fontWeight: 600, color: "#fff" }}>
+            <span style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 15, fontWeight: 600, color: "#fff" }}>
               Tata Engage bridges this gap.
             </span>
           </div>
@@ -210,7 +210,7 @@ function IntroSection() {
         <div>
           <p
             style={{
-              fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+              fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
               fontSize: 14,
               fontWeight: 700,
               letterSpacing: "1.8px",
@@ -221,7 +221,7 @@ function IntroSection() {
           >
             What we do
           </p>
-          <h2 style={{ fontSize: 32, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>
+          <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>
             Tata Engage bridges this gap
           </h2>
           <DefinerBar />
@@ -325,7 +325,7 @@ function NGOSection() {
         <div style={{ marginBottom: 56 }}>
           <p
             style={{
-              fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+              fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
               fontSize: 14,
               fontWeight: 700,
               letterSpacing: "1.8px",
@@ -381,7 +381,7 @@ function NGOSection() {
               <div style={{ flex: 1 }}>
                 <div
                   style={{
-                    fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+                    fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
                     fontSize: 10,
                     fontWeight: 700,
                     color: COLOUR + "80",
@@ -490,7 +490,7 @@ function ContactSection() {
         <div>
           <p
             style={{
-              fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+              fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
               fontSize: 14,
               fontWeight: 700,
               letterSpacing: "1.8px",
@@ -529,7 +529,7 @@ function ContactSection() {
         >
           <div
             style={{
-              fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+              fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
               fontSize: 10,
               fontWeight: 700,
               letterSpacing: "1.5px",
@@ -596,7 +596,7 @@ function StayConnectedSection() {
         <div style={{ marginBottom: 48 }}>
           <p
             style={{
-              fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+              fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
               fontSize: 14,
               fontWeight: 700,
               letterSpacing: "1.8px",
@@ -647,7 +647,7 @@ function StayConnectedSection() {
               <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: COLOUR }} />
               <div
                 style={{
-                  fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+                  fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
                   fontSize: 10,
                   fontWeight: 700,
                   letterSpacing: "1.8px",
@@ -665,7 +665,7 @@ function StayConnectedSection() {
               <div
                 style={{
                   marginTop: 18,
-                  fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+                  fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
                   fontSize: 14,
                   fontWeight: 700,
                   letterSpacing: "1.8px",
@@ -690,7 +690,7 @@ export default function PartnerWithUsView() {
       style={{
         background: "transparent",
         minHeight: "100vh",
-        fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+        fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
         paddingTop: 64,
       }}
     >

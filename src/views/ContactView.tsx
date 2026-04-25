@@ -2,10 +2,11 @@ import { useRef, useState, useEffect } from "react";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import contactHeroImg from "@/assets/tata-infinit.jpg";
 
-const ACCENT       = "#C3DB6F";   // lime-green — Contact page
-const ACCENT_DARK  = "#7a8f2a";
-const ACCENT_LIGHT = "#F5FAE0";
-const NAVY         = "#0D1B3E";
+const ACCENT      = "#C3DB6F";
+const ACCENT_DARK = "#7a8f2a";
+const NAVY        = "#0D1B3E";
+
+const FONT = "'DM Sans', 'Noto Sans', ui-sans-serif, system-ui, sans-serif";
 
 const DIAG: React.CSSProperties = {
   position: "absolute", inset: 0,
@@ -15,9 +16,9 @@ const DIAG: React.CSSProperties = {
 };
 
 const SECTIONS = [
-  { id: "contact-hero",    label: "Overview" },
-  { id: "contact-email",   label: "Email"    },
-  { id: "contact-social",  label: "Social"   },
+  { id: "contact-hero",   label: "Overview" },
+  { id: "contact-touch",  label: "Get in Touch" },
+  { id: "contact-social", label: "Stay Connected" },
 ];
 
 function DefinerBar({ light = false }: { light?: boolean }) {
@@ -29,8 +30,8 @@ function DefinerBar({ light = false }: { light?: boolean }) {
     return () => obs.disconnect();
   }, []);
   return (
-    <div ref={ref} style={{ height: 3, background: light ? "rgba(255,255,255,0.2)" : "#e8e8f0", borderRadius: 2, overflow: "hidden", width: 48, marginTop: 10 }}>
-      <div style={{ height: "100%", background: light ? "rgba(255,255,255,0.85)" : ACCENT, borderRadius: 2, transition: "width 0.65s cubic-bezier(0.22,1,0.36,1)", width: on ? "100%" : "0%" }} />
+    <div ref={ref} style={{ height: 2, background: light ? "rgba(255,255,255,0.2)" : "#e8e8f0", borderRadius: 2, overflow: "hidden", width: 48, marginTop: 10 }}>
+      <div style={{ height: "100%", background: light ? "rgba(255,255,255,0.8)" : ACCENT_DARK, borderRadius: 2, transition: "width 0.65s cubic-bezier(0.22,1,0.36,1)", width: on ? "100%" : "0%" }} />
     </div>
   );
 }
@@ -42,46 +43,50 @@ function Hero() {
       <img src={contactHeroImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
       <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${ACCENT}e8 0%, ${ACCENT}cc 38%, ${ACCENT}aa 58%, ${ACCENT}77 78%, ${ACCENT}44 100%)` }} />
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
-        <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", margin: "0 0 12px" }}>
+        <p style={{ fontFamily: FONT, fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", margin: "0 0 12px" }}>
           Tata Engage · Get in Touch
         </p>
         <div style={{ height: 2, width: 48, borderRadius: 2, background: "rgba(255,255,255,0.6)", margin: "12px 0 22px" }} />
-        <h1 style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: "clamp(2.4rem,5vw,3.8rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px", maxWidth: 620 }}>
+        <h1 style={{ fontFamily: FONT, fontSize: "clamp(2.4rem,5vw,3.8rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px", maxWidth: 620 }}>
           Contact &amp; Connect with Tata Engage
         </h1>
-        <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 16, fontWeight: 300, color: "rgba(255,255,255,0.65)", maxWidth: 520, lineHeight: 1.7, margin: 0 }}>
-          Whether you're a civil society organisation, a Tata colleague, or a partner exploring collaboration — the Tata Engage team is here to help.
+        <p style={{ fontFamily: FONT, fontSize: 16, fontWeight: 300, color: "rgba(255,255,255,0.65)", maxWidth: 520, lineHeight: 1.7, margin: 0 }}>
+          We'd love to hear from you. Whether you're a civil society organisation looking for volunteers, a partner exploring collaboration opportunities, or a Tata colleague building your own volunteering journey, the Tata Engage team is here to help.
         </p>
       </div>
     </div>
   );
 }
 
-// ── Email banner (Stay-in-the-loop style) ────────────────────────────────────
-function EmailSection() {
+// ── Get in Touch ──────────────────────────────────────────────────────────────
+function TouchSection() {
   return (
-    <section id="contact-email" style={{ background: "transparent", padding: "96px 56px" }}>
+    <section id="contact-touch" style={{ padding: "96px 56px", background: "#fff" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: ACCENT_DARK, marginBottom: 10 }}>
-          Get in touch directly
+        <p style={{ fontFamily: FONT, fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: ACCENT_DARK, margin: "0 0 10px" }}>
+          Get in Touch
         </p>
-        <h2 style={{ fontSize: 30, fontWeight: 900, color: NAVY, letterSpacing: "-0.5px" }}>Email the Tata Engage team</h2>
+        <h2 style={{ fontFamily: FONT, fontSize: 30, fontWeight: 900, color: NAVY, letterSpacing: "-0.5px", margin: 0 }}>
+          Email the Tata Engage team
+        </h2>
         <DefinerBar />
 
-        <div style={{ marginTop: 44, background: `linear-gradient(135deg, ${ACCENT_DARK} 0%, ${ACCENT} 100%)`, borderRadius: 20, padding: "48px 52px", position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32 }}>
+        {/* Accent-coloured email card */}
+        <div style={{ marginTop: 44, background: ACCENT, borderRadius: 20, padding: "48px 52px", position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32 }}>
           <div style={DIAG} />
-          <div style={{ position: "absolute", bottom: -60, right: -60, width: 300, height: 300, background: `radial-gradient(circle,rgba(255,255,255,0.18) 0%,transparent 68%)`, pointerEvents: "none" }} />
+          <div style={{ position: "absolute", bottom: -60, right: -60, width: 300, height: 300, background: "radial-gradient(circle,rgba(255,255,255,0.2) 0%,transparent 68%)", pointerEvents: "none" }} />
           <div style={{ position: "relative", zIndex: 1, maxWidth: 560 }}>
-            <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 14 }}>
+            <p style={{ fontFamily: FONT, fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: NAVY, marginBottom: 14, opacity: 0.75 }}>
               Drop us a line
             </p>
-            <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 20, fontStyle: "italic", color: "#fff", lineHeight: 1.65, marginBottom: 0 }}>
+            <p style={{ fontFamily: FONT, fontSize: 17, fontWeight: 300, fontStyle: "italic", color: NAVY, lineHeight: 1.65, margin: 0, opacity: 0.9 }}>
               Our team will be happy to guide you on areas you need assistance, or respond to your queries.
             </p>
           </div>
           <div style={{ position: "relative", zIndex: 1, flexShrink: 0 }}>
-            <a href="mailto:tataengage@tata.com"
-              style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#fff", color: ACCENT_DARK, padding: "16px 24px", borderRadius: 12, fontSize: 14, fontWeight: 800, textDecoration: "none", boxShadow: "0 6px 20px rgba(0,0,0,0.25)", transition: "transform 0.2s" }}
+            <a
+              href="mailto:tataengage@tata.com"
+              style={{ display: "inline-flex", alignItems: "center", gap: 10, background: NAVY, color: "#fff", padding: "16px 24px", borderRadius: 12, fontFamily: FONT, fontSize: 14, fontWeight: 800, textDecoration: "none", transition: "transform 0.2s" }}
               onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"}
               onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.transform = "none"}
             >
@@ -94,7 +99,7 @@ function EmailSection() {
   );
 }
 
-// ── Social (full-bleed) ───────────────────────────────────────────────────────
+// ── Stay Connected ────────────────────────────────────────────────────────────
 function SocialSection() {
   const channels = [
     {
@@ -102,63 +107,50 @@ function SocialSection() {
       heading: "Follow on LinkedIn",
       body: "Stay updated on volunteering programmes, partner opportunities, and impact stories from across the Tata ecosystem.",
       detail: "Tata Engage — official page",
-      icon: (
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-        </svg>
-      ),
+      href: "#",
     },
     {
       label: "X (Twitter)",
       heading: "Follow on X",
       body: "Real-time updates on TVW editions, ProEngage openings, and volunteering stories from across the Tata Group.",
       detail: "Tata Engage — official handle",
-      icon: (
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
-        </svg>
-      ),
+      href: "#",
     },
     {
       label: "Website",
       heading: "Tata Sustainability & Tata Group",
       body: "Reach Tata Engage via the broader Tata Sustainability and Tata Group platforms for partner enquiries and ecosystem updates.",
       detail: "Visit Tata Sustainability ↗",
-      icon: (
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
-        </svg>
-      ),
+      href: "#",
     },
   ];
 
   return (
-    <section id="contact-social" style={{ position: "relative", background: "transparent", padding: "32px 56px 96px", overflow: "hidden" }}>
-      <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto" }}>
-        <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: "1.8px", textTransform: "uppercase", color: ACCENT_DARK, marginBottom: 10 }}>
-          Stay connected
+    <section id="contact-social" style={{ padding: "0 56px 96px", background: "#fff" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <p style={{ fontFamily: FONT, fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: ACCENT_DARK, margin: "0 0 10px" }}>
+          Stay Connected
         </p>
-        <h2 style={{ fontSize: 30, fontWeight: 900, color: NAVY, letterSpacing: "-0.5px" }}>Follow Tata Engage</h2>
+        <h2 style={{ fontFamily: FONT, fontSize: 30, fontWeight: 900, color: NAVY, letterSpacing: "-0.5px", margin: 0 }}>
+          Follow Tata Engage
+        </h2>
         <DefinerBar />
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, marginTop: 44 }}>
           {channels.map(c => (
             <a
               key={c.label}
-              href="#"
-              style={{ background: `linear-gradient(135deg, ${ACCENT_DARK} 0%, ${ACCENT} 100%)`, borderRadius: 18, padding: "32px 28px", textDecoration: "none", display: "block", transition: "transform 0.2s, box-shadow 0.2s", position: "relative", overflow: "hidden", boxShadow: "0 4px 16px rgba(216,73,38,0.18)" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 10px 28px rgba(216,73,38,0.28)"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "none"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 16px rgba(216,73,38,0.18)"; }}
+              href={c.href}
+              style={{ background: ACCENT, borderRadius: 18, padding: "32px 28px", textDecoration: "none", display: "flex", flexDirection: "column", transition: "transform 0.2s, box-shadow 0.2s", position: "relative", overflow: "hidden" }}
+              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 10px 28px ${ACCENT}66`; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "none"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none"; }}
             >
               <div style={DIAG} />
               <div style={{ position: "relative", zIndex: 1 }}>
-                <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(255,255,255,0.18)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
-                  {c.icon}
-                </div>
-                <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1.2px", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginBottom: 10 }}>{c.label}</p>
-                <h3 style={{ fontSize: 17, fontWeight: 800, color: "#fff", marginBottom: 10, lineHeight: 1.3 }}>{c.heading}</h3>
-                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.9)", lineHeight: 1.7, marginBottom: 20 }}>{c.body}</p>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#fff", display: "inline-flex", alignItems: "center", gap: 4 }}>
+                <p style={{ fontFamily: FONT, fontSize: 10, fontWeight: 700, letterSpacing: "1.2px", textTransform: "uppercase", color: NAVY, marginBottom: 10, opacity: 0.65 }}>{c.label}</p>
+                <h3 style={{ fontFamily: FONT, fontSize: 17, fontWeight: 800, color: NAVY, marginBottom: 10, lineHeight: 1.3 }}>{c.heading}</h3>
+                <p style={{ fontFamily: FONT, fontSize: 14, color: NAVY, lineHeight: 1.7, marginBottom: 20, opacity: 0.8 }}>{c.body}</p>
+                <span style={{ fontFamily: FONT, fontSize: 13, fontWeight: 700, color: NAVY }}>
                   {c.detail} ↗
                 </span>
               </div>
@@ -173,10 +165,10 @@ function SocialSection() {
 // ── Main ──────────────────────────────────────────────────────────────────────
 export default function ContactView() {
   return (
-    <div className="dot-grid-bg" style={{ background: "transparent", minHeight: "100vh", fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", paddingTop: 64 }}>
+    <div style={{ background: "transparent", minHeight: "100vh", fontFamily: FONT, paddingTop: 64 }}>
       <SubPageDotRail sections={SECTIONS} accentColour={ACCENT} />
       <Hero />
-      <EmailSection />
+      <TouchSection />
       <SocialSection />
     </div>
   );
