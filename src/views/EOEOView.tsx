@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
+import eoeoHeroImg from "@/assets/homepagebanner/Westside Store employees_Paint an Orphanage - Trent.JPG";
 
 const ACCENT_NAVY  = "#0D1B3E";
 const COLOUR       = "#F4838A";  // Team pink
@@ -64,17 +65,14 @@ export default function EOEOView() {
   const { isLoggedIn } = useAuth();
 
   return (
-    <div style={{ background: "#f5f5fa", minHeight: "100vh", position: "relative" }}>
+    <div style={{ background: "transparent", minHeight: "100vh", position: "relative", backgroundImage: "radial-gradient(circle, rgba(13,27,62,0.06) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
 
       <SubPageDotRail sections={SECTIONS} />
 
       {/* HERO */}
       <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", display: "flex", alignItems: "center", paddingTop: 64 }}>
-        <img
-          src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&q=80&w=1800"
-          alt="" referrerPolicy="no-referrer"
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
-        />
+        <img src={eoeoHeroImg} alt=""
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}e8 0%, ${COLOUR}cc 38%, ${COLOUR}aa 58%, ${COLOUR}77 78%, ${COLOUR}44 100%)` }} />
 
         <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
@@ -113,7 +111,7 @@ export default function EOEOView() {
       </div>
 
       {/* ABOUT */}
-      <section id="eoeo-about" style={{ padding: "88px 56px", background: "#fff" }}>
+      <section id="eoeo-about" style={{ padding: "88px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "start" }}>
           <div>
             <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR, marginBottom: 10 }}>About the platform</p>

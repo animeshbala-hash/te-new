@@ -5,15 +5,16 @@ import SubPageDotRail from "@/components/shared/SubPageDotRail";
 // ── Asset imports ─────────────────────────────────────────────────────────────
 import imgTrent        from "@/assets/trent.jpg";
 import imgBball        from "@/assets/tatabball.jpg";
-import imgDR1          from "@/assets/dr_photo.jpg";
-import imgElxsi        from "@/assets/tata-elxsi.jpg";
+import img2016         from "@/assets/homepagebanner/2016.png";
+import img2015         from "@/assets/homepagebanner/2015.png";
+import img2017         from "@/assets/homepagebanner/2017.png";
 import imgIHCL         from "@/assets/IHCL.jpg";
 import imgMotors       from "@/assets/Tata_Motors_1.jpg";
 import imgComms        from "@/assets/tata-communications-1.jpg";
 import imgAirIndia     from "@/assets/air-india.jpg";
 import imgAIG          from "@/assets/tata-aig-1.jpg";
 import imgTrent2       from "@/assets/trent_2.jpg";
-import imgInfiniti     from "@/assets/infiniti-1.jpg";
+import img2025         from "@/assets/homepagebanner/2025.png";
 import imgDR2          from "@/assets/dr_photo_2.jpg";
 
 // ── Brand tokens ──────────────────────────────────────────────────────────────
@@ -42,7 +43,7 @@ const MILESTONES = [
     body: "Launched with two volunteering formats — Tata Volunteering Week and ProEngage. Set a goal to achieve a million volunteering hours as a group.",
     stat: "1M",
     statSub: "hours · goal set",
-    photo: imgTrent,
+    photo: img2015,
   },
   {
     key: "fy2016",
@@ -52,7 +53,7 @@ const MILESTONES = [
     body: "Clocked 1.02 million volunteering hours, including supporting the disaster response during Tamil Nadu Floods with 100+ volunteers. Adopted the One Tata Response as part of disaster response guidelines.",
     stat: "1.02M",
     statSub: "hours clocked",
-    photo: imgDR1,
+    photo: img2016,
   },
   {
     key: "fy2017",
@@ -62,7 +63,7 @@ const MILESTONES = [
     body: "Launched Tata Group volunteering guidelines to help companies review existing programmes — or develop new ones — and shape consistent policy across the Group.",
     stat: "1",
     statSub: "Group-wide playbook",
-    photo: imgElxsi,
+    photo: img2017,
   },
   {
     key: "fy2018",
@@ -142,7 +143,7 @@ const MILESTONES = [
     body: "Clocked 10.87 million volunteering hours (highest ever) at 10.67 PCVH. 27 group companies crossed 4 PCVH. 38 companies showed improvement in PCVH. Tata Steel and Tata Motors integrated volunteering into their assurance frameworks. TSG hosted 7 regional SPOC meets for 278 SPOCs from 41 companies. Tata group emerges as a possible global leader: Rank 1 in total hours, Rank 2 in per-capita contribution.",
     stat: "10.87M",
     statSub: "hours · PCVH 10.67",
-    photo: imgInfiniti,
+    photo: img2025,
   },
 ] as const;
 

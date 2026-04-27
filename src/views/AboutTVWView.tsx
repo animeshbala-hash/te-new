@@ -3,8 +3,9 @@ import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 import { useAppContext } from "@/context/AppContext";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import tvwHeroImg from "@/assets/tata-motors-3.jpg";
-import tvwHeroFallback from "@/assets/tata-motors-2.jpg";
+import tvwHeroImg from "@/assets/banner_photos/TVW Inner Banner.JPG";
+import tvwBelowImg from "@/assets/banner_photos/TVW Inner Page below Banner.jpg";
+import tvwPhoto3 from "@/assets/banner_photos/TVW photo 3 on innerpg.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
@@ -14,11 +15,12 @@ const COLOUR_DARK  = "#154E8A";
 const COLOUR_LIGHT = "#EEF4FF";
 
 const SECTIONS = [
-  { id: "tvw-overview", label: "Overview"     },
-  { id: "tvw-who",      label: "Who"          },
-  { id: "tvw-how",      label: "How it works" },
-  { id: "tvw-timelines", label: "Timelines"   },
-  { id: "tvw-tsg",      label: "TSG Role"     },
+  { id: "tvw-overview",  label: "Overview"      },
+  { id: "tvw-why",       label: "Why it matters" },
+  { id: "tvw-who",       label: "Who"           },
+  { id: "tvw-how",       label: "How it works"  },
+  { id: "tvw-timelines", label: "Timelines"     },
+  { id: "tvw-tsg",       label: "TSG Role"      },
 ];
 
 const DIAG: React.CSSProperties = {
@@ -28,16 +30,13 @@ const DIAG: React.CSSProperties = {
   pointerEvents: "none",
 };
 
-
-
-// ── SVG Icons (no emoji) ──────────────────────────────────────────────────────
+// ── SVG Icons ─────────────────────────────────────────────────────────────────
 const IconEmployee = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
     <circle cx="12" cy="7" r="4"/>
   </svg>
 );
-
 const IconFamily = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -46,7 +45,6 @@ const IconFamily = () => (
     <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
   </svg>
 );
-
 const IconRetired = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="8" r="4"/>
@@ -54,8 +52,6 @@ const IconRetired = () => (
     <path d="M9 12.5L12 16l3-3.5"/>
   </svg>
 );
-
-// How-to-volunteer step icons
 const IconRegister = () => (
   <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
     <rect x="4" y="4" width="20" height="20" rx="4"/>
@@ -87,38 +83,30 @@ const IconShare = () => (
 
 const HOW_STEPS = [
   {
-    num: "01",
-    title: "Register on Tata Engage",
-    desc: "Create your profile, add your interests, and indicate your location. Takes just a few minutes.",
-    Icon: IconRegister,
-    colour: "#135EA9",
+    num: "01", title: "Register on Tata Engage",
+    desc: "Create your profile, add your skills and interests, and indicate your location. Takes just a few minutes.",
+    Icon: IconRegister, colour: "#135EA9",
   },
   {
-    num: "02",
-    title: "Browse available events",
+    num: "02", title: "Browse available events",
     desc: "Explore TVW events posted by SPOCs across your company and location. Filter by theme, date, or mode.",
-    Icon: IconBrowse,
-    colour: "#0D7C52",
+    Icon: IconBrowse, colour: "#0D7C52",
   },
   {
-    num: "03",
-    title: "Sign up and show up",
-    desc: "Register for an activity and participate with your team. Half-day group sessions designed for all skill levels.",
-    Icon: IconParticipate,
-    colour: "#5B21B6",
+    num: "03", title: "Sign up and show up",
+    desc: "Register for an activity and participate with your team. Half-day, group-based sessions designed for all skill levels.",
+    Icon: IconParticipate, colour: "#5B21B6",
   },
   {
-    num: "04",
-    title: "Share your story",
-    desc: "After volunteering, share your experience. Your story inspires others across the Tata Group.",
-    Icon: IconShare,
-    colour: "#F16323",
+    num: "04", title: "Share your story",
+    desc: "After volunteering, share your experience on Tata Engage. Your story inspires others across the Tata Group.",
+    Icon: IconShare, colour: "#F16323",
   },
 ];
 
 const WHO = [
   { label: "Tata Employees",         Icon: IconEmployee, desc: "All group company employees — no specialised skills required for most TVW activities." },
-  { label: "Family Members",         Icon: IconFamily,   desc: "Spouses and family members of Tata employees are warmly welcome." },
+  { label: "Family Members",         Icon: IconFamily,   desc: "Spouses and family members of Tata employees are warmly welcome to participate." },
   { label: "Retired Tata Employees", Icon: IconRetired,  desc: "Former Tata employees remain part of the volunteering family even after retirement." },
 ];
 
@@ -159,17 +147,10 @@ export default function AboutTVWView() {
 
       <SubPageDotRail sections={SECTIONS} />
 
-      {/* ════════════════════ HERO — photo + accent overlay ════════════════════ */}
+      {/* ════════════════════ HERO ════════════════════ */}
       <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", display: "flex", alignItems: "center", paddingTop: 64 }}>
-        {/* Background image via CSS — more reliable than img tag for assets */}
-        <div
-          style={{
-            position: "absolute", inset: 0,
-            backgroundImage: `url(${tvwHeroImg}), url(${tvwHeroFallback})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
+        <img src={tvwHeroImg} alt=""
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}e8 0%, ${COLOUR}cc 38%, ${COLOUR}aa 58%, ${COLOUR}77 78%, ${COLOUR}44 100%)` }} />
 
         <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
@@ -181,7 +162,7 @@ export default function AboutTVWView() {
             Tata Volunteering Week
           </h1>
           <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 15, fontWeight: 300, lineHeight: 1.7, color: "rgba(255,255,255,0.65)", margin: "0 0 32px", maxWidth: 520 }}>
-            A Celebration of Collective Action. Held twice every year, TVW is a time when the Tata volunteering tribe comes together — turning intent into action by volunteering time, skills, and compassion for causes close to their heart.
+            A Celebration of Collective Action. Held twice every year, TVW brings together thousands of Tata employees, their families, and retired colleagues from across the world to create meaningful community impact.
           </p>
           <div style={{ display: "flex", gap: 14 }}>
             <button onClick={() => navigate(isLoggedIn ? "tvw" : "register-role")}
@@ -205,46 +186,81 @@ export default function AboutTVWView() {
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
           <div>
             <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>What is TVW?</p>
-            <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>The Group's largest moment of giving</h2>
+            <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>The Tata Group's flagship volunteering initiative</h2>
             <DefinerBar colour={COLOUR} />
             <div style={{ marginTop: 28 }}>
               <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
-                Tata Volunteering Week provides an opportunity for volunteers — many of them first-timers — to experience the joy and outcome of giving back, and to build a long-term volunteering habit.
+                Tata Volunteering Week (TVW) is the Tata Group's flagship volunteering initiative — bringing together thousands of Tata employees, their families, and retired colleagues from across the world to create meaningful community impact.
               </p>
               <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82 }}>
-                From supporting under-resourced communities and caring for the environment to engaging with children, patients, and vulnerable groups, TVW enables simple actions to collectively create large-scale impact. Specially curated DIY activity guides also empower individuals to take action independently.
+                Held twice every year, TVW is a time when the Tata volunteering tribe comes together to turn intent into action — by volunteering time, skills, and compassion for causes close to their heart.
               </p>
             </div>
           </div>
           <div style={{ position: "relative" }}>
             <div style={{ position: "absolute", top: -16, right: -16, zIndex: 0, width: 64, height: 64, borderRadius: 16, background: COLOUR, opacity: 0.12 }} />
             <div style={{ borderRadius: 18, overflow: "hidden", boxShadow: "0 4px 32px rgba(0,0,0,0.10)", position: "relative", zIndex: 1 }}>
-              <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=900" alt=""
-                style={{ width: "100%", height: 380, objectFit: "cover", display: "block" }} referrerPolicy="no-referrer" />
+              <img src={tvwBelowImg} alt=""
+                style={{ width: "100%", height: 380, objectFit: "cover", objectPosition: "center", display: "block" }} />
             </div>
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: COLOUR, borderRadius: "0 0 18px 18px", zIndex: 2 }} />
           </div>
         </div>
       </section>
 
+      {/* ════════════════════ WHY IT MATTERS ════════════════════ */}
+      <section id="tvw-why" style={{ background: "#F0F4FA", padding: "88px 56px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>Purpose</p>
+          <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Why Tata Volunteering Week matters</h2>
+          <DefinerBar colour={COLOUR} />
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, marginTop: 40, alignItems: "start" }}>
+            <div>
+              <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
+                Change begins when we move from conversation to action. Tata Volunteering Week provides an opportunity for volunteers — many of them first-timers — to experience the joy and outcome of giving back, and to build a long-term volunteering habit.
+              </p>
+              <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82 }}>
+                From supporting under-resourced communities and caring for the environment to engaging with children, patients, and vulnerable groups, TVW enables simple actions to collectively create large-scale impact.
+              </p>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {[
+                { theme: "Community & Social", desc: "Supporting under-resourced communities and vulnerable groups" },
+                { theme: "Environment", desc: "Caring for the environment and promoting sustainable practices" },
+                { theme: "Children & Education", desc: "Engaging with children and youth to create lasting change" },
+                { theme: "Health & Wellbeing", desc: "Caring for patients and those who need support" },
+              ].map((item) => (
+                <div key={item.theme} style={{ display: "flex", gap: 14, alignItems: "flex-start", background: "#fff", borderRadius: 12, padding: "16px 20px", border: `1px solid ${COLOUR}18` }}>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: COLOUR, flexShrink: 0, marginTop: 7 }} />
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: ACCENT_NAVY, marginBottom: 3 }}>{item.theme}</div>
+                    <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6 }}>{item.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ════════════════════ WHO ════════════════════ */}
       <section id="tvw-who" style={{ position: "relative", overflow: "hidden", minHeight: 480 }}>
-        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1800" alt=""
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} referrerPolicy="no-referrer" />
+        <img src={tvwPhoto3} alt=""
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} />
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}f8 0%, ${COLOUR}e0 38%, ${COLOUR}c0 58%, ${COLOUR}88 78%, ${COLOUR}44 100%)` }} />
         <div style={DIAG} />
         <div style={{ position: "relative", zIndex: 1, padding: "88px 56px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
             <div>
-              <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 10 }}>Eligibility</p>
+              <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 10 }}>Who Can Volunteer?</p>
               <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>Open to the entire Tata family</h2>
               <div style={{ height: 3, background: "rgba(255,255,255,0.28)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 36 }} />
               <div style={{ marginBottom: 36 }}>
                 <div style={{ fontSize: "clamp(3.5rem, 7vw, 5.5rem)", fontWeight: 900, color: "#fff", lineHeight: 1, letterSpacing: "-3px" }}>50,000+</div>
-                <div style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 12, color: "rgba(255,255,255,0.55)", marginTop: 10, letterSpacing: "0.8px", maxWidth: 260, lineHeight: 1.5 }}>active volunteers across the Tata group</div>
+                <div style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 12, color: "rgba(255,255,255,0.55)", marginTop: 10, letterSpacing: "0.8px", maxWidth: 260, lineHeight: 1.5 }}>active volunteers across the Tata Group</div>
               </div>
               <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, maxWidth: 380 }}>
-                No specialised skills are required for most TVW activities. Volunteers are encouraged to participate with sensitivity, responsibility, and respect for communities.
+                No specialised skills are required for most TVW activities. Volunteers are encouraged to participate with sensitivity, responsibility, and respect for communities, guided by Tata Engage's volunteering principles.
               </p>
             </div>
             <div>
@@ -264,7 +280,7 @@ export default function AboutTVWView() {
         </div>
       </section>
 
-      {/* ════════════════════ HOW IT WORKS — Creative visual ════════════════════ */}
+      {/* ════════════════════ HOW IT WORKS ════════════════════ */}
       <section id="tvw-how" style={{ padding: "96px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>
@@ -276,40 +292,32 @@ export default function AboutTVWView() {
             This group-wide approach enables collaboration, inclusivity, and scale — while allowing volunteers to choose causes aligned with their interests.
           </p>
 
-          {/* Horizontal step pipeline */}
+          {/* Step pipeline */}
           <div style={{ position: "relative" }}>
-            {/* Connector line */}
             <div style={{ position: "absolute", top: 44, left: "calc(12.5% + 28px)", right: "calc(12.5% + 28px)", height: 2, background: `linear-gradient(90deg, ${COLOUR}40, ${COLOUR}, ${COLOUR}40)`, zIndex: 0, borderRadius: 2 }} />
-
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, position: "relative", zIndex: 1 }}>
               {HOW_STEPS.map((step, idx) => (
                 <div key={step.num} style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-                  {/* Step dot/icon */}
                   <div style={{
-                    width: 88, height: 88,
-                    borderRadius: "50%",
+                    width: 88, height: 88, borderRadius: "50%",
                     background: idx === 0 ? step.colour : "#fff",
                     border: `2px solid ${step.colour}`,
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    flexShrink: 0,
-                    marginBottom: 24,
+                    flexShrink: 0, marginBottom: 24,
                     boxShadow: idx === 0 ? `0 8px 28px ${step.colour}40` : `0 4px 16px rgba(0,0,0,0.07)`,
-                    transition: "all 0.2s",
                     color: idx === 0 ? "#fff" : step.colour,
                     position: "relative",
                   }}>
                     <step.Icon />
-                    {/* Step number badge */}
                     <div style={{
                       position: "absolute", top: -6, right: -6,
                       width: 22, height: 22, borderRadius: "50%",
                       background: step.colour, color: "#fff",
-                      fontSize: 10, fontWeight: 800, fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
+                      fontSize: 10, fontWeight: 800,
                       display: "flex", alignItems: "center", justifyContent: "center",
                       border: "2px solid #fff",
                     }}>{idx + 1}</div>
                   </div>
-
                   <div style={{ fontSize: 14, fontWeight: 800, color: ACCENT_NAVY, marginBottom: 10, lineHeight: 1.3 }}>{step.title}</div>
                   <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.65 }}>{step.desc}</div>
                 </div>
@@ -320,9 +328,9 @@ export default function AboutTVWView() {
           {/* Programme detail cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: 64 }}>
             {[
-              { title: "Each edition", body: "Tata Engage builds a unique, engaging umbrella campaign. Tata companies curate volunteering opportunities across social and environmental themes — half-day, group-based activities." },
-              { title: "Accessible activities", body: "Opportunities span companies and locations. DIY (Do It Yourself) guides also empower individuals to take action independently — without waiting for a group event." },
-              { title: "Cross-company scale", body: "This group-wide approach enables collaboration, inclusivity, and scale. Companies coordinate through their SPOCs to ensure maximum participation." },
+              { title: "Each edition", body: "Tata Engage builds a unique, engaging umbrella campaign. Tata companies across global locations curate volunteering opportunities spanning social and environmental community-development themes." },
+              { title: "Accessible activities", body: "Half-day, group-based activities are accessible across companies and locations. Specially curated DIY activity guides empower individuals to take action independently — without waiting for a group event." },
+              { title: "Cross-company scale", body: "This group-wide approach enables collaboration, inclusivity, and scale — while allowing volunteers to choose causes aligned with their interests. Companies coordinate through their SPOCs to ensure maximum participation." },
             ].map((card) => (
               <div key={card.title} style={{ background: COLOUR_LIGHT, borderRadius: 16, padding: "28px 24px", border: `1px solid ${COLOUR}22` }}>
                 <div style={{ width: 32, height: 3, background: COLOUR, borderRadius: 2, marginBottom: 18 }} />
@@ -341,14 +349,14 @@ export default function AboutTVWView() {
           <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Twice every year, every year</h2>
           <DefinerBar colour={COLOUR} />
           <p style={{ fontSize: 15, color: "#64748B", marginTop: 18, marginBottom: 44, maxWidth: 480, lineHeight: 1.72 }}>
-            Each edition runs over a four-week period, commencing on the dates below. Both editions follow the same programme structure.
+            Tata Volunteering Week is celebrated twice each year across the Tata Group. Each edition runs over a four-week period, commencing on the dates below.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 600 }}>
             {[
               { date: "3 March", label: "Spring Edition", desc: "Marks the beginning of the volunteering year across the Tata Group." },
               { date: "5 September", label: "Autumn Edition", desc: "Carried forward from the momentum of the spring edition." },
             ].map((ed) => (
-              <div key={ed.date} style={{ background: COLOUR, borderRadius: 16, padding: "28px 26px", border: `1px solid ${COLOUR}`, boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}>
+              <div key={ed.date} style={{ background: COLOUR, borderRadius: 16, padding: "28px 26px", boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}>
                 <div style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: "1.2px", color: "rgba(255,255,255,0.75)", textTransform: "uppercase", marginBottom: 10 }}>{ed.label}</div>
                 <div style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px", marginBottom: 8 }}>{ed.date}</div>
                 <div style={{ width: 24, height: 3, background: "rgba(255,255,255,0.6)", borderRadius: 2, marginBottom: 14 }} />
@@ -365,12 +373,14 @@ export default function AboutTVWView() {
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 72, alignItems: "start" }}>
           <div>
             <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 10 }}>Tata Sustainability Group</p>
-            <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>TSG's role in Tata Volunteering Week</h2>
-            <div style={{ height: 3, background: "rgba(255,255,255,0.25)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 36 }} />
+            <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>The role of Tata Sustainability Group</h2>
+            <div style={{ height: 3, background: "rgba(255,255,255,0.25)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 24 }} />
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, marginBottom: 32, maxWidth: 440 }}>
+              Tata Volunteering Week is anchored by the Tata Sustainability Group, which enables the programme through:
+            </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               {TSG_POINTS.map((p, i) => (
                 <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                  {/* Check icon SVG */}
                   <div style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(255,255,255,0.14)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", marginTop: 1 }}>
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                       <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
@@ -392,15 +402,18 @@ export default function AboutTVWView() {
               style={{ background: B_YELLOW, color: ACCENT_NAVY, border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", width: "100%", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
               Register to Volunteer →
             </button>
+            <button onClick={() => navigate(isLoggedIn ? "tvw" : "register-role")}
+              style={{ background: "transparent", color: "rgba(255,255,255,0.75)", border: "1px solid rgba(255,255,255,0.22)", borderRadius: 10, padding: "14px 22px", fontWeight: 600, fontSize: 14, cursor: "pointer", width: "100%", marginTop: 12 }}>
+              View Volunteering Opportunities →
+            </button>
             <button onClick={() => navigate("about")}
-              style={{ background: "transparent", color: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.22)", borderRadius: 10, padding: "14px 22px", fontWeight: 600, fontSize: 14, cursor: "pointer", width: "100%", marginTop: 12 }}>
+              style={{ background: "transparent", color: "rgba(255,255,255,0.45)", border: "none", padding: "12px 0 0", fontWeight: 500, fontSize: 13, cursor: "pointer", width: "100%", textAlign: "center" as const }}>
               ← Back to About
             </button>
           </div>
         </div>
       </section>
 
-      
     </div>
   );
 }

@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
+import eoiHeroImg from "@/assets/banner_photos/EOI Inner banner.jpg";
+import eoiBelowImg from "@/assets/banner_photos/EOI below inner banner.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
@@ -48,14 +50,14 @@ export default function EOIView() {
   const { isLoggedIn } = useAuth();
 
   return (
-    <div style={{ background: "#fff", minHeight: "100vh", position: "relative" }}>
+    <div style={{ background: "transparent", minHeight: "100vh", position: "relative", backgroundImage: "radial-gradient(circle, rgba(13,27,62,0.06) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
 
       <SubPageDotRail sections={SECTIONS} />
 
       {/* ════════════════════ HERO ════════════════════ */}
       <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", display: "flex", alignItems: "center", paddingTop: 64 }}>
-        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1800"
-          alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} referrerPolicy="no-referrer" />
+        <img src={eoiHeroImg} alt=""
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}e8 0%, ${COLOUR}cc 38%, ${COLOUR}aa 58%, ${COLOUR}77 78%, ${COLOUR}44 100%)` }} />
 
         <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
@@ -86,7 +88,7 @@ export default function EOIView() {
       </div>
 
       {/* ════════════════════ OVERVIEW ════════════════════ */}
-      <section id="eoi-overview" style={{ padding: "88px 56px", background: "#fff" }}>
+      <section id="eoi-overview" style={{ padding: "88px 56px", background: "transparent" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
           <div>
             <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>What is EOI?</p>
@@ -107,8 +109,8 @@ export default function EOIView() {
           <div style={{ position: "relative" }}>
             <div style={{ position: "absolute", top: -16, right: -16, zIndex: 0, width: 64, height: 64, borderRadius: 16, background: COLOUR, opacity: 0.12 }} />
             <div style={{ borderRadius: 18, overflow: "hidden", boxShadow: "0 4px 32px rgba(0,0,0,0.10)", position: "relative", zIndex: 1 }}>
-              <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&q=80&w=900" alt=""
-                style={{ width: "100%", height: 380, objectFit: "cover", display: "block" }} referrerPolicy="no-referrer" />
+              <img src={eoiBelowImg} alt=""
+                style={{ width: "100%", height: 380, objectFit: "cover", objectPosition: "center", display: "block" }} />
             </div>
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: COLOUR, borderRadius: "0 0 18px 18px", zIndex: 2 }} />
           </div>

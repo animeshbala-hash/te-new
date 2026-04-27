@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import peHeroImg from "@/assets/tce-2.jpg";
+import peHeroImg from "@/assets/banner_photos/Inner Page ProEngage banner.jpg";
+import peBelowImg from "@/assets/banner_photos/Inner Page PE below banner.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
@@ -282,8 +283,8 @@ export default function AboutProEngageView() {
           <div style={{ position: "relative" }}>
             <div style={{ position: "absolute", top: -16, right: -16, zIndex: 0, width: 64, height: 64, borderRadius: 16, background: COLOUR, opacity: 0.12 }} />
             <div style={{ borderRadius: 18, overflow: "hidden", boxShadow: "0 4px 32px rgba(0,0,0,0.10)", position: "relative", zIndex: 1 }}>
-              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=900" alt=""
-                style={{ width: "100%", height: 380, objectFit: "cover", display: "block" }} referrerPolicy="no-referrer" />
+              <img src={peBelowImg} alt=""
+                style={{ width: "100%", height: 380, objectFit: "cover", objectPosition: "center", display: "block" }} />
             </div>
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: COLOUR, borderRadius: "0 0 18px 18px", zIndex: 2 }} />
           </div>
@@ -291,7 +292,7 @@ export default function AboutProEngageView() {
       </section>
 
       {/* ════════════════════ WHAT MAKES IT UNIQUE ════════════════════ */}
-      <section id="pe-unique" style={{ padding: "80px 56px", background: "#F0F8F4" }}>
+      <section id="pe-unique" style={{ padding: "80px 56px", background: "#F0F4FA" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>The ProEngage difference</p>
           <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>What makes ProEngage unique?</h2>
@@ -474,7 +475,7 @@ export default function AboutProEngageView() {
       </section>
 
       {/* ════════════════════ SKILLS ════════════════════ */}
-      <section id="pe-skills" style={{ padding: "80px 56px", background: "#F0F8F4" }}>
+      <section id="pe-skills" style={{ padding: "80px 56px", background: "#F0F4FA" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR + "cc", marginBottom: 10 }}>Skill areas</p>
           <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>What skills are needed?</h2>

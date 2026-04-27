@@ -172,29 +172,8 @@ function WhatSection() {
             <p style={{ fontFamily: FONT, fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: ACCENT_DARK, marginBottom: 14 }}>
               Our Purpose
             </p>
-            <p style={{ fontFamily: FONT, fontSize: 14.5, color: "#475569", lineHeight: 1.78, marginBottom: 18 }}>
-              Tata Engage brings together Tata employees, their families, and retired colleagues, and enables them—through its flagship programmes:
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 18 }}>
-              {[
-                { name: "Tata Volunteering Week", colour: TVW_C, route: "about-tvw" },
-                { name: "ProEngage", colour: PE_C, route: "about-proengage" },
-                { name: "Volunteering for Disaster Response", colour: DR_C, route: "disaster-response" },
-              ].map(p => (
-                <button
-                  key={p.name}
-                  onClick={() => navigate(p.route)}
-                  style={{ display: "flex", alignItems: "center", gap: 12, background: "#F4F8F7", border: "1px solid #e8eef0", borderLeft: `3px solid ${p.colour}`, borderRadius: 8, padding: "11px 16px", fontFamily: FONT, fontSize: 13.5, fontWeight: 700, color: NAVY, cursor: "pointer", textAlign: "left", transition: "background 0.15s" }}
-                  onMouseEnter={e => (e.currentTarget as HTMLButtonElement).style.background = "#eaeff2"}
-                  onMouseLeave={e => (e.currentTarget as HTMLButtonElement).style.background = "#F4F8F7"}
-                >
-                  <span style={{ flex: 1 }}>{p.name}</span>
-                  <span style={{ fontSize: 12, color: p.colour }}>Know more →</span>
-                </button>
-              ))}
-            </div>
             <p style={{ fontFamily: FONT, fontSize: 14.5, color: "#475569", lineHeight: 1.78, margin: 0 }}>
-              to contribute their time, skills, and experience to address pressing social and environmental challenges, while strengthening communities and fostering social cohesion.
+              Tata Engage brings together Tata employees, their families, and retired colleagues, and enables them to contribute their time, skills, and experience to address pressing social and environmental challenges, while strengthening communities and fostering social cohesion.
             </p>
           </div>
         </div>

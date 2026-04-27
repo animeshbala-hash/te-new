@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
+import ytaHeroImg from "@/assets/homepagebanner/WhatsApp Image 2024-12-01 at 22.09.35 (1).jpeg";
+import ytaBelowImg from "@/assets/homepagebanner/IMG-20230211-WA0080.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
@@ -59,8 +61,8 @@ export default function YesToAccessView() {
 
       {/* ════════════════════ HERO ════════════════════ */}
       <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", display: "flex", alignItems: "center", paddingTop: 64 }}>
-        <img src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&q=80&w=1800"
-          alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} referrerPolicy="no-referrer" />
+        <img src={ytaHeroImg} alt=""
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}e8 0%, ${COLOUR}cc 38%, ${COLOUR}aa 58%, ${COLOUR}77 78%, ${COLOUR}44 100%)` }} />
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 80, background: "linear-gradient(to bottom, transparent, #fff)", pointerEvents: "none" }} />
 
@@ -113,8 +115,8 @@ export default function YesToAccessView() {
           <div style={{ position: "relative" }}>
             <div style={{ position: "absolute", top: -16, right: -16, zIndex: 0, width: 64, height: 64, borderRadius: 16, background: COLOUR, opacity: 0.12 }} />
             <div style={{ borderRadius: 18, overflow: "hidden", boxShadow: "0 4px 32px rgba(0,0,0,0.10)", position: "relative", zIndex: 1 }}>
-              <img src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&q=80&w=900" alt=""
-                style={{ width: "100%", height: 380, objectFit: "cover", display: "block" }} referrerPolicy="no-referrer" />
+              <img src={ytaBelowImg} alt=""
+                style={{ width: "100%", height: 380, objectFit: "cover", objectPosition: "center", display: "block" }} />
             </div>
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: COLOUR, borderRadius: "0 0 18px 18px", zIndex: 2 }} />
           </div>
@@ -164,8 +166,8 @@ export default function YesToAccessView() {
           <div style={{ position: "relative" }}>
             <div style={{ position: "absolute", top: -16, right: -16, zIndex: 0, width: 64, height: 64, borderRadius: 16, background: COLOUR, opacity: 0.12 }} />
             <div style={{ borderRadius: 18, overflow: "hidden", boxShadow: "0 4px 32px rgba(0,0,0,0.10)", position: "relative", zIndex: 1 }}>
-              <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=900" alt=""
-                style={{ width: "100%", height: 380, objectFit: "cover", display: "block" }} referrerPolicy="no-referrer" />
+              <img src={ytaBelowImg} alt=""
+                style={{ width: "100%", height: 380, objectFit: "cover", objectPosition: "center", display: "block" }} />
             </div>
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: COLOUR, borderRadius: "0 0 18px 18px", zIndex: 2 }} />
           </div>
