@@ -179,14 +179,11 @@ const HomeView = () => {
   return (
     <div className="relative font-sans">
 
-      {/* ── Section dot rail — adapts between hero (white) and post-hero (dark blue) */}
+      {/* ── Section dot rail — fixed navy, same as all static pages */}
       <div className="fixed right-4 top-1/2 -translate-y-1/2 z-40 flex flex-col items-end" style={{ gap: 0 }}>
         {SECTION_IDS.map((id, i) => {
           const active = activeSection === i;
           const isLast = i === SECTION_IDS.length - 1;
-          const dotColor      = inHero ? "white" : "#333399";
-          const inactiveColor = inHero ? "rgba(255,255,255,0.4)" : "#CBD5E1";
-          const lineColor     = inHero ? "rgba(255,255,255,0.25)" : "#33339950";
           return (
             <div key={id} className="flex flex-col items-end">
               <button
@@ -201,8 +198,8 @@ const HomeView = () => {
                       fontSize: 11, fontWeight: 700, letterSpacing: "0.3px",
                       padding: "3px 9px",
                       borderRadius: 4,
-                      backgroundColor: inHero ? "rgba(0,0,0,0.85)" : "rgba(13,27,62,0.92)",
-                      border: `1px solid ${inHero ? "rgba(255,255,255,0.25)" : "#0D1B3E"}`,
+                      backgroundColor: "rgba(13,27,62,0.92)",
+                      border: `1px solid #0D1B3E`,
                       color: "#ffffff",
                     }}>
                     {SECTION_LABELS[i]}
@@ -213,8 +210,8 @@ const HomeView = () => {
                   style={{
                     width: active ? 9 : 6, height: active ? 9 : 6,
                     borderRadius: 2,
-                    backgroundColor: active ? dotColor : inactiveColor,
-                    border: `1px solid ${active ? dotColor : inactiveColor}`,
+                    backgroundColor: "#0D1B3E",
+                    border: `1px solid rgba(13,27,62,0.25)`,
                     display: "block",
                     flexShrink: 0,
                   }}
@@ -228,7 +225,7 @@ const HomeView = () => {
                   height: 28,
                   marginLeft: "auto",
                   marginRight: active ? "4px" : "2.5px",
-                  backgroundImage: `repeating-linear-gradient(to bottom, ${lineColor} 0px, ${lineColor} 3px, transparent 3px, transparent 7px)`,
+                  backgroundImage: `repeating-linear-gradient(to bottom, rgba(13,27,62,0.5) 0px, rgba(13,27,62,0.5) 3px, transparent 3px, transparent 7px)`,
                   transition: "all 0.3s",
                 }} />
               )}
