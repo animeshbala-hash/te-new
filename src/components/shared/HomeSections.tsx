@@ -622,11 +622,22 @@ export function ProgrammeSpotlight() {
                 </div>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 16 }}>
                   <button
-                    onClick={(e) => { e.stopPropagation(); navigate("cvp"); }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate("cvp");
+                    }}
                     style={{
-                      display: "flex", alignItems: "center", gap: 6,
-                      fontFamily: FONT_SANS, fontSize: 13, fontWeight: 700,
-                      color: "#ffffff", background: "none", border: "none", cursor: "pointer", padding: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 6,
+                      fontFamily: FONT_SANS,
+                      fontSize: 13,
+                      fontWeight: 700,
+                      color: "#ffffff",
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: 0,
                     }}
                   >
                     Learn More <ArrowRight size={13} />
@@ -711,11 +722,22 @@ export function ProgrammeSpotlight() {
                 </div>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 16 }}>
                   <button
-                    onClick={(e) => { e.stopPropagation(); navigate("eoi"); }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate("eoi");
+                    }}
                     style={{
-                      display: "flex", alignItems: "center", gap: 6,
-                      fontFamily: FONT_SANS, fontSize: 13, fontWeight: 700,
-                      color: "#ffffff", background: "none", border: "none", cursor: "pointer", padding: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 6,
+                      fontFamily: FONT_SANS,
+                      fontSize: 13,
+                      fontWeight: 700,
+                      color: "#ffffff",
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: 0,
                     }}
                   >
                     Learn More <ArrowRight size={13} />
@@ -1491,7 +1513,7 @@ export function JourneySection() {
               fontWeight: 700,
               background: "none",
               border: "none",
-              color: "#ffffff",
+              color: "#333399",
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
