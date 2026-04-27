@@ -602,8 +602,8 @@ export default function SPOCDashboardView() {
   }, [spocMode]);
 
   const [spocPipelineFilter, setSpocPipelineFilter] = useState("current");
-  const [activeVolActivity,   setActiveVolActivity]   = useState(() => IS_PE_SEASON && hasActive ? "proengage" : IS_PE_SEASON ? "apply" : "early");
-  useEffect(() => { setActiveVolActivity(IS_PE_SEASON && hasActive ? "proengage" : IS_PE_SEASON ? "apply" : "early"); }, [IS_PE_SEASON]);
+  const [activeVolActivity,   setActiveVolActivity]   = useState(() => IS_PE_SEASON && hasActive ? "proengage" : "apply");
+  useEffect(() => { setActiveVolActivity(IS_PE_SEASON && hasActive ? "proengage" : "apply"); }, [IS_PE_SEASON]);
   const [activeVolHistory,    setActiveVolHistory]     = useState("projects");
   const [histEditionFilter,   setHistEditionFilter]    = useState("ProEngage 2025 | 02");
   const [projExpanded,        setProjExpanded]         = useState(false);
@@ -633,10 +633,8 @@ export default function SPOCDashboardView() {
 
   const hasActive = !!volData.activeApplication;
   const volActivitySlicers = IS_PE_SEASON && hasActive
-    ? [{id:"proengage",label:"My ProEngage Project"},{id:"opportunities",label:"View Opportunities"},{id:"diy",label:"DIY Activities"}]
-    : IS_PE_SEASON
-    ? [{id:"apply",label:"Apply for a Project"},{id:"opportunities",label:"View Opportunities"},{id:"diy",label:"DIY Activities"}]
-    : [{id:"early",label:"Apply Early for ProEngage"},{id:"opportunities",label:"View Opportunities"},{id:"diy",label:"DIY Activities"}];
+    ? [{id:"proengage",label:"My ProEngage Project"},{id:"apply",label:"Apply for ProEngage"},{id:"opportunities",label:"View Opportunities"},{id:"diy",label:"DIY Activities"}]
+    : [{id:"apply",label:"Apply for ProEngage"},{id:"opportunities",label:"View Opportunities"},{id:"diy",label:"DIY Activities"}];
 
   const filteredVolProjects = SPOC_VOL_HISTORY_PROJECTS.filter(p => !histEditionFilter || p.edition === histEditionFilter);
   const filteredVolApps     = SPOC_VOL_APPLICATIONS.filter(a => !histEditionFilter || a.edition === histEditionFilter);
@@ -862,13 +860,9 @@ export default function SPOCDashboardView() {
             </div>
           )}
 
-          {activeVolActivity === "apply" && IS_PE_SEASON && !hasActive && (
+          {activeVolActivity === "apply" && !hasActive && (
             <div>
-              <div style={{ background: P_BLUE, border: `1px solid ${B_BLUE}22`, borderRadius: 12, padding: "16px 18px", marginBottom: 20 }}>
-                <div style={{ fontSize: 13.5, fontWeight: 700, color: B_BLUE, marginBottom: 4 }}>Applications close 15 July 2025</div>
-                <div style={{ fontSize: 13, color: "#555", lineHeight: 1.6 }}>ProEngage Edition 11 is open. We think these projects would be a great fit for your profile.</div>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 14 }}>
                 {PROENGAGE_PROJECTS.filter(p => p.matched).slice(0, 3).map(p => (
                   <div key={p.id} style={{ ...card, padding: "20px", border: `1px solid ${B_VOL}18` }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
@@ -881,20 +875,12 @@ export default function SPOCDashboardView() {
                           <span style={{ background: "#f5f5fa", color: "#8888a0", fontSize: 11, fontWeight: 500, padding: "2px 9px", borderRadius: 100 }}>{p.ngo}</span>
                         </div>
                       </div>
-                      <button onClick={() => onNavigate("proengage")} style={{ background: B_VOL, color: "#fff", border: "none", borderRadius: 8, padding: "8px 18px", fontSize: 13, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>Apply</button>
+                      <button onClick={() => onNavigate("proengage")} style={{ background: B_VOL, color: "#fff", border: "none", borderRadius: 8, padding: "8px 18px", fontSize: 13, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>View & Apply</button>
                     </div>
                   </div>
                 ))}
               </div>
-              <button onClick={() => onNavigate("proengage")} style={{ marginTop: 14, background: "none", border: "none", fontSize: 13.5, color: B_VOL, fontWeight: 600, cursor: "pointer", padding: 0 }}>View all opportunities →</button>
-            </div>
-          )}
-
-          {activeVolActivity === "early" && !IS_PE_SEASON && (
-            <div style={{ ...card, textAlign: "center", padding: "36px 32px" }}>
-              <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 8 }}>ProEngage applications open in January 2026</div>
-              <div style={{ fontSize: 13.5, color: "#8888a0", lineHeight: 1.65, maxWidth: 380, margin: "0 auto 20px" }}>The next edition isn't open yet, but you can browse projects we think would be a great fit for your profile.</div>
-              <button onClick={() => onNavigate("proengage")} style={{ background: B_VOL, color: "#fff", border: "none", borderRadius: 10, padding: "10px 24px", fontSize: 13.5, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans', sans-serif" }}>Browse upcoming opportunities →</button>
+              <button onClick={() => onNavigate("proengage")} style={{ background: "none", border: "none", fontSize: 13.5, color: B_VOL, fontWeight: 600, cursor: "pointer", padding: 0 }}>View all opportunities →</button>
             </div>
           )}
 

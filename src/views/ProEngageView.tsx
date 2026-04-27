@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { PROENGAGE_PROJECTS, IS_PE_SEASON } from "@/data/mockData";
 import { useAppContext } from "@/context/AppContext";
+import { useAuth } from "@/context/AuthContext";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import heroImg from "@/assets/tata-projects.jpg";
@@ -339,8 +340,8 @@ function ApplyModal({ project, onClose }: { project: any; onClose: ()=>void }) {
 // ── Main View ────────────────────────────────────────────────────────────────
 export default function ProEngageView() {
   const navigate = useAppNavigate();
+  const { user } = useAuth();
   const { appliedProjects, setAppliedProjects, likedProjects, setLikedProjects, triggerToast } = useAppContext();
-
   const [selectedCategory, setSelectedCategory] = useState<string|null>(null);
   const [searchQuery,       setSearchQuery]       = useState("");
   const [activeFilter,      setActiveFilter]      = useState<"all"|"saved">("all");
@@ -370,9 +371,183 @@ export default function ProEngageView() {
 
   const showCategoryGrid = !selectedCategory && !searchQuery && activeFilter === "all";
 
-  // ── OFF-SEASON VIEW ──────────────────────────────────────────────────────
-  if (!IS_PE_SEASON) {
-    return (
+  const isSpoc = user?.role === "corporate_spoc" || user?.role === "regional_spoc";
+  const backDest = isSpoc ? "spoc-dashboard" : "dashboard";
+
+  // ── UNIFIED VIEW ─────────────────────────────────────────────────────────
+  return (
+    <div style={{ fontFamily: FONT, background: "#f7f8fc", minHeight: "100vh" }}>
+      <div style={{ height: 3, background: B_INDIGO, width: "100%" }} />
+      <SubPageDotRail sections={SECTIONS_NAV} accentColor={B_INDIGO} />
+
+      {/* ── Hero ── */}
+      <div id="pe-hero" style={{ position:"relative", minHeight:"92vh", display:"flex", alignItems:"center", overflow:"hidden", paddingTop:64 }}>
+        <img src={heroImg} alt="" style={{ position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 40%" }}/>
+        <div style={{ position:"absolute",inset:0,background:"linear-gradient(105deg,rgba(8,12,22,0.88) 0%,rgba(8,12,22,0.70) 40%,rgba(8,12,22,0.28) 75%,rgba(8,12,22,0.08) 100%)" }}/>
+        <div style={DIAG_TEXTURE}/>
+        <div style={{ position:"relative",zIndex:1,maxWidth:1100,margin:"0 auto",padding:"0 64px",width:"100%" }}>
+          <p style={{ fontSize:11,fontWeight:700,letterSpacing:"1.8px",textTransform:"uppercase",color:"rgba(255,255,255,0.5)",marginBottom:12,fontFamily:FONT }}>
+            Tata Engage · ProEngage {IS_PE_SEASON ? "2025 · Edition 11" : ""}
+          </p>
+          <div style={{ width:48,height:2,borderRadius:2,background:B_INDIGO,marginBottom:22 }}/>
+          <h1 style={{ fontFamily:FONT,fontSize:"clamp(2.2rem,4vw,3.4rem)",fontWeight:400,letterSpacing:"-0.5px",lineHeight:1.12,color:"#fff",margin:"0 0 18px" }}>
+            {IS_PE_SEASON ? <>Find a project that matches<br />your skills and passion</> : <>Skill-based volunteering<br />for lasting community impact</>}
+          </h1>
+          <p style={{ fontFamily:FONT,fontSize:15,fontWeight:300,color:"rgba(255,255,255,0.65)",lineHeight:1.7,maxWidth:480,margin:"0 0 32px" }}>
+            {IS_PE_SEASON
+              ? `${PROENGAGE_PROJECTS.length} live projects across ${CATEGORIES.length - 1} skill areas. Apply before the window closes.`
+              : "ProEngage matches Tata professionals with NGOs for meaningful, skill-led projects. The next edition opens soon."}
+          </p>
+          <div style={{ display:"flex",gap:12,flexWrap:"wrap",alignItems:"center" }}>
+            {IS_PE_SEASON ? (
+              <>
+                <button onClick={() => document.getElementById("pe-projects")?.scrollIntoView({behavior:"smooth"})} style={{ background:B_INDIGO,color:"#fff",border:"none",borderRadius:10,padding:"12px 28px",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:FONT }}>
+                  Browse Projects
+                </button>
+                <button onClick={() => navigate(backDest)} style={{ background:"rgba(255,255,255,0.1)",color:"#fff",border:"1px solid rgba(255,255,255,0.25)",borderRadius:10,padding:"12px 24px",fontSize:14,fontWeight:600,cursor:"pointer",fontFamily:FONT }}>
+                  My Applications
+                </button>
+              </>
+            ) : (
+              <div style={{ display:"inline-flex",alignItems:"center",gap:8,background:"rgba(255,255,255,0.08)",border:"1px solid rgba(255,255,255,0.18)",borderRadius:100,padding:"10px 20px" }}>
+                <div style={{ width:8,height:8,borderRadius:"50%",background:"#FDE68A" }}/>
+                <span style={{ fontSize:13,fontWeight:600,color:"rgba(255,255,255,0.8)" }}>Next edition opening announced shortly</span>
+              </div>
+            )}
+          </div>
+          {/* Stats — in-season only */}
+          {IS_PE_SEASON && (
+            <div style={{ display:"flex",gap:32,marginTop:48,paddingTop:32,borderTop:"1px solid rgba(255,255,255,0.12)" }}>
+              {[[`${PROENGAGE_PROJECTS.length}`, "Live projects"],
+                [`${aiRecommended.length}`,       "Matched to you"],
+                ["14 NGOs",                        "Participating"],
+                ["10 hrs",                         "Avg. weekly commitment"]].map(([num,label])=>(
+                <div key={label}>
+                  <div style={{ fontFamily:FONT,fontSize:26,fontWeight:900,color:"#fff" }}>{num}</div>
+                  <div style={{ fontSize:12,color:"rgba(255,255,255,0.45)",marginTop:2 }}>{label}</div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ── Projects section ── */}
+      <div id="pe-projects" style={{ maxWidth:1200,margin:"0 auto",padding:"56px 48px 80px" }}>
+
+        {/* Recommended strip — always shown */}
+        {!selectedCategory && activeFilter === "all" && !searchQuery && aiRecommended.length > 0 && (
+          <div style={{ marginBottom:52 }}>
+            <p style={{ fontSize:11,fontWeight:700,letterSpacing:"1.8px",textTransform:"uppercase",color:"#aaaabc",margin:"0 0 6px" }}>Curated for You</p>
+            <div style={{ width:36,height:3,borderRadius:2,background:B_INDIGO,marginBottom:16 }}/>
+            <div style={{ display:"flex",alignItems:"flex-end",justifyContent:"space-between",flexWrap:"wrap",gap:12,marginBottom:20 }}>
+              <h2 style={{ fontSize:22,fontWeight:900,color:ACCENT_NAVY,margin:0,letterSpacing:"-0.3px" }}>
+                Projects we think would be a great fit for your profile
+              </h2>
+              {!IS_PE_SEASON && (
+                <button onClick={() => triggerToast("Season opens soon — you'll be notified!")}
+                  style={{ background:B_INDIGO,color:"#fff",border:"none",borderRadius:10,padding:"10px 20px",fontSize:13,fontWeight:700,cursor:"pointer",fontFamily:FONT }}>
+                  Notify me when season opens
+                </button>
+              )}
+            </div>
+            <div style={{ display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16 }}>
+              {aiRecommended.slice(0,3).map(p=>(
+                <ProjectCard key={p.id} project={p} onSelect={()=>setDetailProject(p)} onApply={()=>setApplyProject(p)} saved={likedProjects.includes(p.id)} onToggleSave={()=>toggleSave(p.id)} highlight/>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Search + filter */}
+        <div style={{ display:"flex",gap:12,marginBottom:24,flexWrap:"wrap" }}>
+          <div style={{ flex:1,position:"relative",minWidth:220 }}>
+            <Search size={16} style={{ position:"absolute",left:14,top:"50%",transform:"translateY(-50%)",color:"#aaaabc" }}/>
+            <input type="text" placeholder="Search by skill, NGO or project name..." value={searchQuery} onChange={e=>setSearchQuery(e.target.value)}
+              style={{ width:"100%",paddingLeft:40,paddingRight:14,paddingTop:11,paddingBottom:11,border:"1.5px solid #e0e0e8",borderRadius:10,fontSize:13.5,fontFamily:FONT,color:ACCENT_NAVY,outline:"none",background:"#fff",boxSizing:"border-box" }}
+              onFocus={e=>(e.target.style.borderColor=B_INDIGO)} onBlur={e=>(e.target.style.borderColor="#e0e0e8")}/>
+          </div>
+          <div style={{ display:"flex",gap:6 }}>
+            {[["all","All Projects"],["saved","Saved"]].map(([id,lbl_])=>(
+              <button key={id} onClick={()=>setActiveFilter(id as any)} style={{ padding:"10px 16px",borderRadius:10,border:`1.5px solid ${activeFilter===id?B_INDIGO:"#e0e0e8"}`,background:activeFilter===id?B_INDIGO:"#fff",color:activeFilter===id?"#fff":"#666",fontSize:13,fontWeight:activeFilter===id?700:400,cursor:"pointer",whiteSpace:"nowrap",fontFamily:FONT }}>{lbl_}</button>
+            ))}
+          </div>
+        </div>
+
+        {/* Category grid — dimmed off-season */}
+        {showCategoryGrid && (
+          <div style={{ marginBottom:36, opacity: IS_PE_SEASON ? 1 : 0.55, pointerEvents: IS_PE_SEASON ? "auto" : "none" }}>
+            <div style={{ fontSize:11,fontWeight:700,letterSpacing:"1.5px",textTransform:"uppercase",color:"#aaaabc",marginBottom:14 }}>Browse by Category</div>
+            <div style={{ display:"grid",gridTemplateColumns:"repeat(6,1fr)",gap:10 }}>
+              {CATEGORIES.map(cat => {
+                const Icon = cat.icon;
+                const count = catCounts[cat.name] || 0;
+                return (
+                  <button key={cat.name} onClick={()=>setSelectedCategory(cat.name)}
+                    style={{ background:"#fff",border:"1px solid #e8e8f0",borderRadius:12,padding:"14px 10px",cursor:"pointer",textAlign:"center",transition:"all 0.18s",fontFamily:FONT }}
+                    onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background=cat.pastel;(e.currentTarget as HTMLElement).style.borderColor=`${cat.color}33`;(e.currentTarget as HTMLElement).style.transform="translateY(-2px)";}}
+                    onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background="#fff";(e.currentTarget as HTMLElement).style.borderColor="#e8e8f0";(e.currentTarget as HTMLElement).style.transform="translateY(0)";}}>
+                    <div style={{ width:34,height:34,borderRadius:8,background:cat.pastel,display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 8px" }}><Icon size={17} color={cat.color}/></div>
+                    <div style={{ fontSize:11,fontWeight:700,color:ACCENT_NAVY,lineHeight:1.3,marginBottom:3 }}>{cat.name}</div>
+                    <div style={{ fontSize:10,fontWeight:600,color:"#aaaabc" }}>{count} projects</div>
+                  </button>
+                );
+              })}
+            </div>
+            {!IS_PE_SEASON && (
+              <div style={{ textAlign:"center",marginTop:16,fontSize:13,color:"#aaaabc" }}>Full browse opens when the season starts</div>
+            )}
+          </div>
+        )}
+
+        {/* Category header when filtered */}
+        {selectedCategory && (
+          <div style={{ display:"flex",alignItems:"center",gap:12,marginBottom:20 }}>
+            <button onClick={()=>setSelectedCategory(null)} style={{ display:"flex",alignItems:"center",gap:6,background:"none",border:"none",fontSize:13.5,fontWeight:600,color:B_INDIGO,cursor:"pointer",padding:0 }}><ArrowLeft size={15}/> Back to categories</button>
+            <div style={{ width:1,height:18,background:"#e0e0e8" }}/>
+            <div style={{ fontSize:14,fontWeight:700,color:ACCENT_NAVY }}>{selectedCategory}</div>
+            <button onClick={()=>setSelectedCategory(null)} style={{ marginLeft:"auto",background:"none",border:"none",cursor:"pointer",color:"#aaaabc" }}><X size={18}/></button>
+          </div>
+        )}
+
+        {(selectedCategory || searchQuery || activeFilter !== "all") && (
+          <div style={{ display:"flex",alignItems:"center",gap:8,marginBottom:16,flexWrap:"wrap" }}>
+            <span style={{ fontSize:12.5,color:"#8888a0" }}>Showing:</span>
+            {selectedCategory && <span style={{ background:P_INDIGO,color:B_INDIGO,fontSize:12,fontWeight:700,padding:"3px 12px",borderRadius:100,display:"flex",alignItems:"center",gap:6 }}>{selectedCategory}<X size={12} style={{ cursor:"pointer" }} onClick={()=>setSelectedCategory(null)}/></span>}
+            {searchQuery && <span style={{ background:"#EBF4FF",color:B_BLUE,fontSize:12,fontWeight:700,padding:"3px 12px",borderRadius:100 }}>"{searchQuery}"</span>}
+            <span style={{ fontSize:12.5,color:"#aaaabc" }}>{filteredProjects.length} result{filteredProjects.length!==1?"s":""}</span>
+          </div>
+        )}
+
+        {showCategoryGrid && (
+          <div style={{ marginBottom:16 }}>
+            <p style={{ fontSize:11,fontWeight:700,letterSpacing:"1.8px",textTransform:"uppercase",color:"#aaaabc",margin:"0 0 4px" }}>All Projects</p>
+            <div style={{ width:36,height:3,borderRadius:2,background:B_INDIGO,marginBottom:0 }}/>
+          </div>
+        )}
+
+        {/* Project grid — dimmed off-season */}
+        <div style={{ opacity: IS_PE_SEASON ? 1 : 0.6, pointerEvents: IS_PE_SEASON ? "auto" : "none" }}>
+          {orderedProjects.length > 0 ? (
+            <div style={{ display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16 }}>
+              {orderedProjects.map(p=>(
+                <ProjectCard key={p.id} project={p} onSelect={()=>setDetailProject(p)} onApply={()=>setApplyProject(p)} saved={likedProjects.includes(p.id)} onToggleSave={()=>toggleSave(p.id)}/>
+              ))}
+            </div>
+          ) : (
+            <div style={{ textAlign:"center",padding:"60px 40px",background:"#fff",borderRadius:14,border:"1px dashed #dddde8" }}>
+              <div style={{ fontSize:15,fontWeight:700,color:ACCENT_NAVY,marginBottom:8 }}>No projects found</div>
+              <div style={{ fontSize:13.5,color:"#8888a0" }}>Try adjusting your filters or search query.</div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {detailProject && <ProjectDetailPanel project={detailProject} onClose={()=>setDetailProject(null)} onApply={()=>{setApplyProject(detailProject);setDetailProject(null);}}/>}
+      {applyProject  && <ApplyModal project={applyProject} onClose={()=>setApplyProject(null)}/>}
+    </div>
+  );
+}
       <div style={{ fontFamily: FONT, background: "#f7f8fc", minHeight: "100vh" }}>
         <div style={{ height: 3, background: B_INDIGO, width: "100%" }} />
         <SubPageDotRail sections={[{id:"pe-hero",label:"Overview"},{id:"pe-projects",label:"Opportunities"}]} accentColor={B_INDIGO} />
@@ -458,156 +633,4 @@ export default function ProEngageView() {
         {applyProject  && <ApplyModal project={applyProject} onClose={()=>setApplyProject(null)}/>}
       </div>
     );
-  }
-
-  // ── IN-SEASON VIEW ───────────────────────────────────────────────────────
-  return (
-    <div style={{ fontFamily: FONT, background: "#f7f8fc", minHeight: "100vh" }}>
-      <div style={{ height: 3, background: B_INDIGO, width: "100%" }} />
-      <SubPageDotRail sections={SECTIONS_NAV} accentColor={B_INDIGO} />
-
-      {/* ── Hero ── */}
-      <div id="pe-hero" style={{ position:"relative",minHeight:"92vh",display:"flex",alignItems:"center",overflow:"hidden",paddingTop:64 }}>
-        <img src={heroImg} alt="" style={{ position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 40%" }}/>
-        <div style={{ position:"absolute",inset:0,background:"linear-gradient(105deg,rgba(8,12,22,0.88) 0%,rgba(8,12,22,0.70) 40%,rgba(8,12,22,0.28) 75%,rgba(8,12,22,0.08) 100%)" }}/>
-        <div style={DIAG_TEXTURE}/>
-        <div style={{ position:"relative",zIndex:1,maxWidth:1100,margin:"0 auto",padding:"0 64px",width:"100%" }}>
-          <p style={{ fontSize:11,fontWeight:700,letterSpacing:"1.8px",textTransform:"uppercase",color:"rgba(255,255,255,0.5)",marginBottom:12,fontFamily:FONT }}>
-            Tata Engage · ProEngage 2025 · Edition 11
-          </p>
-          <div style={{ width:48,height:2,borderRadius:2,background:B_INDIGO,marginBottom:22 }}/>
-          <h1 style={{ fontFamily:FONT,fontSize:"clamp(2.2rem,4vw,3.4rem)",fontWeight:400,letterSpacing:"-0.5px",lineHeight:1.12,color:"#fff",margin:"0 0 18px" }}>
-            Find a project that matches<br />your skills and passion
-          </h1>
-          <p style={{ fontFamily:FONT,fontSize:15,fontWeight:300,color:"rgba(255,255,255,0.65)",lineHeight:1.7,maxWidth:480,margin:"0 0 32px" }}>
-            {PROENGAGE_PROJECTS.length} live projects across {CATEGORIES.length - 1} skill areas. Apply before the window closes.
-          </p>
-          <div style={{ display:"flex",gap:12,flexWrap:"wrap" }}>
-            <button onClick={() => document.getElementById("pe-projects")?.scrollIntoView({behavior:"smooth"})} style={{ background:B_INDIGO,color:"#fff",border:"none",borderRadius:10,padding:"12px 28px",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:FONT }}>
-              Browse Projects
-            </button>
-            <button onClick={() => navigate("dashboard")} style={{ background:"rgba(255,255,255,0.1)",color:"#fff",border:"1px solid rgba(255,255,255,0.25)",borderRadius:10,padding:"12px 24px",fontSize:14,fontWeight:600,cursor:"pointer",fontFamily:FONT }}>
-              My Applications
-            </button>
-          </div>
-          {/* Stats */}
-          <div style={{ display:"flex",gap:32,marginTop:48,paddingTop:32,borderTop:"1px solid rgba(255,255,255,0.12)" }}>
-            {[[`${PROENGAGE_PROJECTS.length}`,  "Live projects"],
-              [`${aiRecommended.length}`,        "Matched to you"],
-              ["14 NGOs",                        "Participating"],
-              ["10 hrs",                         "Avg. weekly commitment"]].map(([num,label])=>(
-              <div key={label}>
-                <div style={{ fontFamily:FONT,fontSize:26,fontWeight:900,color:"#fff" }}>{num}</div>
-                <div style={{ fontSize:12,color:"rgba(255,255,255,0.45)",marginTop:2 }}>{label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ── Projects section ── */}
-      <div id="pe-projects" style={{ maxWidth:1200,margin:"0 auto",padding:"56px 48px 80px" }}>
-
-        {/* Recommended strip */}
-        {!selectedCategory && activeFilter === "all" && !searchQuery && aiRecommended.length > 0 && (
-          <div style={{ marginBottom:52 }}>
-            <p style={{ fontSize:11,fontWeight:700,letterSpacing:"1.8px",textTransform:"uppercase",color:"#aaaabc",margin:"0 0 6px" }}>Curated for You</p>
-            <div style={{ width:36,height:3,borderRadius:2,background:B_INDIGO,marginBottom:16 }}/>
-            <h2 style={{ fontSize:22,fontWeight:900,color:ACCENT_NAVY,margin:"0 0 20px",letterSpacing:"-0.3px" }}>
-              Projects we think would be a great fit for your profile
-            </h2>
-            <div style={{ display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16 }}>
-              {aiRecommended.slice(0,3).map(p=>(
-                <ProjectCard key={p.id} project={p} onSelect={()=>setDetailProject(p)} onApply={()=>setApplyProject(p)} saved={likedProjects.includes(p.id)} onToggleSave={()=>toggleSave(p.id)} highlight/>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Search + filter */}
-        <div style={{ display:"flex",gap:12,marginBottom:24,flexWrap:"wrap" }}>
-          <div style={{ flex:1,position:"relative",minWidth:220 }}>
-            <Search size={16} style={{ position:"absolute",left:14,top:"50%",transform:"translateY(-50%)",color:"#aaaabc" }}/>
-            <input
-              type="text" placeholder="Search by skill, NGO or project name..." value={searchQuery} onChange={e=>setSearchQuery(e.target.value)}
-              style={{ width:"100%",paddingLeft:40,paddingRight:14,paddingTop:11,paddingBottom:11,border:"1.5px solid #e0e0e8",borderRadius:10,fontSize:13.5,fontFamily:FONT,color:ACCENT_NAVY,outline:"none",background:"#fff",boxSizing:"border-box" }}
-              onFocus={e=>(e.target.style.borderColor=B_INDIGO)} onBlur={e=>(e.target.style.borderColor="#e0e0e8")}
-            />
-          </div>
-          <div style={{ display:"flex",gap:6 }}>
-            {[["all","All Projects"],["saved","Saved"]].map(([id,lbl_])=>(
-              <button key={id} onClick={()=>setActiveFilter(id as any)} style={{ padding:"10px 16px",borderRadius:10,border:`1.5px solid ${activeFilter===id?B_INDIGO:"#e0e0e8"}`,background:activeFilter===id?B_INDIGO:"#fff",color:activeFilter===id?"#fff":"#666",fontSize:13,fontWeight:activeFilter===id?700:400,cursor:"pointer",whiteSpace:"nowrap",fontFamily:FONT }}>{lbl_}</button>
-            ))}
-          </div>
-        </div>
-
-        {/* Category grid */}
-        {showCategoryGrid && (
-          <div style={{ marginBottom:36 }}>
-            <div style={{ fontSize:11,fontWeight:700,letterSpacing:"1.5px",textTransform:"uppercase",color:"#aaaabc",marginBottom:14 }}>Browse by Category</div>
-            <div style={{ display:"grid",gridTemplateColumns:"repeat(6,1fr)",gap:10 }}>
-              {CATEGORIES.map(cat => {
-                const Icon = cat.icon;
-                const count = catCounts[cat.name] || 0;
-                return (
-                  <button key={cat.name} onClick={()=>setSelectedCategory(cat.name)}
-                    style={{ background:"#fff",border:"1px solid #e8e8f0",borderRadius:12,padding:"14px 10px",cursor:"pointer",textAlign:"center",transition:"all 0.18s",fontFamily:FONT }}
-                    onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background=cat.pastel;(e.currentTarget as HTMLElement).style.borderColor=`${cat.color}33`;(e.currentTarget as HTMLElement).style.transform="translateY(-2px)";}}
-                    onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background="#fff";(e.currentTarget as HTMLElement).style.borderColor="#e8e8f0";(e.currentTarget as HTMLElement).style.transform="translateY(0)";}}>
-                    <div style={{ width:34,height:34,borderRadius:8,background:cat.pastel,display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 8px" }}><Icon size={17} color={cat.color}/></div>
-                    <div style={{ fontSize:11,fontWeight:700,color:ACCENT_NAVY,lineHeight:1.3,marginBottom:3 }}>{cat.name}</div>
-                    <div style={{ fontSize:10,fontWeight:600,color:"#aaaabc" }}>{count} projects</div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Category / filter context row */}
-        {selectedCategory && (
-          <div style={{ display:"flex",alignItems:"center",gap:12,marginBottom:20 }}>
-            <button onClick={()=>setSelectedCategory(null)} style={{ display:"flex",alignItems:"center",gap:6,background:"none",border:"none",fontSize:13.5,fontWeight:600,color:B_INDIGO,cursor:"pointer",padding:0 }}><ArrowLeft size={15}/> Back to categories</button>
-            <div style={{ width:1,height:18,background:"#e0e0e8" }}/>
-            <div style={{ fontSize:14,fontWeight:700,color:ACCENT_NAVY }}>{selectedCategory}</div>
-            <button onClick={()=>setSelectedCategory(null)} style={{ marginLeft:"auto",background:"none",border:"none",cursor:"pointer",color:"#aaaabc" }}><X size={18}/></button>
-          </div>
-        )}
-
-        {(selectedCategory || searchQuery || activeFilter !== "all") && (
-          <div style={{ display:"flex",alignItems:"center",gap:8,marginBottom:16,flexWrap:"wrap" }}>
-            <span style={{ fontSize:12.5,color:"#8888a0" }}>Showing:</span>
-            {selectedCategory && <span style={{ background:P_INDIGO,color:B_INDIGO,fontSize:12,fontWeight:700,padding:"3px 12px",borderRadius:100,display:"flex",alignItems:"center",gap:6 }}>{selectedCategory}<X size={12} style={{ cursor:"pointer" }} onClick={()=>setSelectedCategory(null)}/></span>}
-            {searchQuery && <span style={{ background:P_BLUE,color:B_BLUE,fontSize:12,fontWeight:700,padding:"3px 12px",borderRadius:100 }}>"{searchQuery}"</span>}
-            <span style={{ fontSize:12.5,color:"#aaaabc" }}>{filteredProjects.length} result{filteredProjects.length!==1?"s":""}</span>
-          </div>
-        )}
-
-        {/* All projects heading */}
-        {showCategoryGrid && (
-          <div style={{ marginBottom:16 }}>
-            <p style={{ fontSize:11,fontWeight:700,letterSpacing:"1.8px",textTransform:"uppercase",color:"#aaaabc",margin:"0 0 4px" }}>All Projects</p>
-            <div style={{ width:36,height:3,borderRadius:2,background:B_INDIGO,marginBottom:0 }}/>
-          </div>
-        )}
-
-        {/* Grid */}
-        {orderedProjects.length > 0 ? (
-          <div style={{ display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16 }}>
-            {orderedProjects.map(p=>(
-              <ProjectCard key={p.id} project={p} onSelect={()=>setDetailProject(p)} onApply={()=>setApplyProject(p)} saved={likedProjects.includes(p.id)} onToggleSave={()=>toggleSave(p.id)}/>
-            ))}
-          </div>
-        ) : (
-          <div style={{ textAlign:"center",padding:"60px 40px",background:"#fff",borderRadius:14,border:"1px dashed #dddde8" }}>
-            <div style={{ fontSize:15,fontWeight:700,color:ACCENT_NAVY,marginBottom:8 }}>No projects found</div>
-            <div style={{ fontSize:13.5,color:"#8888a0" }}>Try adjusting your filters or search query.</div>
-          </div>
-        )}
-      </div>
-
-      {detailProject && <ProjectDetailPanel project={detailProject} onClose={()=>setDetailProject(null)} onApply={()=>{setApplyProject(detailProject);setDetailProject(null);}}/>}
-      {applyProject  && <ApplyModal project={applyProject} onClose={()=>setApplyProject(null)}/>}
-    </div>
-  );
 }
