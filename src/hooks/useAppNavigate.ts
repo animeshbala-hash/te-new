@@ -46,6 +46,7 @@ const VIEW_TO_PATH: Record<string, string> = {
   "cvp": "/cvp",
   "yes-to-access": "/yes-to-access",
   "stories": "/stories",
+  "event": "/about/events",
 };
 
 export const useAppNavigate = () => {
@@ -53,7 +54,7 @@ export const useAppNavigate = () => {
   return useCallback(
     (view: string, slugOrHash?: string) => {
       const path = VIEW_TO_PATH[view] || "/";
-      if (view === "stories" && slugOrHash) {
+      if ((view === "stories" || view === "event") && slugOrHash) {
         nav(`${path}?id=${slugOrHash}`);
       } else {
         nav(slugOrHash ? `${path}#${slugOrHash.replace(/^#/, "")}` : path);

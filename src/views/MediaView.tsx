@@ -4,6 +4,7 @@ import { useAppContext } from "@/context/AppContext";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { SOCIAL_POSTS } from "@/data/homeSharedData";
 import { IMPACT_STORIES } from "@/data/impactStoriesData";
+import { EVENTS } from "@/data/eventsData";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import heroImg from "@/assets/tata-projects.jpg";
 
@@ -65,18 +66,6 @@ const VIDEOS = [
   { title: "GCSO Message TVW25", duration: "2:55" },
 ];
 
-const UPCOMING_EVENTS = [
-  { title: "VolCon 2026", date: "Sep 2026", location: "Mumbai", status: "Upcoming" },
-  { title: "TVW26", date: "Mar 2026", location: "Pan-India", status: "Upcoming" },
-  { title: "ProEngage 26 Orientation", date: "Jun 2026", location: "Virtual", status: "Upcoming" },
-];
-
-const PAST_EVENTS = [
-  { title: "VolCon 2024", date: "Sep 2024", location: "Mumbai" },
-  { title: "TVW25", date: "Mar 2025", location: "Pan-India" },
-  { title: "TVW24", date: "Sep 2024", location: "Pan-India" },
-  { title: "ProEngage 25", date: "Dec 2024", location: "Virtual" },
-];
 
 export default function MediaView() {
   const location = useLocation();
@@ -269,29 +258,34 @@ export default function MediaView() {
 
         {/* 7 — Events */}
         {activeTab === "Events" && (
-          <div>
-            <h2 style={{ color: B_INDIGO, fontSize: 22, fontWeight: 700, marginBottom: 20 }}>Upcoming</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20, marginBottom: 36 }}>
-              {UPCOMING_EVENTS.map((e, i) => (
-                <div key={i} style={{ border: "1px solid #e8e8f0", borderRadius: 14, padding: 20, transition: "transform 0.2s, box-shadow 0.2s" }} {...cardHover}>
-                  <span style={{ display: "inline-block", background: B_YELLOW, color: "#fff", fontSize: 12, fontWeight: 700, padding: "4px 12px", borderRadius: 4, marginBottom: 12 }}>{e.date}</span>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 4 }}>{e.title}</div>
-                  <div style={{ fontSize: 13, color: "#64748B" }}>{e.location}</div>
-                  <span style={{ display: "inline-block", marginTop: 10, fontSize: 11, fontWeight: 600, color: B_INDIGO, background: "#eef0ff", padding: "3px 10px", borderRadius: 4 }}>{e.status}</span>
+          <div style={{ columns: 2, columnGap: 20 }}>
+            {EVENTS.map((e) => (
+              <div
+                key={e.slug}
+                onClick={() => navigate("event", e.slug)}
+                style={{
+                  breakInside: "avoid", marginBottom: 20,
+                  background: "#fff", border: "1px solid #e8e8f0",
+                  borderRadius: 14, overflow: "hidden", cursor: "pointer",
+                  transition: "transform 0.2s, box-shadow 0.2s",
+                }}
+                onMouseEnter={(ev) => { ev.currentTarget.style.transform = "translateY(-3px)"; ev.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
+                onMouseLeave={(ev) => { ev.currentTarget.style.transform = "translateY(0)"; ev.currentTarget.style.boxShadow = "none"; }}
+              >
+                <div style={{ height: 180, overflow: "hidden" }}>
+                  <img src={e.heroImage} alt={e.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
                 </div>
-              ))}
-            </div>
-            <h2 style={{ color: B_INDIGO, fontSize: 22, fontWeight: 700, marginBottom: 20 }}>Past</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-              {PAST_EVENTS.map((e, i) => (
-                <div key={i} style={{ border: "1px solid #e8e8f0", borderRadius: 14, padding: 20, transition: "transform 0.2s, box-shadow 0.2s" }} {...cardHover}>
-                  <span style={{ display: "inline-block", background: "#e2e8f0", color: "#475569", fontSize: 12, fontWeight: 700, padding: "4px 12px", borderRadius: 4, marginBottom: 12 }}>{e.date}</span>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 4 }}>{e.title}</div>
-                  <div style={{ fontSize: 13, color: "#64748B" }}>{e.location}</div>
-                  <span style={{ display: "inline-block", marginTop: 10, fontSize: 11, fontWeight: 600, color: "#64748B", background: "#f5f5fa", padding: "3px 10px", borderRadius: 4 }}>Past</span>
+                <div style={{ padding: "20px 22px 22px" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                    <span style={{ display: "inline-block", background: `${e.accentColor}15`, color: e.accentColor, fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 4, textTransform: "uppercase", letterSpacing: "0.5px" }}>{e.tag}</span>
+                    <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 500 }}>{e.date}</span>
+                  </div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 10, lineHeight: 1.4 }}>{e.title}</div>
+                  <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7, marginBottom: 16 }}>{e.excerpt}</p>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: B_INDIGO }}>View event →</span>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         )}
       </div>
