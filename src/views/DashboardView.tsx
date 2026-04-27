@@ -1371,8 +1371,8 @@ export default function DashboardView() {
                 </div>
               )}
 
-              {/* ── Apply for ProEngage (all seasons) ─────────────────── */}
-              {activeActivity === "apply" && !hasActive && (
+              {/* ── Apply for ProEngage ───────────────────────────────── */}
+              {activeActivity === "apply" && (!hasActive || !IS_PE_SEASON) && (
                 <div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 14 }}>
                     {PROENGAGE_PROJECTS.filter(p => p.matched).slice(0, 3).map(p => (
