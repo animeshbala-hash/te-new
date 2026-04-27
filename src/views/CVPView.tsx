@@ -2,8 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import cvpHeroImg from "@/assets/banner_photos/CVP Inner Ban Op1.jpeg";
-import cvpBelowImg from "@/assets/banner_photos/CVPbelowbanner.jpeg";
+import cvpHeroImg    from "@/assets/banner_photos/CVP Inner Ban Op1.jpeg";
+import cvpBelowImg   from "@/assets/banner_photos/CVPbelowbanner.jpeg";
+import cvpSection3Img from "@/assets/homepagebanner/General_Titan Company Ltd_01.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
@@ -115,8 +116,8 @@ export default function CVPView() {
 
       {/* ════ EXAMPLES — dark accent panel ════ */}
       <section id="cvp-examples" style={{ position: "relative", overflow: "hidden", minHeight: 480 }}>
-        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1800" alt=""
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} referrerPolicy="no-referrer" />
+        <img src={cvpSection3Img} alt=""
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} />
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}f8 0%, ${COLOUR}e0 38%, ${COLOUR}c0 58%, ${COLOUR}88 78%, ${COLOUR}44 100%)` }} />
         <div style={DIAG} />
         <div style={{ position: "relative", zIndex: 1, padding: "88px 56px" }}>

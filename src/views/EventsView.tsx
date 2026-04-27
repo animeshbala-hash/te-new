@@ -561,7 +561,7 @@ function EventSection({
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: photoSide === "left" ? "0.95fr 1.05fr" : "1.05fr 0.95fr",
+              gridTemplateColumns: heroMedia ? (photoSide === "left" ? "0.95fr 1.05fr" : "1.05fr 0.95fr") : "1fr",
               gap: 56,
               alignItems: "start",
               marginBottom: highlights || awardsTable || children ? 48 : 0,
@@ -623,64 +623,11 @@ function EventSection({
                 </p>
               ))}
             </div>
-            <div style={{ order: photoSide === "left" ? 1 : 2 }}>
-              {heroMedia || (
-                <div
-                  style={{
-                    borderRadius: 16,
-                    overflow: "hidden",
-                    position: "relative",
-                    background: `linear-gradient(135deg,${accentLight} 0%,${accentLight}80 100%)`,
-                    border: `1px solid ${accent}20`,
-                  }}
-                >
-                  <div
-                    style={{
-                      height: 300,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: 12,
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: 56,
-                        height: 56,
-                        borderRadius: "50%",
-                        background: accent + "22",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="1.8">
-                        <rect x="3" y="3" width="18" height="18" rx="3" />
-                        <circle cx="8.5" cy="8.5" r="1.5" />
-                        <path d="M21 15l-5-5L5 21" />
-                      </svg>
-                    </div>
-                    <p
-                      style={{
-                        fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
-                        fontSize: 11,
-                        color: accent + "99",
-                        letterSpacing: "1px",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Photo — {tag}
-                    </p>
-                  </div>
-                  <div style={{ background: "#fff", padding: "14px 20px" }}>
-                    <p style={{ fontSize: 12, color: "#475569", lineHeight: 1.5 }}>
-                      <strong style={{ color: NAVY }}>{tag}</strong> · {date}
-                    </p>
-                  </div>
-                </div>
-              )}
-            </div>
+            {heroMedia && (
+              <div style={{ order: photoSide === "left" ? 1 : 2 }}>
+                {heroMedia}
+              </div>
+            )}
           </div>
         )}
 

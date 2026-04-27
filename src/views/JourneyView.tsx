@@ -16,6 +16,7 @@ import imgAIG          from "@/assets/tata-aig-1.jpg";
 import imgTrent2       from "@/assets/trent_2.jpg";
 import img2025         from "@/assets/homepagebanner/2025.png";
 import imgDR2          from "@/assets/dr_photo_2.jpg";
+import journeyHeroImg  from "@/assets/homepagebanner/IHCL 1.jpg";
 
 // ── Brand tokens ──────────────────────────────────────────────────────────────
 const ACCENT_NAVY = "#0D1B3E";
@@ -27,10 +28,10 @@ const FONT = "'DM Sans', 'Noto Sans', ui-sans-serif, system-ui, sans-serif";
 // ── 5 colours from HomeSections JourneySection — cycling across milestones ───
 const PALETTE = [
   "#135EA9", // deep blue
-  "#307FE2", // mid blue
-  "#00A896", // teal
-  "#803998", // purple
   "#F4838A", // salmon pink
+  "#00A896", // teal
+  "#307FE2", // mid blue
+  "#803998", // purple
 ];
 
 // ── Timeline data — exact approved copy ──────────────────────────────────────
@@ -225,7 +226,7 @@ export default function JourneyView() {
       {/* ── Hero ── */}
       <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", background: ACCENT_NAVY }}>
         <img
-          src={imgBball}
+          src={journeyHeroImg}
           alt="Tata volunteers"
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%", display: "block" }}
         />

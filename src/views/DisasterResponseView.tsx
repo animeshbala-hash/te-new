@@ -2,8 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import drHeroImg from "@/assets/banner_photos/Inner Page - Program - Disaster Response Ban.jpg";
+import drHeroImg  from "@/assets/banner_photos/Inner Page - Program - Disaster Response Ban.jpg";
 import drBelowImg from "@/assets/banner_photos/DR Inner page below banner.JPG";
+import drWhoImg   from "@/assets/homepagebanner/DSC_0250.JPG";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
@@ -242,8 +243,8 @@ export default function DisasterResponseView() {
 
       {/* ════════════════════ WHO ════════════════════ */}
       <section id="dr-who" style={{ position: "relative", overflow: "hidden", minHeight: 480 }}>
-        <img src="https://images.unsplash.com/photo-1591901206069-ed60c4429e2a?auto=format&fit=crop&q=80&w=1800" alt=""
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} referrerPolicy="no-referrer" />
+        <img src={drWhoImg} alt=""
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} />
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}f8 0%, ${COLOUR}e0 38%, ${COLOUR}c0 58%, ${COLOUR}88 78%, ${COLOUR}44 100%)` }} />
         <div style={DIAG} />
         <div style={{ position: "relative", zIndex: 1, padding: "88px 56px" }}>

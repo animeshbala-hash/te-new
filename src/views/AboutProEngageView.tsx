@@ -2,8 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import peHeroImg from "@/assets/banner_photos/Inner Page ProEngage banner.jpg";
-import peBelowImg from "@/assets/banner_photos/Inner Page PE below banner.jpg";
+import peHeroImg     from "@/assets/banner_photos/Inner Page ProEngage banner.jpg";
+import peBelowImg    from "@/assets/banner_photos/Inner Page PE below banner.jpg";
+import peSection3Img from "@/assets/homepagebanner/Antarang Foundation - Project Horizon - Mentoring Session by Leadership - Tata AIA.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
@@ -344,8 +345,8 @@ export default function AboutProEngageView() {
 
       {/* ════════════════════ WHO ════════════════════ */}
       <section id="pe-who" style={{ position: "relative", overflow: "hidden", minHeight: 480 }}>
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1800" alt=""
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} referrerPolicy="no-referrer" />
+        <img src={peSection3Img} alt=""
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} />
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}f8 0%, ${COLOUR}e0 38%, ${COLOUR}c0 58%, ${COLOUR}88 78%, ${COLOUR}44 100%)` }} />
         <div style={DIAG} />
         <div style={{ position: "relative", zIndex: 1, padding: "88px 56px" }}>

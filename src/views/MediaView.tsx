@@ -6,14 +6,23 @@ import { SOCIAL_POSTS } from "@/data/homeSharedData";
 import { IMPACT_STORIES } from "@/data/impactStoriesData";
 import { EVENTS } from "@/data/eventsData";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import heroImg from "@/assets/tata-projects.jpg";
+import heroImg          from "@/assets/tata-projects.jpg";
+import photo01 from "@/assets/homepagebanner/TVW 6  - 7th Day 7.JPG";
+import photo02 from "@/assets/homepagebanner/Volunteering in Action 5.jpg";
+import photo03 from "@/assets/homepagebanner/Westside Store employees_Paint an Orphanage - Trent.JPG";
+import photo04 from "@/assets/homepagebanner/Antarang Foundation - Project Horizon - Mentoring Session by Leadership - Tata AIA.jpg";
+import photo05 from "@/assets/homepagebanner/General_Titan Company Ltd_01.jpg";
+import photo06 from "@/assets/homepagebanner/SMPP - Beach clean-up.jpg";
+import photo07 from "@/assets/homepagebanner/Road Safety Awareness by HRM (2).JPG";
+import photo08 from "@/assets/homepagebanner/JCAPCPL 3 (2).JPG";
+import photo09 from "@/assets/homepagebanner/Eye Scanning Camp Joda 1.jpg";
+import photo10 from "@/assets/homepagebanner/Popscicle Airplane making.jpg";
+import photo11 from "@/assets/homepagebanner/TCL Mithap 5925.1.jpg";
+import photo12 from "@/assets/homepagebanner/4. Mithapur_Eco-Tourism_LEEPEN_Harivan Farm_2022-23_Lipan Work (5).jpeg";
 
 const B_INDIGO = "#333399";
-const B_YELLOW = "#333399";
-const B_TEAL = "#333399";
 const B_BLUE = "#333399";
 const ACCENT_NAVY = "#0D1B3E";
-const HERO_BG = "#2389BD";
 
 const TABS = ["Impact Stories", "Photos", "Videos", "Social Media", "Events"] as const;
 
@@ -43,18 +52,18 @@ const cardHover = {
 };
 
 const PHOTOS = [
-  { src: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&q=80", caption: "Blood Donation — TCS" },
-  { src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&q=80", caption: "Tree Plantation — Tata Steel" },
-  { src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80", caption: "Community Event — Titan" },
-  { src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80", caption: "Education Session — TCS" },
-  { src: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&q=80", caption: "Health Camp — Tata Power" },
-  { src: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&q=80", caption: "Awareness Drive — Voltas" },
-  { src: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&q=80", caption: "Workshop — Tata Motors" },
-  { src: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&q=80", caption: "Team Volunteering — IHCL" },
-  { src: "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=400&q=80", caption: "Clean-up Drive — Tata Chemicals" },
-  { src: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&q=80", caption: "Mentoring Session — Tata Elxsi" },
-  { src: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=400&q=80", caption: "Art Workshop — Titan" },
-  { src: "https://images.unsplash.com/photo-1560252829-804f1aedf1be?w=400&q=80", caption: "Distribution Drive — Tata Consumer" },
+  { src: photo01, caption: "Tata Volunteering Week — Group Activity" },
+  { src: photo02, caption: "Volunteering in Action" },
+  { src: photo03, caption: "Paint an Orphanage — Trent" },
+  { src: photo04, caption: "Mentoring Session — Tata AIA" },
+  { src: photo05, caption: "Community Programme — Titan" },
+  { src: photo06, caption: "Beach Clean-up — SMPP" },
+  { src: photo07, caption: "Road Safety Awareness — HRM" },
+  { src: photo08, caption: "JCAPCPL Volunteering Activity" },
+  { src: photo09, caption: "Eye Scanning Camp — Joda" },
+  { src: photo10, caption: "Popsicle Airplane Making — Education" },
+  { src: photo11, caption: "TCL Mithap Volunteering" },
+  { src: photo12, caption: "Eco-Tourism — Mithapur" },
 ];
 
 const VIDEOS = [
@@ -66,12 +75,29 @@ const VIDEOS = [
   { title: "GCSO Message TVW25", duration: "2:55" },
 ];
 
+// Parse dates for sorting — returns a sortable number (ms or ordinal)
+function parseDateVal(d: string): number {
+  // "July–August 2024" → 2024, "March 2024" → 202403, "2000–Present" → 2000
+  const m = d.match(/(\d{4})/);
+  if (!m) return 0;
+  const year = parseInt(m[1]);
+  const months: Record<string, number> = {
+    january: 1, february: 2, march: 3, april: 4, may: 5, june: 6,
+    july: 7, august: 8, september: 9, october: 10, november: 11, december: 12,
+  };
+  const monthMatch = d.toLowerCase().match(/(january|february|march|april|may|june|july|august|september|october|november|december)/);
+  const month = monthMatch ? months[monthMatch[1]] : 0;
+  return year * 100 + month;
+}
+
 
 export default function MediaView() {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState<typeof TABS[number]>("Impact Stories");
   const { triggerToast } = useAppContext();
   const navigate = useAppNavigate();
+  const [storiesSort, setStoriesSort] = useState<"newest" | "oldest">("newest");
+  const [eventsSort, setEventsSort] = useState<"newest" | "oldest">("newest");
 
   useEffect(() => {
     const raw = location.hash.replace(/^#/, "");
@@ -83,6 +109,29 @@ export default function MediaView() {
     }
   }, [location.hash]);
 
+  const sortedStories = [...IMPACT_STORIES].sort((a, b) =>
+    storiesSort === "newest" ? parseDateVal(b.date) - parseDateVal(a.date) : parseDateVal(a.date) - parseDateVal(b.date)
+  );
+  const sortedEvents = [...EVENTS].sort((a, b) =>
+    eventsSort === "newest" ? parseDateVal(b.date) - parseDateVal(a.date) : parseDateVal(a.date) - parseDateVal(b.date)
+  );
+
+  const SortBar = ({ value, onChange }: { value: "newest" | "oldest"; onChange: (v: "newest" | "oldest") => void }) => (
+    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20, justifyContent: "flex-end" }}>
+      <span style={{ fontSize: 12, color: "#94a3b8", fontWeight: 600 }}>Sort:</span>
+      {(["newest", "oldest"] as const).map((opt) => (
+        <button key={opt} onClick={() => onChange(opt)} style={{
+          background: value === opt ? B_INDIGO : "#f5f5fa",
+          color: value === opt ? "#fff" : "#6b6b7a",
+          border: "none", borderRadius: 100, padding: "5px 14px",
+          fontWeight: 600, fontSize: 12, cursor: "pointer",
+        }}>
+          {opt === "newest" ? "Newest first" : "Oldest first"}
+        </button>
+      ))}
+    </div>
+  );
+
   return (
     <div className="dot-grid-bg" style={{ paddingTop: 0, paddingBottom: 0, background: "transparent", minHeight: "100vh" }}>
 
@@ -92,8 +141,8 @@ export default function MediaView() {
       {/* Dot rail */}
       <SubPageDotRail sections={SECTIONS} accentColor={B_BLUE} />
 
-      {/* 1 — Hero */}
-      <div id="media-hero" style={{ position: "relative", minHeight: "75vh", display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 64 }}>
+      {/* 1 — Hero (shorter: 50vh) */}
+      <div id="media-hero" style={{ position: "relative", minHeight: "50vh", display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 64 }}>
         <img src={heroImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(105deg, rgba(8,12,22,0.88) 0%, rgba(8,12,22,0.70) 40%, rgba(8,12,22,0.28) 75%, rgba(8,12,22,0.08) 100%)" }} />
         <div style={DIAG_TEXTURE} />
@@ -101,8 +150,8 @@ export default function MediaView() {
           <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 12 }}>
             Tata Engage · Media &amp; Resources
           </p>
-          <div style={{ width: 48, height: 2, borderRadius: 2, background: B_BLUE, marginBottom: 22 }} />
-          <h1 style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: "clamp(2.2rem, 4vw, 3.4rem)", fontWeight: 400, letterSpacing: "-0.5px", lineHeight: 1.12, color: "#fff", margin: "0 0 18px" }}>
+          <div style={{ width: 48, height: 2, borderRadius: 2, background: "rgba(255,255,255,0.6)", marginBottom: 22 }} />
+          <h1 style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 400, letterSpacing: "-0.5px", lineHeight: 1.12, color: "#fff", margin: "0 0 14px" }}>
             Stories, photos and moments<br />from the Tata Engage community
           </h1>
           <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 15, fontWeight: 300, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, maxWidth: 480, margin: 0 }}>
@@ -133,7 +182,7 @@ export default function MediaView() {
         {/* 3 — Photos */}
         {activeTab === "Photos" && (
           <div>
-            <p style={{ fontSize: 15, color: "#64748B", marginBottom: 20, textAlign: "center" }}>TVW22, VolCon 2024, and ProEngage project documentation</p>
+            <p style={{ fontSize: 15, color: "#64748B", marginBottom: 20, textAlign: "center" }}>TVW, VolCon 2024, and ProEngage project documentation</p>
             <div style={{ columns: 4, columnGap: 16 }}>
               {PHOTOS.map((p, i) => (
                 <div
@@ -143,7 +192,7 @@ export default function MediaView() {
                   onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 24px rgba(0,0,0,0.12)"; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "none"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; }}
                 >
-                  <img src={p.src} alt={p.caption} referrerPolicy="no-referrer" style={{ width: "100%", display: "block" }} />
+                  <img src={p.src} alt={p.caption} style={{ width: "100%", display: "block" }} />
                   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "rgba(0,0,0,0.5)", padding: "8px 12px" }}>
                     <span style={{ fontSize: 12, color: "#fff", fontWeight: 600 }}>{p.caption}</span>
                   </div>
@@ -169,7 +218,6 @@ export default function MediaView() {
                 onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 10px 28px rgba(0,0,0,0.18)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "none"; }}
               >
-                {/* Thumbnail area — height varies by index for rhythm */}
                 <div style={{
                   height: [200, 150, 240, 170, 220, 160][i % 6],
                   display: "flex", alignItems: "center", justifyContent: "center",
@@ -191,44 +239,37 @@ export default function MediaView() {
 
         {/* 5 — Impact Stories */}
         {activeTab === "Impact Stories" && (
-          <div style={{ columns: 2, columnGap: 20 }}>
-            {IMPACT_STORIES.map((s) => (
-              <div
-                key={s.slug}
-                onClick={() => navigate("stories", s.slug)}
-                style={{
-                  breakInside: "avoid", marginBottom: 20,
-                  background: "#fff", border: "1px solid #e8e8f0",
-                  borderRadius: 14, overflow: "hidden", cursor: "pointer",
-                  transition: "transform 0.2s, box-shadow 0.2s",
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
-              >
-                <div style={{ height: 180, overflow: "hidden" }}>
-                  <img src={s.heroImage} alt={s.heroImageAlt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
-                </div>
-                <div style={{ padding: "20px 22px 22px" }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-                    <span style={{ display: "inline-block", background: `${s.accentColor}15`, color: s.accentColor, fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 4, textTransform: "uppercase", letterSpacing: "0.5px" }}>{s.tag}</span>
-                    <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 500 }}>{s.date}</span>
+          <div>
+            <SortBar value={storiesSort} onChange={setStoriesSort} />
+            <div style={{ columns: 2, columnGap: 20 }}>
+              {sortedStories.map((s) => (
+                <div
+                  key={s.slug}
+                  onClick={() => navigate("stories", s.slug)}
+                  style={{
+                    breakInside: "avoid", marginBottom: 20,
+                    background: "#fff", border: "1px solid #e8e8f0",
+                    borderRadius: 14, overflow: "hidden", cursor: "pointer",
+                    transition: "transform 0.2s, box-shadow 0.2s",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
+                >
+                  <div style={{ height: 180, overflow: "hidden" }}>
+                    <img src={s.heroImage} alt={s.heroImageAlt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
                   </div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 10, lineHeight: 1.4 }}>{s.title}</div>
-                  <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7, marginBottom: 16 }}>{s.excerpt}</p>
-                  {s.stats && (
-                    <div style={{ display: "flex", gap: 12, marginBottom: 16, flexWrap: "wrap" }}>
-                      {s.stats.slice(0, 3).map((st) => (
-                        <div key={st.label} style={{ background: "#f7f8fc", borderRadius: 8, padding: "6px 12px", textAlign: "center" }}>
-                          <div style={{ fontSize: 15, fontWeight: 900, color: s.accentColor, lineHeight: 1 }}>{st.num}</div>
-                          <div style={{ fontSize: 10, color: "#94a3b8", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.5px", marginTop: 2 }}>{st.label}</div>
-                        </div>
-                      ))}
+                  <div style={{ padding: "20px 22px 22px" }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                      <span style={{ display: "inline-block", background: `${s.accentColor}15`, color: s.accentColor, fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 4, textTransform: "uppercase", letterSpacing: "0.5px" }}>{s.tag}</span>
+                      <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 500 }}>{s.date}</span>
                     </div>
-                  )}
-                  <span style={{ fontSize: 13, fontWeight: 700, color: B_INDIGO }}>Read story →</span>
+                    <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 10, lineHeight: 1.4 }}>{s.title}</div>
+                    <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7, marginBottom: 16 }}>{s.excerpt}</p>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: B_INDIGO }}>Read story →</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
 
@@ -258,34 +299,37 @@ export default function MediaView() {
 
         {/* 7 — Events */}
         {activeTab === "Events" && (
-          <div style={{ columns: 2, columnGap: 20 }}>
-            {EVENTS.map((e) => (
-              <div
-                key={e.slug}
-                onClick={() => navigate("event", e.slug)}
-                style={{
-                  breakInside: "avoid", marginBottom: 20,
-                  background: "#fff", border: "1px solid #e8e8f0",
-                  borderRadius: 14, overflow: "hidden", cursor: "pointer",
-                  transition: "transform 0.2s, box-shadow 0.2s",
-                }}
-                onMouseEnter={(ev) => { ev.currentTarget.style.transform = "translateY(-3px)"; ev.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
-                onMouseLeave={(ev) => { ev.currentTarget.style.transform = "translateY(0)"; ev.currentTarget.style.boxShadow = "none"; }}
-              >
-                <div style={{ height: 180, overflow: "hidden" }}>
-                  <img src={e.heroImage} alt={e.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
-                </div>
-                <div style={{ padding: "20px 22px 22px" }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-                    <span style={{ display: "inline-block", background: `${e.accentColor}15`, color: e.accentColor, fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 4, textTransform: "uppercase", letterSpacing: "0.5px" }}>{e.tag}</span>
-                    <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 500 }}>{e.date}</span>
+          <div>
+            <SortBar value={eventsSort} onChange={setEventsSort} />
+            <div style={{ columns: 2, columnGap: 20 }}>
+              {sortedEvents.map((e) => (
+                <div
+                  key={e.slug}
+                  onClick={() => navigate("event", e.slug)}
+                  style={{
+                    breakInside: "avoid", marginBottom: 20,
+                    background: "#fff", border: "1px solid #e8e8f0",
+                    borderRadius: 14, overflow: "hidden", cursor: "pointer",
+                    transition: "transform 0.2s, box-shadow 0.2s",
+                  }}
+                  onMouseEnter={(ev) => { ev.currentTarget.style.transform = "translateY(-3px)"; ev.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
+                  onMouseLeave={(ev) => { ev.currentTarget.style.transform = "translateY(0)"; ev.currentTarget.style.boxShadow = "none"; }}
+                >
+                  <div style={{ height: 180, overflow: "hidden" }}>
+                    <img src={e.heroImage} alt={e.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
                   </div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 10, lineHeight: 1.4 }}>{e.title}</div>
-                  <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7, marginBottom: 16 }}>{e.excerpt}</p>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: B_INDIGO }}>View event →</span>
+                  <div style={{ padding: "20px 22px 22px" }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                      <span style={{ display: "inline-block", background: `${e.accentColor}15`, color: e.accentColor, fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 4, textTransform: "uppercase", letterSpacing: "0.5px" }}>{e.tag}</span>
+                      <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 500 }}>{e.date}</span>
+                    </div>
+                    <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 10, lineHeight: 1.4 }}>{e.title}</div>
+                    <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7, marginBottom: 16 }}>{e.excerpt}</p>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: B_INDIGO }}>View event →</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
       </div>
@@ -294,3 +338,4 @@ export default function MediaView() {
     </div>
   );
 }
+

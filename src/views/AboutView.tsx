@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import aboutHeroImg from "@/assets/happy-eyes.jpg";
+import aboutHeroImg from "@/assets/banner_photos/About Tata Engage Banner.jpg";
+import jamsetjiImg  from "@/assets/banner_photos/About Tata Engage below the banner.png";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT      = "#4376BB";
@@ -114,9 +115,8 @@ function LegacySection() {
         <div style={{ background: ACCENT, borderRadius: 20, overflow: "hidden", position: "relative" }}>
           <div style={DIAG} />
           <div style={{ width: "100%", height: 260, overflow: "hidden", position: "relative" }}>
-            {/* Replace src with the actual Jamsetji Tata asset once available */}
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Jamsetji_Tata.jpg/400px-Jamsetji_Tata.jpg"
+              src={jamsetjiImg}
               alt="Jamsetji Tata"
               style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 10%", display: "block" }}
             />
