@@ -228,17 +228,16 @@ const Navbar = ({
       label: "Company Volunteering Programme",
       items: [
         { label: "About CVP", action: () => onNavigate("cvp") },
-        { label: "__SECTION__Explore", action: () => {} },
-        { label: "TCS Each One Empowers One", action: () => onNavigate("eoeo") },
-        { label: "Infiniti Retail E-Waste Warrior", action: () => onNavigate("ewaste") },
-        { label: "Yes To Access", action: () => onNavigate("yes-to-access") },
       ],
     },
     {
       label: "Employees' Own Initiatives",
       items: [
         { label: "About EOI", action: () => onNavigate("eoi") },
-        { label: "Each One Empowers One", action: () => onNavigate("eoeo") },
+        { label: "__SECTION__Explore", action: () => {} },
+        { label: "TCS Each One Empowers One", action: () => onNavigate("eoeo") },
+        { label: "Infiniti Retail E-Waste Warrior", action: () => onNavigate("ewaste") },
+        { label: "Yes To Access", action: () => onNavigate("yes-to-access") },
       ],
     },
   ];
