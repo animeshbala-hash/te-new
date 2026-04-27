@@ -1374,25 +1374,34 @@ export default function DashboardView() {
               {/* ── Apply for ProEngage ───────────────────────────────── */}
               {activeActivity === "apply" && (!hasActive || !IS_PE_SEASON) && (
                 <div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 14 }}>
-                    {PROENGAGE_PROJECTS.filter(p => p.matched).slice(0, 3).map(p => (
-                      <div key={p.id} style={{ ...card, padding: "20px", border: `1px solid ${B_BLUE}18` }}>
+                  <div style={{ marginBottom: 16 }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 2 }}>Projects we think would be a great fit for your profile</div>
+                    <div style={{ fontSize: 12, color: "#8888a0" }}>Based on your skills and interests</div>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 14 }}>
+                    {PROENGAGE_PROJECTS.filter(p => p.matched).slice(0, 3).map((p, i) => (
+                      <div key={p.id} style={{ ...card, padding: "18px 20px", border: `1.5px solid ${B_BLUE}22`, borderLeft: `3px solid ${B_BLUE}`, transition: "transform 0.18s, box-shadow 0.18s" }}
+                        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; (e.currentTarget as HTMLElement).style.boxShadow = `0 6px 20px ${B_BLUE}14`; }}
+                        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
                           <div style={{ flex: 1 }}>
-                            <div style={{ fontWeight: 700, fontSize: 14.5, color: ACCENT_NAVY, marginBottom: 8, lineHeight: 1.3 }}>{p.title}</div>
-                            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 600, color: "#aaaabc" }}>0{i + 1}</span>
+                              <div style={{ fontWeight: 700, fontSize: 14, color: ACCENT_NAVY, lineHeight: 1.3 }}>{p.title}</div>
+                            </div>
+                            <div style={{ fontSize: 12, color: "#6b6b7a", marginBottom: 8 }}>{p.ngo}</div>
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
                               <span style={{ background: P_BLUE, color: B_BLUE, fontSize: 11, fontWeight: 600, padding: "2px 9px", borderRadius: 100 }}>{p.area}</span>
                               <span style={{ background: P_BLUE, color: B_BLUE, fontSize: 11, fontWeight: 600, padding: "2px 9px", borderRadius: 100 }}>{p.mode}</span>
                               <span style={{ background: "#f5f5fa", color: "#6b6b7a", fontSize: 11, fontWeight: 600, padding: "2px 9px", borderRadius: 100 }}>{p.commitment || "Flexible"}</span>
-                              <span style={{ background: "#f5f5fa", color: "#8888a0", fontSize: 11, fontWeight: 500, padding: "2px 9px", borderRadius: 100 }}>{p.ngo}</span>
                             </div>
                           </div>
-                          <button onClick={() => navigate("/proengage")} style={{ background: B_BLUE, color: "#fff", border: "none", borderRadius: 8, padding: "8px 18px", fontSize: 13, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>View & Apply</button>
+                          <button onClick={() => navigate("/proengage")} style={{ background: B_BLUE, color: "#fff", border: "none", borderRadius: 8, padding: "8px 16px", fontSize: 12.5, fontWeight: 700, cursor: "pointer", flexShrink: 0, fontFamily: "'DM Sans', sans-serif" }}>View & Apply</button>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <button onClick={() => navigate("/proengage")} style={{ background: "none", border: "none", fontSize: 13.5, color: B_BLUE, fontWeight: 600, cursor: "pointer", padding: 0 }}>View all opportunities →</button>
+                  <button onClick={() => navigate("/proengage")} style={{ background: "none", border: "none", fontSize: 13, color: B_BLUE, fontWeight: 600, cursor: "pointer", padding: 0 }}>View all opportunities →</button>
                 </div>
               )}
 
