@@ -22,20 +22,20 @@ import iave24Img5 from "@/assets/events/iave24-5.png";
 import iave24Img6 from "@/assets/events/iave24-6.png";
 import eventsHeroImg from "@/assets/tce-2.jpg";
 
-const ACCENT_NAVY  = "#0D1B3E";
-const B_INDIGO     = "#333399";
+const ACCENT_NAVY = "#0D1B3E";
+const B_INDIGO = "#333399";
 
 // TSC 2022
-const TSC_ACCENT       = "#5B21B6";
-const TSC_ACCENT_DARK  = "#3b1278";
+const TSC_ACCENT = "#5B21B6";
+const TSC_ACCENT_DARK = "#3b1278";
 const TSC_ACCENT_LIGHT = "#F3EEFF";
 // VOLCON 2024
-const VOL_ACCENT       = "#7C3ABD";
-const VOL_ACCENT_DARK  = "#5B21B6";
+const VOL_ACCENT = "#7C3ABD";
+const VOL_ACCENT_DARK = "#5B21B6";
 const VOL_ACCENT_LIGHT = "#EDE4FF";
 // IAVE 2022
-const IAVE_ACCENT       = "#333399";
-const IAVE_ACCENT_DARK  = "#252573";
+const IAVE_ACCENT = "#333399";
+const IAVE_ACCENT_DARK = "#252573";
 const IAVE_ACCENT_LIGHT = "#EEEEFF";
 
 const NAVY = ACCENT_NAVY;
@@ -44,39 +44,117 @@ function DefinerBar({ colour, light = false }: { colour: string; light?: boolean
   const ref = useRef<HTMLDivElement>(null);
   const [on, setOn] = useState(false);
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setOn(true); }, { threshold: 0.4 });
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) setOn(true);
+      },
+      { threshold: 0.4 },
+    );
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
   return (
-    <div ref={ref} style={{ height: 3, background: light ? "rgba(255,255,255,0.2)" : "#e8e8f0", borderRadius: 2, overflow: "hidden", width: 48, marginTop: 10 }}>
-      <div style={{ height: "100%", background: light ? "rgba(255,255,255,0.7)" : colour, borderRadius: 2, transition: "width 0.65s cubic-bezier(0.22,1,0.36,1)", width: on ? "100%" : "0%" }} />
+    <div
+      ref={ref}
+      style={{
+        height: 3,
+        background: light ? "rgba(255,255,255,0.2)" : "#e8e8f0",
+        borderRadius: 2,
+        overflow: "hidden",
+        width: 48,
+        marginTop: 10,
+      }}
+    >
+      <div
+        style={{
+          height: "100%",
+          background: light ? "rgba(255,255,255,0.7)" : colour,
+          borderRadius: 2,
+          transition: "width 0.65s cubic-bezier(0.22,1,0.36,1)",
+          width: on ? "100%" : "0%",
+        }}
+      />
     </div>
   );
 }
 
 // ── Slideshow ─────────────────────────────────────────────────────────────────
-interface Slide { src: string; caption: string; }
-function Slideshow({ slides, accent, aspect = "16/10" }: { slides: Slide[]; accent: string; accentDark?: string; aspect?: string }) {
+interface Slide {
+  src: string;
+  caption: string;
+}
+function Slideshow({
+  slides,
+  accent,
+  aspect = "16/10",
+}: {
+  slides: Slide[];
+  accent: string;
+  accentDark?: string;
+  aspect?: string;
+}) {
   const [i, setI] = useState(0);
   useEffect(() => {
     if (slides.length <= 1) return;
-    const t = setInterval(() => setI(p => (p + 1) % slides.length), 6000);
+    const t = setInterval(() => setI((p) => (p + 1) % slides.length), 6000);
     return () => clearInterval(t);
   }, [slides.length]);
   if (!slides.length) return null;
   return (
-    <div style={{ borderRadius: 16, overflow: "hidden", background: "#000", border: `1px solid ${accent}30`, position: "relative" }}>
+    <div
+      style={{
+        borderRadius: 16,
+        overflow: "hidden",
+        background: "#000",
+        border: `1px solid ${accent}30`,
+        position: "relative",
+      }}
+    >
       <div style={{ position: "relative", aspectRatio: aspect, background: "#000" }}>
         {slides.map((s, idx) => (
-          <img key={idx} src={s.src} alt={s.caption}
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: idx === i ? 1 : 0, transition: "opacity 0.6s ease" }} />
+          <img
+            key={idx}
+            src={s.src}
+            alt={s.caption}
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              opacity: idx === i ? 1 : 0,
+              transition: "opacity 0.6s ease",
+            }}
+          />
         ))}
         {slides.length > 1 && (
-          <div style={{ position: "absolute", bottom: 12, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 6, zIndex: 2 }}>
+          <div
+            style={{
+              position: "absolute",
+              bottom: 12,
+              left: 0,
+              right: 0,
+              display: "flex",
+              justifyContent: "center",
+              gap: 6,
+              zIndex: 2,
+            }}
+          >
             {slides.map((_, idx) => (
-              <button key={idx} onClick={() => setI(idx)} aria-label={`Slide ${idx + 1}`}
-                style={{ width: idx === i ? 24 : 8, height: 8, borderRadius: 100, border: "none", cursor: "pointer", background: idx === i ? "#fff" : "rgba(255,255,255,0.5)", transition: "all 0.3s" }} />
+              <button
+                key={idx}
+                onClick={() => setI(idx)}
+                aria-label={`Slide ${idx + 1}`}
+                style={{
+                  width: idx === i ? 24 : 8,
+                  height: 8,
+                  borderRadius: 100,
+                  border: "none",
+                  cursor: "pointer",
+                  background: idx === i ? "#fff" : "rgba(255,255,255,0.5)",
+                  transition: "all 0.3s",
+                }}
+              />
             ))}
           </div>
         )}
@@ -124,20 +202,43 @@ function SubEvent({ title, body, media, accent, accentDark, mediaSide = "right" 
   const paras = Array.isArray(body) ? body : [body];
   return (
     <div style={{ marginTop: 56, paddingTop: 40, borderTop: `1px dashed ${accent}40` }}>
-      <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: accentDark, marginBottom: 10 }}>Programme highlight</p>
+      <p
+        style={{
+          fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+          fontSize: 14,
+          fontWeight: 700,
+          letterSpacing: "1.8px",
+          textTransform: "uppercase",
+          color: accentDark,
+          marginBottom: 10,
+        }}
+      >
+        Programme highlight
+      </p>
       <h3 style={{ fontSize: 20, fontWeight: 800, color: NAVY, letterSpacing: "-0.3px", marginBottom: 22 }}>{title}</h3>
       {media ? (
-        <div style={{ display: "grid", gridTemplateColumns: mediaSide === "left" ? "0.95fr 1.05fr" : "1.05fr 0.95fr", gap: 40, alignItems: "start" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: mediaSide === "left" ? "0.95fr 1.05fr" : "1.05fr 0.95fr",
+            gap: 40,
+            alignItems: "start",
+          }}
+        >
           <div style={{ order: mediaSide === "left" ? 2 : 1 }}>
             {paras.map((p, i) => (
-              <p key={i} style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.82, marginBottom: 14 }}>{p}</p>
+              <p key={i} style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.82, marginBottom: 14 }}>
+                {p}
+              </p>
             ))}
           </div>
           <div style={{ order: mediaSide === "left" ? 1 : 2 }}>{media}</div>
         </div>
       ) : (
         paras.map((p, i) => (
-          <p key={i} style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.82, marginBottom: 14 }}>{p}</p>
+          <p key={i} style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.82, marginBottom: 14 }}>
+            {p}
+          </p>
         ))
       )}
     </div>
@@ -145,20 +246,92 @@ function SubEvent({ title, body, media, accent, accentDark, mediaSide = "right" 
 }
 
 // ── Per-event hero ────────────────────────────────────────────────────────────
-function EventHero({ accent, eyebrow, title, subtitle }: { accent: string; eyebrow: string; title: string; subtitle: string }) {
+function EventHero({
+  accent,
+  eyebrow,
+  title,
+  subtitle,
+}: {
+  accent: string;
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+}) {
   return (
-    <div style={{ position: "relative", minHeight: "75vh", display: "flex", flexDirection: "column", justifyContent: "center", overflow: "hidden", paddingTop: 64 }}>
-      <img src={eventsHeroImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
-      <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${accent}e8 0%, ${accent}cc 38%, ${accent}aa 58%, ${accent}77 78%, ${accent}44 100%)` }} />
-      <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
-        <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", margin: "0 0 12px" }}>
+    <div
+      style={{
+        position: "relative",
+        minHeight: "75vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        overflow: "hidden",
+        paddingTop: 64,
+      }}
+    >
+      <img
+        src={eventsHeroImg}
+        alt=""
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: `linear-gradient(110deg, ${accent}e8 0%, ${accent}cc 38%, ${accent}aa 58%, ${accent}77 78%, ${accent}44 100%)`,
+        }}
+      />
+      <div
+        style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}
+      >
+        <p
+          style={{
+            fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+            fontSize: 14,
+            fontWeight: 700,
+            letterSpacing: "1.8px",
+            textTransform: "uppercase",
+            color: "#ffffff",
+            margin: "0 0 12px",
+          }}
+        >
           {eyebrow}
         </p>
-        <div style={{ height: 2, width: 48, borderRadius: 2, background: "rgba(255,255,255,0.6)", margin: "12px 0 22px" }} />
-        <h1 style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: "clamp(2.4rem,5vw,3.8rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px", maxWidth: 760 }}>
+        <div
+          style={{ height: 2, width: 48, borderRadius: 2, background: "rgba(255,255,255,0.6)", margin: "12px 0 22px" }}
+        />
+        <h1
+          style={{
+            fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+            fontSize: "clamp(2.4rem,5vw,3.8rem)",
+            fontWeight: 400,
+            color: "#fff",
+            lineHeight: 1.12,
+            letterSpacing: "-0.5px",
+            margin: "0 0 18px",
+            maxWidth: 760,
+          }}
+        >
           {title}
         </h1>
-        <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 16, fontWeight: 300, color: "rgba(255,255,255,0.75)", lineHeight: 1.7, maxWidth: 600, margin: 0 }}>
+        <p
+          style={{
+            fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+            fontSize: 16,
+            fontWeight: 300,
+            color: "rgba(255,255,255,0.75)",
+            lineHeight: 1.7,
+            maxWidth: 600,
+            margin: 0,
+          }}
+        >
           {subtitle}
         </p>
       </div>
@@ -192,80 +365,318 @@ interface EventSectionProps {
 }
 
 function EventSection({
-  id, accent, accentDark, accentLight, date, tag, title, subtitle,
-  quote, quoteAttrib, paragraphs, highlights, photoSide = "right",
-  bg = "#fff", accentBg = false, heroFullWidth = false, topGap = 0,
-  awardsTable, awardsMedia, heroMedia, children,
+  id,
+  accent,
+  accentDark,
+  accentLight,
+  date,
+  tag,
+  title,
+  subtitle,
+  quote,
+  quoteAttrib,
+  paragraphs,
+  highlights,
+  photoSide = "right",
+  bg = "#fff",
+  accentBg = false,
+  heroFullWidth = false,
+  topGap = 0,
+  awardsTable,
+  awardsMedia,
+  heroMedia,
+  children,
 }: EventSectionProps) {
-  const sectionBg = accentBg
-    ? `linear-gradient(180deg, ${accentLight} 0%, #ffffff 100%)`
-    : bg;
+  const sectionBg = accentBg ? `linear-gradient(180deg, ${accentLight} 0%, #ffffff 100%)` : bg;
 
   return (
-    <section id={id} style={{ background: sectionBg, position: "relative", overflow: "hidden", paddingTop: topGap, scrollMarginTop: 80 }}>
+    <section
+      id={id}
+      style={{
+        background: sectionBg,
+        position: "relative",
+        overflow: "hidden",
+        paddingTop: topGap,
+        scrollMarginTop: 80,
+      }}
+    >
       {accentBg && (
-        <div style={{ position: "absolute", top: topGap, right: -80, width: 360, height: 360, background: `radial-gradient(circle, ${accent}22 0%, transparent 70%)`, pointerEvents: "none" }} />
+        <div
+          style={{
+            position: "absolute",
+            top: topGap,
+            right: -80,
+            width: 360,
+            height: 360,
+            background: `radial-gradient(circle, ${accent}22 0%, transparent 70%)`,
+            pointerEvents: "none",
+          }}
+        />
       )}
 
       {/* Coloured header bar */}
-      <div style={{ background: `linear-gradient(135deg, ${accentDark} 0%, ${accent} 100%)`, padding: "32px 56px", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(45deg,rgba(255,255,255,0.05) 1px,transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", top: -60, right: -40, width: 240, height: 240, background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 68%)", pointerEvents: "none" }} />
-        <div style={{ position: "relative", maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", gap: 16 }}>
+      <div
+        style={{
+          background: `linear-gradient(135deg, ${accentDark} 0%, ${accent} 100%)`,
+          padding: "32px 56px",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "repeating-linear-gradient(45deg,rgba(255,255,255,0.05) 1px,transparent 1px)",
+            backgroundSize: "28px 28px",
+            pointerEvents: "none",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: -60,
+            right: -40,
+            width: 240,
+            height: 240,
+            background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 68%)",
+            pointerEvents: "none",
+          }}
+        />
+        <div
+          style={{
+            position: "relative",
+            maxWidth: 1100,
+            margin: "0 auto",
+            display: "flex",
+            alignItems: "center",
+            gap: 16,
+          }}
+        >
           <div style={{ width: 4, height: 56, background: "rgba(255,255,255,0.85)", borderRadius: 2, flexShrink: 0 }} />
           <div>
-            <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 6 }}>{date} · {tag}</p>
-            <h2 style={{ fontSize: 26, fontWeight: 900, color: "#fff", letterSpacing: "-0.4px", lineHeight: 1.2, margin: 0 }}>{title}</h2>
+            <p
+              style={{
+                fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+                fontSize: 14,
+                fontWeight: 700,
+                letterSpacing: "1.8px",
+                textTransform: "uppercase",
+                color: "#ffffff",
+                marginBottom: 6,
+              }}
+            >
+              {date} · {tag}
+            </p>
+            <h2
+              style={{
+                fontSize: 26,
+                fontWeight: 900,
+                color: "#fff",
+                letterSpacing: "-0.4px",
+                lineHeight: 1.2,
+                margin: 0,
+              }}
+            >
+              {title}
+            </h2>
             <p style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", marginTop: 4 }}>{subtitle}</p>
           </div>
         </div>
       </div>
 
       <div style={{ padding: "72px 56px 96px", position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto" }}>
-
         {heroFullWidth && heroMedia ? (
           <>
             <div style={{ marginBottom: 48 }}>{heroMedia}</div>
-            <div style={{ display: "grid", gridTemplateColumns: quote ? "1.15fr 0.85fr" : "1fr", gap: 48, alignItems: "start", marginBottom: highlights || awardsTable || children ? 48 : 0 }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: quote ? "1.15fr 0.85fr" : "1fr",
+                gap: 48,
+                alignItems: "start",
+                marginBottom: highlights || awardsTable || children ? 48 : 0,
+              }}
+            >
               <div>
                 {paragraphs.map((p, i) => (
-                  <p key={i} style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>{p}</p>
+                  <p key={i} style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
+                    {p}
+                  </p>
                 ))}
               </div>
               {quote && (
-                <div style={{ background: accentLight, borderLeft: `4px solid ${accent}`, borderRadius: "0 12px 12px 0", padding: "24px 26px", position: "sticky", top: 96 }}>
-                  <div style={{ fontSize: 36, lineHeight: 0.7, color: accent + "55", fontFamily: "Georgia,serif", marginBottom: 10 }}>"</div>
-                  <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 15, fontStyle: "italic", color: NAVY, lineHeight: 1.7, marginBottom: 12 }}>{quote}</p>
-                  {quoteAttrib && <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: accentDark }}>{quoteAttrib}</p>}
+                <div
+                  style={{
+                    background: accentLight,
+                    borderLeft: `4px solid ${accent}`,
+                    borderRadius: "0 12px 12px 0",
+                    padding: "24px 26px",
+                    position: "sticky",
+                    top: 96,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 36,
+                      lineHeight: 0.7,
+                      color: accent + "55",
+                      fontFamily: "Georgia,serif",
+                      marginBottom: 10,
+                    }}
+                  >
+                    "
+                  </div>
+                  <p
+                    style={{
+                      fontFamily: "'Playfair Display',Georgia,serif",
+                      fontSize: 15,
+                      fontStyle: "italic",
+                      color: NAVY,
+                      lineHeight: 1.7,
+                      marginBottom: 12,
+                    }}
+                  >
+                    {quote}
+                  </p>
+                  {quoteAttrib && (
+                    <p
+                      style={{
+                        fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+                        fontSize: 10,
+                        fontWeight: 700,
+                        letterSpacing: "1px",
+                        textTransform: "uppercase",
+                        color: accentDark,
+                      }}
+                    >
+                      {quoteAttrib}
+                    </p>
+                  )}
                 </div>
               )}
             </div>
           </>
         ) : (
-          <div style={{ display: "grid", gridTemplateColumns: photoSide === "left" ? "0.95fr 1.05fr" : "1.05fr 0.95fr", gap: 56, alignItems: "start", marginBottom: highlights || awardsTable || children ? 48 : 0 }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: photoSide === "left" ? "0.95fr 1.05fr" : "1.05fr 0.95fr",
+              gap: 56,
+              alignItems: "start",
+              marginBottom: highlights || awardsTable || children ? 48 : 0,
+            }}
+          >
             <div style={{ order: photoSide === "left" ? 2 : 1 }}>
               {quote && (
-                <div style={{ background: accentLight, borderLeft: `4px solid ${accent}`, borderRadius: "0 12px 12px 0", padding: "20px 24px", marginBottom: 28 }}>
-                  <div style={{ fontSize: 36, lineHeight: 0.7, color: accent + "50", fontFamily: "Georgia,serif", marginBottom: 10 }}>"</div>
-                  <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 16, fontStyle: "italic", color: NAVY, lineHeight: 1.7, marginBottom: 10 }}>{quote}</p>
-                  {quoteAttrib && <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: accentDark + "aa" }}>{quoteAttrib}</p>}
+                <div
+                  style={{
+                    background: accentLight,
+                    borderLeft: `4px solid ${accent}`,
+                    borderRadius: "0 12px 12px 0",
+                    padding: "20px 24px",
+                    marginBottom: 28,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 36,
+                      lineHeight: 0.7,
+                      color: accent + "50",
+                      fontFamily: "Georgia,serif",
+                      marginBottom: 10,
+                    }}
+                  >
+                    "
+                  </div>
+                  <p
+                    style={{
+                      fontFamily: "'Playfair Display',Georgia,serif",
+                      fontSize: 16,
+                      fontStyle: "italic",
+                      color: NAVY,
+                      lineHeight: 1.7,
+                      marginBottom: 10,
+                    }}
+                  >
+                    {quote}
+                  </p>
+                  {quoteAttrib && (
+                    <p
+                      style={{
+                        fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+                        fontSize: 10,
+                        fontWeight: 700,
+                        letterSpacing: "1px",
+                        textTransform: "uppercase",
+                        color: accentDark + "aa",
+                      }}
+                    >
+                      {quoteAttrib}
+                    </p>
+                  )}
                 </div>
               )}
               {paragraphs.map((p, i) => (
-                <p key={i} style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>{p}</p>
+                <p key={i} style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
+                  {p}
+                </p>
               ))}
             </div>
             <div style={{ order: photoSide === "left" ? 1 : 2 }}>
               {heroMedia || (
-                <div style={{ borderRadius: 16, overflow: "hidden", position: "relative", background: `linear-gradient(135deg,${accentLight} 0%,${accentLight}80 100%)`, border: `1px solid ${accent}20` }}>
-                  <div style={{ height: 300, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12 }}>
-                    <div style={{ width: 56, height: 56, borderRadius: "50%", background: accent + "22", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <div
+                  style={{
+                    borderRadius: 16,
+                    overflow: "hidden",
+                    position: "relative",
+                    background: `linear-gradient(135deg,${accentLight} 0%,${accentLight}80 100%)`,
+                    border: `1px solid ${accent}20`,
+                  }}
+                >
+                  <div
+                    style={{
+                      height: 300,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 12,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 56,
+                        height: 56,
+                        borderRadius: "50%",
+                        background: accent + "22",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="1.8">
+                        <rect x="3" y="3" width="18" height="18" rx="3" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <path d="M21 15l-5-5L5 21" />
+                      </svg>
                     </div>
-                    <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 11, color: accent + "99", letterSpacing: "1px", textTransform: "uppercase" }}>Photo — {tag}</p>
+                    <p
+                      style={{
+                        fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+                        fontSize: 11,
+                        color: accent + "99",
+                        letterSpacing: "1px",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Photo — {tag}
+                    </p>
                   </div>
                   <div style={{ background: "#fff", padding: "14px 20px" }}>
-                    <p style={{ fontSize: 12, color: "#475569", lineHeight: 1.5 }}><strong style={{ color: NAVY }}>{tag}</strong> · {date}</p>
+                    <p style={{ fontSize: 12, color: "#475569", lineHeight: 1.5 }}>
+                      <strong style={{ color: NAVY }}>{tag}</strong> · {date}
+                    </p>
                   </div>
                 </div>
               )}
@@ -276,20 +687,84 @@ function EventSection({
         {/* Awards section */}
         {awardsTable && (
           <div style={{ marginTop: 44 }}>
-            <p style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: accent, marginBottom: 8 }}>Tata Volunteering Week Awards</p>
-            <h3 style={{ fontSize: 18, fontWeight: 800, color: NAVY, letterSpacing: "-0.3px", marginBottom: 16 }}>Award Categories & Winners</h3>
-            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.75, marginBottom: 24, maxWidth: 760 }}>
-              The Conclave concluded on a celebratory note with the Volunteering Award winners being felicitated by Tata Sons leaders Ms. Roopa Purushothaman, Chief Economist and Head of Policy Advocacy, Tata Sons; Ms. Nupur Mallick, Group Chief Human Resources Officer and Mr. Siddharth Sharma, Group Chief Sustainability Officer, Tata Sons.
+            <p
+              style={{
+                fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+                fontSize: 10,
+                fontWeight: 700,
+                letterSpacing: "1.5px",
+                textTransform: "uppercase",
+                color: accent,
+                marginBottom: 8,
+              }}
+            >
+              Tata Volunteering Week Awards
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: awardsMedia ? "1.3fr 1fr" : "1fr", gap: 24, alignItems: "start" }}>
+            <h3 style={{ fontSize: 18, fontWeight: 800, color: NAVY, letterSpacing: "-0.3px", marginBottom: 16 }}>
+              Award Categories & Winners
+            </h3>
+            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.75, marginBottom: 24, maxWidth: 760 }}>
+              The Conclave concluded on a celebratory note with the Volunteering Award winners being felicitated by Tata
+              Sons leaders Ms. Roopa Purushothaman, Chief Economist and Head of Policy Advocacy, Tata Sons; Ms. Nupur
+              Mallick, Group Chief Human Resources Officer and Mr. Siddharth Sharma, Group Chief Sustainability Officer,
+              Tata Sons.
+            </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: awardsMedia ? "1.3fr 1fr" : "1fr",
+                gap: 24,
+                alignItems: "start",
+              }}
+            >
               <div style={{ border: `1px solid ${accent}22`, borderRadius: 14, overflow: "hidden" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", background: accentDark, padding: "12px 20px" }}>
-                  <span style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: "rgba(255,255,255,0.7)" }}>Category</span>
-                  <span style={{ fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: "rgba(255,255,255,0.7)" }}>Winners</span>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    background: accentDark,
+                    padding: "12px 20px",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+                      fontSize: 10,
+                      fontWeight: 700,
+                      letterSpacing: "1px",
+                      textTransform: "uppercase",
+                      color: "rgba(255,255,255,0.7)",
+                    }}
+                  >
+                    Category
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+                      fontSize: 10,
+                      fontWeight: 700,
+                      letterSpacing: "1px",
+                      textTransform: "uppercase",
+                      color: "rgba(255,255,255,0.7)",
+                    }}
+                  >
+                    Winners
+                  </span>
                 </div>
                 {awardsTable.map((row, i) => (
-                  <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "14px 20px", background: i % 2 === 0 ? "#fff" : accentLight, borderTop: `1px solid ${accent}18` }}>
-                    <span style={{ fontSize: 13.5, fontWeight: 700, color: NAVY, lineHeight: 1.4 }}>{row.category}</span>
+                  <div
+                    key={i}
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      padding: "14px 20px",
+                      background: i % 2 === 0 ? "#fff" : accentLight,
+                      borderTop: `1px solid ${accent}18`,
+                    }}
+                  >
+                    <span style={{ fontSize: 13.5, fontWeight: 700, color: NAVY, lineHeight: 1.4 }}>
+                      {row.category}
+                    </span>
                     <span style={{ fontSize: 13, color: "#475569", lineHeight: 1.5 }}>{row.winners}</span>
                   </div>
                 ))}
@@ -336,7 +811,11 @@ function Tsc2022() {
             accent={TSC_ACCENT}
             accentDark={TSC_ACCENT_DARK}
             slides={[
-              { src: tsc22Chairman, caption: "Mr. N. Chandrasekaran, Chairman, Tata Sons delivering the inaugural address at the Tata Sustainability Conclave 2022." },
+              {
+                src: tsc22Chairman,
+                caption:
+                  "Mr. N. Chandrasekaran, Chairman, Tata Sons delivering the inaugural address at the Tata Sustainability Conclave 2022.",
+              },
             ]}
           />
         }
@@ -347,8 +826,14 @@ function Tsc2022() {
         ]}
         awardsTable={[
           { category: "Volunteering Stalwart", winners: "Tata Consultancy Services" },
-          { category: "Highest Volunteering Hours (TVW-19)", winners: "TCS · Tata Coffee · Tata Consulting Engineers · Tata Realty & Infrastructure" },
-          { category: "Excellence in Volunteering", winners: "Tata Communications · TCS · Titan · Rallis India · Tata Insights & Quants" },
+          {
+            category: "Highest Volunteering Hours (TVW-19)",
+            winners: "TCS · Tata Coffee · Tata Consulting Engineers · Tata Realty & Infrastructure",
+          },
+          {
+            category: "Excellence in Volunteering",
+            winners: "Tata Communications · TCS · Titan · Rallis India · Tata Insights & Quants",
+          },
           { category: "SPOC Hero", winners: "SPOCs across companies recognised for steering TVW activities" },
           { category: "Exemplary Volunteering", winners: "Individual volunteer champions clocking maximum TVW hours" },
         ]}
@@ -357,7 +842,11 @@ function Tsc2022() {
             accent={TSC_ACCENT}
             accentDark={TSC_ACCENT_DARK}
             slides={[
-              { src: tsc22Awards, caption: "Volunteering Award winners felicitated by Tata Sons leaders Ms. Roopa Purushothaman, Ms. Nupur Mallick, and Mr. Siddharth Sharma at TSC 2022." },
+              {
+                src: tsc22Awards,
+                caption:
+                  "Volunteering Award winners felicitated by Tata Sons leaders Ms. Roopa Purushothaman, Ms. Nupur Mallick, and Mr. Siddharth Sharma at TSC 2022.",
+              },
             ]}
           />
         }
@@ -369,7 +858,7 @@ function Tsc2022() {
           title="Panel Discussion — Embedding Quality & Scale"
           body={[
             "Moderated by Mr. Harish Bhat, Brand Custodian, Tata Sons, the panel reiterated the Group aspiration of 4 per capita volunteering hours by 2025 — inked by the Tata Group Sustainability Council — and discussed the many benefits of volunteering for communities and for employees alike.",
-            "Mr. Puneet Chhatwal, MD & CEO, Indian Hotels Company Ltd., shared how IHCL moved from PCVH of 0.59 in FY21 to 2.25 in FY22, embedding volunteering as part of the core value of \"Tajness\".",
+            'Mr. Puneet Chhatwal, MD & CEO, Indian Hotels Company Ltd., shared how IHCL moved from PCVH of 0.59 in FY21 to 2.25 in FY22, embedding volunteering as part of the core value of "Tajness".',
             "Mr. Sanjiv Lal, MD & CEO, Rallis India Ltd., spoke on Rallis' rural-community focus, motivating employees to engage with farming communities while consistently growing PCVH year-on-year.",
             "Mr. A.S. Lakshminarayanan, MD & CEO, Tata Communications, highlighted DRIVE Week as the company's flagship volunteering programme, and the approach to executing it across international locations.",
             "Mr. Milind Lakkad, CHRO, Tata Consultancy Services, spoke passionately on the digital Adult Literacy Programme and TCS' plan to democratise it through the Each One Empowers One platform — enabling employees across the Tata Group to scale impact.",
@@ -409,7 +898,11 @@ function Volcon2024() {
             accent={VOL_ACCENT}
             accentDark={VOL_ACCENT_DARK}
             slides={[
-              { src: volconChacko, caption: "Mr. Chacko Thomas, Group Chief Sustainability Officer, delivered the inaugural address at the TATA VOLCON 2024." },
+              {
+                src: volconChacko,
+                caption:
+                  "Mr. Chacko Thomas, Group Chief Sustainability Officer, delivered the inaugural address at the TATA VOLCON 2024.",
+              },
             ]}
           />
         }
@@ -464,7 +957,11 @@ function Volcon2024() {
               accent={VOL_ACCENT}
               accentDark={VOL_ACCENT_DARK}
               slides={[
-                { src: volconPanel, caption: "Discussing culture of volunteering within different business realities at TATA VOLCON 2024 — L–R: Mr. Adrian Terron (Tata Group); Mr. Neelesh Garg (Tata AIG); Dr. Praveer Sinha (Tata Power); Mr. Sanjay Dutt (Tata Realty & Infrastructure); Mr. Milind Lakkad (TCS)." },
+                {
+                  src: volconPanel,
+                  caption:
+                    "Discussing culture of volunteering within different business realities at TATA VOLCON 2024 — L–R: Mr. Adrian Terron (Tata Group); Mr. Neelesh Garg (Tata AIG); Dr. Praveer Sinha (Tata Power); Mr. Sanjay Dutt (Tata Realty & Infrastructure); Mr. Milind Lakkad (TCS).",
+                },
               ]}
             />
           }
@@ -486,9 +983,21 @@ function Volcon2024() {
               accent={VOL_ACCENT}
               accentDark={VOL_ACCENT_DARK}
               slides={[
-                { src: volconAwardsTCS, caption: "Tata Consultancy Services, one of the winners of the Tata Engage Awards, at TATA VOLCON 2024." },
-                { src: volconNitin, caption: "Nitin Yadav from Tata Motors — recipient of the prestigious Exemplary Volunteering Award at TATA VOLCON 2024." },
-                { src: volconArjinder, caption: "Arjinder Singh from Tata Power — recipient of the prestigious Exemplary Volunteering Award at TATA VOLCON 2024." },
+                {
+                  src: volconAwardsTCS,
+                  caption:
+                    "Tata Consultancy Services, one of the winners of the Tata Engage Awards, at TATA VOLCON 2024.",
+                },
+                {
+                  src: volconNitin,
+                  caption:
+                    "Nitin Yadav from Tata Motors — recipient of the prestigious Exemplary Volunteering Award at TATA VOLCON 2024.",
+                },
+                {
+                  src: volconArjinder,
+                  caption:
+                    "Arjinder Singh from Tata Power — recipient of the prestigious Exemplary Volunteering Award at TATA VOLCON 2024.",
+                },
               ]}
             />
           }
@@ -507,9 +1016,17 @@ function Volcon2024() {
               accent={VOL_ACCENT}
               accentDark={VOL_ACCENT_DARK}
               slides={[
-                { src: volconMusic1, caption: "Kalasagar, the cultural society of Tata Motors, delivered an enthralling musical performance at TATA VOLCON 2024." },
+                {
+                  src: volconMusic1,
+                  caption:
+                    "Kalasagar, the cultural society of Tata Motors, delivered an enthralling musical performance at TATA VOLCON 2024.",
+                },
                 { src: volconMusic2, caption: "Performers and guests on stage at TATA VOLCON 2024." },
-                { src: volconTribalChefs, caption: "Tribal Home Chefs supported by Tata Steel Foundation — enriching the gathering with the richness of tribal delicacies." },
+                {
+                  src: volconTribalChefs,
+                  caption:
+                    "Tribal Home Chefs supported by Tata Steel Foundation — enriching the gathering with the richness of tribal delicacies.",
+                },
               ]}
             />
           }
@@ -551,7 +1068,11 @@ function Iave2022() {
             accentDark={IAVE_ACCENT_DARK}
             aspect="3.5/1"
             slides={[
-              { src: iavePanel, caption: "Plenary panel 'Corporate Volunteering for a Post-Pandemic World' at the 26th IAVE World Volunteer Conference, Abu Dhabi — including Gauri Rajadhyaksha (Tata Sons, India)." },
+              {
+                src: iavePanel,
+                caption:
+                  "Plenary panel 'Corporate Volunteering for a Post-Pandemic World' at the 26th IAVE World Volunteer Conference, Abu Dhabi — including Gauri Rajadhyaksha (Tata Sons, India).",
+              },
             ]}
           />
         }
@@ -586,7 +1107,7 @@ function Iave2024() {
         title="Tata Group at the 27th IAVE World Volunteer Conference"
         subtitle="Busan Exhibition and Convention Center, Republic of Korea — 22–24 October 2024"
         paragraphs={[
-          "Tata Sustainability Group was invited to participate in the 27th IAVE World Volunteer Conference, themed \"People Power: Creating a Sustainable Future through Volunteering.\" The conference was inaugurated by the Hon'ble President of South Korea, Yoon Suk Yeol, who underscored the urgent need for global solidarity.",
+          'Tata Sustainability Group was invited to participate in the 27th IAVE World Volunteer Conference, themed "People Power: Creating a Sustainable Future through Volunteering." The conference was inaugurated by the Hon\'ble President of South Korea, Yoon Suk Yeol, who underscored the urgent need for global solidarity.',
           "The event brought together over 1,500 volunteer leaders from 90 countries, reaffirming the power of volunteering to co-create solutions for pressing global challenges.",
         ]}
         heroMedia={
@@ -595,7 +1116,11 @@ function Iave2024() {
             accentDark={IAVE_ACCENT_DARK}
             aspect="3.5/1"
             slides={[
-              { src: iave24Img1, caption: "27th IAVE World Volunteer Conference, Busan Exhibition and Convention Center, Republic of Korea — October 2024." },
+              {
+                src: iave24Img1,
+                caption:
+                  "27th IAVE World Volunteer Conference, Busan Exhibition and Convention Center, Republic of Korea — October 2024.",
+              },
             ]}
           />
         }
@@ -625,15 +1150,13 @@ function Iave2024() {
           accentLight={IAVE_ACCENT_LIGHT}
           title="Plenary Session — Shrirang Dhavale"
           body={`Shrirang Dhavale represented Tata Sustainability Group in the plenary session "Responding to the Sustainability Challenge: The Role of Corporate Volunteering." He emphasised how volunteering can help reimagine personal values and lifestyles to address climate change, highlighting Tata's perspective on embedding sustainability into corporate volunteering ecosystems.`}
-          media={<img src={iave24Img2} alt="Shrirang Dhavale at IAVE 2024 plenary" style={{ width: "100%", borderRadius: 14, objectFit: "cover", maxHeight: 320 }} />}
-          mediaSide="right"
-/>Event
-          accent={IAVE_ACCENT}
-          accentDark={IAVE_ACCENT_DARK}
-          accentLight={IAVE_ACCENT_LIGHT}
-          title="Plenary Session — Shrirang Dhavale"
-          body="Shrirang Dhavale represented Tata Sustainability Group in the plenary session \"Responding to the Sustainability Challenge: The Role of Corporate Volunteering.\" He emphasised how volunteering can help reimagine personal values and lifestyles to address climate change, highlighting Tata's perspective on embedding sustainability into corporate volunteering ecosystems."
-          media={<img src={iave24Img2} alt="Shrirang Dhavale at IAVE 2024 plenary" style={{ width: "100%", borderRadius: 14, objectFit: "cover", maxHeight: 320 }} />}
+          media={
+            <img
+              src={iave24Img2}
+              alt="Shrirang Dhavale at IAVE 2024 plenary"
+              style={{ width: "100%", borderRadius: 14, objectFit: "cover", maxHeight: 320 }}
+            />
+          }
           mediaSide="right"
         />
         <SubEvent
@@ -642,7 +1165,13 @@ function Iave2024() {
           accentLight={IAVE_ACCENT_LIGHT}
           title="Global Corporate Volunteer Council — Gauri Rajadhyaksha & Pallavi Barua"
           body="Gauri Rajadhyaksha and Pallavi Barua joined Shrirang in representing Tata Engage at the Global Corporate Volunteer Council (GCVC) meeting, where the group deliberated on trends in corporate volunteering across Asia — specifically Korea, China, and Japan — and highlighted new opportunities and challenges. The sessions enabled rich cross-sharing of strategies, challenges, and innovative initiatives."
-          media={<img src={iave24Img3} alt="Gauri and Pallavi at GCVC" style={{ width: "100%", borderRadius: 14, objectFit: "cover", maxHeight: 320 }} />}
+          media={
+            <img
+              src={iave24Img3}
+              alt="Gauri and Pallavi at GCVC"
+              style={{ width: "100%", borderRadius: 14, objectFit: "cover", maxHeight: 320 }}
+            />
+          }
           mediaSide="left"
         />
         <SubEvent
@@ -651,7 +1180,13 @@ function Iave2024() {
           accentLight={IAVE_ACCENT_LIGHT}
           title="India Country Spotlight — Pallavi Barua"
           body="Pallavi Barua presented Tata Communications' DRIVE campaign during the India Country Spotlight, offering a five-point recommendation for companies planning to embed scale in their volunteering programmes."
-          media={<img src={iave24Img4} alt="Pallavi Barua presenting India Country Spotlight" style={{ width: "100%", borderRadius: 14, objectFit: "cover", maxHeight: 320 }} />}
+          media={
+            <img
+              src={iave24Img4}
+              alt="Pallavi Barua presenting India Country Spotlight"
+              style={{ width: "100%", borderRadius: 14, objectFit: "cover", maxHeight: 320 }}
+            />
+          }
           mediaSide="right"
         />
       </EventSection>
@@ -674,7 +1209,13 @@ function Iave2024() {
           accentLight={IAVE_ACCENT_LIGHT}
           title="Skill-Based & Impact-Focused Volunteering"
           body="The plenary and GCVC sessions reinforced the importance of skill-based volunteering and impact-focused initiatives in the post-pandemic era — a direction the Tata Group has been pioneering through ProEngage."
-          media={<img src={iave24Img5} alt="IAVE 2024 session" style={{ width: "100%", borderRadius: 14, objectFit: "cover", maxHeight: 280 }} />}
+          media={
+            <img
+              src={iave24Img5}
+              alt="IAVE 2024 session"
+              style={{ width: "100%", borderRadius: 14, objectFit: "cover", maxHeight: 280 }}
+            />
+          }
           mediaSide="right"
         />
         <SubEvent
@@ -711,13 +1252,33 @@ function Iave2024() {
         topGap={0}
       >
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, marginTop: 32, alignItems: "center" }}>
-          <img src={iave24Img6} alt="IAVE 2024 closing" style={{ width: "100%", borderRadius: 14, objectFit: "cover", maxHeight: 260 }} />
+          <img
+            src={iave24Img6}
+            alt="IAVE 2024 closing"
+            style={{ width: "100%", borderRadius: 14, objectFit: "cover", maxHeight: 260 }}
+          />
           <div>
             <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.75, margin: "0 0 20px" }}>
-              For more information on the 27th IAVE World Volunteer Conference and IAVE's initiatives, visit the International Association for Volunteer Effort.
+              For more information on the 27th IAVE World Volunteer Conference and IAVE's initiatives, visit the
+              International Association for Volunteer Effort.
             </p>
-            <a href="https://iave.org" target="_blank" rel="noopener noreferrer"
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: IAVE_ACCENT, color: "#fff", borderRadius: 10, padding: "10px 22px", fontWeight: 700, fontSize: 13, textDecoration: "none" }}>
+            <a
+              href="https://iave.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                background: IAVE_ACCENT,
+                color: "#fff",
+                borderRadius: 10,
+                padding: "10px 22px",
+                fontWeight: 700,
+                fontSize: 13,
+                textDecoration: "none",
+              }}
+            >
               Visit IAVE ↗
             </a>
           </div>
@@ -740,21 +1301,60 @@ export default function EventsView() {
 
   const renderer = (() => {
     switch (id) {
-      case "tsc-2022":   return { node: <Tsc2022 />,    accent: TSC_ACCENT };
-      case "volcon-2024": return { node: <Volcon2024 />, accent: VOL_ACCENT };
-      case "iave-2022":  return { node: <Iave2022 />,   accent: IAVE_ACCENT };
-      case "iave-2024":  return { node: <Iave2024 />,   accent: IAVE_ACCENT };
-      default: return null;
+      case "tsc-2022":
+        return { node: <Tsc2022 />, accent: TSC_ACCENT };
+      case "volcon-2024":
+        return { node: <Volcon2024 />, accent: VOL_ACCENT };
+      case "iave-2022":
+        return { node: <Iave2022 />, accent: IAVE_ACCENT };
+      case "iave-2024":
+        return { node: <Iave2024 />, accent: IAVE_ACCENT };
+      default:
+        return null;
     }
   })();
 
   if (!renderer) {
     return (
-      <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif", paddingTop: 64 }}>
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+          paddingTop: 64,
+        }}
+      >
         <div style={{ textAlign: "center" }}>
-          <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "#94a3b8", marginBottom: 16 }}>Event not found</p>
-          <h1 style={{ fontSize: 32, fontWeight: 900, color: ACCENT_NAVY, marginBottom: 24 }}>This event doesn't exist yet.</h1>
-          <button onClick={() => navigate("media")} style={{ background: B_INDIGO, color: "#fff", border: "none", borderRadius: 10, padding: "10px 24px", fontWeight: 700, fontSize: 14, cursor: "pointer" }}>
+          <p
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              color: "#94a3b8",
+              marginBottom: 16,
+            }}
+          >
+            Event not found
+          </p>
+          <h1 style={{ fontSize: 32, fontWeight: 900, color: ACCENT_NAVY, marginBottom: 24 }}>
+            This event doesn't exist yet.
+          </h1>
+          <button
+            onClick={() => navigate("media")}
+            style={{
+              background: B_INDIGO,
+              color: "#fff",
+              border: "none",
+              borderRadius: 10,
+              padding: "10px 24px",
+              fontWeight: 700,
+              fontSize: 14,
+              cursor: "pointer",
+            }}
+          >
             ← Back to Media
           </button>
         </div>
@@ -763,13 +1363,17 @@ export default function EventsView() {
   }
 
   return (
-    <div style={{ background: "#eef0f5", minHeight: "100vh", fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif" }}>
+    <div
+      style={{
+        background: "#eef0f5",
+        minHeight: "100vh",
+        fontFamily: "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif",
+      }}
+    >
       {/* Top accent line */}
       <div style={{ height: 3, background: renderer.accent, width: "100%" }} />
       <SubPageDotRail sections={SECTIONS} accentColor={renderer.accent} />
-      <div id="event-hero">
-        {renderer.node}
-      </div>
+      <div id="event-hero">{renderer.node}</div>
     </div>
   );
 }
