@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Linkedin, Twitter, Globe } from "lucide-react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 
@@ -575,18 +576,24 @@ function StayConnectedSection() {
       handle: "Tata Engage",
       note: "Official page",
       url: "#",
+      Icon: Linkedin,
+      colour: "#0A66C2",
     },
     {
       platform: "X (Twitter)",
       handle: "Tata Engage",
       note: "Official handle",
       url: "#",
+      Icon: Twitter,
+      colour: "#1DA1F2",
     },
     {
       platform: "Website",
       handle: "tata.com / Tata Sustainability",
       note: "Tata Engage on the Tata Sustainability / Tata Group platforms",
       url: "#",
+      Icon: Globe,
+      colour: COLOUR,
     },
   ];
 
@@ -617,66 +624,44 @@ function StayConnectedSection() {
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-          {channels.map((c) => (
-            <a
-              key={c.platform}
-              href={c.url}
-              style={{
-                display: "block",
-                background: "#fff",
-                border: "1px solid #e8eef0",
-                borderRadius: 16,
-                padding: "28px 28px 26px",
-                textDecoration: "none",
-                color: "inherit",
-                position: "relative",
-                overflow: "hidden",
-                transition: "transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-3px)";
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 12px 28px rgba(13,107,122,0.12)";
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = COLOUR;
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.transform = "none";
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "#e8eef0";
-              }}
-            >
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: COLOUR }} />
-              <div
+          {channels.map((c) => {
+            const IconComp = c.Icon;
+            return (
+              <a
+                key={c.platform}
+                href={c.url}
                 style={{
-                  fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
-                  fontSize: 10,
-                  fontWeight: 700,
-                  letterSpacing: "1.8px",
-                  textTransform: "uppercase",
-                  color: COLOUR,
-                  marginBottom: 10,
+                  display: "block",
+                  background: "#fff",
+                  border: "1px solid #e8e8f0",
+                  borderRadius: 14,
+                  padding: 20,
+                  textDecoration: "none",
+                  color: "inherit",
+                  transition: "transform 0.2s, box-shadow 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-3px)";
+                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
                 }}
               >
-                {c.platform}
-              </div>
-              <div style={{ fontSize: 17, fontWeight: 800, color: ACCENT_NAVY, marginBottom: 6, letterSpacing: "-0.2px" }}>
-                {c.handle}
-              </div>
-              <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6 }}>{c.note}</div>
-              <div
-                style={{
-                  marginTop: 18,
-                  fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif",
-                  fontSize: 14,
-                  fontWeight: 700,
-                  letterSpacing: "1.8px",
-                  textTransform: "uppercase",
-                  color: COLOUR,
-                }}
-              >
-                Follow ↗
-              </div>
-            </a>
-          ))}
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                  <div style={{ width: 32, height: 32, borderRadius: "50%", background: c.colour, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <IconComp size={16} color="#fff" />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: ACCENT_NAVY }}>{c.handle}</div>
+                    <div style={{ fontSize: 11, color: "#94A3B8" }}>{c.platform} · Follow</div>
+                  </div>
+                </div>
+                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.6, margin: 0 }}>{c.note}</p>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
