@@ -96,7 +96,7 @@ export default function ImpactStoryView() {
         <img src={story.heroImage} alt={story.heroImageAlt}
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
             objectFit: "cover",
-            objectPosition: story.slug === "beyond-the-boardroom" ? "center 25%" : "center 35%" }} />
+            objectPosition: story.slug === "beyond-the-boardroom" ? "center 65%" : "center 35%" }} />
         <div style={{ position: "absolute", inset: 0,
           background: "linear-gradient(160deg,rgba(8,12,22,0.78) 0%,rgba(8,12,22,0.55) 45%,rgba(8,12,22,0.22) 100%)" }} />
         <div style={DIAG} />
