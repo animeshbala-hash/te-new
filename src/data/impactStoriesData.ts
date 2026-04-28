@@ -1,24 +1,26 @@
 // Story hero banners
-import wayanadHero  from "@/assets/story_photos/Impact Story 1 - Wayanad/IMG-20240929-WA0025.jpg";
-import melghatHero  from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/Photo12.jpg";
-import tataComms    from "@/assets/story_photos/beyond-the-boardroom/110A2356 - FY 25.JPG"; // Story 3 banner
-import btbPhoto2   from "@/assets/story_photos/beyond-the-boardroom/110A2360 - FY 25.JPG";
-import btbPhoto3   from "@/assets/story_photos/beyond-the-boardroom/Blog-3-scaled.jpg";
-import btbPhoto4   from "@/assets/story_photos/beyond-the-boardroom/Blog-4-scaled.jpg";
-import btbPhoto5   from "@/assets/story_photos/beyond-the-boardroom/Blog-5.jpg";
-import btbPhoto6   from "@/assets/story_photos/beyond-the-boardroom/Volunteering (2).JPG";
+import wayanadHero from "@/assets/story_photos/Impact Story 1 - Wayanad/IMG-20240929-WA0025.jpg";
+import melghatHero from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/Photo12.jpg";
+import tataComms   from "@/assets/story_photos/beyond-the-boardroom/110A2356 - FY 25.JPG";
 
-// Wayanad body photos (4 slots)
+// Wayanad body photos
 import wayanadP1 from "@/assets/story_photos/Impact Story 1 - Wayanad/IMG-20241001-WA0085.jpg";
 import wayanadP2 from "@/assets/story_photos/Impact Story 1 - Wayanad/IMG-20241002-WA0021.jpg";
 import wayanadP3 from "@/assets/story_photos/Impact Story 1 - Wayanad/IMG20240923114707.jpg";
 import wayanadP4 from "@/assets/story_photos/Impact Story 1 - Wayanad/IMG20240923125913.jpg";
 
-// Melghat body photos (4 slots)
-import melghatP1 from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/0023.jpg";
-import melghatP2 from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/DSC04868.jpg";
-import melghatP3 from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/IMG_20151128_144750.jpg";
-import melghatP4 from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/DSC05870.JPG";
+// Melghat body photos — DSC05870 is now the hero; Photo12 moves to last body slot
+import melghatP1   from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/0023.jpg";
+import melghatP2   from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/DSC04868.jpg";
+import melghatP3   from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/IMG_20151128_144750.jpg";
+import melghatHero2 from "@/assets/story_photos/Impact Story 2 - Melghat Mitra/DSC05870.JPG"; // new hero
+// melghatHero (Photo12) used as 4th body photo below
+
+// Beyond the Boardroom photos — btbPhoto2 removed (duplicates hero)
+import btbPhoto3 from "@/assets/story_photos/beyond-the-boardroom/Blog-3-scaled.jpg";
+import btbPhoto4 from "@/assets/story_photos/beyond-the-boardroom/Blog-4-scaled.jpg";
+import btbPhoto5 from "@/assets/story_photos/beyond-the-boardroom/Blog-5.jpg";
+import btbPhoto6 from "@/assets/story_photos/beyond-the-boardroom/Volunteering (2).JPG";
 
 const ACCENT_NAVY = "#0D1B3E";
 const B_INDIGO    = "#333399";
@@ -34,17 +36,12 @@ export interface StorySection {
   heading?: string;
   body?: string;
   bullets?: string[];
-  /** Optional sub-blocks rendered inside the section (used for grouped lists like Health/Education/Governance). */
   subBlocks?: { heading: string; bullets: string[] }[];
-  /** Optional table rendered inside the section (e.g. team rosters). */
   table?: { headers: string[]; rows: string[][] };
-  /** If set, an image placeholder with this caption is rendered AFTER this section. */
-  imageAfter?: { caption: string; height?: number };
 }
 
 export interface StoryPhoto {
   src: string;
-  caption: string;
 }
 
 export interface ImpactStory {
@@ -56,7 +53,6 @@ export interface ImpactStory {
   accentColor: string;
   heroImage: string;
   heroImageAlt: string;
-  /** 4 body photos with captions, in order */
   photos: StoryPhoto[];
   date: string;
   excerpt: string;
@@ -81,18 +77,19 @@ export const IMPACT_STORIES: ImpactStory[] = [
     heroImage: wayanadHero,
     heroImageAlt: "Tata volunteers on the ground in Wayanad",
     photos: [
-      { src: wayanadP1, caption: "Relief operations at the Meppadi camp" },
-      { src: wayanadP2, caption: "Doorstep delivery of family kits to tribal communities" },
-      { src: wayanadP3, caption: "Needs assessment with affected families" },
-      { src: wayanadP4, caption: "Volunteers coordinate with government response teams" },
+      { src: wayanadP1 },
+      { src: wayanadP2 },
+      { src: wayanadP3 },
+      { src: wayanadP4 },
     ],
     date: "July–August 2024",
-    excerpt: "Volunteer voices from the ONE Tata Wayanad Landslide Response 2024 — 34 volunteers, 12 Tata companies, 1,000 tribal families, 45 days.",
+    excerpt:
+      "Volunteer voices from the ONE Tata Wayanad Landslide Response 2024 — 34 volunteers, 12 Tata companies, 1,000 tribal families, 45 days.",
     openingPara:
       "In the early hours of July 30, 2024, the hills of Wayanad trembled. Torrential rains — nearly 50 cm in just 48 hours — loosened the fragile soil, triggering a devastating landslide that swallowed an entire village. Hours later, a second landslide struck further north. The accumulated debris altered the course of river waters, causing flash floods that swept away more villages.",
     sections: [
       {
-        body: "Early next day, the 'ONE' Tata Kerala Landslides and Floods Response moved in quickly to support immediate response, relief and subsequent rehabilitation of the affected. The show of hands by several Tata Group of companies under the aegis of Tata Sustainability Group (TSG), collaborated with local and Government disaster response agencies, NGOs, medical professionals, and other key responders in the relief operations.",
+        body: "Early next day, the 'ONE' Tata Kerala Landslides and Floods Response moved in quickly to support immediate response, relief and subsequent rehabilitation of the affected. Several Tata Group companies, under the aegis of Tata Sustainability Group (TSG), collaborated with local and government disaster response agencies, NGOs, medical professionals, and other key responders in the relief operations.",
       },
       {
         body: "The 'ONE Tata Disaster Response' Framework, anchored by TSG, brings together the strength of Tata companies, their technical capabilities, and their people — into one coordinated, collective effort. From immediate emergency relief to long-term rehabilitation, the Group supports in distributing essential supplies for temporary shelters and restoring infrastructure in the aftermath of a disaster.",
@@ -117,17 +114,17 @@ export const IMPACT_STORIES: ImpactStory[] = [
         role: "Tata AIA · ONE Tata Disaster Response Project Manager",
       },
       {
-        text: "I'm proud to be a part of 'ONE Tata Disaster Response' supporting landslide-affected communities in Wayanad. While communities are in temporary accommodations, our team is providing necessary support during this critical phase. With my procurement expertise, I'm assisting the on-ground team with supply chain and logistics arrangements to ensure that the aid reaches the most affected communities.",
+        text: "I'm proud to be a part of 'ONE Tata Disaster Response' supporting landslide-affected communities in Wayanad. With my procurement expertise, I'm assisting the on-ground team with supply chain and logistics arrangements to ensure that the aid reaches the most affected communities.",
         attribution: "Phaneesha H K",
         role: "Group Manager, Manufacturing, Titan · ONE Tata Disaster Response Procurement Officer",
       },
       {
-        text: "From August 3 to 7, I was stationed in Wayanad for the One-Tata disaster response. Collaborating with government officials, we contributed to the needs assessment and visited landslide sites and relief camps, engaging with affected communities, including tribal colonies. We mobilized essential supplies such as emergency medicine, raincoats, lemongrass oil, and PPE kits. Witnessing the crisis, I realized the power of collective efforts from the community and corporates.",
+        text: "From August 3 to 7, I was stationed in Wayanad for the ONE Tata disaster response. Collaborating with government officials, we contributed to the needs assessment and visited landslide sites and relief camps, engaging with affected communities, including tribal colonies. Witnessing the crisis, I realized the power of collective efforts from the community and corporates.",
         attribution: "Sanjith P Raju",
-        role: "Head – HR, Kanan Devan Hills Plantations Company Private Limited",
+        role: "Head – HR, Kanan Devan Hills Plantations Company",
       },
       {
-        text: "When our MD & CEO, Mr. Manoj Raghavan, urged us to join the response team in Wayanad, we received over 75 volunteering requests from our Kozhikode center. This was an eye opener, revealing the struggles of those affected and demonstrating the TATA group's commitment towards those in need. In the first phase, over 25 volunteers participated, and we are ready to continue making a meaningful impact.",
+        text: "When our MD & CEO urged us to join the response team in Wayanad, we received over 75 volunteering requests from our Kozhikode center. This was an eye opener, revealing the struggles of those affected and demonstrating the Tata Group's commitment towards those in need.",
         attribution: "Rajagopalan Nair & Sharath M Nair",
         role: "Kozhikode Admin Manager & Center Operations Manager, Tata Elxsi",
       },
@@ -154,16 +151,17 @@ export const IMPACT_STORIES: ImpactStory[] = [
     eyebrow: "Long-form Volunteering",
     tag: "Community",
     accentColor: B_INDIGO,
-    heroImage: melghatHero,
+    heroImage: melghatHero2, // DSC05870 — awards photo
     heroImageAlt: "Tata Motors volunteers in Melghat",
     photos: [
-      { src: melghatP1, caption: "Boko Mitras with the tribal youth of Melghat" },
-      { src: melghatP2, caption: "Health outreach in the monsoon villages" },
-      { src: melghatP3, caption: "Community engagement during the annual visit" },
-      { src: melghatP4, caption: "Grain bank and livelihood support in action" },
+      { src: melghatP1 },
+      { src: melghatP2 },
+      { src: melghatP3 },
+      { src: melghatHero }, // Photo12 moved to last body slot
     ],
     date: "2000–Present",
-    excerpt: "When service becomes stewardship — over two decades, a group of Tata Motors employees has transformed 50 villages in Melghat, with 40,000 volunteer hours and zero hunger deaths.",
+    excerpt:
+      "When service becomes stewardship — over two decades, a group of Tata Motors employees has transformed 50 villages in Melghat, with 40,000 volunteer hours and zero hunger deaths.",
     openingPara:
       "Twenty-five years ago, a newspaper report on hunger deaths among tribal children in Melghat, a remote tiger reserve in Maharashtra, stopped Mangesh Joshi in his tracks. An employee at Tata Motors since 1990, Mangesh could not look away from what he had read — and more importantly, he could not walk away.",
     sections: [
@@ -237,16 +235,16 @@ export const IMPACT_STORIES: ImpactStory[] = [
       {
         heading: "Melghat Mitra Group members",
         table: {
-          headers: ["No", "Name", "Plant", ""],
+          headers: ["No", "Name", "Plant"],
           rows: [
-            ["1", "Mangesh Ramesh Joshi", "PVBU", ""],
-            ["2", "Pravin Mahadeo Pawar", "PVBU", ""],
-            ["3", "Ganpat Anant Baravakar", "PVBU", ""],
-            ["4", "Prashant Tukaram Pimpalnerkar", "ERC", ""],
-            ["5", "Santosh Parshuram Kale", "CVBU", ""],
-            ["6", "Sudhir Babanrao Gaikwad", "PVBU", ""],
-            ["7", "Manohar Ramchandra Lolage", "ERC", ""],
-            ["8", "Shriram Dattatraya Ramdasi", "CVBU", "Retired (01-May-15)"],
+            ["1", "Mangesh Ramesh Joshi", "PVBU"],
+            ["2", "Pravin Mahadeo Pawar", "PVBU"],
+            ["3", "Ganpat Anant Baravakar", "PVBU"],
+            ["4", "Prashant Tukaram Pimpalnerkar", "ERC"],
+            ["5", "Santosh Parshuram Kale", "CVBU"],
+            ["6", "Sudhir Babanrao Gaikwad", "PVBU"],
+            ["7", "Manohar Ramchandra Lolage", "ERC"],
+            ["8", "Shriram Dattatraya Ramdasi", "CVBU (Retired 01-May-15)"],
           ],
         },
       },
@@ -275,16 +273,17 @@ export const IMPACT_STORIES: ImpactStory[] = [
     eyebrow: "Leadership Volunteering",
     tag: "Climate Resilience",
     accentColor: B_INDIGO,
-    heroImage: tataComms,
+    heroImage: tataComms, // objectPosition: "center 25%" applied in ImpactStoryView hero
     heroImageAlt: "Tata Communications leaders in the Garo Hills, Meghalaya",
     photos: [
-      { src: btbPhoto2, caption: "Leadership That Listens, Learns, and Acts" },
-      { src: btbPhoto3, caption: "Lighting Homes. Powering Possibilities." },
-      { src: btbPhoto4, caption: "Cleaner Kitchens, Healthier Futures" },
-      { src: btbPhoto5, caption: "Leading with purpose in Mandal Nokat" },
+      { src: btbPhoto3 }, // Lighting Homes — solar installation
+      { src: btbPhoto5 }, // Cleaner Kitchens — cookstoves
+      { src: btbPhoto4 }, // Community engagement
+      { src: btbPhoto6 }, // Volunteering in action
     ],
     date: "2024",
-    excerpt: "11 Tata Communications leaders stepped into Meghalaya's Garo Hills — installing solar power and clean cookstoves under the Climate Resilient Village Programme.",
+    excerpt:
+      "11 Tata Communications leaders stepped into Meghalaya's Garo Hills — installing solar power and clean cookstoves under the Climate Resilient Village Programme.",
     openingPara:
       "True leadership is defined not in boardrooms, but in the choices leaders make on the ground. Living this belief, senior leaders from Tata Communications led from the front by stepping into the remote villages of Meghalaya's Garo Hills through Beyond the Boardroom — a first-of-its-kind immersive experience under the company's flagship Climate Resilient Village Programme. Over two days, these leaders moved beyond strategy and oversight to engage directly with communities, translating vision into action and purpose into tangible change.",
     sections: [
@@ -297,7 +296,7 @@ export const IMPACT_STORIES: ImpactStory[] = [
       },
       {
         heading: "Cleaner kitchens, healthier futures",
-        body: "The journey continued in Mandal Nokat, where the focus shifted to clean cooking solutions. Traditional chulhas were replaced with energy-efficient cookstoves designed to reduce smoke emissions and lower reliance on firewood. With improved combustion efficiency and sturdy construction, the new cookstoves are creating healthier kitchens, reducing respiratory risks, and minimizing environmental impact.",
+        body: "The journey continued in Mandal Nokat, where the focus shifted to clean cooking solutions. Traditional chulhas were replaced with energy-efficient cookstoves designed to reduce smoke emissions and lower reliance on firewood. With improved combustion efficiency and sturdy construction, the new cookstoves are creating healthier kitchens, reducing respiratory risks, and minimising environmental impact.",
       },
       {
         heading: "Leading with purpose",
@@ -312,6 +311,6 @@ export const IMPACT_STORIES: ImpactStory[] = [
     ],
     featured: true,
     slideHeadline: "Beyond the Boardroom: Leadership in the Garo Hills",
-    slideSub: "11 Tata Communications leaders. 38 households. Solar power, clean cookstoves, and #BeyondTheBoardroom impact.",
+    slideSub: "11 Tata Communications leaders. 38 households. Solar power, clean cookstoves, and lasting impact.",
   },
 ];
