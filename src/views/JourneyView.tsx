@@ -10,7 +10,7 @@ import img2015         from "@/assets/homepagebanner/2015.png";
 import img2017         from "@/assets/homepagebanner/2017.png";
 import imgIHCL         from "@/assets/IHCL.jpg";
 import imgMotors       from "@/assets/Tata_international.jpeg";
-import imgComms        from "@/assets/homepagebanner/DSC_0250.JPG";
+import imgComms        from "@/assets/homepagebanner/JCAPCPL22.JPG";
 import imgAirIndia     from "@/assets/Taj_Sats.jpeg";
 import imgAIG          from "@/assets/Infiniti_2.jpg";
 import imgTrent2       from "@/assets/Voltas.JPG";
@@ -218,7 +218,7 @@ export default function JourneyView() {
   const navigate = useAppNavigate();
 
   return (
-    <div style={{ paddingTop: 64, paddingBottom: 72, background: "#f4f5f8", minHeight: "100vh", fontFamily: FONT }}>
+    <div style={{ paddingTop: 64, background: "#f4f5f8", minHeight: "100vh", fontFamily: FONT }}>
 
       {/* ── Hero ── */}
       <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", background: ACCENT_NAVY }}>
@@ -235,14 +235,9 @@ export default function JourneyView() {
               Tata Engage · 2014 – the journey continues
             </p>
             <div style={{ width: 48, height: 2, borderRadius: 2, background: "rgba(255,255,255,0.6)", marginBottom: 22 }} />
-            <h1 style={{ fontFamily: FONT, fontSize: "clamp(2.4rem, 5vw, 3.8rem)", fontWeight: 400, letterSpacing: "-0.5px", lineHeight: 1.12, color: "#fff", margin: "0 0 18px" }}>
-              Shaped by compassion,{" "}
-              <em style={{ fontStyle: "italic", fontWeight: 700 }}>action</em>{" "}
-              and community
+            <h1 style={{ fontFamily: FONT, fontSize: "clamp(2.4rem, 5vw, 3.8rem)", fontWeight: 400, letterSpacing: "-0.5px", lineHeight: 1.12, color: "#fff", margin: 0 }}>
+              The Story Thus Far.
             </h1>
-            <p style={{ fontFamily: FONT, fontSize: 16, fontWeight: 300, lineHeight: 1.7, color: "rgba(255,255,255,0.65)", maxWidth: 480, margin: 0 }}>
-              From one million hours to ten. Eleven years of the Tata Group's commitment to purposeful volunteering — and counting.
-            </p>
           </div>
         </div>
 
