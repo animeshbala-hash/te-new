@@ -70,14 +70,6 @@ function LetterSection() {
                 style={{ display: "block", width: "100%", height: 480, objectFit: "cover", objectPosition: "30% top" }}
               />
             </div>
-            {/* Name plate */}
-            <div style={{ position: "absolute", bottom: -20, left: 24, right: 24, background: "#fff", borderRadius: 12, padding: "16px 20px", boxShadow: "0 4px 20px rgba(0,0,0,0.10)", display: "flex", alignItems: "center", gap: 16 }}>
-              <div style={{ width: 4, height: 40, background: ACCENT, borderRadius: 2, flexShrink: 0 }} />
-              <div>
-                <div style={{ fontFamily: FONT, fontSize: 15, fontWeight: 800, color: NAVY }}>Chacko Thomas</div>
-                <div style={{ fontFamily: FONT, fontSize: 12, color: "#64748B", marginTop: 2 }}>Group Chief Sustainability Officer, Tata Sons</div>
-              </div>
-            </div>
           </div>
 
           {/* Letter */}
