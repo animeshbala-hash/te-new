@@ -43,7 +43,7 @@ function Hero() {
         </p>
         <div style={{ height: 2, width: 48, borderRadius: 2, background: "rgba(255,255,255,0.6)", margin: "12px 0 22px" }} />
         <h1 style={{ fontFamily: FONT, fontSize: "clamp(2.4rem,5vw,3.8rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 18px", maxWidth: 560 }}>
-          Meet Tata Engage
+          Meet the Tata Engage Team
         </h1>
         <p style={{ fontFamily: FONT, fontSize: 16, fontWeight: 300, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, maxWidth: 460, margin: 0 }}>
           The people behind the Tata Group's volunteering platform — driving scale, quality, and impact across 100+ companies.

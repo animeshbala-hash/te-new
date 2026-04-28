@@ -296,10 +296,10 @@ export default function DisasterResponseView() {
 
           {/* Two identification channels */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 48 }}>
-            <div style={{ background: COLOUR, borderRadius: 16, padding: "28px 26px", border: `1px solid ${COLOUR}` }}>
-              <div style={{ width: 32, height: 3, background: "rgba(255,255,255,0.6)", borderRadius: 2, marginBottom: 18 }} />
-              <div style={{ fontSize: 15, fontWeight: 800, color: "#fff", marginBottom: 10 }}>Channel 1</div>
-              <div style={{ fontSize: 14, color: "rgba(255,255,255,0.88)", lineHeight: 1.7 }}>Volunteers who have registered their interest on the Tata Engage platform</div>
+            <div style={{ background: "#fff", borderRadius: 16, padding: "28px 26px", border: `1px solid ${COLOUR}18` }}>
+              <div style={{ width: 32, height: 3, background: COLOUR, borderRadius: 2, marginBottom: 18 }} />
+              <div style={{ fontSize: 15, fontWeight: 800, color: ACCENT_NAVY, marginBottom: 10 }}>Channel 1</div>
+              <div style={{ fontSize: 14, color: "#475569", lineHeight: 1.7 }}>Volunteers who have registered their interest on the Tata Engage platform</div>
             </div>
             <div style={{ background: COLOUR, borderRadius: 16, padding: "28px 26px", border: `1px solid ${COLOUR}` }}>
               <div style={{ width: 32, height: 3, background: "rgba(255,255,255,0.6)", borderRadius: 2, marginBottom: 18 }} />

@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { Twitter, Linkedin, Globe } from "lucide-react";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import contactHeroImg from "@/assets/tata-infinit.jpg";
 
@@ -102,27 +103,9 @@ function TouchSection() {
 // ── Stay Connected ────────────────────────────────────────────────────────────
 function SocialSection() {
   const channels = [
-    {
-      label: "LinkedIn",
-      heading: "Follow on LinkedIn",
-      body: "Stay updated on volunteering programmes, partner opportunities, and impact stories from across the Tata ecosystem.",
-      detail: "Tata Engage — official page",
-      href: "#",
-    },
-    {
-      label: "X (Twitter)",
-      heading: "Follow on X",
-      body: "Real-time updates on TVW editions, ProEngage openings, and volunteering stories from across the Tata Group.",
-      detail: "Tata Engage — official handle",
-      href: "#",
-    },
-    {
-      label: "Website",
-      heading: "Tata Sustainability & Tata Group",
-      body: "Reach Tata Engage via the broader Tata Sustainability and Tata Group platforms for partner enquiries and ecosystem updates.",
-      detail: "Visit Tata Sustainability ↗",
-      href: "#",
-    },
+    { handle: "@TataEngage", platform: "Twitter", note: "Real-time updates on TVW editions, ProEngage openings, and volunteering stories from across the Tata Group.", time: "Follow us", Icon: Twitter, iconBg: "#0EA5E9", url: "#" },
+    { handle: "Tata Engage", platform: "LinkedIn", note: "Stay updated on volunteering programmes, partner opportunities, and impact stories from across the Tata ecosystem.", time: "Follow us", Icon: Linkedin, iconBg: "#1D4ED8", url: "#" },
+    { handle: "Tata Sustainability", platform: "Website", note: "Reach Tata Engage via the broader Tata Sustainability and Tata Group platforms for partner enquiries and ecosystem updates.", time: "Visit us", Icon: Globe, iconBg: "#0D1B3E", url: "#" },
   ];
 
   return (
@@ -137,25 +120,30 @@ function SocialSection() {
         <DefinerBar />
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, marginTop: 44 }}>
-          {channels.map(c => (
-            <a
-              key={c.label}
-              href={c.href}
-              style={{ background: ACCENT, borderRadius: 18, padding: "32px 28px", textDecoration: "none", display: "flex", flexDirection: "column", transition: "transform 0.2s, box-shadow 0.2s", position: "relative", overflow: "hidden" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 10px 28px ${ACCENT}66`; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "none"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none"; }}
-            >
-              <div style={DIAG} />
-              <div style={{ position: "relative", zIndex: 1 }}>
-                <p style={{ fontFamily: FONT, fontSize: 10, fontWeight: 700, letterSpacing: "1.2px", textTransform: "uppercase", color: NAVY, marginBottom: 10, opacity: 0.65 }}>{c.label}</p>
-                <h3 style={{ fontFamily: FONT, fontSize: 17, fontWeight: 800, color: NAVY, marginBottom: 10, lineHeight: 1.3 }}>{c.heading}</h3>
-                <p style={{ fontFamily: FONT, fontSize: 14, color: NAVY, lineHeight: 1.7, marginBottom: 20, opacity: 0.8 }}>{c.body}</p>
-                <span style={{ fontFamily: FONT, fontSize: 13, fontWeight: 700, color: NAVY }}>
-                  {c.detail} ↗
-                </span>
-              </div>
-            </a>
-          ))}
+          {channels.map((ch, i) => {
+            const IconComp = ch.Icon;
+            return (
+              <a key={i} href={ch.url}
+                style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 14,
+                  padding: 20, textDecoration: "none", color: "inherit", display: "block",
+                  transition: "transform 0.2s, box-shadow 0.2s" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "none"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none"; }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                  <div style={{ width: 32, height: 32, borderRadius: "50%", background: ch.iconBg,
+                    display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <IconComp size={16} color="#fff" />
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: FONT, fontSize: 13, fontWeight: 700, color: NAVY }}>{ch.handle}</div>
+                    <div style={{ fontFamily: FONT, fontSize: 11, color: "#94A3B8" }}>{ch.platform} · {ch.time}</div>
+                  </div>
+                </div>
+                <p style={{ fontFamily: FONT, fontSize: 14, color: "#475569", lineHeight: 1.6, marginBottom: 10 }}>{ch.note}</p>
+                <span style={{ fontFamily: FONT, fontSize: 12, color: "#94A3B8" }}>Follow ↗</span>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>

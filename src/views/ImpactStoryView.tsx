@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
@@ -6,7 +6,7 @@ import { IMPACT_STORIES } from "@/data/impactStoriesData";
 
 const ACCENT_NAVY = "#0D1B3E";
 const B_INDIGO    = "#333399";
-const B_RED       = "#E8401C"; // used for opening para accent on ALL stories
+const B_RED       = "#E8401C";
 const FONT        = "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif";
 
 const DIAG: React.CSSProperties = {
@@ -16,23 +16,158 @@ const DIAG: React.CSSProperties = {
   pointerEvents: "none",
 };
 
-// Full-width photo — no side padding, fills column, consistent 360px height
-const StoryImage = ({ src }: { src?: string }) => (
-  <div style={{ margin: "32px -56px", height: 360, overflow: "hidden" }}>
-    {src ? (
-      <img src={src} alt=""
-        style={{ width: "100%", height: "100%", display: "block",
-          objectFit: "cover", objectPosition: "center 30%" }} />
-    ) : (
-      <div style={{ width: "100%", height: "100%",
-        background: "linear-gradient(135deg,#e2e8f0 0%,#cbd5e1 100%)",
-        display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <span style={{ fontSize: 11, color: "rgba(0,0,0,0.28)", fontWeight: 600 }}>Photo coming soon</span>
+// ── Slideshow (matches EventsView) ───────────────────────────────────────────
+function Slideshow({ slides, accent }: { slides: { src: string; caption?: string }[]; accent: string }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (slides.length <= 1) return;
+    const t = setInterval(() => setI((p) => (p + 1) % slides.length), 6000);
+    return () => clearInterval(t);
+  }, [slides.length]);
+  if (!slides.length) return null;
+  return (
+    <div style={{ borderRadius: 14, overflow: "hidden", background: "#000" }}>
+      <div style={{ position: "relative", aspectRatio: "16/10" }}>
+        {slides.map((s, idx) => (
+          <img key={idx} src={s.src} alt={s.caption ?? ""}
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
+              objectFit: "cover", objectPosition: "center 30%",
+              opacity: idx === i ? 1 : 0, transition: "opacity 0.6s ease" }} />
+        ))}
+        {slides.length > 1 && (
+          <div style={{ position: "absolute", bottom: 10, left: 0, right: 0,
+            display: "flex", justifyContent: "center", gap: 6, zIndex: 2 }}>
+            {slides.map((_, idx) => (
+              <button key={idx} onClick={() => setI(idx)}
+                style={{ width: idx === i ? 24 : 8, height: 8, borderRadius: 100,
+                  border: "none", cursor: "pointer",
+                  background: idx === i ? "#fff" : "rgba(255,255,255,0.5)",
+                  transition: "all 0.3s" }} />
+            ))}
+          </div>
+        )}
       </div>
-    )}
-  </div>
-);
+    </div>
+  );
+}
 
+// ── ArticleBody wrapper (matches EventsView) ─────────────────────────────────
+function ArticleBody({ accent, children }: { accent: string; children: React.ReactNode }) {
+  return (
+    <div style={{ background: "#fff" }}>
+      <div style={{ height: 3, background: accent }} />
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "64px 56px 80px" }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// ── Paragraphs ────────────────────────────────────────────────────────────────
+function Paras({ texts }: { texts: string[] }) {
+  return (
+    <>
+      {texts.map((p, i) => (
+        <p key={i} style={{ fontFamily: FONT, fontSize: 15, color: "#374151",
+          lineHeight: 1.85, margin: "0 0 18px" }}>{p}</p>
+      ))}
+    </>
+  );
+}
+
+// ── Section heading ───────────────────────────────────────────────────────────
+function SectionHead({ title, accent }: { title: string; accent: string }) {
+  return (
+    <h2 style={{ fontFamily: FONT, fontSize: 18, fontWeight: 800, color: ACCENT_NAVY,
+      letterSpacing: "-0.2px", margin: "40px 0 16px", paddingTop: 8,
+      borderTop: `2px solid ${accent}22` }}>{title}</h2>
+  );
+}
+
+// ── Media + text (matches EventsView MediaBlock) ─────────────────────────────
+function MediaBlock({ title, body, media, mediaLeft = false, accent }: {
+  title?: string; body: string | string[]; media?: React.ReactNode;
+  mediaLeft?: boolean; accent: string;
+}) {
+  const paras = Array.isArray(body) ? body : [body];
+  return (
+    <div style={{ margin: "40px 0" }}>
+      {title && <SectionHead title={title} accent={accent} />}
+      {media ? (
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, alignItems: "start" }}>
+          <div style={{ order: mediaLeft ? 2 : 1 }}><Paras texts={paras} /></div>
+          <div style={{ order: mediaLeft ? 1 : 2 }}>{media}</div>
+        </div>
+      ) : (
+        <Paras texts={paras} />
+      )}
+    </div>
+  );
+}
+
+// ── Pull quote (matches EventsView) ──────────────────────────────────────────
+function PullQuote({ text, attribution, role }: { text: string; attribution: string; role?: string }) {
+  return (
+    <div style={{ background: "#135EA9", borderRadius: 12, padding: "28px 32px", margin: "28px 0" }}>
+      <div style={{ fontFamily: "Georgia,serif", fontSize: 32, lineHeight: 0.7,
+        color: "rgba(255,255,255,0.25)", marginBottom: 10 }}>"</div>
+      <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 16,
+        fontStyle: "italic", color: "#fff", lineHeight: 1.72, margin: "0 0 16px" }}>{text}</p>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.2)", paddingTop: 12 }}>
+        <p style={{ fontFamily: FONT, fontSize: 13, fontWeight: 800, color: "#fff", margin: "0 0 2px" }}>
+          {attribution}
+        </p>
+        {role && (
+          <p style={{ fontFamily: FONT, fontSize: 11, color: "rgba(255,255,255,0.7)", margin: 0 }}>{role}</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── Photo grid 2-col, 4/3 aspect (matches EventsView PhotoGrid) ───────────────
+function PhotoGrid({ images }: { images: { src: string }[] }) {
+  return (
+    <div style={{ display: "grid",
+      gridTemplateColumns: `repeat(${Math.min(images.length, 2)}, 1fr)`,
+      gap: 12, margin: "28px 0" }}>
+      {images.map((img, i) => (
+        <img key={i} src={img.src} alt=""
+          style={{ width: "100%", borderRadius: 10, objectFit: "cover",
+            objectPosition: "center 30%", aspectRatio: "4/3", display: "block" }} />
+      ))}
+    </div>
+  );
+}
+
+// ── Opening para accent block ─────────────────────────────────────────────────
+function OpeningPara({ text }: { text: string }) {
+  return (
+    <div style={{ background: `${B_RED}12`, borderLeft: `3px solid ${B_RED}`,
+      borderRadius: "0 10px 10px 0", padding: "20px 24px", margin: "0 0 36px" }}>
+      <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 16,
+        fontStyle: "italic", color: ACCENT_NAVY, lineHeight: 1.78, margin: 0 }}>
+        {text}
+      </p>
+    </div>
+  );
+}
+
+// ── Bullet list ───────────────────────────────────────────────────────────────
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul style={{ margin: "0 0 24px", paddingLeft: 24, listStyleType: "disc" }}>
+      {items.map((b, i) => (
+        <li key={i} style={{ fontFamily: FONT, fontSize: 15, color: "#374151",
+          lineHeight: 1.8, margin: "0 0 10px" }}>{b}</li>
+      ))}
+    </ul>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MAIN VIEW
+// ─────────────────────────────────────────────────────────────────────────────
 export default function ImpactStoryView() {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id") ?? undefined;
@@ -70,21 +205,19 @@ export default function ImpactStoryView() {
   ].join(" ").split(/\s+/).filter(Boolean).length;
   const readMins = Math.max(1, Math.round(wordCount / 150));
 
+  // Distribute body photos evenly across sections
+  const photos = story.photos ?? [];
+  const nPhotos = photos.length;
+  const photoSlots = nPhotos === 0 ? [] : Array.from({ length: nPhotos }, (_, i) =>
+    Math.round((i + 1) * (story.sections.length / nPhotos)) - 1
+  ).map(s => Math.min(s, story.sections.length - 1));
+
   const SECTIONS_NAV = [
     { id: "story-hero",   label: "Overview" },
     { id: "story-body",   label: "Story"    },
     ...(story.quotes?.length ? [{ id: "story-quotes", label: "Voices" }] : []),
     { id: "story-more",   label: "More"     },
   ];
-
-  // Distribute photos evenly — one after every N sections, ensuring all photos show
-  const photos = story.photos ?? [];
-  const total   = story.sections.length;
-  const nPhotos = photos.length;
-  // Place photos at evenly-spaced section indices, always showing all of them
-  const photoSlots = nPhotos === 0 ? [] : Array.from({ length: nPhotos }, (_, i) =>
-    Math.round((i + 1) * (total / nPhotos)) - 1
-  ).map(s => Math.min(s, total - 1));
 
   return (
     <div style={{ fontFamily: FONT, background: "#f7f8fc", minHeight: "100vh" }}>
@@ -138,133 +271,114 @@ export default function ImpactStoryView() {
       </div>
 
       {/* ── Body ── */}
-      <div id="story-body" style={{ background: "#fff" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          {/* Body sections — constrained to 820px, including opening para */}
-          <div style={{ maxWidth: 820, margin: "0 auto", padding: "64px 56px 0" }}>
+      <div id="story-body">
+        <ArticleBody accent={accent}>
 
-            {/* Opening para — always uses DR red/orange accent */}
-            <div style={{ background: `${B_RED}12`, borderLeft: `3px solid ${B_RED}`,
-              borderRadius: "0 10px 10px 0", padding: "20px 24px", margin: "0 0 36px" }}>
-              <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 16,
-                fontStyle: "italic",
-                color: ACCENT_NAVY, lineHeight: 1.78, margin: 0 }}>
-                {story.openingPara}
-              </p>
-            </div>
-          </div>
+          <OpeningPara text={story.openingPara} />
 
-          {/* Body sections */}
-          <div style={{ maxWidth: 820, margin: "0 auto", padding: "0 56px 0" }}>
-            {(() => {
-              let photoIdx = 0;
-              const out: JSX.Element[] = [];
+          {(() => {
+            let photoIdx = 0;
+            const out: JSX.Element[] = [];
 
-              story.sections.forEach((sec, i) => {
-                if (sec.heading) {
+            story.sections.forEach((sec, i) => {
+              const hasPhoto = photoSlots.includes(i) && photoIdx < photos.length;
+              const photoSrc = hasPhoto ? photos[photoIdx].src : undefined;
+              if (hasPhoto) photoIdx++;
+
+              const slideshow = hasPhoto
+                ? <Slideshow accent={accent} slides={[{ src: photoSrc! }]} />
+                : undefined;
+
+              if (sec.heading) {
+                if (slideshow) {
+                  // Heading + body as MediaBlock with image
+                  const paras = sec.body ? sec.body.split("\n\n") : [""];
                   out.push(
-                    <h2 key={`h-${i}`} style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 22, fontWeight: 700,
-                      fontStyle: "italic", color: ACCENT_NAVY, lineHeight: 1.3, margin: "36px 0 16px",
-                      letterSpacing: "-0.2px" }}>
-                      {sec.heading}
-                    </h2>
+                    <MediaBlock key={`mb-${i}`} accent={accent}
+                      title={sec.heading}
+                      body={paras}
+                      mediaLeft={i % 2 === 0}
+                      media={slideshow} />
                   );
+                } else {
+                  out.push(<SectionHead key={`sh-${i}`} title={sec.heading} accent={accent} />);
+                  if (sec.body) {
+                    out.push(<Paras key={`p-${i}`} texts={sec.body.split("\n\n")} />);
+                  }
                 }
-
-                if (sec.body) {
-                  sec.body.split("\n\n").forEach((para, pi) => {
-                    out.push(
-                      <p key={`p-${i}-${pi}`} style={{ fontFamily: FONT, fontSize: 16,
-                        color: "#1e293b", lineHeight: 1.85, margin: "0 0 20px" }}>
-                        {para}
-                      </p>
-                    );
-                  });
+                if (sec.bullets) {
+                  out.push(<BulletList key={`bl-${i}`} items={sec.bullets} />);
                 }
-
-                if (sec.bullets && sec.bullets.length > 0) {
-                  out.push(
-                    <ul key={`ul-${i}`} style={{ margin: "0 0 24px", paddingLeft: 24,
-                      listStyleType: "disc" }}>
-                      {sec.bullets.map((b, bi) => (
-                        <li key={bi} style={{ fontFamily: FONT, fontSize: 16,
-                          color: "#1e293b", lineHeight: 1.75, margin: "0 0 12px" }}>
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
-                  );
-                }
-
                 if (sec.subBlocks) {
                   sec.subBlocks.forEach((sb, sbi) => {
                     out.push(
                       <div key={`sb-${i}-${sbi}`} style={{ margin: "20px 0 24px" }}>
                         <div style={{ fontFamily: FONT, fontSize: 11, fontWeight: 800,
                           letterSpacing: "1.6px", textTransform: "uppercase",
-                          color: accent, marginBottom: 10 }}>
-                          {sb.heading}
-                        </div>
-                        <ul style={{ margin: 0, paddingLeft: 24, listStyleType: "disc" }}>
-                          {sb.bullets.map((b, bi) => (
-                            <li key={bi} style={{ fontFamily: FONT, fontSize: 16,
-                              color: "#1e293b", lineHeight: 1.75, margin: "0 0 10px" }}>
-                              {b}
-                            </li>
-                          ))}
-                        </ul>
+                          color: accent, marginBottom: 10 }}>{sb.heading}</div>
+                        <BulletList items={sb.bullets} />
                       </div>
                     );
                   });
                 }
-
-                if (sec.table) {
+              } else {
+                // Body-only section
+                if (slideshow) {
+                  const paras = sec.body ? sec.body.split("\n\n") : [""];
                   out.push(
-                    <div key={`tbl-${i}`} style={{ overflowX: "auto", margin: "8px 0 28px",
-                      border: "1px solid #e8e8f0", borderRadius: 10 }}>
-                      <table style={{ width: "100%", borderCollapse: "collapse",
-                        fontFamily: FONT, fontSize: 14 }}>
-                        <thead>
-                          <tr style={{ background: "#f7f8fc" }}>
-                            {sec.table.headers.map((h, hi) => (
-                              <th key={hi} style={{ textAlign: "left", padding: "10px 14px",
-                                fontSize: 11, fontWeight: 800, letterSpacing: "0.8px",
-                                textTransform: "uppercase", color: ACCENT_NAVY,
-                                borderBottom: "1px solid #e8e8f0" }}>{h}</th>
+                    <MediaBlock key={`mb-${i}`} accent={accent}
+                      body={paras}
+                      mediaLeft={i % 2 === 0}
+                      media={slideshow} />
+                  );
+                } else if (sec.body) {
+                  out.push(<Paras key={`p-${i}`} texts={sec.body.split("\n\n")} />);
+                }
+                if (sec.bullets) {
+                  out.push(<BulletList key={`bl-${i}`} items={sec.bullets} />);
+                }
+              }
+
+              // Table always full-width
+              if (sec.table) {
+                out.push(
+                  <div key={`tbl-${i}`} style={{ overflowX: "auto", margin: "8px 0 28px",
+                    border: "1px solid #e8e8f0", borderRadius: 10 }}>
+                    <table style={{ width: "100%", borderCollapse: "collapse",
+                      fontFamily: FONT, fontSize: 14 }}>
+                      <thead>
+                        <tr style={{ background: "#f7f8fc" }}>
+                          {sec.table.headers.map((h, hi) => (
+                            <th key={hi} style={{ textAlign: "left", padding: "10px 14px",
+                              fontSize: 11, fontWeight: 800, letterSpacing: "0.8px",
+                              textTransform: "uppercase", color: ACCENT_NAVY,
+                              borderBottom: "1px solid #e8e8f0" }}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {sec.table.rows.map((row, ri) => (
+                          <tr key={ri} style={{ borderTop: ri === 0 ? "none" : "1px solid #f1f1f5" }}>
+                            {row.map((cell, ci) => (
+                              <td key={ci} style={{ padding: "10px 14px", color: "#1e293b",
+                                fontFamily: FONT, fontWeight: ci === 1 ? 600 : 400 }}>{cell}</td>
                             ))}
                           </tr>
-                        </thead>
-                        <tbody>
-                          {sec.table.rows.map((row, ri) => (
-                            <tr key={ri} style={{ borderTop: ri === 0 ? "none" : "1px solid #f1f1f5" }}>
-                              {row.map((cell, ci) => (
-                                <td key={ci} style={{ padding: "10px 14px", color: "#1e293b",
-                                  fontFamily: FONT, fontWeight: ci === 1 ? 600 : 400 }}>{cell}</td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  );
-                }
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                );
+              }
+            });
 
-                // Photo after this section if it's a slot
-                if (photoSlots.includes(i) && photoIdx < photos.length) {
-                  const p = photos[photoIdx++];
-                  out.push(<StoryImage key={`photo-${i}`} src={p.src} />);
-                }
-              });
+            return out;
+          })()}
 
-              return out;
-            })()}
-          </div>
-
-          <div style={{ height: 56 }} />
-        </div>
+        </ArticleBody>
       </div>
 
-      {/* ── Quotes — side-by-side, light cards ── */}
+      {/* ── Voices / Quotes ── */}
       {story.quotes && story.quotes.length > 0 && (
         <div id="story-quotes" style={{ background: "#f7f8fc", padding: "48px 56px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -273,27 +387,10 @@ export default function ImpactStoryView() {
               Voices from the Field
             </p>
             <div style={{ width: 36, height: 2, borderRadius: 2, background: accent, marginBottom: 28 }} />
-
             <div style={{ display: "grid",
               gridTemplateColumns: story.quotes.length === 1 ? "1fr" : "1fr 1fr", gap: 20 }}>
               {story.quotes.map((q, i) => (
-                <div key={i} style={{ background: "#135EA9", borderRadius: 12,
-                  padding: "24px 28px" }}>
-                  <div style={{ fontFamily: "Georgia,serif", fontSize: 32, lineHeight: 0.7,
-                    color: "rgba(255,255,255,0.25)", marginBottom: 12, userSelect: "none" }}>"</div>
-                  <p style={{ fontFamily: FONT, fontSize: 15, fontStyle: "italic",
-                    color: "#fff", lineHeight: 1.72, margin: "0 0 20px" }}>
-                    {q.text}
-                  </p>
-                  <div style={{ borderTop: "1px solid rgba(255,255,255,0.2)", paddingTop: 14 }}>
-                    <div style={{ fontFamily: FONT, fontSize: 13, fontWeight: 800,
-                      color: "#fff" }}>{q.attribution}</div>
-                    {q.role && (
-                      <div style={{ fontFamily: FONT, fontSize: 11, color: "rgba(255,255,255,0.7)",
-                        marginTop: 3 }}>{q.role}</div>
-                    )}
-                  </div>
-                </div>
+                <PullQuote key={i} text={q.text} attribution={q.attribution} role={q.role} />
               ))}
             </div>
           </div>
@@ -322,10 +419,10 @@ export default function ImpactStoryView() {
                   e.currentTarget.style.transform = "translateY(0)";
                   e.currentTarget.style.boxShadow = "none";
                 }}>
-                <div style={{ height: 140, overflow: "hidden" }}>
+                <div style={{ aspectRatio: "16/10", overflow: "hidden" }}>
                   <img src={s.heroImage} alt={s.heroImageAlt}
                     style={{ width: "100%", height: "100%", objectFit: "cover",
-                      objectPosition: "center 35%" }} />
+                      objectPosition: s.slug === "beyond-the-boardroom" ? "center 70%" : "center 35%" }} />
                 </div>
                 <div style={{ padding: "18px 20px" }}>
                   <span style={{ display: "inline-block", background: `${s.accentColor}15`,

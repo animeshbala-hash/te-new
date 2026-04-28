@@ -140,7 +140,6 @@ function LegacySection() {
 
 // ── What Is Tata Engage ───────────────────────────────────────────────────────
 function WhatSection() {
-  const navigate = useAppNavigate();
   return (
     <section id="about-what" style={{ background: "#F4F8F7", padding: "96px 56px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -174,24 +173,6 @@ function WhatSection() {
               Tata Engage brings together Tata employees, their families, and retired colleagues, and enables them to contribute their time, skills, and experience to address pressing social and environmental challenges, while strengthening communities and fostering social cohesion.
             </p>
           </div>
-        </div>
-
-        {/* Register CTA */}
-        <div style={{ marginTop: 20, background: "#1E6BB8", borderRadius: 16, padding: "28px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "relative", zIndex: 1 }}>
-            <div style={{ fontFamily: FONT, fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 8 }}>
-              Register to Volunteer
-            </div>
-            <div style={{ fontFamily: FONT, fontSize: 17, fontStyle: "italic", fontWeight: 300, color: "rgba(255,255,255,0.85)" }}>
-              Be part of the Tata legacy of giving.
-            </div>
-          </div>
-          <button
-            onClick={() => navigate("register-role")}
-            style={{ position: "relative", zIndex: 1, background: "#F5A623", color: "#0D1B3E", border: "none", borderRadius: 10, padding: "12px 24px", fontFamily: FONT, fontWeight: 800, fontSize: 14, cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0 }}
-          >
-            Register Now on Tata Engage →
-          </button>
         </div>
       </div>
     </section>
@@ -303,6 +284,24 @@ function ProgrammesSection() {
             style={{ background: "#F5A623", color: "#0D1B3E", border: "none", borderRadius: 10, padding: "11px 24px", fontFamily: FONT, fontWeight: 800, fontSize: 14, cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0 }}
           >
             Partner with us →
+          </button>
+        </div>
+
+        {/* Register CTA */}
+        <div style={{ marginTop: 20, background: "#1E6BB8", borderRadius: 16, padding: "28px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <div style={{ fontFamily: FONT, fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 8 }}>
+              Register to Volunteer
+            </div>
+            <div style={{ fontFamily: FONT, fontSize: 17, fontStyle: "italic", fontWeight: 300, color: "rgba(255,255,255,0.85)" }}>
+              Be part of the Tata legacy of giving.
+            </div>
+          </div>
+          <button
+            onClick={() => navigate("register-role")}
+            style={{ position: "relative", zIndex: 1, background: "#F5A623", color: "#0D1B3E", border: "none", borderRadius: 10, padding: "12px 24px", fontFamily: FONT, fontWeight: 800, fontSize: 14, cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0 }}
+          >
+            Register Now on Tata Engage →
           </button>
         </div>
       </div>

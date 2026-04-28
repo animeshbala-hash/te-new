@@ -143,31 +143,30 @@ export default function CVPView() {
       </section>
 
       {/* ════ TSG / GET INVOLVED ════ */}
-      <section id="cvp-explore" style={{ background: COLOUR_DARK, padding: "88px 56px", position: "relative", overflow: "hidden" }}>
-        <div style={DIAG} />
+      <section id="cvp-explore" style={{ background: COLOUR_LIGHT, padding: "88px 56px", position: "relative", overflow: "hidden" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 72, alignItems: "start" }}>
           <div>
-            <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 10 }}>Get involved</p>
-            <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>Find a CVP near you</h2>
-            <div style={{ height: 3, background: "rgba(255,255,255,0.25)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 36 }} />
-            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.85)", lineHeight: 1.78, marginBottom: 24 }}>
+            <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR, marginBottom: 10 }}>Get involved</p>
+            <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Find a CVP near you</h2>
+            <div style={{ height: 3, background: COLOUR, borderRadius: 2, width: 48, marginTop: 10, marginBottom: 36, opacity: 0.3 }} />
+            <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.78, marginBottom: 24 }}>
               To learn more about your company's volunteering programme, reach out to your CSR or Volunteering SPOC. Tata Engage facilitates collaboration and visibility across the Group.
             </p>
-            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>
-              For queries, reach out to <a href="mailto:tataengage@tata.com" style={{ color: "rgba(255,255,255,0.75)", textDecoration: "none", fontWeight: 600 }}>tataengage@tata.com</a>
+            <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.7 }}>
+              For queries, reach out to <a href="mailto:tataengage@tata.com" style={{ color: COLOUR, textDecoration: "none", fontWeight: 600 }}>tataengage@tata.com</a>
             </p>
           </div>
-          <div style={{ background: "rgba(0,0,0,0.22)", borderRadius: 20, padding: "40px 36px", border: "1px solid rgba(255,255,255,0.14)" }}>
-            <div style={{ fontSize: 24, fontWeight: 900, color: "#fff", marginBottom: 14, lineHeight: 1.2 }}>Be Part of the Movement</div>
-            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.68)", lineHeight: 1.78, marginBottom: 36 }}>
+          <div style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", border: `1px solid ${COLOUR}20`, boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
+            <div style={{ fontSize: 24, fontWeight: 900, color: ACCENT_NAVY, marginBottom: 14, lineHeight: 1.2 }}>Be Part of the Movement</div>
+            <p style={{ fontSize: 15, color: "#64748b", lineHeight: 1.78, marginBottom: 36 }}>
               Join millions of Tata employees volunteering through company-led programmes across the Group.
             </p>
             <button onClick={() => navigate(isLoggedIn ? "dashboard" : "register-role")}
-              style={{ background: B_YELLOW, color: ACCENT_NAVY, border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", width: "100%", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
+              style={{ background: COLOUR, color: "#fff", border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", width: "100%" }}>
               {isLoggedIn ? "Go to Dashboard" : "Join Tata Engage"} →
             </button>
             <button onClick={() => navigate("eoi")}
-              style={{ background: "transparent", color: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.22)", borderRadius: 10, padding: "14px 22px", fontWeight: 600, fontSize: 14, cursor: "pointer", width: "100%", marginTop: 12 }}>
+              style={{ background: "transparent", color: COLOUR, border: `1px solid ${COLOUR}40`, borderRadius: 10, padding: "14px 22px", fontWeight: 600, fontSize: 14, cursor: "pointer", width: "100%", marginTop: 12 }}>
               Explore Employees' Own Initiatives
             </button>
           </div>

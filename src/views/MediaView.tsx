@@ -12,12 +12,12 @@ import photo02 from "@/assets/homepagebanner/Volunteering in Action 5.jpg";
 import photo03 from "@/assets/homepagebanner/Westside Store employees_Paint an Orphanage - Trent.JPG";
 import photo04 from "@/assets/homepagebanner/Antarang Foundation - Project Horizon - Mentoring Session by Leadership - Tata AIA.jpg";
 import photo05 from "@/assets/homepagebanner/General_Titan Company Ltd_01.jpg";
-import photo06 from "@/assets/homepagebanner/SMPP - Beach clean-up.jpg";
+import photo06 from "@/assets/homepagebanner/IHCL 1.jpg";
 import photo07 from "@/assets/homepagebanner/Road Safety Awareness by HRM (2).JPG";
 import photo08 from "@/assets/homepagebanner/JCAPCPL 3 (2).JPG";
 import photo09 from "@/assets/homepagebanner/Eye Scanning Camp Joda 1.jpg";
-import photo10 from "@/assets/homepagebanner/Popscicle Airplane making.jpg";
-import photo11 from "@/assets/homepagebanner/TCL Mithap 5925.1.jpg";
+import photo10 from "@/assets/homepagebanner/JCAPCPL22.JPG";
+import photo11 from "@/assets/homepagebanner/20240729_114952.jpg";
 import photo12 from "@/assets/homepagebanner/4. Mithapur_Eco-Tourism_LEEPEN_Harivan Farm_2022-23_Lipan Work (5).jpeg";
 
 const B_INDIGO = "#333399";
@@ -52,18 +52,9 @@ const cardHover = {
 };
 
 const PHOTOS = [
-  { src: photo01, caption: "Tata Volunteering Week — Group Activity" },
-  { src: photo02, caption: "Volunteering in Action" },
-  { src: photo03, caption: "Paint an Orphanage — Trent" },
-  { src: photo04, caption: "Mentoring Session — Tata AIA" },
-  { src: photo05, caption: "Community Programme — Titan" },
-  { src: photo06, caption: "Beach Clean-up — SMPP" },
-  { src: photo07, caption: "Road Safety Awareness — HRM" },
-  { src: photo08, caption: "JCAPCPL Volunteering Activity" },
-  { src: photo09, caption: "Eye Scanning Camp — Joda" },
-  { src: photo10, caption: "Popsicle Airplane Making — Education" },
-  { src: photo11, caption: "TCL Mithap Volunteering" },
-  { src: photo12, caption: "Eco-Tourism — Mithapur" },
+  photo01, photo02, photo03, photo04,
+  photo05, photo06, photo07, photo08,
+  photo09, photo10, photo11, photo12,
 ];
 
 const VIDEOS = [
@@ -142,7 +133,7 @@ export default function MediaView() {
       <SubPageDotRail sections={SECTIONS} accentColor={B_BLUE} />
 
       {/* 1 — Hero (shorter: 50vh) */}
-      <div id="media-hero" style={{ position: "relative", minHeight: "50vh", display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 64 }}>
+      <div id="media-hero" style={{ position: "relative", minHeight: "92vh", display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 64 }}>
         <img src={heroImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(105deg, rgba(8,12,22,0.88) 0%, rgba(8,12,22,0.70) 40%, rgba(8,12,22,0.28) 75%, rgba(8,12,22,0.08) 100%)" }} />
         <div style={DIAG_TEXTURE} />
@@ -182,20 +173,18 @@ export default function MediaView() {
         {/* 3 — Photos */}
         {activeTab === "Photos" && (
           <div>
-            <p style={{ fontSize: 15, color: "#64748B", marginBottom: 20, textAlign: "center" }}>TVW, VolCon 2024, and ProEngage project documentation</p>
             <div style={{ columns: 4, columnGap: 16 }}>
-              {PHOTOS.map((p, i) => (
+              {PHOTOS.map((src, i) => (
                 <div
                   key={i}
                   onClick={() => triggerToast("Opening full image...")}
-                  style={{ breakInside: "avoid", marginBottom: 16, borderRadius: 10, overflow: "hidden", cursor: "pointer", position: "relative", transition: "transform 0.2s, box-shadow 0.2s" }}
+                  style={{ breakInside: "avoid", marginBottom: 16, borderRadius: 10,
+                    overflow: "hidden", cursor: "pointer",
+                    transition: "transform 0.2s, box-shadow 0.2s" }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 24px rgba(0,0,0,0.12)"; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "none"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; }}
                 >
-                  <img src={p.src} alt={p.caption} style={{ width: "100%", display: "block" }} />
-                  <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "rgba(0,0,0,0.5)", padding: "8px 12px" }}>
-                    <span style={{ fontSize: 12, color: "#fff", fontWeight: 600 }}>{p.caption}</span>
-                  </div>
+                  <img src={src} alt="" style={{ width: "100%", display: "block" }} />
                 </div>
               ))}
             </div>
@@ -255,8 +244,10 @@ export default function MediaView() {
                   onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
                 >
-                  <div style={{ height: 180, overflow: "hidden" }}>
-                    <img src={s.heroImage} alt={s.heroImageAlt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
+                  <div style={{ aspectRatio: "16/10", overflow: "hidden" }}>
+                    <img src={s.heroImage} alt={s.heroImageAlt}
+                      style={{ width: "100%", height: "100%", objectFit: "cover",
+                        objectPosition: s.slug === "beyond-the-boardroom" ? "center 70%" : "center 35%" }} />
                   </div>
                   <div style={{ padding: "20px 22px 22px" }}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
@@ -315,8 +306,12 @@ export default function MediaView() {
                   onMouseEnter={(ev) => { ev.currentTarget.style.transform = "translateY(-3px)"; ev.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
                   onMouseLeave={(ev) => { ev.currentTarget.style.transform = "translateY(0)"; ev.currentTarget.style.boxShadow = "none"; }}
                 >
-                  <div style={{ height: 180, overflow: "hidden" }}>
-                    <img src={e.heroImage} alt={e.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
+                  <div style={{ aspectRatio: "16/10", overflow: "hidden", position: "relative" }}>
+                    <img src={e.heroImage} alt={e.title}
+                      style={{ width: "100%", height: "100%", objectFit: "cover",
+                        objectPosition: "center 30%" }} />
+                    <div style={{ position: "absolute", bottom: 0, left: 0, right: 0,
+                      height: 3, background: e.accentColor }} />
                   </div>
                   <div style={{ padding: "20px 22px 22px" }}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
