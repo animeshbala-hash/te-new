@@ -1,71 +1,160 @@
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import tataEngageLogoNoBg from "@/assets/tata-engage-logo-nobg.png";
 import { useAppContext } from "@/context/AppContext";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 
+const FONT = "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif";
+const NAVY = "#0D1B3E";
+const B_YELLOW = "#F5A623";
+
 const Footer = () => {
   const { triggerToast } = useAppContext();
   const navigate = useAppNavigate();
+
+  const scrollTo = (view: string, id: string) => {
+    navigate(view as any);
+    setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 120);
+  };
+
+  const linkStyle = {
+    fontFamily: FONT,
+    fontSize: 13,
+    color: "rgba(255,255,255,0.52)",
+    cursor: "pointer",
+    transition: "color 0.15s",
+    display: "block",
+    marginBottom: 10,
+    textDecoration: "none",
+  } as const;
+
   return (
-  <footer className="bg-zinc-950 text-white pt-16 pb-24 px-6 md:px-12">
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-      <div>
-        <div className="mb-6">
-          <img 
-            src={tataEngageLogoNoBg} 
-            alt="TATA engage" 
-            className="h-14 md:h-16 object-contain brightness-0 invert"
-          />
+    <footer style={{ background: NAVY, color: "#fff", fontFamily: FONT, paddingTop: 56, paddingBottom: 32 }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 56px" }}>
+
+        {/* Top grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1.4fr", gap: 48, marginBottom: 48 }}>
+
+          {/* Brand */}
+          <div>
+            <img src={tataEngageLogoNoBg} alt="Tata Engage"
+              style={{ height: 48, objectFit: "contain", filter: "brightness(0) invert(1)", marginBottom: 18, display: "block" }} />
+            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.52)", lineHeight: 1.72, marginBottom: 24, maxWidth: 280 }}>
+              The Tata Group's volunteering platform — connecting employees, families, and retirees with communities that need their time, skills, and purpose.
+            </p>
+            <div style={{ display: "flex", gap: 12 }}>
+              {[
+                { Icon: Linkedin, label: "LinkedIn" },
+                { Icon: Instagram, label: "Instagram" },
+                { Icon: Facebook, label: "Facebook" },
+                { Icon: Twitter, label: "Twitter" },
+              ].map(({ Icon, label }) => (
+                <button key={label} aria-label={label}
+                  style={{ width: 34, height: 34, borderRadius: "50%", border: "1px solid rgba(255,255,255,0.16)",
+                    background: "rgba(255,255,255,0.06)", display: "flex", alignItems: "center",
+                    justifyContent: "center", cursor: "pointer", transition: "all 0.15s" }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.14)"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)"; }}>
+                  <Icon size={15} color="rgba(255,255,255,0.7)" />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick links */}
+          <div>
+            <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.4px", textTransform: "uppercase",
+              color: "rgba(255,255,255,0.35)", marginBottom: 18 }}>About</p>
+            {[
+              { label: "About Tata Engage", action: () => scrollTo("about", "about-vision") },
+              { label: "Our Journey", action: () => navigate("journey" as any) },
+              { label: "Disaster Response", action: () => navigate("disaster-response" as any) },
+              { label: "Partner With Us", action: () => navigate("partner" as any) },
+              { label: "Media & Resources", action: () => navigate("media" as any) },
+            ].map(({ label, action }) => (
+              <span key={label} onClick={action} style={linkStyle}
+                onMouseEnter={e => { (e.currentTarget as HTMLSpanElement).style.color = "#fff"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.52)"; }}>
+                {label}
+              </span>
+            ))}
+          </div>
+
+          {/* Programmes */}
+          <div>
+            <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.4px", textTransform: "uppercase",
+              color: "rgba(255,255,255,0.35)", marginBottom: 18 }}>Programmes</p>
+            {[
+              { label: "Tata Volunteering Week (TVW)", action: () => navigate("about-tvw" as any) },
+              { label: "ProEngage", action: () => navigate("about-proengage" as any) },
+              { label: "Disaster Response", action: () => navigate("disaster-response" as any) },
+              { label: "Tata Sustainability Month", action: () => navigate("tata-sm" as any) },
+              { label: "Company Volunteering", action: () => navigate("cvp" as any) },
+            ].map(({ label, action }) => (
+              <span key={label} onClick={action} style={linkStyle}
+                onMouseEnter={e => { (e.currentTarget as HTMLSpanElement).style.color = "#fff"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.52)"; }}>
+                {label}
+              </span>
+            ))}
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.4px", textTransform: "uppercase",
+              color: "rgba(255,255,255,0.35)", marginBottom: 18 }}>Stay Updated</p>
+            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.52)", lineHeight: 1.65, marginBottom: 18 }}>
+              Get updates on volunteering programmes, impact stories, and events from across the Tata Group.
+            </p>
+            <input type="text" placeholder="Your name"
+              style={{ width: "100%", background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: 8, padding: "9px 12px", fontSize: 13, color: "#fff", outline: "none",
+                marginBottom: 8, boxSizing: "border-box", fontFamily: FONT }} />
+            <input type="email" placeholder="Your email"
+              style={{ width: "100%", background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: 8, padding: "9px 12px", fontSize: 13, color: "#fff", outline: "none",
+                marginBottom: 12, boxSizing: "border-box", fontFamily: FONT }} />
+            <button onClick={() => triggerToast("Subscribed! Welcome to Tata Engage updates.")}
+              style={{ width: "100%", background: B_YELLOW, color: NAVY, border: "none", borderRadius: 8,
+                padding: "10px 0", fontFamily: FONT, fontWeight: 800, fontSize: 13, cursor: "pointer" }}>
+              Subscribe →
+            </button>
+          </div>
         </div>
-        <p className="text-slate-400 text-sm leading-relaxed">
-          Tata Engage is the Tata Group's volunteering platform, bringing together employees, their families, and retirees to contribute time, skills, and expertise in service of society.
-        </p>
-      </div>
-      <div>
-        <h4 className="font-bold mb-6">Quick Links</h4>
-        <ul className="space-y-3 text-slate-400 text-sm">
-          <li><span onClick={() => { navigate("about"); setTimeout(() => document.getElementById("about-vision")?.scrollIntoView({ behavior: "smooth" }), 120); }} className="hover:text-white transition-colors cursor-pointer">TE Vision</span></li>
-          <li><span onClick={() => navigate("journey")} className="hover:text-white transition-colors cursor-pointer">Our Journey</span></li>
-          <li><span onClick={() => navigate("partner")} className="hover:text-white transition-colors cursor-pointer">Partner With Us</span></li>
-          <li><span onClick={() => navigate("media")} className="hover:text-white transition-colors cursor-pointer">Media & Impact Stories</span></li>
-          <li><span onClick={() => navigate("login")} className="hover:text-white transition-colors cursor-pointer">Login</span></li>
-        </ul>
-      </div>
-      <div>
-        <h4 className="font-bold mb-6">Programmes</h4>
-        <ul className="space-y-3 text-slate-400 text-sm">
-          <li><span onClick={() => navigate("about-tvw")} className="hover:text-white transition-colors cursor-pointer">TVW (Tata Volunteering Week)</span></li>
-          <li><span onClick={() => navigate("about-proengage")} className="hover:text-white transition-colors cursor-pointer">ProEngage</span></li>
-          <li><span onClick={() => navigate("disaster-response")} className="hover:text-white transition-colors cursor-pointer">Disaster Response</span></li>
-        </ul>
-      </div>
-      <div>
-        <h4 className="font-bold mb-6">Connect With Us</h4>
-        <div className="flex gap-4 mb-6">
-          <Linkedin size={20} className="text-slate-400 hover:text-white cursor-pointer" />
-          <Instagram size={20} className="text-slate-400 hover:text-white cursor-pointer" />
-          <Facebook size={20} className="text-slate-400 hover:text-white cursor-pointer" />
+
+        {/* Divider */}
+        <div style={{ height: 1, background: "rgba(255,255,255,0.10)", marginBottom: 24 }} />
+
+        {/* Bottom bar */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.28)", margin: 0 }}>
+              © 2026 Tata Sons Private Limited. All rights reserved.
+            </p>
+            <span onClick={() => navigate("admin-login" as any)}
+              style={{ fontSize: 12, color: "rgba(255,255,255,0.18)", cursor: "pointer" }}
+              onMouseEnter={e => { (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.38)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.18)"; }}>
+              Admin
+            </span>
+          </div>
+          <div style={{ display: "flex", gap: 24 }}>
+            {[
+              { label: "Privacy Policy", action: () => navigate("privacy" as any) },
+              { label: "Terms of Use", action: () => navigate("legal" as any) },
+              { label: "Cookie Policy", action: () => scrollTo("privacy", "privacy-cookies") },
+            ].map(({ label, action }) => (
+              <span key={label} onClick={action}
+                style={{ fontSize: 12, color: "rgba(255,255,255,0.32)", cursor: "pointer" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.7)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.32)"; }}>
+                {label}
+              </span>
+            ))}
+          </div>
         </div>
-        <div className="mt-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Newsletter</p>
-          <input type="text" placeholder="Your name" className="w-full bg-zinc-800 border border-zinc-700 rounded-md px-3 py-2 text-sm text-white placeholder-zinc-500 mb-2 outline-none focus:border-zinc-500" />
-          <input type="email" placeholder="Your email" className="w-full bg-zinc-800 border border-zinc-700 rounded-md px-3 py-2 text-sm text-white placeholder-zinc-500 mb-3 outline-none focus:border-zinc-500" />
-          <button onClick={() => triggerToast("Subscribed! Welcome to Tata Engage updates.")} className="w-full bg-yellow-500 hover:bg-yellow-400 text-zinc-900 font-bold text-sm py-2 rounded-md transition-colors">Subscribe</button>
-        </div>
+
       </div>
-    </div>
-    <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-      <div className="flex items-center gap-4">
-        <p>© 2026 Tata Sons Private Limited. All rights reserved.</p>
-        <span onClick={() => navigate("admin-login")} className="text-zinc-600 text-xs hover:text-zinc-400 transition-colors cursor-pointer">Admin</span>
-      </div>
-      <div className="flex gap-6">
-        <span onClick={() => navigate("privacy")} className="cursor-pointer hover:text-white transition-colors">Privacy Policy</span>
-        <span onClick={() => navigate("legal")} className="cursor-pointer hover:text-white transition-colors">Terms of Use</span>
-        <span onClick={() => { navigate("privacy"); setTimeout(() => document.getElementById("privacy-cookies")?.scrollIntoView({ behavior: "smooth" }), 120); }} className="cursor-pointer hover:text-white transition-colors">Cookie Policy</span>
-      </div>
-    </div>
-  </footer>
+    </footer>
   );
 };
 
