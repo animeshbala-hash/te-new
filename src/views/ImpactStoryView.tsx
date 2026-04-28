@@ -6,7 +6,6 @@ import { IMPACT_STORIES } from "@/data/impactStoriesData";
 
 const ACCENT_NAVY = "#0D1B3E";
 const B_INDIGO    = "#333399";
-const B_RED       = "#E8401C";
 const FONT        = "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif";
 
 const DIAG: React.CSSProperties = {
@@ -87,9 +86,9 @@ function PhotoGrid({ images }: { images: { src: string }[] }) {
 }
 
 // ── Opening para accent block ─────────────────────────────────────────────────
-function OpeningPara({ text }: { text: string }) {
+function OpeningPara({ text, accent }: { text: string; accent: string }) {
   return (
-    <div style={{ background: `${B_RED}12`, borderLeft: `3px solid ${B_RED}`,
+    <div style={{ background: `${accent}12`, borderLeft: `3px solid ${accent}`,
       borderRadius: "0 10px 10px 0", padding: "20px 24px", margin: "0 0 36px" }}>
       <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 16,
         fontStyle: "italic", color: ACCENT_NAVY, lineHeight: 1.78, margin: 0 }}>
@@ -217,7 +216,7 @@ export default function ImpactStoryView() {
       <div id="story-body">
         <ArticleBody accent={accent}>
 
-          <OpeningPara text={story.openingPara} />
+          <OpeningPara text={story.openingPara} accent={accent} />
 
           {(() => {
             // Build a Set of unique slots — one photo per slot, never duplicated

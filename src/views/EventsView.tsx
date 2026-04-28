@@ -26,9 +26,10 @@ const ACCENT_NAVY = "#0D1B3E";
 const B_INDIGO    = "#333399";
 const FONT        = "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif";
 
-const TSC_ACCENT  = "#5B21B6";  // deep purple — TSC conclave
-const VOL_ACCENT  = "#7C3ABD";  // mid purple — VOLCON
-const IAVE_ACCENT = "#1E6BB8";  // TVW blue — IAVE (changed from indigo to distinguish)
+const EVENT_ACCENT = "#5B21B6";  // Single purple accent for all events
+const TSC_ACCENT  = EVENT_ACCENT;
+const VOL_ACCENT  = EVENT_ACCENT;
+const IAVE_ACCENT = EVENT_ACCENT;
 
 const DIAG: React.CSSProperties = {
   position: "absolute", inset: 0,
