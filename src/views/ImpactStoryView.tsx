@@ -16,14 +16,15 @@ const DIAG: React.CSSProperties = {
   pointerEvents: "none",
 };
 
-// Full-width photo — no side padding, fills column
+// Full-width photo — no side padding, fills column, consistent 360px height
 const StoryImage = ({ src }: { src?: string }) => (
-  <div style={{ margin: "32px -56px" }}>
+  <div style={{ margin: "32px -56px", height: 360, overflow: "hidden" }}>
     {src ? (
       <img src={src} alt=""
-        style={{ width: "100%", display: "block", objectFit: "cover" }} />
+        style={{ width: "100%", height: "100%", display: "block",
+          objectFit: "cover", objectPosition: "center 30%" }} />
     ) : (
-      <div style={{ width: "100%", height: 280,
+      <div style={{ width: "100%", height: "100%",
         background: "linear-gradient(135deg,#e2e8f0 0%,#cbd5e1 100%)",
         display: "flex", alignItems: "center", justifyContent: "center" }}>
         <span style={{ fontSize: 11, color: "rgba(0,0,0,0.28)", fontWeight: 600 }}>Photo coming soon</span>
@@ -139,12 +140,14 @@ export default function ImpactStoryView() {
       {/* ── Body ── */}
       <div id="story-body" style={{ background: "#fff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ padding: "64px 56px 0" }}>
+          {/* Body sections — constrained to 820px, including opening para */}
+          <div style={{ maxWidth: 820, margin: "0 auto", padding: "64px 56px 0" }}>
 
             {/* Opening para — always uses DR red/orange accent */}
             <div style={{ background: `${B_RED}12`, borderLeft: `3px solid ${B_RED}`,
               borderRadius: "0 10px 10px 0", padding: "20px 24px", margin: "0 0 36px" }}>
-              <p style={{ fontFamily: FONT, fontSize: 19, fontStyle: "italic",
+              <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 16,
+                fontStyle: "italic",
                 color: ACCENT_NAVY, lineHeight: 1.78, margin: 0 }}>
                 {story.openingPara}
               </p>
@@ -152,7 +155,7 @@ export default function ImpactStoryView() {
           </div>
 
           {/* Body sections */}
-          <div style={{ maxWidth: 820, margin: "0 auto", padding: "0 56px" }}>
+          <div style={{ maxWidth: 820, margin: "0 auto", padding: "0 56px 0" }}>
             {(() => {
               let photoIdx = 0;
               const out: JSX.Element[] = [];
