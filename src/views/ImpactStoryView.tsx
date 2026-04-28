@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSearchParams } from "react-router-dom";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
@@ -15,41 +15,6 @@ const DIAG: React.CSSProperties = {
   backgroundSize: "24px 24px",
   pointerEvents: "none",
 };
-
-// ── Slideshow (matches EventsView) ───────────────────────────────────────────
-function Slideshow({ slides, accent }: { slides: { src: string; caption?: string }[]; accent: string }) {
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    if (slides.length <= 1) return;
-    const t = setInterval(() => setI((p) => (p + 1) % slides.length), 6000);
-    return () => clearInterval(t);
-  }, [slides.length]);
-  if (!slides.length) return null;
-  return (
-    <div style={{ borderRadius: 14, overflow: "hidden", background: "#000" }}>
-      <div style={{ position: "relative", aspectRatio: "16/10" }}>
-        {slides.map((s, idx) => (
-          <img key={idx} src={s.src} alt={s.caption ?? ""}
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
-              objectFit: "cover", objectPosition: "center 30%",
-              opacity: idx === i ? 1 : 0, transition: "opacity 0.6s ease" }} />
-        ))}
-        {slides.length > 1 && (
-          <div style={{ position: "absolute", bottom: 10, left: 0, right: 0,
-            display: "flex", justifyContent: "center", gap: 6, zIndex: 2 }}>
-            {slides.map((_, idx) => (
-              <button key={idx} onClick={() => setI(idx)}
-                style={{ width: idx === i ? 24 : 8, height: 8, borderRadius: 100,
-                  border: "none", cursor: "pointer",
-                  background: idx === i ? "#fff" : "rgba(255,255,255,0.5)",
-                  transition: "all 0.3s" }} />
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
 
 // ── ArticleBody wrapper (matches EventsView) ─────────────────────────────────
 function ArticleBody({ accent, children }: { accent: string; children: React.ReactNode }) {
@@ -84,31 +49,12 @@ function SectionHead({ title, accent }: { title: string; accent: string }) {
   );
 }
 
-// ── Media + text (matches EventsView MediaBlock) ─────────────────────────────
-function MediaBlock({ title, body, media, mediaLeft = false, accent }: {
-  title?: string; body: string | string[]; media?: React.ReactNode;
-  mediaLeft?: boolean; accent: string;
+// ── Pull quote — accent-tinted (matches EventsView) ──────────────────────────
+function PullQuote({ text, attribution, role, accent }: {
+  text: string; attribution: string; role?: string; accent: string;
 }) {
-  const paras = Array.isArray(body) ? body : [body];
   return (
-    <div style={{ margin: "40px 0" }}>
-      {title && <SectionHead title={title} accent={accent} />}
-      {media ? (
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, alignItems: "start" }}>
-          <div style={{ order: mediaLeft ? 2 : 1 }}><Paras texts={paras} /></div>
-          <div style={{ order: mediaLeft ? 1 : 2 }}>{media}</div>
-        </div>
-      ) : (
-        <Paras texts={paras} />
-      )}
-    </div>
-  );
-}
-
-// ── Pull quote (matches EventsView) ──────────────────────────────────────────
-function PullQuote({ text, attribution, role }: { text: string; attribution: string; role?: string }) {
-  return (
-    <div style={{ background: "#135EA9", borderRadius: 12, padding: "28px 32px", margin: "28px 0" }}>
+    <div style={{ background: accent, borderRadius: 12, padding: "28px 32px", margin: "28px 0" }}>
       <div style={{ fontFamily: "Georgia,serif", fontSize: 32, lineHeight: 0.7,
         color: "rgba(255,255,255,0.25)", marginBottom: 10 }}>"</div>
       <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 16,
@@ -208,9 +154,6 @@ export default function ImpactStoryView() {
   // Distribute body photos evenly across sections
   const photos = story.photos ?? [];
   const nPhotos = photos.length;
-  const photoSlots = nPhotos === 0 ? [] : Array.from({ length: nPhotos }, (_, i) =>
-    Math.round((i + 1) * (story.sections.length / nPhotos)) - 1
-  ).map(s => Math.min(s, story.sections.length - 1));
 
   const SECTIONS_NAV = [
     { id: "story-hero",   label: "Overview" },
@@ -277,38 +220,30 @@ export default function ImpactStoryView() {
           <OpeningPara text={story.openingPara} />
 
           {(() => {
-            let photoIdx = 0;
+            // Build a Set of unique slots — one photo per slot, never duplicated
+            const uniqueSlots = new Set(
+              nPhotos === 0 ? [] : Array.from({ length: nPhotos }, (_, i) =>
+                Math.min(
+                  Math.round((i + 0.5) * (story.sections.length / nPhotos)),
+                  story.sections.length - 1
+                )
+              )
+            );
+            // Map slot → photo index in insertion order
+            const slotToPhoto = new Map<number, string>();
+            let pi = 0;
+            [...uniqueSlots].sort((a, b) => a - b).forEach(slot => {
+              if (pi < photos.length) slotToPhoto.set(slot, photos[pi++].src);
+            });
+
             const out: JSX.Element[] = [];
 
             story.sections.forEach((sec, i) => {
-              const hasPhoto = photoSlots.includes(i) && photoIdx < photos.length;
-              const photoSrc = hasPhoto ? photos[photoIdx].src : undefined;
-              if (hasPhoto) photoIdx++;
-
-              const slideshow = hasPhoto
-                ? <Slideshow accent={accent} slides={[{ src: photoSrc! }]} />
-                : undefined;
-
+              // Always render section content as plain text — no MediaBlock pairing
               if (sec.heading) {
-                if (slideshow) {
-                  // Heading + body as MediaBlock with image
-                  const paras = sec.body ? sec.body.split("\n\n") : [""];
-                  out.push(
-                    <MediaBlock key={`mb-${i}`} accent={accent}
-                      title={sec.heading}
-                      body={paras}
-                      mediaLeft={i % 2 === 0}
-                      media={slideshow} />
-                  );
-                } else {
-                  out.push(<SectionHead key={`sh-${i}`} title={sec.heading} accent={accent} />);
-                  if (sec.body) {
-                    out.push(<Paras key={`p-${i}`} texts={sec.body.split("\n\n")} />);
-                  }
-                }
-                if (sec.bullets) {
-                  out.push(<BulletList key={`bl-${i}`} items={sec.bullets} />);
-                }
+                out.push(<SectionHead key={`sh-${i}`} title={sec.heading} accent={accent} />);
+                if (sec.body) out.push(<Paras key={`p-${i}`} texts={sec.body.split("\n\n")} />);
+                if (sec.bullets) out.push(<BulletList key={`bl-${i}`} items={sec.bullets} />);
                 if (sec.subBlocks) {
                   sec.subBlocks.forEach((sb, sbi) => {
                     out.push(
@@ -322,24 +257,10 @@ export default function ImpactStoryView() {
                   });
                 }
               } else {
-                // Body-only section
-                if (slideshow) {
-                  const paras = sec.body ? sec.body.split("\n\n") : [""];
-                  out.push(
-                    <MediaBlock key={`mb-${i}`} accent={accent}
-                      body={paras}
-                      mediaLeft={i % 2 === 0}
-                      media={slideshow} />
-                  );
-                } else if (sec.body) {
-                  out.push(<Paras key={`p-${i}`} texts={sec.body.split("\n\n")} />);
-                }
-                if (sec.bullets) {
-                  out.push(<BulletList key={`bl-${i}`} items={sec.bullets} />);
-                }
+                if (sec.body) out.push(<Paras key={`p-${i}`} texts={sec.body.split("\n\n")} />);
+                if (sec.bullets) out.push(<BulletList key={`bl-${i}`} items={sec.bullets} />);
               }
 
-              // Table always full-width
               if (sec.table) {
                 out.push(
                   <div key={`tbl-${i}`} style={{ overflowX: "auto", margin: "8px 0 28px",
@@ -370,6 +291,18 @@ export default function ImpactStoryView() {
                   </div>
                 );
               }
+
+              // Photo goes after this section as a standalone full-width block
+              if (slotToPhoto.has(i)) {
+                out.push(
+                  <div key={`photo-${i}`} style={{ borderRadius: 14, overflow: "hidden",
+                    margin: "32px 0", aspectRatio: "16/10" }}>
+                    <img src={slotToPhoto.get(i)} alt=""
+                      style={{ width: "100%", height: "100%", objectFit: "cover",
+                        objectPosition: "center 30%", display: "block" }} />
+                  </div>
+                );
+              }
             });
 
             return out;
@@ -390,7 +323,7 @@ export default function ImpactStoryView() {
             <div style={{ display: "grid",
               gridTemplateColumns: story.quotes.length === 1 ? "1fr" : "1fr 1fr", gap: 20 }}>
               {story.quotes.map((q, i) => (
-                <PullQuote key={i} text={q.text} attribution={q.attribution} role={q.role} />
+                <PullQuote key={i} text={q.text} attribution={q.attribution} role={q.role} accent={accent} />
               ))}
             </div>
           </div>
