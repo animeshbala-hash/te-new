@@ -173,7 +173,7 @@ export default function ImpactStoryView() {
                   sec.body.split("\n\n").forEach((para, pi) => {
                     out.push(
                       <p key={`p-${i}-${pi}`} style={{ fontFamily: FONT, fontSize: 16,
-                        color: "#374151", lineHeight: 1.85, margin: "0 0 20px" }}>
+                        color: "#1e293b", lineHeight: 1.85, margin: "0 0 20px" }}>
                         {para}
                       </p>
                     );
@@ -186,7 +186,7 @@ export default function ImpactStoryView() {
                       listStyleType: "disc" }}>
                       {sec.bullets.map((b, bi) => (
                         <li key={bi} style={{ fontFamily: FONT, fontSize: 16,
-                          color: "#374151", lineHeight: 1.75, margin: "0 0 12px" }}>
+                          color: "#1e293b", lineHeight: 1.75, margin: "0 0 12px" }}>
                           {b}
                         </li>
                       ))}
@@ -206,7 +206,7 @@ export default function ImpactStoryView() {
                         <ul style={{ margin: 0, paddingLeft: 24, listStyleType: "disc" }}>
                           {sb.bullets.map((b, bi) => (
                             <li key={bi} style={{ fontFamily: FONT, fontSize: 16,
-                              color: "#374151", lineHeight: 1.75, margin: "0 0 10px" }}>
+                              color: "#1e293b", lineHeight: 1.75, margin: "0 0 10px" }}>
                               {b}
                             </li>
                           ))}
@@ -236,7 +236,7 @@ export default function ImpactStoryView() {
                           {sec.table.rows.map((row, ri) => (
                             <tr key={ri} style={{ borderTop: ri === 0 ? "none" : "1px solid #f1f1f5" }}>
                               {row.map((cell, ci) => (
-                                <td key={ci} style={{ padding: "10px 14px", color: "#374151",
+                                <td key={ci} style={{ padding: "10px 14px", color: "#1e293b",
                                   fontFamily: FONT, fontWeight: ci === 1 ? 600 : 400 }}>{cell}</td>
                               ))}
                             </tr>
@@ -275,20 +275,19 @@ export default function ImpactStoryView() {
             <div style={{ display: "grid",
               gridTemplateColumns: story.quotes.length === 1 ? "1fr" : "1fr 1fr", gap: 20 }}>
               {story.quotes.map((q, i) => (
-                <div key={i} style={{ background: "#fff", border: `1px solid ${accent}22`,
-                  borderLeft: `3px solid ${accent}`, borderRadius: "0 12px 12px 0",
+                <div key={i} style={{ background: "#135EA9", borderRadius: 12,
                   padding: "24px 28px" }}>
                   <div style={{ fontFamily: "Georgia,serif", fontSize: 32, lineHeight: 0.7,
-                    color: `${accent}33`, marginBottom: 12, userSelect: "none" }}>"</div>
+                    color: "rgba(255,255,255,0.25)", marginBottom: 12, userSelect: "none" }}>"</div>
                   <p style={{ fontFamily: FONT, fontSize: 15, fontStyle: "italic",
-                    color: ACCENT_NAVY, lineHeight: 1.72, margin: "0 0 20px" }}>
+                    color: "#fff", lineHeight: 1.72, margin: "0 0 20px" }}>
                     {q.text}
                   </p>
-                  <div style={{ borderTop: `1px solid ${accent}18`, paddingTop: 14 }}>
+                  <div style={{ borderTop: "1px solid rgba(255,255,255,0.2)", paddingTop: 14 }}>
                     <div style={{ fontFamily: FONT, fontSize: 13, fontWeight: 800,
-                      color: ACCENT_NAVY }}>{q.attribution}</div>
+                      color: "#fff" }}>{q.attribution}</div>
                     {q.role && (
-                      <div style={{ fontFamily: FONT, fontSize: 11, color: "#64748b",
+                      <div style={{ fontFamily: FONT, fontSize: 11, color: "rgba(255,255,255,0.7)",
                         marginTop: 3 }}>{q.role}</div>
                     )}
                   </div>
@@ -333,7 +332,7 @@ export default function ImpactStoryView() {
                     marginBottom: 10 }}>{s.tag}</span>
                   <div style={{ fontFamily: FONT, fontSize: 15, fontWeight: 700,
                     color: ACCENT_NAVY, lineHeight: 1.4, marginBottom: 8 }}>{s.title}</div>
-                  <p style={{ fontFamily: FONT, fontSize: 13, color: "#64748b",
+                  <p style={{ fontFamily: FONT, fontSize: 13, color: "#374151",
                     lineHeight: 1.6, margin: "0 0 12px" }}>{s.excerpt}</p>
                   <span style={{ fontFamily: FONT, fontSize: 12, fontWeight: 700,
                     color: B_INDIGO }}>Read story →</span>

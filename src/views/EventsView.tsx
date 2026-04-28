@@ -73,7 +73,7 @@ function YouTubeEmbed({ id, caption }: { id: string; caption?: string }) {
       </div>
       {caption && (
         <div style={{ background: "#f7f8fc", padding: "12px 16px" }}>
-          <p style={{ fontFamily: FONT, fontSize: 12, color: "#64748b", lineHeight: 1.5, margin: 0, fontStyle: "italic" }}>{caption}</p>
+          <p style={{ fontFamily: FONT, fontSize: 12, color: "#374151", lineHeight: 1.5, margin: 0, fontStyle: "italic" }}>{caption}</p>
         </div>
       )}
     </div>
@@ -158,15 +158,14 @@ function MediaBlock({ title, body, media, mediaLeft = false, accent }: {
 }
 
 // ── Pull quote ────────────────────────────────────────────────────────────────
-function PullQuote({ text, attribution, accent }: { text: string; attribution: string; accent: string }) {
+function PullQuote({ text, attribution }: { text: string; attribution: string; accent?: string }) {
   return (
-    <div style={{ background: `${accent}0d`, borderLeft: `3px solid ${accent}`, borderRadius: "0 10px 10px 0",
-      padding: "20px 24px", margin: "28px 0" }}>
-      <div style={{ fontFamily: "Georgia,serif", fontSize: 32, lineHeight: 0.7, color: `${accent}44`, marginBottom: 10 }}>"</div>
-      <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 15, fontStyle: "italic",
-        color: ACCENT_NAVY, lineHeight: 1.72, margin: "0 0 12px" }}>{text}</p>
-      <p style={{ fontFamily: FONT, fontSize: 10, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase",
-        color: accent, margin: 0 }}>{attribution}</p>
+    <div style={{ background: "#135EA9", borderRadius: 12, padding: "28px 32px", margin: "28px 0" }}>
+      <div style={{ fontFamily: "Georgia,serif", fontSize: 32, lineHeight: 0.7, color: "rgba(255,255,255,0.25)", marginBottom: 10 }}>"</div>
+      <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 16, fontStyle: "italic",
+        color: "#fff", lineHeight: 1.72, margin: "0 0 16px" }}>{text}</p>
+      <p style={{ fontFamily: FONT, fontSize: 11, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase",
+        color: "rgba(255,255,255,0.75)", margin: 0 }}>{attribution}</p>
     </div>
   );
 }
@@ -185,7 +184,7 @@ function AwardsTable({ rows, accent }: { rows: { category: string; winners: stri
         <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", padding: "12px 18px",
           background: i % 2 === 0 ? "#fff" : `${accent}06`, borderTop: `1px solid ${accent}14` }}>
           <span style={{ fontFamily: FONT, fontSize: 13, fontWeight: 700, color: ACCENT_NAVY, lineHeight: 1.4 }}>{row.category}</span>
-          <span style={{ fontFamily: FONT, fontSize: 13, color: "#475569", lineHeight: 1.5 }}>{row.winners}</span>
+          <span style={{ fontFamily: FONT, fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{row.winners}</span>
         </div>
       ))}
     </div>
@@ -273,7 +272,7 @@ function Volcon2024() {
       <EventHero accent={accent} eyebrow="Tata Engage · VOLCON"
         title="TATA VOLCON 2024"
         subtitle="Celebrating a Million Hours — Taj Mahal Palace, Mumbai · 6 March 2024"
-        heroImage={volconChacko} />
+        heroImage={volconAwardsTCS} />
       <ArticleBody accent={accent}>
 
         <div style={{ marginTop: 36 }}>
@@ -354,9 +353,8 @@ function Iave2022() {
           ]} />
         </div>
 
-        <Slideshow accent={accent} slides={[
-          { src: iavePanel, caption: "Gauri Rajadhyaksha, Tata Sons, on the plenary panel at the 26th IAVE World Volunteer Conference, Abu Dhabi." },
-        ]} />
+        <img src={iavePanel} alt="Gauri Rajadhyaksha at 26th IAVE World Volunteer Conference, Abu Dhabi"
+          style={{ width: "100%", display: "block", borderRadius: 14, marginBottom: 8 }} />
 
         <div style={{ marginTop: 32 }}>
           <Paras texts={[
@@ -381,7 +379,7 @@ function Iave2024() {
       <EventHero accent={accent} eyebrow="Tata Engage · Global Forum"
         title="27th IAVE World Volunteer Conference"
         subtitle="People Power: Creating a Sustainable Future through Volunteering — Busan, Republic of Korea · 22–24 October 2024"
-        heroImage={iave24Img1} />
+        heroImage={iave24Img2} />
       <ArticleBody accent={accent}>
 
         <div style={{ marginTop: 36 }}>
