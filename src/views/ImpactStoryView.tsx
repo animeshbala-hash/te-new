@@ -22,7 +22,7 @@ const StoryImage = ({ src, caption, height }: { src?: string; caption?: string; 
         alt={caption ?? ""}
         style={{
           width: "100%",
-          ...(height ? { height, objectFit: "cover" as const } : { display: "block" }),
+          display: "block",
           borderRadius: 12,
         }}
       />
@@ -37,11 +37,6 @@ const StoryImage = ({ src, caption, height }: { src?: string; caption?: string; 
           <span style={{ fontSize: 11, color: "rgba(0,0,0,0.28)", fontWeight: 600 }}>Photo coming soon</span>
         </div>
       </div>
-    )}
-    {caption && (
-      <figcaption style={{ marginTop: 10, fontSize: 13, fontStyle: "italic", color: "#64748b", lineHeight: 1.5 }}>
-        {caption}
-      </figcaption>
     )}
   </figure>
 );
