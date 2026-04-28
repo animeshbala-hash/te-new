@@ -166,9 +166,6 @@ function MilestoneRow({ m, index, colour }: { m: Milestone; index: number; colou
         <span style={{ background: "rgba(255,255,255,0.18)", color: "#fff", fontFamily: FONT, fontWeight: 800, fontSize: 13, letterSpacing: "-0.2px", padding: "5px 12px", borderRadius: 6, border: "1px solid rgba(255,255,255,0.25)" }}>
           {m.year}
         </span>
-        <span style={{ background: "rgba(255,255,255,0.14)", color: "rgba(255,255,255,0.92)", fontFamily: FONT, fontSize: 10, fontWeight: 700, letterSpacing: "1.2px", textTransform: "uppercase", padding: "4px 10px", borderRadius: 100 }}>
-          {m.tag}
-        </span>
       </div>
       <h3 style={{ fontFamily: FONT, fontSize: 24, fontWeight: 900, color: "#fff", letterSpacing: "-0.4px", lineHeight: 1.2, margin: "0 0 14px" }}>
         {m.title}
