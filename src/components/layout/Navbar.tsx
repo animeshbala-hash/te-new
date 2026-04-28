@@ -50,7 +50,7 @@ function getNavBg(pathname: string): string {
   // About (main) — steel blue
   if (pathname === "/about") return "rgba(30,56,110,0.82)";
   // Events — slate blue
-  if (pathname.startsWith("/about/events")) return "rgba(24,44,88,0.85)";
+  if (pathname.startsWith("/about/events")) return "rgba(28,28,36,0.88)";
   // About catch-all (sub-pages not explicitly listed)
   if (pathname.startsWith("/about")) return "rgba(28,52,90,0.82)";
   // TSM — olive
@@ -314,7 +314,7 @@ const Navbar = ({
               </span>
               <div className={`${panelCls} w-64`}>
                 <span onClick={() => onNavigate("about")} className={itemCls}>
-                  About Tata Engage
+                  TE Vision &amp; Mission
                 </span>
                 <span onClick={() => onNavigate("about-gcso")} className={itemCls}>
                   Letter from GCSO
