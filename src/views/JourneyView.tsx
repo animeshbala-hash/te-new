@@ -182,7 +182,7 @@ function MilestoneRow({ m, index, colour }: { m: Milestone; index: number; colou
 
   const PhotoPanel = (
     <div style={{ position: "relative", overflow: "hidden", background: colour, minHeight: 320 }}>
-      <img src={m.photo} alt={m.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", position: "absolute", inset: 0 }} />
+      <img src={m.photo} alt={m.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%", display: "block", position: "absolute", inset: 0 }} />
       <div style={{ position: "absolute", inset: 0, background: `linear-gradient(${textOnLeft ? "to left" : "to right"}, ${colour}88 0%, ${colour}22 55%, transparent 100%)` }} />
       <div style={{ position: "absolute", bottom: 18, left: 20, right: 20, display: "flex", alignItems: "center", gap: 10 }}>
         <span style={{ background: "rgba(13,27,62,0.78)", backdropFilter: "blur(6px)", color: "#fff", fontFamily: FONT, fontSize: 10, fontWeight: 700, letterSpacing: "1.6px", textTransform: "uppercase", padding: "6px 12px", borderRadius: 4 }}>
