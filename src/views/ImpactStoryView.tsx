@@ -193,11 +193,12 @@ export default function ImpactStoryView() {
                   </p>
                 ))}
                 {sec.bullets && sec.bullets.length > 0 && (
-                  <ul style={{ margin: "0 0 24px", paddingLeft: 22 }}>
+                  <ul style={{ margin: "0 0 24px", paddingLeft: 22, listStyleType: "disc" }}>
                     {sec.bullets.map((b, bi) => (
                       <li key={bi} style={{
                         fontFamily: FONT, fontSize: 16, color: "#374151",
                         lineHeight: 1.75, margin: "0 0 12px", fontWeight: 400,
+                        listStylePosition: "outside",
                       }}>
                         {b}
                       </li>
