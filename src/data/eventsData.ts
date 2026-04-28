@@ -24,7 +24,7 @@ export const EVENTS: EventEntry[] = [
     location: "Busan, Republic of Korea",
     excerpt:
       "1,500+ volunteer leaders from 90 countries. Tata Sustainability Group represented at the global forum themed 'People Power: Creating a Sustainable Future through Volunteering.'",
-    accentColor: "#333399",
+    accentColor: "#1E6BB8",
     heroImage: iave24Hero,
   },
   {
@@ -57,7 +57,7 @@ export const EVENTS: EventEntry[] = [
     location: "Abu Dhabi",
     excerpt:
       "Tata Sustainability Group participated as a panellist at the global volunteering forum, sharing the Group's approach to embedding scale and quality in volunteering.",
-    accentColor: "#333399",
+    accentColor: "#1E6BB8",
     heroImage: iavePanel,
   },
 ];
