@@ -14,18 +14,8 @@ export interface EventEntry {
   heroImage: string;
 }
 
+// Ordered newest → oldest
 export const EVENTS: EventEntry[] = [
-  {
-    slug: "volcon-2024",
-    title: "TATA VOLCON 2024",
-    tag: "VOLCON 2024",
-    date: "March 2024",
-    location: "Taj Mahal Palace, Mumbai",
-    excerpt:
-      "170 Tata leaders, volunteering leads, and champions came together to celebrate a million hours and chart the Group's volunteering future.",
-    accentColor: "#7C3ABD",
-    heroImage: volconChacko,
-  },
   {
     slug: "iave-2024",
     title: "27th IAVE World Volunteer Conference",
@@ -38,15 +28,15 @@ export const EVENTS: EventEntry[] = [
     heroImage: iave24Hero,
   },
   {
-    slug: "iave-2022",
-    title: "26th IAVE World Volunteer Conference",
-    tag: "IAVE 2022",
-    date: "October 2022",
-    location: "Abu Dhabi",
+    slug: "volcon-2024",
+    title: "TATA VOLCON 2024",
+    tag: "VOLCON 2024",
+    date: "March 2024",
+    location: "Taj Mahal Palace, Mumbai",
     excerpt:
-      "Tata Sustainability Group participated as a panellist at the global volunteering forum, sharing the Group's approach to embedding scale and quality in volunteering.",
-    accentColor: "#333399",
-    heroImage: iavePanel,
+      "170 Tata leaders, volunteering leads, and champions came together to celebrate a million hours and chart the Group's volunteering future.",
+    accentColor: "#7C3ABD",
+    heroImage: volconChacko,
   },
   {
     slug: "tsc-2022",
@@ -58,5 +48,16 @@ export const EVENTS: EventEntry[] = [
       "200+ leaders and sustainability professionals deliberated on embedding quality and scale in volunteering — on the path to 4 per capita volunteering hours by 2025.",
     accentColor: "#5B21B6",
     heroImage: tsc22Chairman,
+  },
+  {
+    slug: "iave-2022",
+    title: "26th IAVE World Volunteer Conference",
+    tag: "IAVE 2022",
+    date: "October 2022",
+    location: "Abu Dhabi",
+    excerpt:
+      "Tata Sustainability Group participated as a panellist at the global volunteering forum, sharing the Group's approach to embedding scale and quality in volunteering.",
+    accentColor: "#333399",
+    heroImage: iavePanel,
   },
 ];
