@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Linkedin, Twitter, Globe } from "lucide-react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 
