@@ -274,7 +274,7 @@ export default function ImpactStoryView() {
               if (slots.includes(i) && photoIdx < photos.length) {
                 const p = photos[photoIdx++];
                 out.push(
-                  <StoryImage key={`photo-${i}`} src={p.src || undefined} caption={p.caption} height={300} />
+                  <StoryImage key={`photo-${i}`} src={p.src || undefined} caption={p.caption} />
                 );
               }
             });
