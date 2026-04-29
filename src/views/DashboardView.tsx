@@ -198,9 +198,6 @@ const RESOURCES = [
   { id: "stories", label: "Stories",  desc: "Volunteer experiences and community impact narratives",   count: "94 stories",  accentColor: "#65A30D",  pastel: "#F7FEE7",  photo: imgStories },
   { id: "events",  label: "Events",   desc: "VolCon, Volympics and upcoming community gatherings",     count: "12 upcoming", accentColor: "#1A6B3C",  pastel: "#E6F5EE",  photo: imgEvents  },
   { id: "emodule", label: "E-Module", desc: "ProEngage orientation, NGO readiness kit and dos & don'ts", count: "5 modules", accentColor: "#C8850A",  pastel: "#FEF6E4",  photo: imgEModule },
-  { id: "guidelines", label: "Volunteering Guidelines", desc: "Principles and responsibilities for all Tata volunteers", count: "11 guidelines", accentColor: "#333399", pastel: "#EEF0FF", photo: imgEModule },
-  { id: "conduct",    label: "Code of Conduct",          desc: "Standards of behaviour expected of every volunteer",   count: "11 principles", accentColor: "#0D7C52", pastel: "#E6F5EE", photo: imgEModule },
-  { id: "dr-training", label: "DR Core Volunteer Training", desc: "Become a trained Tata disaster response core volunteer", count: "Apply now", accentColor: "#E8401C", pastel: "#FFF0EE", photo: imgEModule },
 ];
 
 const STAT_TOOLTIPS: Record<string, string> = {
@@ -1661,9 +1658,6 @@ export default function DashboardView() {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
                 {RESOURCES.map(r => <ResourceCard key={r.id} r={r} onClick={() => {
                   if (r.id === "emodule") { setShowOrientationModal(true); }
-                  else if (r.id === "guidelines") { navigate("/volunteering-guidelines"); }
-                  else if (r.id === "conduct") { navigate("/code-of-conduct"); }
-                  else if (r.id === "dr-training") { navigate("/disaster-response"); setTimeout(() => document.getElementById("dr-training")?.scrollIntoView({ behavior: "smooth" }), 300); }
                   else { navigate("/media"); }
                 }} />)}
               </div>
