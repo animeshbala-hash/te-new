@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 import tataEngageLogoNoBg from "@/assets/tata-engage-logo-nobg.png";
 import { useAppContext } from "@/context/AppContext";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
@@ -46,7 +46,6 @@ const Footer = () => {
                 { Icon: Linkedin, label: "LinkedIn" },
                 { Icon: Instagram, label: "Instagram" },
                 { Icon: Facebook, label: "Facebook" },
-                { Icon: Twitter, label: "Twitter" },
               ].map(({ Icon, label }) => (
                 <button key={label} aria-label={label}
                   style={{ width: 34, height: 34, borderRadius: "50%", border: "1px solid rgba(255,255,255,0.16)",
