@@ -7,7 +7,7 @@ import volconHero from "@/assets/events/volcon-2024-panel.png";
 const ACCENT_NAVY = "#0D1B3E";
 const B_INDIGO    = "#333399";
 const FONT        = "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif";
-const ACCENT      = "#5B21B6";   // Events page accent — deep purple
+const ACCENT      = "#135EA9";   // Events page accent — blue
 
 const DIAG: React.CSSProperties = {
   position: "absolute", inset: 0,

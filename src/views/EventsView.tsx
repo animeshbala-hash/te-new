@@ -26,7 +26,7 @@ const ACCENT_NAVY = "#0D1B3E";
 const B_INDIGO    = "#333399";
 const FONT        = "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif";
 
-const EVENT_ACCENT = "#5B21B6";  // Single purple accent for all events
+const EVENT_ACCENT = "#135EA9";  // Single blue accent for all events
 const TSC_ACCENT  = EVENT_ACCENT;
 const VOL_ACCENT  = EVENT_ACCENT;
 const IAVE_ACCENT = EVENT_ACCENT;
