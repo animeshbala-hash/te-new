@@ -24,14 +24,22 @@ const B_YELLOW    = "#F79425";
 
 const FONT = "'DM Sans', 'Noto Sans', ui-sans-serif, system-ui, sans-serif";
 
-// ── 5 colours from HomeSections JourneySection — cycling across milestones ───
-const PALETTE = [
-  "#135EA9", // deep blue
-  "#F4838A", // salmon pink
-  "#00A896", // teal
-  "#307FE2", // mid blue
-  "#803998", // purple
-];
+// ── Colours pinned to match HomeSections milestone tiles exactly ──────────────
+// Mapped: FY2015=#135EA9, FY2017=#307FE2, FY2019=#00A896, FY2022=#803998, FY2025=#F4838A
+// Unmapped years filled with palette colours keeping variety
+const MILESTONE_COLOURS: Record<string, string> = {
+  fy2015: "#135EA9",
+  fy2016: "#00A896",
+  fy2017: "#307FE2",
+  fy2018: "#F4838A",
+  fy2019: "#00A896",
+  fy2020: "#135EA9",
+  fy2021: "#803998",
+  fy2022: "#803998",
+  fy2023: "#307FE2",
+  fy2024: "#F4838A",
+  fy2025: "#F4838A",
+};
 
 // ── Timeline data — exact approved copy ──────────────────────────────────────
 const MILESTONES = [
@@ -262,8 +270,8 @@ export default function JourneyView() {
       {/* ── Timeline ── */}
       <div style={{ maxWidth: 1080, margin: "0 auto", padding: "72px 32px 24px" }}>
         {MILESTONES.map((m, i) => {
-          const colour     = PALETTE[i % PALETTE.length];
-          const nextColour = PALETTE[(i + 1) % PALETTE.length];
+          const colour     = MILESTONE_COLOURS[m.key] ?? "#135EA9";
+          const nextColour = MILESTONE_COLOURS[MILESTONES[Math.min(i + 1, MILESTONES.length - 1)].key] ?? "#135EA9";
           const isLast     = i === MILESTONES.length - 1;
           return (
             <div key={m.key}>
@@ -277,7 +285,7 @@ export default function JourneyView() {
       {/* ── CTA strip ── */}
       <div style={{ background: B_TICKER, padding: "72px 48px", marginTop: 64, position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(135deg, rgba(255,255,255,0.022) 0px, rgba(255,255,255,0.022) 1px, transparent 1px, transparent 28px)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", top: "-60px", right: "-60px", width: 360, height: 360, borderRadius: "50%", background: `radial-gradient(circle, ${PALETTE[2]}20 0%, transparent 70%)`, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: "-60px", right: "-60px", width: 360, height: 360, borderRadius: "50%", background: `radial-gradient(circle, ${MILESTONE_COLOURS["fy2019"]}20 0%, transparent 70%)`, pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 1, maxWidth: 620, margin: "0 auto", textAlign: "center" }}>
           <p style={{ fontFamily: FONT, fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 14 }}>
             The legacy continues with you
