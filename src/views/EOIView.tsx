@@ -8,9 +8,9 @@ import eoiBelowImg from "@/assets/banner_photos/EOI below inner banner.jpg";
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
 const B_MUSTARD    = "#C8940A";
-const COLOUR       = "#333399"; // B_INDIGO
-const COLOUR_MID   = "#252573";
-const COLOUR_LIGHT = "#EEF0FF";
+const COLOUR       = "#F4838A";  // EOEO pink
+const COLOUR_MID   = "#C85E64";
+const COLOUR_LIGHT = "#FEF0F1";
 
 const SECTIONS = [
   { id: "eoi-overview", label: "Overview"            },
@@ -74,7 +74,7 @@ export default function EOIView() {
             </p>
             <div style={{ display: "flex", gap: 12 }}>
               <button onClick={() => document.getElementById("eoi-overview")?.scrollIntoView({ behavior: "smooth" })}
-                style={{ background: B_MUSTARD, color: "#fff", border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
+                style={{ background: "#F5A623", color: "#0D1B3E", border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
                 Learn more →
               </button>
 
@@ -82,9 +82,6 @@ export default function EOIView() {
           </div>
         </div>
 
-        <div style={{ position: "absolute", bottom: 100, right: 56, background: "rgba(0,0,0,0.28)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: 100, padding: "7px 18px", fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff" }}>
-          Personal · Flexible · Empowering
-        </div>
       </div>
 
       {/* ════════════════════ OVERVIEW ════════════════════ */}

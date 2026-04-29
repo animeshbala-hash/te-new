@@ -156,7 +156,7 @@ function MilestoneRow({ m, index, colour }: { m: Milestone; index: number; colou
   const TextPanel = (
     <div style={{
       background: colour,
-      padding: "44px 44px 40px",
+      padding: "40px 44px",
       display: "flex", flexDirection: "column", justifyContent: "center",
       position: "relative",
       borderTop: "4px solid rgba(255,255,255,0.35)",
@@ -180,21 +180,20 @@ function MilestoneRow({ m, index, colour }: { m: Milestone; index: number; colou
   );
 
   const PhotoPanel = (
-    <div style={{ background: colour, display: "flex", alignItems: "stretch" }}>
+    <div style={{ background: colour, display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
       <img src={m.photo} alt={m.title} style={{
         width: "100%",
         height: "100%",
         objectFit: "contain",
         objectPosition: "center",
         display: "block",
-        background: colour,
       }} />
     </div>
   );
 
   return (
     <section id={m.key} data-milestone-row style={{ position: "relative", scrollMarginTop: 80 }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderRadius: 22, overflow: "hidden", boxShadow: "0 18px 44px rgba(13,27,62,0.10), 0 2px 6px rgba(13,27,62,0.04)" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderRadius: 22, overflow: "hidden", boxShadow: "0 18px 44px rgba(13,27,62,0.10), 0 2px 6px rgba(13,27,62,0.04)", minHeight: 360 }}>
         {textOnLeft ? <>{TextPanel}{PhotoPanel}</> : <>{PhotoPanel}{TextPanel}</>}
       </div>
     </section>

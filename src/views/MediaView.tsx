@@ -20,8 +20,8 @@ import photo10 from "@/assets/homepagebanner/JCAPCPL22.JPG";
 import photo11 from "@/assets/homepagebanner/20240729_114952.jpg";
 import photo12 from "@/assets/homepagebanner/4. Mithapur_Eco-Tourism_LEEPEN_Harivan Farm_2022-23_Lipan Work (5).jpeg";
 
-const B_INDIGO = "#333399";
-const B_BLUE = "#333399";
+const B_INDIGO = "#135EA9";
+const B_BLUE = "#135EA9";
 const ACCENT_NAVY = "#0D1B3E";
 
 const TABS = ["Impact Stories", "Photos", "Videos", "Social Media"] as const;
@@ -153,7 +153,7 @@ export default function MediaView() {
             key={t}
             onClick={() => setActiveTab(t)}
             style={{
-              background: activeTab === t ? "#333399" : "#f5f5fa",
+              background: activeTab === t ? "#135EA9" : "#f5f5fa",
               color: activeTab === t ? "#fff" : "#6b6b7a",
               border: "none", borderRadius: 100, padding: "8px 20px", fontWeight: 600, fontSize: 14, cursor: "pointer",
             }}
@@ -265,7 +265,7 @@ export default function MediaView() {
             {SOCIAL_POSTS.map((post, i) => {
               const IconComp = post.Icon;
               return (
-                <div key={i} style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 14, padding: 20, transition: "transform 0.2s, box-shadow 0.2s" }} {...cardHover}>
+                <div key={i} style={{ background: "#fff", border: `1px solid ${B_INDIGO}`, borderRadius: 14, padding: 20, transition: "transform 0.2s, box-shadow 0.2s" }} {...cardHover}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                     <div style={{ width: 32, height: 32, borderRadius: "50%", background: post.iconBg, display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <IconComp size={16} color="#fff" />

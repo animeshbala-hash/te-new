@@ -257,9 +257,6 @@ export default function AboutProEngageView() {
           </div>
         </div>
 
-        <div style={{ position: "absolute", bottom: 32, right: 56, background: "rgba(0,0,0,0.22)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 100, padding: "7px 18px", fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.75)" }}>
-          Skill-based · Bi-annual · Year-round
-        </div>
       </div>
 
       {/* ════════════════════ OVERVIEW ════════════════════ */}

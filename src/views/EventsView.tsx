@@ -183,16 +183,25 @@ function MediaBlock({ title, body, media, mediaLeft = false, accent }: {
 function PullQuote({ text, attribution, accent }: {
   text: string; attribution: string; accent: string;
 }) {
+  // Split "Name · Role" into parts if present
+  const parts = attribution.split(" · ");
+  const name = parts[0];
+  const role = parts.slice(1).join(" · ");
   return (
-    <div style={{ background: accent, borderRadius: 12, padding: "28px 32px", margin: "28px 0" }}>
-      <div style={{ fontFamily: "Georgia,serif", fontSize: 32, lineHeight: 0.7,
+    <div style={{ background: accent, borderRadius: 12, padding: "20px 24px", margin: "28px 0",
+      display: "flex", flexDirection: "column", minHeight: 0 }}>
+      <div style={{ fontFamily: "Georgia,serif", fontSize: 28, lineHeight: 0.7,
         color: "rgba(255,255,255,0.25)", marginBottom: 10 }}>"</div>
-      <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 16,
-        fontStyle: "italic", color: "#fff", lineHeight: 1.72, margin: "0 0 16px" }}>{text}</p>
-      <p style={{ fontFamily: FONT, fontSize: 11, fontWeight: 700, letterSpacing: "1px",
-        textTransform: "uppercase", color: "rgba(255,255,255,0.75)", margin: 0 }}>
-        {attribution}
-      </p>
+      <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 15,
+        fontStyle: "italic", color: "#fff", lineHeight: 1.68, margin: "0 0 16px", flex: 1 }}>{text}</p>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.2)", paddingTop: 12, marginTop: "auto" }}>
+        <p style={{ fontFamily: FONT, fontSize: 13, fontWeight: 800, color: "#fff", margin: "0 0 2px" }}>
+          {name}
+        </p>
+        {role && (
+          <p style={{ fontFamily: FONT, fontSize: 11, color: "rgba(255,255,255,0.7)", margin: 0 }}>{role}</p>
+        )}
+      </div>
     </div>
   );
 }
@@ -336,7 +345,7 @@ function Volcon2024({ onBack }: { onBack: () => void }) {
         eyebrow="Tata Engage · VOLCON"
         title="TATA VOLCON 2024"
         subtitle="Celebrating a Million Hours — Taj Mahal Palace, Mumbai · 6 March 2024"
-        heroImage={volconAwardsTCS} />
+        heroImage={volconPanel} />
       <ArticleBody accent={accent}>
         <Breadcrumb onBack={onBack} />
 

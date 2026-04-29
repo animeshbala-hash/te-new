@@ -53,12 +53,13 @@ function PullQuote({ text, attribution, role, accent }: {
   text: string; attribution: string; role?: string; accent: string;
 }) {
   return (
-    <div style={{ background: accent, borderRadius: 12, padding: "28px 32px", margin: "28px 0" }}>
-      <div style={{ fontFamily: "Georgia,serif", fontSize: 32, lineHeight: 0.7,
+    <div style={{ background: accent, borderRadius: 12, padding: "20px 24px", margin: "28px 0",
+      display: "flex", flexDirection: "column", minHeight: 0 }}>
+      <div style={{ fontFamily: "Georgia,serif", fontSize: 28, lineHeight: 0.7,
         color: "rgba(255,255,255,0.25)", marginBottom: 10 }}>"</div>
-      <p style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 16,
-        fontStyle: "italic", color: "#fff", lineHeight: 1.72, margin: "0 0 16px" }}>{text}</p>
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.2)", paddingTop: 12 }}>
+      <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 15,
+        fontStyle: "italic", color: "#fff", lineHeight: 1.68, margin: "0 0 16px", flex: 1 }}>{text}</p>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.2)", paddingTop: 12, marginTop: "auto" }}>
         <p style={{ fontFamily: FONT, fontSize: 13, fontWeight: 800, color: "#fff", margin: "0 0 2px" }}>
           {attribution}
         </p>
@@ -320,7 +321,8 @@ export default function ImpactStoryView() {
             </p>
             <div style={{ width: 36, height: 2, borderRadius: 2, background: accent, marginBottom: 28 }} />
             <div style={{ display: "grid",
-              gridTemplateColumns: story.quotes.length === 1 ? "1fr" : "1fr 1fr", gap: 20 }}>
+              gridTemplateColumns: story.quotes.length === 1 ? "1fr" : "1fr 1fr", gap: 20,
+              alignItems: "stretch" }}>
               {story.quotes.map((q, i) => (
                 <PullQuote key={i} text={q.text} attribution={q.attribution} role={q.role} accent={accent} />
               ))}

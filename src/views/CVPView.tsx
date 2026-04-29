@@ -9,9 +9,9 @@ import cvpSection3Img from "@/assets/homepagebanner/General_Titan Company Ltd_01
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const ACCENT_NAVY  = "#0D1B3E";
 const B_YELLOW     = "#F79425";
-const COLOUR       = "#5B21B6";  // PE purple
-const COLOUR_DARK  = "#3b1278";
-const COLOUR_LIGHT = "#F3EEFF";
+const COLOUR       = "#135EA9";  // Homepage B_BLUE
+const COLOUR_DARK  = "#0D4A8A";
+const COLOUR_LIGHT = "#E8F2FF";
 
 const SECTIONS = [
   { id: "cvp-overview", label: "Overview"           },
@@ -78,9 +78,6 @@ export default function CVPView() {
               Learn more
             </button>
           </div>
-        </div>
-        <div style={{ position: "absolute", bottom: 32, right: 56, background: "rgba(0,0,0,0.22)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 100, padding: "7px 18px", fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff" }}>
-          Company-led · Context-driven · Year-round
         </div>
       </div>
 

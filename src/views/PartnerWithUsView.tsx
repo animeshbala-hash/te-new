@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Twitter, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 
@@ -571,7 +571,7 @@ function ContactSection() {
 // ── 5. Stay Connected (white) ─────────────────────────────────────────────────
 function StayConnectedSection() {
   const socialChannels = [
-    { handle: "@TataEngage", platform: "Twitter", note: "Latest news and updates from Tata Engage", time: "Follow us", Icon: Twitter, iconBg: "#0EA5E9", url: "#" },
+    { handle: "Tata Engage", platform: "Facebook", note: "Latest news and updates from Tata Engage", time: "Follow us", Icon: Facebook, iconBg: "#1877F2", url: "#" },
     { handle: "@tata_engage", platform: "Instagram", note: "Stories, photos and volunteering moments from across the Group", time: "Follow us", Icon: Instagram, iconBg: "#EC4899", url: "#" },
     { handle: "Tata Engage", platform: "LinkedIn", note: "Professional updates, programme announcements and impact stories", time: "Follow us", Icon: Linkedin, iconBg: "#1D4ED8", url: "#" },
   ];
@@ -595,7 +595,7 @@ function StayConnectedSection() {
           {socialChannels.map((ch, i) => {
             const IconComp = ch.Icon;
             return (
-              <a key={i} href={ch.url} style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 14, padding: 20, textDecoration: "none", color: "inherit", display: "block", transition: "transform 0.2s, box-shadow 0.2s" }}
+              <a key={i} href={ch.url} style={{ background: "#fff", border: `1px solid ${COLOUR}`, borderRadius: 14, padding: 20, textDecoration: "none", color: "inherit", display: "block", transition: "transform 0.2s, box-shadow 0.2s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "none"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none"; }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>

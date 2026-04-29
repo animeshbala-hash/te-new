@@ -274,7 +274,7 @@ function ProgrammesSection() {
           ))}
         </div>
 
-        <div style={{ marginTop: 20, background: "#fff", border: "1px solid #e8eef0", borderRadius: 16, padding: "24px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
+        <div style={{ marginTop: 20, background: "#fff", border: "1px solid #1E6BB8", borderRadius: 16, padding: "24px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
           <div>
             <div style={{ fontFamily: FONT, fontSize: 15, fontWeight: 800, color: NAVY, marginBottom: 4 }}>Are you an NGO?</div>
             <div style={{ fontFamily: FONT, fontSize: 14, color: "#64748B" }}>Partner with us to access skilled Tata volunteers for your projects.</div>

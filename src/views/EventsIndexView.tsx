@@ -76,23 +76,6 @@ export default function EventsIndexView() {
             From TSG's flagship Sustainability Conclave to the global IAVE forum — moments where leaders, champions and the community come together.
           </p>
 
-          {/* Stat pills */}
-          <div style={{ display: "flex", gap: 12, marginTop: 32, flexWrap: "wrap" }}>
-            {[
-              { num: `${EVENTS.length}`, label: "Events documented" },
-              { num: "4+", label: "Years" },
-              { num: "1,500+", label: "Global participants" },
-            ].map((s, i) => (
-              <div key={i} style={{ background: "rgba(255,255,255,0.1)",
-                border: "1px solid rgba(255,255,255,0.18)", borderRadius: 8,
-                padding: "8px 16px" }}>
-                <div style={{ fontFamily: FONT, fontSize: 20, fontWeight: 900,
-                  color: "#fff", lineHeight: 1 }}>{s.num}</div>
-                <div style={{ fontFamily: FONT, fontSize: 11, color: "rgba(255,255,255,0.6)",
-                  marginTop: 3 }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 

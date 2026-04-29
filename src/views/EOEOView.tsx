@@ -5,9 +5,9 @@ import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import eoeoHeroImg from "@/assets/homepagebanner/Westside Store employees_Paint an Orphanage - Trent.JPG";
 
 const ACCENT_NAVY  = "#0D1B3E";
-const COLOUR       = "#F4838A";  // Team pink
-const COLOUR_MID   = "#C85E64";
-const COLOUR_LIGHT = "#FEF0F1";
+const COLOUR       = "#007A8A";  // DR teal
+const COLOUR_MID   = "#005F6B";
+const COLOUR_LIGHT = "#E6F5F7";
 
 const SECTIONS = [
   { id: "eoeo-about",     label: "About"          },
@@ -91,7 +91,7 @@ export default function EOEOView() {
               <a
                 href="https://tcsempowers.tcsapps.com/apac2/alp/"
                 target="_blank" rel="noopener noreferrer"
-                style={{ background: "#fff", color: COLOUR_MID, border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, boxShadow: "0 4px 20px rgba(0,0,0,0.25)", textDecoration: "none", display: "inline-block" }}
+                style={{ background: "#F5A623", color: "#0D1B3E", border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, boxShadow: "0 4px 20px rgba(0,0,0,0.25)", textDecoration: "none", display: "inline-block" }}
               >
                 Become a Literacy Champion →
               </a>
@@ -105,9 +105,6 @@ export default function EOEOView() {
           </div>
         </div>
 
-        <div style={{ position: "absolute", bottom: 100, right: 56, background: "rgba(0,0,0,0.28)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: 100, padding: "7px 18px", fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff" }}>
-          Digital · Financial · Functional Literacy
-        </div>
       </div>
 
       {/* ABOUT */}
@@ -199,7 +196,7 @@ export default function EOEOView() {
             {STEPS.map((s, i) => (
               <React.Fragment key={s.num}>
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 12px" }}>
-                  <div style={{ width: 60, height: 60, borderRadius: "50%", background: i === 0 ? COLOUR : "#fff", border: "2px solid #F4838A", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, color: i === 0 ? "#fff" : COLOUR, marginBottom: 20, flexShrink: 0, boxShadow: i === 0 ? "0 4px 16px #F4838A50" : "0 2px 8px rgba(0,0,0,0.06)" }}>{s.num}</div>
+                  <div style={{ width: 60, height: 60, borderRadius: "50%", background: i === 0 ? COLOUR : "#fff", border: "2px solid #007A8A", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, color: i === 0 ? "#fff" : COLOUR, marginBottom: 20, flexShrink: 0, boxShadow: i === 0 ? "0 4px 16px #007A8A50" : "0 2px 8px rgba(0,0,0,0.06)" }}>{s.num}</div>
                   <div style={{ fontSize: 14, fontWeight: 800, color: ACCENT_NAVY, marginBottom: 8, lineHeight: 1.25 }}>{s.title}</div>
                   <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7 }}>{s.desc}</div>
                 </div>

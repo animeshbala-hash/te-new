@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Twitter, Linkedin, Globe } from "lucide-react";
+import { Facebook, Linkedin, Globe } from "lucide-react";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import contactHeroImg from "@/assets/tata-infinit.jpg";
 
@@ -103,7 +103,7 @@ function TouchSection() {
 // ── Stay Connected ────────────────────────────────────────────────────────────
 function SocialSection() {
   const channels = [
-    { handle: "@TataEngage", platform: "Twitter", note: "Real-time updates on TVW editions, ProEngage openings, and volunteering stories from across the Tata Group.", time: "Follow us", Icon: Twitter, iconBg: "#0EA5E9", url: "#" },
+    { handle: "Tata Engage", platform: "Facebook", note: "Real-time updates on TVW editions, ProEngage openings, and volunteering stories from across the Tata Group.", time: "Follow us", Icon: Facebook, iconBg: "#1877F2", url: "#" },
     { handle: "Tata Engage", platform: "LinkedIn", note: "Stay updated on volunteering programmes, partner opportunities, and impact stories from across the Tata ecosystem.", time: "Follow us", Icon: Linkedin, iconBg: "#1D4ED8", url: "#" },
     { handle: "Tata Sustainability", platform: "Website", note: "Reach Tata Engage via the broader Tata Sustainability and Tata Group platforms for partner enquiries and ecosystem updates.", time: "Visit us", Icon: Globe, iconBg: "#0D1B3E", url: "#" },
   ];
@@ -124,7 +124,7 @@ function SocialSection() {
             const IconComp = ch.Icon;
             return (
               <a key={i} href={ch.url}
-                style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 14,
+                style={{ background: "#fff", border: `1px solid ${ACCENT}`, borderRadius: 14,
                   padding: 20, textDecoration: "none", color: "inherit", display: "block",
                   transition: "transform 0.2s, box-shadow 0.2s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
