@@ -55,13 +55,16 @@ function getNavBg(pathname: string): string {
   if (pathname.startsWith("/about")) return "rgba(28,52,90,0.82)";
   // TSM — olive
   if (pathname.startsWith("/tata-sustainability-month")) return "rgba(40,62,18,0.80)";
-  // EOEO — rose
-  if (pathname.startsWith("/eoeo")) return "rgba(100,40,48,0.80)";
-  // E-Waste, EOI, SPOC — indigo
-  if (pathname.startsWith("/ewaste") || pathname.startsWith("/eoi") || pathname.startsWith("/spoc/"))
+  // EOEO — DR teal
+  if (pathname.startsWith("/eoeo")) return "rgba(0,90,100,0.80)";
+  // EOI — pink; E-Waste, SPOC — indigo
+  if (pathname.startsWith("/eoi")) return "rgba(100,40,48,0.80)";
+  if (pathname.startsWith("/ewaste") || pathname.startsWith("/spoc/"))
     return "rgba(22,18,80,0.80)";
-  // Media
-  if (pathname.startsWith("/media")) return "rgba(28,40,80,0.80)";
+  // CVP — homepage blue
+  if (pathname.startsWith("/cvp")) return "rgba(10,70,140,0.80)";
+  // Media — homepage blue
+  if (pathname.startsWith("/media")) return "rgba(10,50,120,0.80)";
   // Volunteer hub + dashboard
   if (pathname.startsWith("/hub") || pathname.startsWith("/dashboard") || pathname.startsWith("/volunteer"))
     return "rgba(28,40,80,0.82)";
@@ -322,14 +325,14 @@ const Navbar = ({
                 <span onClick={() => onNavigate("journey")} className={itemCls}>
                   Our Journey
                 </span>
+                <span onClick={() => onNavigate("about-events")} className={itemCls}>
+                  Events
+                </span>
                 <span onClick={() => onNavigate("about-contact")} className={itemCls}>
                   Contact Us
                 </span>
                 <span onClick={() => onNavigate("about-team")} className={itemCls}>
                   Team
-                </span>
-                <span onClick={() => onNavigate("about-events")} className={itemCls}>
-                  Events
                 </span>
                 {isLoggedIn && (
                   <>
