@@ -107,7 +107,7 @@ function EventHero({ accent, eyebrow, title, subtitle, heroImage }: {
         background: "linear-gradient(160deg,rgba(8,12,22,0.82) 0%,rgba(8,12,22,0.60) 45%,rgba(8,12,22,0.22) 100%)" }} />
       <div style={DIAG} />
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto",
-        padding: "0 56px 56px", width: "100%" }}>
+        padding: "0 56px", width: "100%" }}>
         <p style={{ fontFamily: FONT, fontSize: 14, fontWeight: 700, letterSpacing: "1.8px",
           textTransform: "uppercase", color: "#ffffff", margin: "0 0 10px" }}>
           {eyebrow}
@@ -130,7 +130,7 @@ function ArticleBody({ accent, children }: { accent: string; children: React.Rea
   return (
     <div style={{ background: "#fff" }}>
       <div style={{ height: 3, background: accent }} />
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "56px 56px 80px" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "64px 56px 80px" }}>
         {children}
       </div>
     </div>
@@ -153,8 +153,7 @@ function Paras({ texts }: { texts: string[] }) {
 function SectionHead({ title, accent }: { title: string; accent: string }) {
   return (
     <h2 style={{ fontFamily: FONT, fontSize: 18, fontWeight: 800, color: ACCENT_NAVY,
-      letterSpacing: "-0.2px", margin: "40px 0 16px", paddingTop: 8,
-      borderTop: `2px solid ${accent}22` }}>{title}</h2>
+      letterSpacing: "-0.2px", margin: "40px 0 16px", paddingTop: 8 }}>{title}</h2>
   );
 }
 
@@ -251,7 +250,7 @@ function PhotoGrid({ images }: { images: { src: string; alt: string }[] }) {
 function OpeningParas({ texts, accent }: { texts: string[]; accent: string }) {
   return (
     <div style={{ background: `${accent}12`, borderLeft: `3px solid ${accent}`,
-      borderRadius: "0 10px 10px 0", padding: "20px 24px", margin: "0 0 40px" }}>
+      borderRadius: "0 10px 10px 0", padding: "20px 24px", margin: "0 0 36px" }}>
       {texts.map((t, i) => (
         <p key={i} style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 16,
           fontStyle: "italic", color: "#0D1B3E", lineHeight: 1.78,

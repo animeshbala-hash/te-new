@@ -43,8 +43,7 @@ function Paras({ texts }: { texts: string[] }) {
 function SectionHead({ title, accent }: { title: string; accent: string }) {
   return (
     <h2 style={{ fontFamily: FONT, fontSize: 18, fontWeight: 800, color: ACCENT_NAVY,
-      letterSpacing: "-0.2px", margin: "40px 0 16px", paddingTop: 8,
-      borderTop: `2px solid ${accent}22` }}>{title}</h2>
+      letterSpacing: "-0.2px", margin: "40px 0 16px", paddingTop: 8 }}>{title}</h2>
   );
 }
 
