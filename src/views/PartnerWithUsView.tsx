@@ -172,22 +172,6 @@ function Hero() {
           >
             Across the world, there are countless Tata professionals eager to volunteer their time and skills — and equally many civil society organisations doing impactful work that need the right support. Yet, meaningful volunteering opportunities often go unrealised simply because the right connections don't exist.
           </p>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              background: "rgba(255,255,255,0.12)",
-              border: "1px solid rgba(255,255,255,0.22)",
-              borderRadius: 12,
-              padding: "14px 22px",
-            }}
-          >
-            <div style={{ width: 8, height: 8, borderRadius: "50%", background: B_YELLOW, flexShrink: 0 }} />
-            <span style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 15, fontWeight: 600, color: "#fff" }}>
-              Tata Engage bridges this gap.
-            </span>
-          </div>
         </div>
       </div>
     </div>
@@ -595,7 +579,7 @@ function StayConnectedSection() {
           {socialChannels.map((ch, i) => {
             const IconComp = ch.Icon;
             return (
-              <a key={i} href={ch.url} style={{ background: "#fff", border: `1px solid ${COLOUR}`, borderRadius: 14, padding: 20, textDecoration: "none", color: "inherit", display: "block", transition: "transform 0.2s, box-shadow 0.2s" }}
+              <a key={i} href={ch.url} style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 14, padding: 20, textDecoration: "none", color: "inherit", display: "block", transition: "transform 0.2s, box-shadow 0.2s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "none"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none"; }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>

@@ -265,7 +265,7 @@ export default function MediaView() {
             {SOCIAL_POSTS.map((post, i) => {
               const IconComp = post.Icon;
               return (
-                <div key={i} style={{ background: "#fff", border: `1px solid ${B_INDIGO}`, borderRadius: 14, padding: 20, transition: "transform 0.2s, box-shadow 0.2s" }} {...cardHover}>
+                <div key={i} style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 14, padding: 20, transition: "transform 0.2s, box-shadow 0.2s" }} {...cardHover}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                     <div style={{ width: 32, height: 32, borderRadius: "50%", background: post.iconBg, display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <IconComp size={16} color="#fff" />
