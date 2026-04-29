@@ -9,7 +9,7 @@ import volconArjinder  from "@/assets/events/volcon-2024-arjinder.png";
 import volconMusic1    from "@/assets/events/volcon-2024-music1.png";
 import volconTribal    from "@/assets/events/volcon-2024-tribal-chefs.png";
 import iavePanel       from "@/assets/events/iave-2022-panel.png";
-import iave24Hero      from "@/assets/events/iave24-1.jpg";
+import iave24Hero      from "@/assets/events/iave24-hero.png";
 import iave24Img2      from "@/assets/events/iave24-2.jpg";
 import iave24Img3      from "@/assets/events/iave24-3.jpg";
 import iave24Img4      from "@/assets/events/iave24-4.png";
@@ -17,7 +17,7 @@ import iave24Img5      from "@/assets/events/iave24-5.png";
 import iave24Img6      from "@/assets/events/iave24-6.png";
 
 const ACCENT_NAVY = "#0D1B3E";
-const B_CVP       = "#1E6BB8";   // CVP blue accent for all events
+const B_CVP       = "#135EA9";   // Events accent — blue
 
 export interface EventPhoto {
   src: string;

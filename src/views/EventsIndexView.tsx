@@ -7,7 +7,7 @@ import volconHero from "@/assets/events/volcon-2024-panel.png";
 const ACCENT_NAVY = "#0D1B3E";
 const B_INDIGO    = "#333399";
 const FONT        = "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif";
-const ACCENT      = "#5B21B6";   // Events page accent — deep purple
+const ACCENT      = "#135EA9";   // Events page accent — blue
 
 const DIAG: React.CSSProperties = {
   position: "absolute", inset: 0,
@@ -102,7 +102,7 @@ export default function EventsIndexView() {
         {/* Sort bar */}
         <div style={{ display: "flex", alignItems: "center", gap: 8,
           marginBottom: 28, justifyContent: "flex-end" }}>
-          <span style={{ fontSize: 12, color: "#94a3b8", fontWeight: 600 }}>Sort:</span>
+          <span style={{ fontSize: 12, color: ACCENT_NAVY, fontWeight: 600 }}>Sort:</span>
           {(["newest", "oldest"] as const).map((opt) => (
             <button key={opt} onClick={() => setSort(opt)} style={{
               background: sort === opt ? B_INDIGO : "#f5f5fa",
@@ -150,7 +150,7 @@ export default function EventsIndexView() {
                     borderRadius: 4, textTransform: "uppercase", letterSpacing: "0.5px" }}>
                     {e.tag}
                   </span>
-                  <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 500 }}>
+                  <span style={{ fontSize: 11, color: ACCENT_NAVY, fontWeight: 500 }}>
                     {e.date}{e.location ? ` · ${e.location}` : ""}
                   </span>
                 </div>
