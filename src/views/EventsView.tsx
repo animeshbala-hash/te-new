@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 
@@ -506,8 +506,8 @@ const SECTIONS_NAV = [
 ];
 
 export default function EventsView() {
-  const [searchParams] = useSearchParams();
-  const id = searchParams.get("id") ?? undefined;
+  const params = useParams();
+  const id = params.slug;
   const navigate = useAppNavigate();
   const onBack = () => navigate("events-page");
 
