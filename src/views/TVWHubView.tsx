@@ -5,7 +5,7 @@ import { TVW_EVENTS } from "@/data/mockData";
 import { useAppContext } from "@/context/AppContext";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import { TickerBar } from "@/components/shared/HomeSections";
+
 import tvwHeroImg from "@/assets/banner_photos/TVW Inner Banner.JPG";
 import tvwVibeImg from "@/assets/banner_photos/TVW Inner Page below Banner.jpg";
 
@@ -321,9 +321,7 @@ const TVWHubView = () => {
   };
 
   return (
-    // FIX: removed overflow:hidden (was creating stacking context that constrained fixed TickerBar width → caused text wrapping)
-    // FIX: added paddingBottom:48 so last section content clears the fixed ticker
-    <div style={{ fontFamily: FONT, background: "#f7f8fc", minHeight: "100vh", paddingBottom: 48 }}>
+    <div style={{ fontFamily: FONT, background: "#f7f8fc", minHeight: "100vh" }}>
       <div style={{ height: 3, background: TVW_BLUE, width: "100%" }} />
       <SubPageDotRail sections={SECTIONS_NAV} accentColor={TVW_BLUE} />
 
@@ -412,8 +410,7 @@ const TVWHubView = () => {
       </div>
 
       {/* ══ TVW VIBE ══ */}
-      {/* FIX: removed overflow:hidden — it created a new stacking context that constrained the width of the fixed TickerBar, causing it to wrap */}
-      <section id="tvw-vibe" style={{ position:"relative" }}>
+      <section id="tvw-vibe" style={{ position:"relative",overflow:"hidden" }}>
         <img src={tvwVibeImg} alt="" style={{ position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center" }}/>
         <div style={{ position:"absolute",inset:0,background:"linear-gradient(105deg,rgba(8,12,22,0.90) 0%,rgba(8,12,22,0.75) 50%,rgba(8,12,22,0.55) 100%)" }}/>
         <div style={DIAG_TEXTURE}/>
@@ -499,7 +496,7 @@ const TVWHubView = () => {
         />
       )}
 
-      <TickerBar fixed />
+
     </div>
   );
 };
