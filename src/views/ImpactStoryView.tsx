@@ -6,7 +6,7 @@ import { IMPACT_STORIES } from "@/data/impactStoriesData";
 
 const ACCENT_NAVY = "#0D1B3E";
 const B_INDIGO    = "#333399";
-const FONT        = "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif";
+const FONT        = "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif";
 
 const DIAG: React.CSSProperties = {
   position: "absolute", inset: 0,

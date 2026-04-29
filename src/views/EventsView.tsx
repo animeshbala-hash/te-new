@@ -24,7 +24,7 @@ import eventsHeroImg from "@/assets/tce-2.jpg";
 
 const ACCENT_NAVY = "#0D1B3E";
 const B_INDIGO    = "#333399";
-const FONT        = "'Noto Sans','DM Sans',ui-sans-serif,system-ui,sans-serif";
+const FONT        = "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif";
 
 const EVENT_ACCENT = "#5B21B6";  // Single purple accent for all events
 const TSC_ACCENT  = EVENT_ACCENT;
