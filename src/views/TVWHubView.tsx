@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { Users, Search, Calendar, MapPin, CalendarDays, List, Check, Download, FileText, Camera, BookOpen, X } from "lucide-react";
+import { Search, Calendar, MapPin, CalendarDays, List, Check, Download, FileText, Camera, BookOpen, X, Upload, ChevronDown } from "lucide-react";
 
 import { TVW_EVENTS } from "@/data/mockData";
 import { useAppContext } from "@/context/AppContext";
+import { useAppNavigate } from "@/hooks/useAppNavigate";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import { TickerBar } from "@/components/shared/HomeSections";
 import tvwHeroImg from "@/assets/banner_photos/TVW Inner Banner.JPG";
 import tvwVibeImg from "@/assets/banner_photos/TVW Inner Page below Banner.jpg";
 
-// ── Tokens (aligned with ProEngageView) ───────────────────────────────────────
+// ── Tokens ────────────────────────────────────────────────────────────────────
 const B_YELLOW    = "#F5A623";
 const B_TEAL      = "#00A896";
 const ACCENT_NAVY = "#0D1B3E";
@@ -36,13 +37,15 @@ const VIBE_STORIES = [
   { location: "Chennai", caption: "Blood donation camp organised with Rotary Club partnership.",               status: "Under Review" },
 ];
 
+const VIBE_CATEGORIES = ["Education", "Environment", "Health", "Animal Welfare", "Disaster Relief", "Community Development", "Other"];
+
 const RESOURCES = [
-  { title: "Campaign Kit",           desc: "Posters, banners and social media templates for TVW 2025.", icon: FileText, photo: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80" },
-  { title: "Volunteer Handbook",     desc: "Guidelines, FAQs and best practices for first-time volunteers.", icon: BookOpen, photo: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&q=80" },
-  { title: "Photo Submission Guide", desc: "How to capture, tag and submit your volunteering photos.",    icon: Camera,   photo: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" },
+  { title: "Campaign Kit",           desc: "Posters, banners and social media templates for TVW 2025.", icon: FileText, photo: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80", action: "download" as const },
+  { title: "Volunteer Handbook",     desc: "Guidelines, FAQs and best practices for first-time volunteers.", icon: BookOpen, photo: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&q=80", action: "navigate" as const },
+  { title: "Photo Submission Guide", desc: "How to capture, tag and submit your volunteering photos.",    icon: Camera,   photo: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80", action: "download" as const },
 ];
 
-// ── Drawer Shell (matches DashboardView / SPOCDashboardView) ──────────────────
+// ── Shared Drawer Shell ───────────────────────────────────────────────────────
 function DrawerShell({ onClose, title, subtitle, accentTag, children }: {
   onClose: () => void; title: string; subtitle?: string; accentTag?: string; children: React.ReactNode;
 }) {
@@ -51,9 +54,10 @@ function DrawerShell({ onClose, title, subtitle, accentTag, children }: {
       style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(13,27,62,0.45)", backdropFilter: "blur(2px)" }}
       onClick={e => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div style={{ background: "#fff", borderRadius: 16, width: "min(540px,92vw)", overflow: "hidden", animation: "drawerScale 0.18s ease-out forwards", boxShadow: "0 24px 64px rgba(0,0,0,0.22)" }}>
+      <div style={{ background: "#fff", borderRadius: 16, width: "min(540px,92vw)", maxHeight: "88vh", overflow: "hidden", display: "flex", flexDirection: "column", animation: "drawerScale 0.18s ease-out forwards", boxShadow: "0 24px 64px rgba(0,0,0,0.22)" }}>
         <style>{`@keyframes drawerScale{from{transform:scale(0.97);opacity:0}to{transform:scale(1);opacity:1}}`}</style>
-        <div style={{ background: ACCENT_NAVY, padding: "22px 28px" }}>
+        {/* Header */}
+        <div style={{ background: ACCENT_NAVY, padding: "22px 28px", flexShrink: 0 }}>
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
             <div>
               {accentTag && (
@@ -69,9 +73,116 @@ function DrawerShell({ onClose, title, subtitle, accentTag, children }: {
             </button>
           </div>
         </div>
-        <div style={{ padding: "24px 28px" }}>{children}</div>
+        {/* Scrollable body */}
+        <div style={{ padding: "24px 28px", overflowY: "auto", flex: 1 }}>{children}</div>
       </div>
     </div>
+  );
+}
+
+// ── Vibe Submission Drawer ────────────────────────────────────────────────────
+function VibeSubmitDrawer({ onClose, onSubmit }: { onClose: () => void; onSubmit: () => void }) {
+  const [form, setForm] = useState({ location: "", category: "", caption: "", impact: "", fileName: "" });
+  const [errors, setErrors] = useState<Record<string, boolean>>({});
+
+  const set = (k: string, v: string) => { setForm(f => ({ ...f, [k]: v })); setErrors(e => ({ ...e, [k]: false })); };
+
+  const handleSubmit = () => {
+    const required = ["location", "category", "caption"];
+    const newErrors: Record<string, boolean> = {};
+    required.forEach(k => { if (!form[k as keyof typeof form].trim()) newErrors[k] = true; });
+    if (Object.keys(newErrors).length) { setErrors(newErrors); return; }
+    onSubmit();
+  };
+
+  const inputStyle = (err?: boolean): React.CSSProperties => ({
+    width: "100%", padding: "10px 14px", border: `1.5px solid ${err ? "#E8401C" : "#e0e0e8"}`, borderRadius: 10,
+    fontSize: 13.5, fontFamily: FONT, color: ACCENT_NAVY, outline: "none", background: "#fff", boxSizing: "border-box",
+  });
+
+  const labelStyle: React.CSSProperties = { fontFamily: FONT, fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 6, display: "block" };
+
+  return (
+    <DrawerShell onClose={onClose} title="Submit a TVW Vibe Story" subtitle="Your moment goes to Admin review before publishing." accentTag="TVW Vibe">
+      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+
+        {/* Location */}
+        <div>
+          <label style={labelStyle}>Location <span style={{ color: "#E8401C" }}>*</span></label>
+          <input type="text" placeholder="e.g. Mumbai, Delhi, Virtual" value={form.location} onChange={e => set("location", e.target.value)}
+            style={inputStyle(errors.location)}
+            onFocus={e => (e.target.style.borderColor = TVW_BLUE)} onBlur={e => (e.target.style.borderColor = errors.location ? "#E8401C" : "#e0e0e8")} />
+          {errors.location && <p style={{ fontFamily: FONT, fontSize: 12, color: "#E8401C", margin: "4px 0 0" }}>Required</p>}
+        </div>
+
+        {/* Category */}
+        <div>
+          <label style={labelStyle}>Cause Area <span style={{ color: "#E8401C" }}>*</span></label>
+          <div style={{ position: "relative" }}>
+            <select value={form.category} onChange={e => set("category", e.target.value)}
+              style={{ ...inputStyle(errors.category), appearance: "none", paddingRight: 36, cursor: "pointer" }}>
+              <option value="">Select a category</option>
+              {VIBE_CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+            </select>
+            <ChevronDown size={15} style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", color: "#94a3b8", pointerEvents: "none" }} />
+          </div>
+          {errors.category && <p style={{ fontFamily: FONT, fontSize: 12, color: "#E8401C", margin: "4px 0 0" }}>Required</p>}
+        </div>
+
+        {/* Caption */}
+        <div>
+          <label style={labelStyle}>Story Caption <span style={{ color: "#E8401C" }}>*</span></label>
+          <textarea rows={3} placeholder="Describe the volunteering moment in 1–2 sentences…" value={form.caption} onChange={e => set("caption", e.target.value)}
+            style={{ ...inputStyle(errors.caption), resize: "vertical", lineHeight: 1.6 }}
+            onFocus={e => (e.target.style.borderColor = TVW_BLUE)} onBlur={e => (e.target.style.borderColor = errors.caption ? "#E8401C" : "#e0e0e8")} />
+          {errors.caption && <p style={{ fontFamily: FONT, fontSize: 12, color: "#E8401C", margin: "4px 0 0" }}>Required</p>}
+        </div>
+
+        {/* Impact (optional) */}
+        <div>
+          <label style={labelStyle}>Impact / Outcome <span style={{ color: "#94a3b8", fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>(optional)</span></label>
+          <input type="text" placeholder="e.g. 200 meals served, 50 children taught" value={form.impact} onChange={e => set("impact", e.target.value)}
+            style={inputStyle()}
+            onFocus={e => (e.target.style.borderColor = TVW_BLUE)} onBlur={e => (e.target.style.borderColor = "#e0e0e8")} />
+        </div>
+
+        {/* Photo upload (simulated) */}
+        <div>
+          <label style={labelStyle}>Photo <span style={{ color: "#94a3b8", fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>(optional)</span></label>
+          <div
+            onClick={() => set("fileName", "volunteer-photo.jpg")}
+            style={{ border: "2px dashed #e0e0e8", borderRadius: 10, padding: "20px", textAlign: "center", cursor: "pointer", background: form.fileName ? "#f0fdf4" : "#fafafa", transition: "border-color 0.15s, background 0.15s" }}
+            onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = TVW_BLUE; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "#e0e0e8"; }}
+          >
+            {form.fileName ? (
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+                <Check size={16} style={{ color: "#16a34a" }} />
+                <span style={{ fontFamily: FONT, fontSize: 13, fontWeight: 600, color: "#16a34a" }}>{form.fileName}</span>
+                <button onClick={e => { e.stopPropagation(); set("fileName", ""); }} style={{ background: "none", border: "none", cursor: "pointer", color: "#94a3b8", padding: 0 }}><X size={13} /></button>
+              </div>
+            ) : (
+              <>
+                <Upload size={20} style={{ color: "#94a3b8", margin: "0 auto 6px" }} />
+                <div style={{ fontFamily: FONT, fontSize: 13, fontWeight: 600, color: "#64748b" }}>Click to upload a photo</div>
+                <div style={{ fontFamily: FONT, fontSize: 11, color: "#94a3b8", marginTop: 3 }}>JPG or PNG · Max 5 MB</div>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Note */}
+        <div style={{ background: "#FEF6E4", border: "1px solid #fde68a", borderRadius: 10, padding: "12px 16px", fontSize: 13, color: "#78350f", fontFamily: FONT }}>
+          📋 Stories go to Admin moderation — only published once approved. You'll receive a confirmation email after submission.
+        </div>
+
+        {/* Submit */}
+        <button onClick={handleSubmit}
+          style={{ background: TVW_BLUE, color: "#fff", border: "none", borderRadius: 10, padding: "14px", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: FONT }}>
+          Submit Story for Review
+        </button>
+      </div>
+    </DrawerShell>
   );
 }
 
@@ -151,12 +262,12 @@ function CalendarView({ events, onContact }: { events: typeof TVW_EVENTS; onCont
 }
 
 // ── Resource Card ─────────────────────────────────────────────────────────────
-function ResourceCard({ resource, onDownload }: { resource: typeof RESOURCES[0]; onDownload: () => void }) {
+function ResourceCard({ resource, onClick }: { resource: typeof RESOURCES[0]; onClick: () => void }) {
   const [hov, setHov] = useState(false);
   const IconComp = resource.icon;
   return (
     <div
-      onClick={onDownload}
+      onClick={onClick}
       style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 14, overflow: "hidden", cursor: "pointer", transform: hov ? "translateY(-3px)" : "translateY(0)", boxShadow: hov ? "0 8px 28px rgba(13,27,62,0.10)" : "none", transition: "transform 0.18s, box-shadow 0.18s" }}
       onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
     >
@@ -169,8 +280,12 @@ function ResourceCard({ resource, onDownload }: { resource: typeof RESOURCES[0];
           <h3 style={{ fontFamily: FONT, fontSize: 14, fontWeight: 700, color: ACCENT_NAVY, margin: 0 }}>{resource.title}</h3>
         </div>
         <p style={{ fontFamily: FONT, fontSize: 13, color: "#64748b", lineHeight: 1.55, marginBottom: 14 }}>{resource.desc}</p>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12, fontWeight: 700, color: TVW_BLUE, textTransform: "uppercase", letterSpacing: "0.8px", fontFamily: FONT }}>
-          <Download size={13} /> Download
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.8px", fontFamily: FONT, color: TVW_BLUE }}>
+          {resource.action === "navigate" ? (
+            <><BookOpen size={13} /> View Handbook →</>
+          ) : (
+            <><Download size={13} /> Download</>
+          )}
         </div>
       </div>
     </div>
@@ -180,24 +295,34 @@ function ResourceCard({ resource, onDownload }: { resource: typeof RESOURCES[0];
 // ── Main View ─────────────────────────────────────────────────────────────────
 const TVWHubView = () => {
   const { registeredEvents, triggerToast } = useAppContext();
-  const [viewMode,   setViewMode]   = useState<"list"|"calendar">("list");
-  const [filters,    setFilters]    = useState({ location: "All", mode: "All" });
-  const [search,     setSearch]     = useState("");
-  const [spocModal,  setSpocModal]  = useState<typeof TVW_EVENTS[0] | null>(null);
+  const navigate = useAppNavigate();
+
+  const [viewMode,      setViewMode]      = useState<"list"|"calendar">("list");
+  const [filters,       setFilters]       = useState({ location: "All", mode: "All" });
+  const [search,        setSearch]        = useState("");
+  const [spocModal,     setSpocModal]     = useState<typeof TVW_EVENTS[0] | null>(null);
+  const [showVibeForm,  setShowVibeForm]  = useState(false);
 
   const filteredEvents = TVW_EVENTS.filter(ev => {
     const q = search.toLowerCase();
-    const matchesSearch   = ev.title.toLowerCase().includes(q) || ev.description.toLowerCase().includes(q);
-    const matchesLocation = filters.location === "All" || ev.location.includes(filters.location);
-    const matchesMode     = filters.mode === "All" || ev.mode === filters.mode;
-    return matchesSearch && matchesLocation && matchesMode;
+    return (
+      (ev.title.toLowerCase().includes(q) || ev.description.toLowerCase().includes(q)) &&
+      (filters.location === "All" || ev.location.includes(filters.location)) &&
+      (filters.mode === "All" || ev.mode === filters.mode)
+    );
   });
+
+  const handleResourceClick = (resource: typeof RESOURCES[0]) => {
+    if (resource.action === "navigate") {
+      navigate("volunteering-guidelines");
+    } else {
+      triggerToast(`Downloading ${resource.title}...`);
+    }
+  };
 
   return (
     <div style={{ fontFamily: FONT, background: "#f7f8fc", minHeight: "100vh" }}>
-      {/* Top accent line */}
       <div style={{ height: 3, background: TVW_BLUE, width: "100%" }} />
-
       <SubPageDotRail sections={SECTIONS_NAV} accentColor={TVW_BLUE} />
 
       {/* ══ HERO ══ */}
@@ -228,19 +353,6 @@ const TVWHubView = () => {
               <span style={{ fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.8)", fontFamily: FONT }}>22 Sep – 4 Oct 2025 · Active</span>
             </div>
           </div>
-          <div style={{ display: "flex", gap: 32, marginTop: 48, paddingTop: 32, borderTop: "1px solid rgba(255,255,255,0.12)" }}>
-            {[
-              [`${TVW_EVENTS.length}`, "Events posted"],
-              ["47",   "Registered so far"],
-              ["100+", "Tata companies"],
-              ["2 hrs","Avg. event duration"],
-            ].map(([num, label]) => (
-              <div key={label}>
-                <div style={{ fontFamily: FONT, fontSize: 26, fontWeight: 900, color: "#fff" }}>{num}</div>
-                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2, fontFamily: FONT }}>{label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -252,29 +364,26 @@ const TVWHubView = () => {
 
         {/* Controls */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 28, alignItems: "center" }}>
-          {/* View toggle */}
           <div style={{ display: "flex", alignItems: "center", gap: 2, background: "#fff", padding: 4, borderRadius: 10, border: "1.5px solid #e0e0e8" }}>
-            {([["list","list","List"  ],["calendar","calendar","Calendar"]] as const).map(([mode,_,label]) => (
-              <button key={mode} onClick={() => setViewMode(mode as "list"|"calendar")}
+            {(["list","calendar"] as const).map(mode => (
+              <button key={mode} onClick={() => setViewMode(mode)}
                 style={{ display:"flex",alignItems:"center",gap:6,padding:"7px 14px",borderRadius:7,border:"none",fontSize:13,fontWeight:600,cursor:"pointer",fontFamily:FONT,background:viewMode===mode?TVW_BLUE:"transparent",color:viewMode===mode?"#fff":"#64748b",transition:"all 0.15s" }}>
-                {mode==="list" ? <List size={15}/> : <CalendarDays size={15}/>}{label}
+                {mode === "list" ? <List size={15}/> : <CalendarDays size={15}/>}
+                {mode === "list" ? "List" : "Calendar"}
               </button>
             ))}
           </div>
-          {/* Search */}
           <div style={{ flex: 1, position: "relative", minWidth: 220 }}>
             <Search size={16} style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "#aaaabc" }} />
-            <input type="text" placeholder="Search events..." value={search} onChange={e => setSearch(e.target.value)}
+            <input type="text" placeholder="Search events…" value={search} onChange={e => setSearch(e.target.value)}
               style={{ width:"100%",paddingLeft:40,paddingRight:14,paddingTop:11,paddingBottom:11,border:"1.5px solid #e0e0e8",borderRadius:10,fontSize:13.5,fontFamily:FONT,color:ACCENT_NAVY,outline:"none",background:"#fff",boxSizing:"border-box" }}
               onFocus={e=>(e.target.style.borderColor=TVW_BLUE)} onBlur={e=>(e.target.style.borderColor="#e0e0e8")}/>
           </div>
-          {/* Location */}
           <select value={filters.location} onChange={e=>setFilters({...filters,location:e.target.value})}
             style={{ padding:"10px 14px",border:"1.5px solid #e0e0e8",borderRadius:10,fontSize:13,fontFamily:FONT,color:ACCENT_NAVY,background:"#fff",outline:"none",cursor:"pointer" }}>
             <option value="All">All Locations</option>
             {["Mumbai","Pune","Chennai","Virtual"].map(l=><option key={l} value={l}>{l}</option>)}
           </select>
-          {/* Mode */}
           <select value={filters.mode} onChange={e=>setFilters({...filters,mode:e.target.value})}
             style={{ padding:"10px 14px",border:"1.5px solid #e0e0e8",borderRadius:10,fontSize:13,fontFamily:FONT,color:ACCENT_NAVY,background:"#fff",outline:"none",cursor:"pointer" }}>
             <option value="All">All Modes</option>
@@ -283,7 +392,6 @@ const TVWHubView = () => {
           </select>
         </div>
 
-        {/* List / Calendar */}
         {viewMode === "list" ? (
           <div style={{ display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(320px,1fr))",gap:16 }}>
             {filteredEvents.map(ev => (
@@ -308,6 +416,7 @@ const TVWHubView = () => {
         <div style={DIAG_TEXTURE}/>
         <div style={{ position:"relative",zIndex:1,maxWidth:1100,margin:"0 auto",padding:"96px 64px" }}>
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:80,alignItems:"start" }}>
+            {/* Left */}
             <div>
               <p style={{ fontSize:11,fontWeight:700,letterSpacing:"1.8px",textTransform:"uppercase",color:"rgba(255,255,255,0.45)",marginBottom:8,fontFamily:FONT }}>Community Stories</p>
               <div style={{ width:36,height:2,borderRadius:2,background:B_YELLOW,marginBottom:20 }}/>
@@ -315,11 +424,13 @@ const TVWHubView = () => {
               <p style={{ fontFamily:FONT,fontSize:15,fontWeight:300,color:"rgba(255,255,255,0.65)",lineHeight:1.7,marginBottom:32 }}>
                 Volunteering moments from across the Tata Group — submitted by SPOCs and reviewed by Admin before going live.
               </p>
-              <button onClick={()=>triggerToast("Story submission form opening...")}
+              <button onClick={() => setShowVibeForm(true)}
                 style={{ background:B_YELLOW,color:ACCENT_NAVY,border:"none",borderRadius:10,padding:"12px 24px",fontSize:14,fontWeight:800,cursor:"pointer",fontFamily:FONT }}>
                 Submit Your Story
               </button>
             </div>
+
+            {/* Right — story cards */}
             <div style={{ display:"flex",flexDirection:"column",gap:12 }}>
               {VIBE_STORIES.map((s,i) => (
                 <div key={i} style={{ background:"rgba(255,255,255,0.08)",border:"1px solid rgba(255,255,255,0.12)",borderRadius:12,padding:"18px 20px" }}>
@@ -341,7 +452,9 @@ const TVWHubView = () => {
         <div style={{ width:36,height:3,borderRadius:2,background:TVW_BLUE,marginBottom:16 }}/>
         <h2 style={{ fontSize:22,fontWeight:900,color:ACCENT_NAVY,margin:"0 0 28px",letterSpacing:"-0.3px",fontFamily:FONT }}>Campaign Resources</h2>
         <div style={{ display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16 }}>
-          {RESOURCES.map((r,i) => <ResourceCard key={i} resource={r} onDownload={()=>triggerToast(`Downloading ${r.title}...`)}/>)}
+          {RESOURCES.map((r,i) => (
+            <ResourceCard key={i} resource={r} onClick={() => handleResourceClick(r)} />
+          ))}
         </div>
       </div>
 
@@ -370,6 +483,17 @@ const TVWHubView = () => {
             </button>
           </div>
         </DrawerShell>
+      )}
+
+      {/* ══ VIBE SUBMISSION DRAWER ══ */}
+      {showVibeForm && (
+        <VibeSubmitDrawer
+          onClose={() => setShowVibeForm(false)}
+          onSubmit={() => {
+            setShowVibeForm(false);
+            triggerToast("Story submitted! Admin will review and publish it shortly.");
+          }}
+        />
       )}
 
       <TickerBar fixed />

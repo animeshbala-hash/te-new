@@ -415,21 +415,7 @@ export default function ProEngageView() {
               </div>
             )}
           </div>
-          {IS_PE_SEASON && (
-            <div style={{ display:"flex",gap:32,marginTop:48,paddingTop:32,borderTop:"1px solid rgba(255,255,255,0.12)" }}>
-              {[
-                [`${PROENGAGE_PROJECTS.length}`, "Live projects"],
-                [`${aiRecommended.length}`,       "Matched to you"],
-                ["14 NGOs",                        "Participating"],
-                ["10 hrs",                         "Avg. weekly commitment"],
-              ].map(([num,label])=>(
-                <div key={label}>
-                  <div style={{ fontFamily:FONT,fontSize:26,fontWeight:900,color:"#fff" }}>{num}</div>
-                  <div style={{ fontSize:12,color:"rgba(255,255,255,0.45)",marginTop:2 }}>{label}</div>
-                </div>
-              ))}
-            </div>
-          )}
+
         </div>
       </div>
 
