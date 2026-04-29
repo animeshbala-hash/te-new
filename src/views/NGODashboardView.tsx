@@ -16,6 +16,10 @@ import badgeAmbassador from "@/assets/badges/ambassador.svg";
 import badgeNorthStar  from "@/assets/badges/northstar.svg";
 import badgeLead       from "@/assets/badges/lead.svg";
 import badgeChampion   from "@/assets/badges/lead.png";
+import imgPhotos  from "@/assets/tatabball.jpg";
+import imgVideos  from "@/assets/tata_power.JPG";
+import imgStories from "@/assets/trent.jpg";
+import imgEModule from "@/assets/Tata_international.jpeg";
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const B_YELLOW    = "#F5A623";
@@ -258,13 +262,9 @@ function ResourceCard({ label, desc, count, photo, accent, pastel, onClick }: {
   return (
     <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} onClick={onClick}
       style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 14, overflow: "hidden", cursor: "pointer", transform: hov ? "translateY(-3px)" : "translateY(0)", boxShadow: hov ? `0 8px 24px ${accent}18` : "none", transition: "transform 0.18s, box-shadow 0.18s" }}>
-      <div style={{ height: 90, background: `url(${photo}) center/cover`, position: "relative" }}>
-        <div style={{ position: "absolute", inset: 0, background: `${accent}88` }} />
-      </div>
-      <div style={{ background: pastel, padding: "12px 14px" }}>
-        <div style={{ fontSize: 13, fontWeight: 900, color: ACCENT_NAVY, marginBottom: 3 }}>{label}</div>
-        <div style={{ fontSize: 11, color: "#6b6b7a", lineHeight: 1.4, marginBottom: count ? 6 : 0 }}>{desc}</div>
-        {count && <div style={{ fontSize: 10.5, fontWeight: 700, color: accent }}>{count}</div>}
+      <div style={{ height: 150, background: `url(${photo}) center/cover no-repeat` }} />
+      <div style={{ background: accent, padding: "12px 14px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ fontSize: 14.5, fontWeight: 900, color: "#fff", textAlign: "center", lineHeight: 1.3 }}>{label}</div>
       </div>
     </div>
   );
@@ -1022,16 +1022,16 @@ const NGODashboardView = () => {
           </div>
 
           {/* ─── VII. Resource Library ─── */}
-          <div id="resources" ref={resourcesRef} style={{ ...card, marginTop: 20 }}>
+          <div id="resources" ref={resourcesRef} style={{ background: "#f0f1f8", borderRadius: 16, padding: "24px 22px", marginTop: 20 }}>
             <SH eyebrow={`${isLeadPartner ? "VII" : "VI"} · Learning & Support`} title="Resource Library" />
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
               {[
-                { label: "E-Module / Orientation", desc: "Mandatory onboarding. Progress tracked by Admin.", count: "2 of 5 complete", photo: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80", accent: B_BLUE,   pastel: P_BLUE   },
-                { label: "NGO Project Guide",       desc: "Templates, guidelines, undertaking text.",          count: "8 documents",    photo: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80", accent: B_NGO,  pastel: P_NGO  },
-                { label: "Media Library",           desc: "NGO-scoped photos and assets. View-only.",          count: "64 items",       photo: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80", accent: KPI_LIME, pastel: P_NGO_MID   },
-                { label: "Feedback Templates",      desc: "Excel bulk upload template for large NGOs.",        count: "Download",       photo: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80", accent: B_TEAL,   pastel: P_TEAL   },
-                { label: "Grievance Redressal",     desc: "Raise a concern about a project or volunteer.",     count: submittedGrievances.length > 0 ? `${submittedGrievances.length} open` : "No open cases", photo: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80", accent: B_RED, pastel: P_RED },
-                { label: "Help & Support",          desc: "Opens support modal. Chatbot always available.",    count: "24/7",           photo: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80", accent: B_BLUE,   pastel: P_BLUE   },
+                { label: "E-Module / Orientation", desc: "Mandatory onboarding. Progress tracked by Admin.", count: "2 of 5 complete", photo: imgEModule,  accent: B_BLUE,   pastel: P_BLUE   },
+                { label: "NGO Project Guide",       desc: "Templates, guidelines, undertaking text.",          count: "8 documents",    photo: imgPhotos,   accent: B_NGO,    pastel: P_NGO    },
+                { label: "Media Library",           desc: "NGO-scoped photos and assets. View-only.",          count: "64 items",       photo: imgVideos,   accent: KPI_LIME, pastel: P_NGO_MID },
+                { label: "Feedback Templates",      desc: "Excel bulk upload template for large NGOs.",        count: "Download",       photo: imgStories,  accent: B_TEAL,   pastel: P_TEAL   },
+                { label: "Grievance Redressal",     desc: "Raise a concern about a project or volunteer.",     count: submittedGrievances.length > 0 ? `${submittedGrievances.length} open` : "No open cases", photo: imgPhotos, accent: B_RED, pastel: P_RED },
+                { label: "Help & Support",          desc: "Opens support modal. Chatbot always available.",    count: "24/7",           photo: imgEModule,  accent: B_BLUE,   pastel: P_BLUE   },
               ].map(r => (
                 <ResourceCard key={r.label} {...r} onClick={() => {
                   if (r.label === "Grievance Redressal") setModal("grievance");
