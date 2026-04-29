@@ -1,4 +1,4 @@
-import { Twitter, Instagram, Linkedin, type LucideIcon } from "lucide-react";
+import { Facebook, Instagram, Linkedin, type LucideIcon } from "lucide-react";
 import drPhoto from "@/assets/dr_photo.jpg";
 
 // ── Brand tokens ──────────────────────────────────────────────────────────────
@@ -97,7 +97,7 @@ export interface SocialPost {
 }
 
 export const SOCIAL_POSTS: SocialPost[] = [
-  { handle: "@TataEngage",  platform: "Twitter",   text: "Proud to announce 50,000 volunteers on the platform! Thank you for making a difference. #TataEngage", likes: "1.2K", time: "2h ago",  Icon: Twitter,   iconBg: "#0EA5E9" },
+  { handle: "Tata Engage",  platform: "Facebook",  text: "Proud to announce 50,000 volunteers on the platform! Thank you for making a difference. #TataEngage", likes: "1.2K", time: "2h ago",  Icon: Facebook,  iconBg: "#1877F2" },
   { handle: "@tata_engage", platform: "Instagram", text: "TVW 2026 is almost here! Tag a colleague you'd love to volunteer with. #TVW2026 #TataVolunteers",      likes: "3.4K", time: "1d ago",  Icon: Instagram, iconBg: "#EC4899" },
   { handle: "Tata Engage",  platform: "LinkedIn",  text: "ProEngage Edition 2026 is now open — 400+ skill-based projects waiting for the right volunteers.",      likes: "892",  time: "3d ago",  Icon: Linkedin,  iconBg: "#1D4ED8" },
 ];
