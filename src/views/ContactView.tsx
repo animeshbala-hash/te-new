@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Facebook, Linkedin, Globe } from "lucide-react";
+import { Facebook, Linkedin, Instagram } from "lucide-react";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import contactHeroImg from "@/assets/tata-infinit.jpg";
 
@@ -105,7 +105,7 @@ function SocialSection() {
   const channels = [
     { handle: "Tata Engage", platform: "Facebook", note: "Real-time updates on TVW editions, ProEngage openings, and volunteering stories from across the Tata Group.", time: "Follow us", Icon: Facebook, iconBg: "#1877F2", url: "#" },
     { handle: "Tata Engage", platform: "LinkedIn", note: "Stay updated on volunteering programmes, partner opportunities, and impact stories from across the Tata ecosystem.", time: "Follow us", Icon: Linkedin, iconBg: "#1D4ED8", url: "#" },
-    { handle: "Tata Sustainability", platform: "Website", note: "Reach Tata Engage via the broader Tata Sustainability and Tata Group platforms for partner enquiries and ecosystem updates.", time: "Visit us", Icon: Globe, iconBg: "#0D1B3E", url: "#" },
+    { handle: "@tata_engage", platform: "Instagram", note: "Stories, photos and volunteering moments from across the Tata Group.", time: "Follow us", Icon: Instagram, iconBg: "#EC4899", url: "#" },
   ];
 
   return (
