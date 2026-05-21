@@ -60,7 +60,7 @@ const PHOTOS = [
 const VIDEOS = [
   { title: "What ProEngage is All About",           src: "/videos/PE_What_Proengage_all_about.mp4",           duration: "" },
   { title: "TVW25 Launch Film",                     src: "/videos/TVW25_Launch.mp4",                          duration: "" },
-  { title: "Generic Tata Group Volunteering Film",  src: "/videos/Generic_Tata_Group_Volunteering_Film.mp4",  duration: "" },
+  { title: "Tata Group Volunteering Film",          src: "/videos/Generic_Tata_Group_Volunteering_Film.mp4",  duration: "" },
   { title: "ProEngager Testimonial — Chirag Mehta", src: "/videos/ProEngager_Testimonial_Chirag_Mehta.mp4",   duration: "" },
   { title: "Tata Engage External",                  src: "/videos/Tata_Engage_External.mp4",                  duration: "" },
   { title: "Volunteering for Swach Bharat",         src: "/videos/Volunteering_for_Swach_Bharat.mp4",         duration: "" },
