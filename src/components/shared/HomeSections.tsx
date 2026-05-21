@@ -1813,6 +1813,8 @@ export function ProEngageBanner() {
         lineHeight: 0,
         overflow: "hidden",
         position: "relative",
+        paddingTop: 64,  // offset for fixed navbar (h-16)
+        background: "#F37021",  // match banner bg so no colour flash
       }}
       role="link"
       aria-label={alt}
