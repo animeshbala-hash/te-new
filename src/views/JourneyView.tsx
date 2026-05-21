@@ -28,17 +28,17 @@ const FONT = "'DM Sans', 'Noto Sans', ui-sans-serif, system-ui, sans-serif";
 // Mapped: FY2015=#135EA9, FY2017=#307FE2, FY2019=#00A896, FY2022=#803998, FY2025=#F4838A
 // Unmapped years filled with palette colours keeping variety
 const MILESTONE_COLOURS: Record<string, string> = {
-  fy2015: "#135EA9",
-  fy2016: "#00A896",
-  fy2017: "#307FE2",
-  fy2018: "#F4838A",
-  fy2019: "#00A896",
-  fy2020: "#135EA9",
-  fy2021: "#803998",
-  fy2022: "#803998",
-  fy2023: "#307FE2",
-  fy2024: "#F4838A",
-  fy2025: "#F4838A",
+  fy2015: "#135EA9",  // blue
+  fy2016: "#00A896",  // teal
+  fy2017: "#803998",  // purple
+  fy2018: "#F4838A",  // pink
+  fy2019: "#307FE2",  // mid-blue
+  fy2020: "#00A896",  // teal
+  fy2021: "#135EA9",  // blue
+  fy2022: "#F4838A",  // pink
+  fy2023: "#803998",  // purple
+  fy2024: "#307FE2",  // mid-blue
+  fy2025: "#00A896",  // teal
 };
 
 // ── Timeline data — exact approved copy ──────────────────────────────────────
@@ -49,8 +49,6 @@ const MILESTONES = [
     tag: "Launch",
     title: "Launched Tata Engage",
     body: "Launched Tata Engage with two volunteering formats – Tata Volunteering Week and ProEngage.",
-    stat: "2015",
-    statSub: "year of launch",
     photo: img2015,
   },
   {
@@ -59,8 +57,6 @@ const MILESTONES = [
     tag: "Disaster Response",
     title: "One Tata Response",
     body: "Adopted the One Tata Response as part of Disaster response guidelines.",
-    stat: "2016",
-    statSub: "disaster response",
     photo: img2016,
   },
   {
@@ -68,9 +64,7 @@ const MILESTONES = [
     year: "FY 2017",
     tag: "Policy",
     title: "Group volunteering guidelines",
-    body: "Launched Tata Group volunteering guidelines to help companies review the existing or develop a new volunteering program and policy.",
-    stat: "2017",
-    statSub: "Group-wide guidelines",
+    body: "Launched Tata Group volunteering guidelines to help companies review the existing/ develop a new volunteering program and policy.",
     photo: img2017,
   },
   {
@@ -79,8 +73,6 @@ const MILESTONES = [
     tag: "Community",
     title: "Regional SPOC forums & first VolCon",
     body: "Created Regional SPOC forums for knowledge building, cross sharing of best practices and capacity building of volunteer SPOC cadre. Hosted the first Tata VolCon (Tata Volunteering Conference) to bring together Tata experts on one platform to engage on volunteering trends.",
-    stat: "VolCon",
-    statSub: "inaugural edition",
     photo: imgBball,
   },
   {
@@ -88,9 +80,7 @@ const MILESTONES = [
     year: "FY 2019",
     tag: "Global Award",
     title: "Best Global Volunteer Program — IAVE",
-    body: "Tata Engage won 'Best Global Volunteer Program' award by International Association for Volunteer Effort (IAVE).",
-    stat: "IAVE",
-    statSub: "global #1",
+    body: "Tata Engage won "Best Global Volunteer Program" award by International Association for Volunteer Effort (IAVE).",
     photo: imgIHCL,
   },
   {
@@ -98,9 +88,7 @@ const MILESTONES = [
     year: "FY 2020",
     tag: "Ambition",
     title: "IAVE membership & 4 PCVH target",
-    body: "Became a member of IAVE's Global Corporate for Volunteer Council, a consortium of global companies with volunteering presence in 3 or more countries. Tata Group Sustainability Council (TGSC) adopted the group aspiration of 4 Per Capita Volunteering Hours (PCVH) by 2025.",
-    stat: "4 PCVH",
-    statSub: "by 2025 · target set",
+    body: "Became a member of IAVE's Global Corporate for Volunteer Council, a consortium of global companies with volunteering presence in 3 or more countries. Tata group Sustainability Council (TGSC) adopted the group aspiration of 4 Per Capita Volunteering Hours (PCVH) by 2025.",
     photo: imgMotors,
   },
   {
@@ -108,9 +96,7 @@ const MILESTONES = [
     year: "FY 2021",
     tag: "Pivot",
     title: "Pivoted to virtual volunteering",
-    body: "Pivoted to a virtual mode for volunteering in response to the Covid-19 pandemic.",
-    stat: "2021",
-    statSub: "all virtual",
+    body: "Pivoted to a virtual mode for volunteering in response to the Covid19 pandemic.",
     photo: imgComms,
   },
   {
@@ -119,8 +105,6 @@ const MILESTONES = [
     tag: "Capacity Building",
     title: "e-Orientation & ProEngage scale-up",
     body: "Developed an e-orientation module for capacity building of the SPOC cadre. Scaled up of ProEngage to increase opportunity for skill-based volunteering for deeper social impact.",
-    stat: "2022",
-    statSub: "ProEngage scaled",
     photo: imgAirIndia,
   },
   {
@@ -128,9 +112,7 @@ const MILESTONES = [
     year: "FY 2023",
     tag: "Recognition",
     title: "Tata Engage Awards & Global Conference",
-    body: "Tata Group Annual Volunteering Awards christened 'Tata Engage Awards' expanded to reward company and individual performance in year-round volunteering across all formats while celebrating the performance in Tata Volunteering Week. Presented the Tata group volunteering approach at the Global Conference on Volunteering held in Abu Dhabi, UAE.",
-    stat: "2023",
-    statSub: "global stage",
+    body: "Tata group Annual Volunteering Awards christened "Tata Engage Awards" expanded to reward company and individual performance in year-round volunteering across all formats while celebrating the performance in Tata Volunteering Week. Presented the Tata group volunteering approach at the Global Conference on Volunteering held in Abu Dhabi, UAE.",
     photo: imgAIG,
   },
   {
@@ -138,9 +120,7 @@ const MILESTONES = [
     year: "FY 2024",
     tag: "Leadership",
     title: "VolCon at Taj & IAVE Board",
-    body: "Hosted the Tata Group VolCon on the 6th March, 2024 at Taj Mahal Palace Mumbai for 170 Tata leaders, volunteering leads, champions and employees. Tata group was invited to join the Board of Directors of the International Association for Volunteering Effort (IAVE) and continued engagement as a member of the Global Corporate Volunteering Council.",
-    stat: "IAVE",
-    statSub: "Board of Directors",
+    body: "Hosted the Tata group VolCon on the 6th March, 2024 at Taj Mahal Palace Mumbai for 170 Tata leaders, volunteering leads, champions and employees. Tata group was invited to join the Board of Directors of the International Association for Volunteering Effort (IAVE) and continued engagement as a member of the Global Corporate Volunteering Council.",
     photo: imgTrent2,
   },
   {
@@ -149,8 +129,6 @@ const MILESTONES = [
     tag: "Global leader",
     title: "Possible global leader in corporate volunteering",
     body: "Tata group emerges as the possible global leader in corporate volunteering both in total hours (Rank 1) and per capita contribution (Rank 2).",
-    stat: "Rank 1",
-    statSub: "total hours globally",
     photo: img2025,
   },
 ] as const;
@@ -182,10 +160,7 @@ function MilestoneRow({ m, index, colour }: { m: Milestone; index: number; colou
       <p style={{ fontFamily: FONT, fontSize: 14.5, color: "rgba(255,255,255,0.88)", lineHeight: 1.72, margin: 0, maxWidth: 460 }}>
         {m.body}
       </p>
-      <div style={{ marginTop: 24, display: "inline-flex", alignItems: "baseline", gap: 10, paddingTop: 16, borderTop: "1px dashed rgba(255,255,255,0.4)" }}>
-        <span style={{ fontFamily: FONT, fontSize: 26, fontWeight: 900, color: "#fff", letterSpacing: "-0.6px" }}>{m.stat}</span>
-        <span style={{ fontFamily: FONT, fontSize: 11, color: "rgba(255,255,255,0.72)", letterSpacing: "0.4px" }}>{m.statSub}</span>
-      </div>
+
     </div>
   );
 
