@@ -1387,7 +1387,7 @@ export function JourneySection() {
     { fy: "FY 2017", colour: "#F4838A", key: "fy2017", text: "Launched Tata group volunteering guidelines." },
     { fy: "FY 2019", colour: "#307FE2", key: "fy2019", text: "Tata Engage won \"Best Global Volunteer Program\" award by IAVE." },
     { fy: "FY 2022", colour: "#803998", key: "fy2022", text: "Developed an e-orientation module for capacity building of the SPOC cadre." },
-    { fy: "FY 2024", colour: "#00A896", key: "fy2024", text: "Tata group joins the Board of Directors of the International Association for Volunteering Effort (IAVE)." },
+    { fy: "FY 2024", colour: "#00A896", key: "fy2024", text: "Tata Group joins the Board of Directors of the IAVE." },
   ];
 
   // All available images — will be distributed to fill every gap
