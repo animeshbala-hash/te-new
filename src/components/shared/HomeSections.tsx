@@ -1812,6 +1812,7 @@ export function ProEngageBanner() {
         width: "100%",
         lineHeight: 0,
         overflow: "hidden",
+        position: "relative",
       }}
       role="link"
       aria-label={alt}
@@ -1821,6 +1822,35 @@ export function ProEngageBanner() {
         alt={alt}
         style={{ width: "100%", height: "auto", display: "block" }}
       />
+      {/* Scroll chevrons — bottom-centre, same style as removed hero */}
+      <div
+        onClick={(e) => { e.stopPropagation(); document.getElementById("programmes")?.scrollIntoView({ behavior: "smooth" }); }}
+        aria-label="Scroll to programmes"
+        style={{
+          position: "absolute", bottom: 24, left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex", flexDirection: "column", alignItems: "center",
+          gap: 2, padding: 8, zIndex: 4, cursor: "pointer",
+        }}
+      >
+        {[0, 1, 2].map((i) => (
+          <svg key={i} viewBox="0 0 24 12" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style={{
+              width: 28, height: 14,
+              opacity: 1 - i * 0.28,
+              color: "white",
+              animation: `chevronBob 1.4s ease-in-out ${i * 0.18}s infinite`,
+            }}>
+            <path d="M2 2 L12 10 L22 2" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        ))}
+      </div>
+      <style>{`
+        @keyframes chevronBob {
+          0%, 100% { transform: translateY(0); }
+          50%       { transform: translateY(4px); }
+        }
+      `}</style>
     </div>
   );
 }
