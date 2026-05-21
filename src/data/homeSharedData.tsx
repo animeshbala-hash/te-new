@@ -79,8 +79,8 @@ export const FUN_FACTS = [
   "The Tata Group is a global leader in corporate volunteering.",
   "Tata Engage has been uniting Tata volunteers across the globe since 2014.",
   "Tata Engage was recognised as the \"Best Global Volunteer Program\" by IAVE in 2018.",
-  "10.87 million volunteering hours logged by Tata volunteers.",
-  "2.8 lakh Tata volunteers have contributed through Tata Engage.",
+  "The Excellence in Volunteering Framework helps institutionalise volunteering across the group.",
+  "TSG and SPJIMR conducted a pioneering study, 'Service that Shapes Us,' examining how Tata volunteers strengthen culture, drive impact, and transform themselves.",
 ];
 
 export const HERO_STATS = [
@@ -103,13 +103,9 @@ export const SOCIAL_POSTS: SocialPost[] = [
 ];
 
 export const TICKER_ITEMS = [
-  "🟢  ProEngage 2026 is OPEN — 400+ projects live",
-  "📅  TVW 2026 registration opens in 14 days",
-  "🏅  1,240 volunteers matched this edition — a record",
-  "🌿  TCS: 1,000 trees planted across 8 campuses",
-  "🚨  Disaster Response deployed to Assam floods",
-  "🎓  Finance Mentorship projects now accepting applications",
-  "🤝  85 NGO partners and counting across 15 states",
+  "📅  Edition 24 of ProEngage will go live on the 15th June 2026",
+  "🌐  IAVE X IVY 2026 'Call to Action for the Future of Volunteering' platform, powered by TCS volunteers, was launched on 12 May 2026.",
+  "🌿  Volunteer this Tata Sustainability Month – June 2026 because thinking is good but doing is better",
 ];
 
 export const EOEO = {
