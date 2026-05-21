@@ -514,7 +514,7 @@ function IaveIvy2026({ onBack }: { onBack: () => void }) {
         title="IAVE 'Call to Action for the Future of Volunteering' Platform"
         subtitle="Powered by TCS ProEngagers — launched for IVY 2026 · 12 May 2026"
         heroImage={iaveIvy26Img1}
-        heroImagePosition="center top" />
+        heroImagePosition="center center" />
       <ArticleBody accent={accent}>
         <Breadcrumb onBack={onBack} />
 
