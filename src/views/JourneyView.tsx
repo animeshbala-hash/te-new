@@ -128,7 +128,7 @@ const MILESTONES = [
     year: "FY 2025",
     tag: "Global leader",
     title: "Possible global leader in corporate volunteering",
-    body: "Tata group emerges as a global leader in corporate volunteering.",",
+    body: "Tata group emerges as a global leader in corporate volunteering.",
     photo: img2025,
   },
 ] as const;
