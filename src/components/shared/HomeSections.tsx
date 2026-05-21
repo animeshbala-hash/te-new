@@ -26,6 +26,8 @@ import {
   EOEO,
   ACCENT_NAVY,
 } from "@/data/homeSharedData";
+import peTeaser from "@/assets/pe-24-teaser.jpg";
+import peLaunch from "@/assets/pe-launch.jpg";
 import doodleCluster1 from "@/assets/doodle-cluster-1.png";
 import doodleCluster2 from "@/assets/doodle-cluster-2.png";
 import doodleCluster3 from "@/assets/doodle-cluster-3.png";
@@ -1777,5 +1779,48 @@ export function HeroBanner({
         </button>
       </div>
     </>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PROENGAGE BANNER — date-switched teaser → live
+// Teaser: now → 14 Jun 2026  → links to /about-proengage
+// Live:   15 Jun → 15 Jul 2026 → links to /proengage (login-gated)
+// After 15 Jul: renders nothing
+// ─────────────────────────────────────────────────────────────────────────────
+export function ProEngageBanner() {
+  const navigate = useAppNavigate();
+
+  const now        = new Date();
+  const liveStart  = new Date("2026-06-15T00:00:00");
+  const liveEnd    = new Date("2026-07-16T00:00:00"); // exclusive
+
+  const showTeaser = now < liveStart;
+  const showLive   = now >= liveStart && now < liveEnd;
+
+  if (!showTeaser && !showLive) return null;
+
+  const img    = showTeaser ? peTeaser : peLaunch;
+  const alt    = showTeaser ? "ProEngage Edition 24 — coming soon" : "ProEngage Edition 24 — now live";
+  const dest   = showTeaser ? "about-proengage" : "proengage";
+
+  return (
+    <div
+      onClick={() => navigate(dest)}
+      style={{
+        cursor: "pointer",
+        width: "100%",
+        lineHeight: 0,
+        overflow: "hidden",
+      }}
+      role="link"
+      aria-label={alt}
+    >
+      <img
+        src={img}
+        alt={alt}
+        style={{ width: "100%", height: "auto", display: "block" }}
+      />
+    </div>
   );
 }
