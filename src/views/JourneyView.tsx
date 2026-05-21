@@ -48,7 +48,7 @@ const MILESTONES = [
     year: "FY 2015",
     tag: "Launch",
     title: "Launched Tata Engage",
-    body: "Tata group emerges as a global leader in corporate volunteering. ",
+    body: "Launched Tata Engage with two volunteering formats – Tata Volunteering Week and ProEngage.",
     photo: img2015,
   },
   {
