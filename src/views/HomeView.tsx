@@ -14,7 +14,7 @@ import {
 } from "@/data/homeSharedData";
 import { IMPACT_STORIES } from "@/data/impactStoriesData";
 import beyondHero from "@/assets/story_photos/beyond-the-boardroom/110A2356 - FY 25.JPG";
-import { ProgrammeSpotlight, JourneySection, NumbersSection, QuoteBanner, TickerBar, SectionDivider } from "@/components/shared/HomeSections";
+import { ProgrammeSpotlight, JourneySection, NumbersSection, QuoteBanner, TickerBar, SectionDivider, ProEngageBanner } from "@/components/shared/HomeSections";
 
 // ── Ink doodle SVGs ───────────────────────────────────────────────────────────
 const InkSpiral = ({ className = "", style = {} }: { className?: string; style?: React.CSSProperties }) => (
@@ -443,6 +443,9 @@ const HomeView = () => {
           }
         `}</style>
       </section>
+
+      {/* PROENGAGE BANNER — date-switched teaser / live */}
+      <ProEngageBanner />
 
       {/* 2. PROGRAMME SPOTLIGHT */}
       <div id="programmes">

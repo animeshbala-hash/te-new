@@ -56,13 +56,14 @@ const PHOTOS = [
   photo09, photo10, photo11, photo12,
 ];
 
+// TODO (dev): replace src placeholder paths with actual hosted mp4 URLs
 const VIDEOS = [
-  { title: "TVW25 Launch Film", duration: "3:45" },
-  { title: "ProEngage Volunteer Stories", duration: "5:12" },
-  { title: "VolCon 2024 Highlights", duration: "8:30" },
-  { title: "Impact: Education Projects", duration: "4:18" },
-  { title: "One Tata Response — DR2024", duration: "6:02" },
-  { title: "GCSO Message TVW25", duration: "2:55" },
+  { title: "What ProEngage is All About",           src: "/videos/PE_What_Proengage_all_about.mp4",           duration: "" },
+  { title: "TVW25 Launch Film",                     src: "/videos/TVW25_Launch.mp4",                          duration: "" },
+  { title: "Generic Tata Group Volunteering Film",  src: "/videos/Generic_Tata_Group_Volunteering_Film.mp4",  duration: "" },
+  { title: "ProEngager Testimonial — Chirag Mehta", src: "/videos/ProEngager_Testimonial_Chirag_Mehta.mp4",   duration: "" },
+  { title: "Tata Engage External",                  src: "/videos/Tata_Engage_External.mp4",                  duration: "" },
+  { title: "Volunteering for Swach Bharat",         src: "/videos/Volunteering_for_Swach_Bharat.mp4",         duration: "" },
 ];
 
 // Parse dates for sorting — returns a sortable number (ms or ordinal)
@@ -192,7 +193,7 @@ export default function MediaView() {
             {VIDEOS.map((v, i) => (
               <div
                 key={i}
-                onClick={() => triggerToast("Opening video player...")}
+                onClick={() => { if (v.src) { const a = document.createElement("a"); a.href = v.src; a.target = "_blank"; a.click(); } else triggerToast("Video coming soon..."); }}
                 style={{
                   breakInside: "avoid", marginBottom: 16,
                   borderRadius: 14, overflow: "hidden", cursor: "pointer",
@@ -211,7 +212,7 @@ export default function MediaView() {
                   <div style={{ width: 48, height: 48, borderRadius: "50%", background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <span style={{ fontSize: 18, color: "#fff", marginLeft: 3 }}>▶</span>
                   </div>
-                  <span style={{ position: "absolute", bottom: 10, right: 12, background: "rgba(0,0,0,0.55)", color: "#fff", fontSize: 11, fontWeight: 700, padding: "3px 8px", borderRadius: 4 }}>{v.duration}</span>
+                  {v.duration && <span style={{ position: "absolute", bottom: 10, right: 12, background: "rgba(0,0,0,0.55)", color: "#fff", fontSize: 11, fontWeight: 700, padding: "3px 8px", borderRadius: 4 }}>{v.duration}</span>}
                 </div>
                 <div style={{ padding: "14px 16px 16px", background: "#fff" }}>
                   <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT_NAVY, lineHeight: 1.4 }}>{v.title}</div>
