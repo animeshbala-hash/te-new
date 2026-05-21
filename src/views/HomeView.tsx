@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAppContext } from "@/context/AppContext";
 import { useAuth } from "@/context/AuthContext";
@@ -7,76 +7,15 @@ import {
 } from "@/data/homeSharedData";
 import { ProgrammeSpotlight, JourneySection, NumbersSection, QuoteBanner, TickerBar, SectionDivider, ProEngageBanner } from "@/components/shared/HomeSections";
 
+const SECTION_IDS    = ["programmes", "numbers", "journey"];
+const SECTION_LABELS = ["Programmes", "Numbers", "Journey"];
 
-
-  {
-    accent: B_YELLOW, tag: "Community", cta: "story" as const,
-    doodles: {
-      spiral: { top: "12%",    right: "36%", size: 52, opacity: 0.18 },
-      dots:   { top: "60%",    right: "42%", size: 60, opacity: 0.20 },
-      star:   { top: "20%",    right: "28%", size: 28, opacity: 0.22 },
-      swish:  { bottom: "18%", right: "30%", size: 72, opacity: 0.16 },
-    },
-  },
-  {
-    accent: B_BLUE, tag: "Leadership Volunteering", cta: "story" as const,
-    doodles: {
-      spiral: { top: "15%",    right: "40%", size: 50, opacity: 0.18 },
-      dots:   { top: "65%",    right: "34%", size: 58, opacity: 0.20 },
-      star:   { bottom: "25%", right: "28%", size: 26, opacity: 0.22 },
-      swish:  { top: "42%",    right: "22%", size: 70, opacity: 0.15 },
-    },
-  },
-  {
-    accent: B_YELLOW, tag: "Disaster Response", cta: "story" as const,
-    doodles: {
-      spiral: { top: "10%",    right: "36%", size: 52, opacity: 0.16 },
-      dots:   { bottom: "20%", right: "40%", size: 60, opacity: 0.18 },
-      star:   { top: "48%",    right: "30%", size: 28, opacity: 0.20 },
-      swish:  { top: "28%",    right: "24%", size: 72, opacity: 0.14 },
-    },
-  },
-  {
-    photo: tataMotors1,
-    accent: B_BLUE, tag: "Community", cta: "video" as const,
-    headline: "10,000 Families",
-    titleSub: "Rural communities reached through free professional health camps",
-    doodles: {
-      spiral: { top: "8%",     right: "38%", size: 48, opacity: 0.16 },
-      dots:   { bottom: "22%", right: "44%", size: 56, opacity: 0.18 },
-      star:   { top: "55%",    right: "32%", size: 24, opacity: 0.20 },
-      swish:  { top: "30%",    right: "26%", size: 68, opacity: 0.14 },
-    },
-  },
-];
-
-const HERO_PARTICLES = [
-  { top: "8%",  left: "5%",  size: 6, opacity: 0.08, dur: "7s",  delay: "0s"   },
-  { top: "15%", left: "82%", size: 4, opacity: 0.06, dur: "9s",  delay: "1.2s" },
-  { top: "35%", left: "12%", size: 8, opacity: 0.10, dur: "8s",  delay: "0.5s" },
-  { top: "60%", left: "90%", size: 5, opacity: 0.07, dur: "6s",  delay: "2.8s" },
-  { top: "72%", left: "25%", size: 7, opacity: 0.12, dur: "10s", delay: "1.5s" },
-  { top: "20%", left: "68%", size: 4, opacity: 0.06, dur: "7.5s",delay: "3.2s" },
-  { top: "48%", left: "55%", size: 6, opacity: 0.09, dur: "8.5s",delay: "0.8s" },
-  { top: "80%", left: "40%", size: 5, opacity: 0.07, dur: "9.5s",delay: "2.0s" },
-  { top: "12%", left: "45%", size: 8, opacity: 0.10, dur: "6.5s",delay: "3.8s" },
-  { top: "55%", left: "8%",  size: 4, opacity: 0.06, dur: "7s",  delay: "1.0s" },
-  { top: "42%", left: "78%", size: 7, opacity: 0.11, dur: "8s",  delay: "2.5s" },
-  { top: "88%", left: "65%", size: 5, opacity: 0.08, dur: "9s",  delay: "0.3s" },
-];
-
-const SECTION_IDS    = ["hero", "programmes", "numbers", "journey"];
-const SECTION_LABELS = ["Home", "Programmes", "Numbers", "Journey"];
-
-// ── Component ─────────────────────────────────────────────────────────────────
 const HomeView = () => {
   const navigate         = useAppNavigate();
   const { triggerToast } = useAppContext();
-  
 
-  const [activeSection,  setActiveSection]  = useState(0);
-  const [showLabel,      setShowLabel]      = useState(false);
-  const [inHero,         setInHero]         = useState(true);
+  const [activeSection, setActiveSection] = useState(0);
+  const [showLabel,     setShowLabel]     = useState(false);
 
   useEffect(() => {
     const obs: IntersectionObserver[] = [];
@@ -91,27 +30,13 @@ const HomeView = () => {
       }, { threshold: 0.2 });
       o.observe(el); obs.push(o);
     });
+    return () => { obs.forEach((o) => o.disconnect()); };
   }, []);
-
-
-
-  useEffect(() => {
-    const onScroll = () => {
-      }
-      const heroEl = document.getElementById("hero");
-      if (heroEl) {
-        setInHero(window.scrollY < heroEl.offsetHeight - 300);
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
 
   return (
     <div className="relative font-sans">
 
-      {/* ── Section dot rail — fixed navy, same as all static pages */}
+      {/* Section dot rail */}
       <div className="fixed right-4 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-end" style={{ gap: 0 }}>
         {SECTION_IDS.map((id, i) => {
           const active = activeSection === i;
@@ -121,17 +46,15 @@ const HomeView = () => {
               <button
                 onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })}
                 className="flex items-center justify-end"
-                style={{ marginBottom: 0 }}
               >
                 {active && showLabel && (
                   <span
                     className="whitespace-nowrap shadow-sm transition-all duration-300 mr-2"
                     style={{
                       fontSize: 11, fontWeight: 700, letterSpacing: "0.3px",
-                      padding: "3px 9px",
-                      borderRadius: 4,
+                      padding: "3px 9px", borderRadius: 4,
                       backgroundColor: "rgba(13,27,62,0.92)",
-                      border: `1px solid #0D1B3E`,
+                      border: "1px solid #0D1B3E",
                       color: "#ffffff",
                     }}>
                     {SECTION_LABELS[i]}
@@ -143,21 +66,17 @@ const HomeView = () => {
                     width: active ? 9 : 6, height: active ? 9 : 6,
                     borderRadius: 2,
                     backgroundColor: "#0D1B3E",
-                    border: `1px solid rgba(13,27,62,0.25)`,
-                    display: "block",
-                    flexShrink: 0,
+                    border: "1px solid rgba(13,27,62,0.25)",
+                    display: "block", flexShrink: 0,
                   }}
                 />
               </button>
-
-              {/* Dotted connector line */}
               {!isLast && (
                 <div style={{
-                  width: 1,
-                  height: 28,
+                  width: 1, height: 28,
                   marginLeft: "auto",
                   marginRight: active ? "4px" : "2.5px",
-                  backgroundImage: `repeating-linear-gradient(to bottom, rgba(13,27,62,0.5) 0px, rgba(13,27,62,0.5) 3px, transparent 3px, transparent 7px)`,
+                  backgroundImage: "repeating-linear-gradient(to bottom, rgba(13,27,62,0.5) 0px, rgba(13,27,62,0.5) 3px, transparent 3px, transparent 7px)",
                   transition: "all 0.3s",
                 }} />
               )}
@@ -166,23 +85,23 @@ const HomeView = () => {
         })}
       </div>
 
-      {/* PROENGAGE BANNER — date-switched teaser / live */}
+      {/* PROENGAGE BANNER */}
       <ProEngageBanner />
 
-      {/* 2. PROGRAMME SPOTLIGHT */}
+      {/* PROGRAMME SPOTLIGHT */}
       <div id="programmes">
         <ProgrammeSpotlight />
       </div>
 
-      {/* QUOTE BANNER — dark section break, no SectionDivider needed */}
+      {/* QUOTE BANNER */}
       <QuoteBanner />
 
-      {/* 3. IN THE NUMBERS */}
+      {/* IN THE NUMBERS */}
       <div id="numbers">
         <NumbersSection />
       </div>
 
-      {/* 4. JOURNEY — compact */}
+      {/* JOURNEY */}
       <div id="journey">
         <JourneySection />
       </div>
