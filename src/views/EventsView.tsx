@@ -20,6 +20,7 @@ import iave24Img3    from "@/assets/events/iave24-3.jpg";
 import iave24Img4    from "@/assets/events/iave24-4.png";
 import iave24Img5    from "@/assets/events/iave24-5.png";
 import iave24Img6    from "@/assets/events/iave24-6.png";
+import iaveIvy26Img1 from "@/assets/events/iave-ivy-2026-1.jpg";
 import iaveIvy26Hero from "@/assets/events/iave-ivy-2026-hero.jpg";
 import iaveIvy26Img2 from "@/assets/events/iave-ivy-2026-2.jpg";
 import iaveIvy26Img3 from "@/assets/events/iave-ivy-2026-3.jpg";
