@@ -48,7 +48,7 @@ const MILESTONES = [
     year: "FY 2015",
     tag: "Launch",
     title: "Launched Tata Engage",
-    body: "Launched Tata Engage with two volunteering formats – Tata Volunteering Week and ProEngage.",
+    body: "Launched Tata Engage with two volunteering formats.",
     photo: img2015,
   },
   {
