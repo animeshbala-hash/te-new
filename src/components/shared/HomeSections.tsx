@@ -1383,11 +1383,11 @@ export function JourneySection() {
 
   // 5 milestones — verbatim from JourneyView
   const milestones = [
-    { fy: "FY 2015", colour: "#135EA9", key: "fy2015", text: "Launched Tata Engage with two volunteering formats – Tata Volunteering Week and ProEngage." },
-    { fy: "FY 2018", colour: "#F4838A", key: "fy2018", text: "Created Regional SPOC forums. Hosted the first Tata VolCon." },
+    { fy: "FY 2015", colour: "#135EA9", key: "fy2015", text: "Launched Tata Engage with two volunteering formats." },
+    { fy: "FY 2017", colour: "#F4838A", key: "fy2017", text: "Launched Tata group volunteering guidelines." },
     { fy: "FY 2019", colour: "#307FE2", key: "fy2019", text: "Tata Engage won \"Best Global Volunteer Program\" award by IAVE." },
-    { fy: "FY 2021", colour: "#803998", key: "fy2021", text: "Pivoted to a virtual mode for volunteering in response to the Covid19 pandemic." },
-    { fy: "FY 2025", colour: "#00A896", key: "fy2025", text: "Tata group emerges as the possible global leader in corporate volunteering both in total hours (Rank 1) and per capita contribution (Rank 2)." },
+    { fy: "FY 2022", colour: "#803998", key: "fy2022", text: "Developed an e-orientation module for capacity building of the SPOC cadre." },
+    { fy: "FY 2024", colour: "#00A896", key: "fy2024", text: "Tata group joins the Board of Directors of the International Association for Volunteering Effort (IAVE)." },
   ];
 
   // All available images — will be distributed to fill every gap

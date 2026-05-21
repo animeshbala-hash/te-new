@@ -48,7 +48,7 @@ const MILESTONES = [
     year: "FY 2015",
     tag: "Launch",
     title: "Launched Tata Engage",
-    body: "Launched Tata Engage with two volunteering formats.",
+    body: "Launched Tata Engage with two volunteering formats – Tata Volunteering Week and ProEngage.",
     photo: img2015,
   },
   {
@@ -96,7 +96,7 @@ const MILESTONES = [
     year: "FY 2021",
     tag: "Pivot",
     title: "Pivoted to virtual volunteering",
-    body: "Pivoted to a virtual mode for volunteering.",
+    body: "Pivoted to a virtual mode for volunteering in response to the Covid19 pandemic.",
     photo: imgComms,
   },
   {
@@ -128,7 +128,7 @@ const MILESTONES = [
     year: "FY 2025",
     tag: "Global leader",
     title: "Possible global leader in corporate volunteering",
-    body: "Tata group emerges as a global leader in corporate volunteering.",
+    body: "Tata group emerges as the possible global leader in corporate volunteering both in total hours (Rank 1) and per capita contribution (Rank 2).",
     photo: img2025,
   },
 ] as const;
