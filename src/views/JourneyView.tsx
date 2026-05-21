@@ -80,7 +80,7 @@ const MILESTONES = [
     year: "FY 2019",
     tag: "Global Award",
     title: "Best Global Volunteer Program — IAVE",
-    body: "Tata Engage won "Best Global Volunteer Program" award by International Association for Volunteer Effort (IAVE).",
+    body: "Tata Engage won \"Best Global Volunteer Program\" award by International Association for Volunteer Effort (IAVE).",
     photo: imgIHCL,
   },
   {
@@ -112,7 +112,7 @@ const MILESTONES = [
     year: "FY 2023",
     tag: "Recognition",
     title: "Tata Engage Awards & Global Conference",
-    body: "Tata group Annual Volunteering Awards christened "Tata Engage Awards" expanded to reward company and individual performance in year-round volunteering across all formats while celebrating the performance in Tata Volunteering Week. Presented the Tata group volunteering approach at the Global Conference on Volunteering held in Abu Dhabi, UAE.",
+    body: "Tata group Annual Volunteering Awards christened \"Tata Engage Awards\" expanded to reward company and individual performance in year-round volunteering across all formats while celebrating the performance in Tata Volunteering Week. Presented the Tata group volunteering approach at the Global Conference on Volunteering held in Abu Dhabi, UAE.",
     photo: imgAIG,
   },
   {
