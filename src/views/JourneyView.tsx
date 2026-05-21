@@ -88,7 +88,7 @@ const MILESTONES = [
     year: "FY 2019",
     tag: "Global Award",
     title: "Best Global Volunteer Program — IAVE",
-    body: "Tata Engage won "Best Global Volunteer Program" award by International Association for Volunteer Effort (IAVE).",
+    body: "Tata Engage won 'Best Global Volunteer Program' award by International Association for Volunteer Effort (IAVE).",
     stat: "IAVE",
     statSub: "global #1",
     photo: imgIHCL,
