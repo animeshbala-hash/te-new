@@ -464,20 +464,20 @@ function Iave2024({ onBack }: { onBack: () => void }) {
           body="Shrirang Dhavale represented Tata Sustainability Group in the plenary session 'Responding to the Sustainability Challenge: The Role of Corporate Volunteering.' He emphasised how volunteering can help reimagine personal values and lifestyles to address climate change, highlighting Tata's perspective on embedding sustainability into corporate volunteering ecosystems."
           media={<img src={iave24Img2} alt="Shrirang Dhavale at IAVE 2024 plenary"
             style={{ width: "100%", borderRadius: 14, objectFit: "cover",
-              objectPosition: "center center", aspectRatio: "4/3", display: "block" }} />} />
+              aspectRatio: "16/9", display: "block" }} />} />
 
         <MediaBlock accent={accent} title="Global Corporate Volunteer Council — Gauri Rajadhyaksha & Pallavi Barua"
           body="Gauri Rajadhyaksha and Pallavi Barua represented Tata Engage at the Global Corporate Volunteer Council (GCVC) meeting, deliberating on trends in corporate volunteering across Asia — Korea, China, and Japan — and highlighting new opportunities and challenges. The sessions enabled rich cross-sharing of strategies and innovative initiatives."
           media={<img src={iave24Img3} alt="Gauri and Pallavi at GCVC"
             style={{ width: "100%", borderRadius: 14, objectFit: "cover",
-              objectPosition: "center center", aspectRatio: "4/3", display: "block" }} />}
+              aspectRatio: "16/9", display: "block" }} />}
           mediaLeft />
 
         <MediaBlock accent={accent} title="India Country Spotlight — Pallavi Barua"
           body="Pallavi Barua presented Tata Communications' DRIVE campaign during the India Country Spotlight, offering a five-point recommendation for companies planning to embed scale in their volunteering programmes."
           media={<img src={iave24Img4} alt="Pallavi Barua presenting India Country Spotlight"
             style={{ width: "100%", borderRadius: 14, objectFit: "cover",
-              objectPosition: "center center", aspectRatio: "4/3", display: "block" }} />} />
+              aspectRatio: "16/9", display: "block" }} />} />
 
         <SectionHead title="Key Highlights" accent={accent} />
         <Paras texts={[
@@ -514,7 +514,7 @@ function IaveIvy2026({ onBack }: { onBack: () => void }) {
         title="IAVE 'Call to Action for the Future of Volunteering' Platform"
         subtitle="Powered by TCS ProEngagers — launched for IVY 2026 · 12 May 2026"
         heroImage={iaveIvy26Img1}
-        heroImagePosition="center center" />
+        heroImagePosition="center top" />
       <ArticleBody accent={accent}>
         <Breadcrumb onBack={onBack} />
 
@@ -529,14 +529,14 @@ function IaveIvy2026({ onBack }: { onBack: () => void }) {
           body="Through the ProEngage Skill-Based Volunteering programme, IAVE sought support from TCS volunteers to conceptualise and design the end-to-end digital experience, develop and integrate the microsite within IAVE's digital ecosystem, and build features such as stakeholder registration, action mapping, resource sharing, and community discussion."
           media={<img src={iaveIvy26Img2} alt="IAVE platform launch"
             style={{ width: "100%", borderRadius: 14, objectFit: "cover",
-              objectPosition: "center center", aspectRatio: "4/3", display: "block" }} />}
+              aspectRatio: "16/9", display: "block" }} />}
           mediaLeft />
 
         <MediaBlock accent={accent} title="Pro-bono Support by TCS Volunteers"
           body="A cross-functional team of TCS skill-based volunteers brought expertise in web and software development, UX/UI design, platform architecture, CMS configuration, analytics integration, project management, and data privacy. Working closely with the TSG and IAVE team, they translated requirements into a cohesive platform covering registration flows, public action maps, evidence uploads, searchable databases, and social sharing."
           media={<img src={iaveIvy26Img3} alt="TCS ProEngagers team"
             style={{ width: "100%", borderRadius: 14, objectFit: "cover",
-              objectPosition: "center center", aspectRatio: "4/3", display: "block" }} />} />
+              aspectRatio: "16/9", display: "block" }} />} />
 
         <SectionHead title="The Outcome" accent={accent} />
         <Paras texts={[
