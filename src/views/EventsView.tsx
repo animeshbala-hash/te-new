@@ -514,7 +514,7 @@ function IaveIvy2026({ onBack }: { onBack: () => void }) {
         title="IAVE 'Call to Action for the Future of Volunteering' Platform"
         subtitle="Powered by TCS ProEngagers — launched for IVY 2026 · 12 May 2026"
         heroImage={iaveIvy26Img1}
-        heroImagePosition="center top" />
+        heroImagePosition="center center" />
       <ArticleBody accent={accent}>
         <Breadcrumb onBack={onBack} />
 
@@ -528,15 +528,16 @@ function IaveIvy2026({ onBack }: { onBack: () => void }) {
         <MediaBlock accent={accent} title="The IAVE – Tata Group Collaboration"
           body="Through the ProEngage Skill-Based Volunteering programme, IAVE sought support from TCS volunteers to conceptualise and design the end-to-end digital experience, develop and integrate the microsite within IAVE's digital ecosystem, and build features such as stakeholder registration, action mapping, resource sharing, and community discussion."
           media={<img src={iaveIvy26Img2} alt="IAVE platform launch"
-            style={{ width: "100%", borderRadius: 14, objectFit: "cover",
-              aspectRatio: "16/9", display: "block" }} />}
+            style={{ width: "100%", borderRadius: 14, objectFit: "contain",
+              background: "#f3f4f6", aspectRatio: "16/9", display: "block" }} />}
           mediaLeft />
 
         <MediaBlock accent={accent} title="Pro-bono Support by TCS Volunteers"
           body="A cross-functional team of TCS skill-based volunteers brought expertise in web and software development, UX/UI design, platform architecture, CMS configuration, analytics integration, project management, and data privacy. Working closely with the TSG and IAVE team, they translated requirements into a cohesive platform covering registration flows, public action maps, evidence uploads, searchable databases, and social sharing."
           media={<img src={iaveIvy26Img3} alt="TCS ProEngagers team"
-            style={{ width: "100%", borderRadius: 14, objectFit: "cover",
-              aspectRatio: "16/9", display: "block" }} />} />
+            style={{ width: "100%", borderRadius: 14, objectFit: "contain",
+              background: "#f3f4f6", aspectRatio: "16/9", display: "block" }} />} />
+
 
         <SectionHead title="The Outcome" accent={accent} />
         <Paras texts={[
