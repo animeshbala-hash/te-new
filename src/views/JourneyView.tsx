@@ -96,7 +96,7 @@ const MILESTONES = [
     year: "FY 2021",
     tag: "Pivot",
     title: "Pivoted to virtual volunteering",
-    body: "Pivoted to a virtual mode for volunteering in response to the Covid19 pandemic.",
+    body: "Pivoted to a virtual mode for volunteering.",
     photo: imgComms,
   },
   {
