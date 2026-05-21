@@ -7,50 +7,10 @@ import {
 } from "@/data/homeSharedData";
 import { ProgrammeSpotlight, JourneySection, NumbersSection, QuoteBanner, TickerBar, SectionDivider, ProEngageBanner } from "@/components/shared/HomeSections";
 
-// ── Ink doodle SVGs ───────────────────────────────────────────────────────────
-const InkSpiral = ({ className = "", style = {} }: { className?: string; style?: React.CSSProperties }) => (
-  <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} style={style}>
-    <path d="M30 30 C30 22, 38 18, 42 24 C46 30, 42 40, 34 42 C26 44, 18 38, 18 30 C18 20, 26 12, 36 12 C48 12, 56 22, 54 34 C52 46, 42 54, 28 52"
-      stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-  </svg>
-);
-const InkDots = ({ className = "", style = {} }: { className?: string; style?: React.CSSProperties }) => (
-  <svg viewBox="0 0 50 30" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} style={style}>
-    <circle cx="6"  cy="8"  r="2.5" fill="currentColor" opacity="0.55" />
-    <circle cx="18" cy="22" r="1.8" fill="currentColor" opacity="0.4"  />
-    <circle cx="30" cy="6"  r="3"   fill="currentColor" opacity="0.45" />
-    <circle cx="42" cy="20" r="1.5" fill="currentColor" opacity="0.35" />
-    <circle cx="48" cy="10" r="2"   fill="currentColor" opacity="0.4"  />
-  </svg>
-);
-const InkStar = ({ className = "", style = {} }: { className?: string; style?: React.CSSProperties }) => (
-  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} style={style}>
-    <path d="M16 2 L17.5 14 L28 8 L18.5 16 L28 24 L17.5 18 L16 30 L14.5 18 L4 24 L13.5 16 L4 8 L14.5 14 Z"
-      stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" fill="none" />
-  </svg>
-);
-const InkSwish = ({ className = "", style = {} }: { className?: string; style?: React.CSSProperties }) => (
-  <svg viewBox="0 0 70 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} style={style}>
-    <path d="M4 32 C10 16, 28 6, 50 14 C60 18, 65 26, 66 34"
-      stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-    <path d="M60 28 L66 34 L60 38"
-      stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-  </svg>
-);
 
-// ── HomeView-only data ────────────────────────────────────────────────────────
 
-const wayanad  = IMPACT_STORIES.find((s) => s.slug === "wayanad-2024")!;
-const melghat  = IMPACT_STORIES.find((s) => s.slug === "melghat-mitra")!;
-const beyond   = IMPACT_STORIES.find((s) => s.slug === "beyond-the-boardroom")!;
-
-const HERO_SLIDES = [
   {
-    photo: melghat.heroImage,
     accent: B_YELLOW, tag: "Community", cta: "story" as const,
-    storySlug: "melghat-mitra",
-    headline: melghat.title,
-    titleSub: melghat.subtitle,
     doodles: {
       spiral: { top: "12%",    right: "36%", size: 52, opacity: 0.18 },
       dots:   { top: "60%",    right: "42%", size: 60, opacity: 0.20 },
@@ -59,11 +19,7 @@ const HERO_SLIDES = [
     },
   },
   {
-    photo: beyondHero,
     accent: B_BLUE, tag: "Leadership Volunteering", cta: "story" as const,
-    storySlug: "beyond-the-boardroom",
-    headline: beyond.title,
-    titleSub: beyond.subtitle,
     doodles: {
       spiral: { top: "15%",    right: "40%", size: 50, opacity: 0.18 },
       dots:   { top: "65%",    right: "34%", size: 58, opacity: 0.20 },
@@ -72,11 +28,7 @@ const HERO_SLIDES = [
     },
   },
   {
-    photo: wayanad.heroImage,
     accent: B_YELLOW, tag: "Disaster Response", cta: "story" as const,
-    storySlug: "wayanad-2024",
-    headline: wayanad.title,
-    titleSub: wayanad.subtitle,
     doodles: {
       spiral: { top: "10%",    right: "36%", size: 52, opacity: 0.16 },
       dots:   { bottom: "20%", right: "40%", size: 60, opacity: 0.18 },
@@ -124,8 +76,6 @@ const HomeView = () => {
 
   const [activeSection,  setActiveSection]  = useState(0);
   const [showLabel,      setShowLabel]      = useState(false);
-  const labelTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [heroSlide,      setHeroSlide]      = useState(0);
   const [inHero,         setInHero]         = useState(true);
 
   useEffect(() => {
@@ -137,23 +87,16 @@ const HomeView = () => {
         if (e.isIntersecting) {
           setActiveSection(idx);
           setShowLabel(true);
-          if (labelTimer.current) clearTimeout(labelTimer.current);
-          labelTimer.current = setTimeout(() => setShowLabel(false), 1800);
         }
       }, { threshold: 0.2 });
       o.observe(el); obs.push(o);
     });
-    return () => { obs.forEach((o) => o.disconnect()); if (labelTimer.current) clearTimeout(labelTimer.current); };
   }, []);
 
-  useEffect(() => { const t = setInterval(() => setHeroSlide((p) => (p + 1) % HERO_SLIDES.length), 6000); return () => clearInterval(t); }, []);
 
-  const heroImgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
-      if (heroImgRef.current) {
-        heroImgRef.current.style.transform = `translateY(${window.scrollY * 0.35}px)`;
       }
       const heroEl = document.getElementById("hero");
       if (heroEl) {
@@ -164,8 +107,6 @@ const HomeView = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const slide        = HERO_SLIDES[heroSlide];
-  const d            = slide.doodles;
 
   return (
     <div className="relative font-sans">
