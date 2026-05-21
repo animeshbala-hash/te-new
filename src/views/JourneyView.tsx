@@ -128,7 +128,7 @@ const MILESTONES = [
     year: "FY 2023",
     tag: "Recognition",
     title: "Tata Engage Awards & Global Conference",
-    body: "Tata Group Annual Volunteering Awards christened "Tata Engage Awards" expanded to reward company and individual performance in year-round volunteering across all formats while celebrating the performance in Tata Volunteering Week. Presented the Tata group volunteering approach at the Global Conference on Volunteering held in Abu Dhabi, UAE.",
+    body: "Tata Group Annual Volunteering Awards christened 'Tata Engage Awards' expanded to reward company and individual performance in year-round volunteering across all formats while celebrating the performance in Tata Volunteering Week. Presented the Tata group volunteering approach at the Global Conference on Volunteering held in Abu Dhabi, UAE.",
     stat: "2023",
     statSub: "global stage",
     photo: imgAIG,
