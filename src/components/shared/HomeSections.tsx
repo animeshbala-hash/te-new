@@ -1856,3 +1856,52 @@ export function ProEngageBanner() {
     </div>
   );
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TSM 2026 BANNER — shown during June 2026 (TSM month)
+// Links to /tata-sustainability-month/2026
+// ─────────────────────────────────────────────────────────────────────────────
+export function TSMBanner() {
+  const navigate = useAppNavigate();
+
+  // Show throughout June 2026
+  const now      = new Date();
+  const showFrom = new Date("2026-06-01T00:00:00");
+  const showUntil = new Date("2026-07-01T00:00:00");
+
+  if (now < showFrom || now >= showUntil) return null;
+
+  return (
+    <div
+      onClick={() => navigate("tsm26-live")}
+      style={{
+        cursor: "pointer",
+        width: "100%",
+        lineHeight: 0,
+        overflow: "hidden",
+        position: "relative",
+        paddingTop: 0,
+        background: "#C3DB6F",
+      }}
+      role="link"
+      aria-label="Tata Sustainability Month 2026 — now live"
+    >
+      <img
+        src="/src/assets/TSM26_launch.jpg"
+        alt="Tata Sustainability Month 2026 is Live"
+        style={{ width: "100%", height: "auto", display: "block" }}
+        onError={(e) => {
+          // Fallback strip if image not yet dropped in assets
+          const el = e.currentTarget.parentElement as HTMLDivElement;
+          if (el) {
+            el.style.background = "#C3DB6F";
+            el.style.minHeight  = "80px";
+            el.style.display    = "flex";
+            el.style.alignItems = "center";
+            el.style.justifyContent = "center";
+          }
+        }}
+      />
+    </div>
+  );
+}
