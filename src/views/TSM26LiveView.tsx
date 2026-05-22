@@ -39,7 +39,7 @@ const PARTICIPATE_ITEMS = [
   {
     num: "03",
     title: "Tata Engage Opportunities",
-    desc: "Participate in Tata Engage facilitated "One Tata" volunteering opportunities across the month.",
+    desc: "Participate in Tata Engage facilitated &ldquo;One Tata&rdquo; volunteering opportunities across the month.",
   },
 ];
 
