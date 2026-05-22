@@ -245,7 +245,7 @@ function LoginPopout({
             Welcome back!
           </p>
           <p style={{ margin: "3px 0 0", fontSize: 12, color: "rgba(255,255,255,0.70)", fontFamily: FONT_DM }}>
-            {step === "otp" ? `Code sent to ${email}` : "What's on the agenda today?"}
+            {step === "otp" ? `Code sent to ${email}` : "Ready to be the change today?"}
           </p>
         </div>
         <button onClick={onClose} style={{ background: "rgba(255,255,255,0.15)", border: "none", cursor: "pointer", color: "white", padding: "4px 5px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 8, marginTop: 2, position: "relative", zIndex: 1 }}>
@@ -534,7 +534,7 @@ const Navbar = ({
       label: "Tata Sustainability Month",
       items: [
         { label: "About", action: () => onNavigate("tata-sm") },
-        { label: "TSM Volunteering", action: () => onNavigate("tata-sm") },
+        { label: "TSM is Live", action: () => onNavigate("tsm26-live") },
         { label: "DIY Activities", action: () => triggerToast("DIY Activities available during TSM season") },
       ],
     },
