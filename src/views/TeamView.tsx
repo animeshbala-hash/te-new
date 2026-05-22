@@ -4,7 +4,7 @@ import shrirangPortrait from "@/assets/team/shrirang-dhavale.png";
 import gauriPortrait from "@/assets/team/gauri-rajadhyaksha.png";
 import supriyaPortrait from "@/assets/team/supriya-ramachandran.png";
 import truptiPortrait from "@/assets/team/trupti-prabhu.png";
-import teamHeroImg from "@/assets/tata-projects.jpg";
+import teamHeroImg from "@/assets/heroes/public/tata-projects.jpg";
 
 const ACCENT      = "#F4838A";
 const ACCENT_DARK = "#C85E64";

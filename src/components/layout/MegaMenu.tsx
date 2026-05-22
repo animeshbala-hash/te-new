@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import tataEngageLogoNoBg from "@/assets/tata-engage-logo-nobg.png";
+import tataEngageLogoNoBg from "@/assets/logos/tata-engage-logo-nobg.png";
 import { X, ChevronRight, LayoutDashboard, Briefcase, Calendar, User, Shield } from "lucide-react";
 import type { View } from "@/types";
 

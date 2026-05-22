@@ -15,11 +15,11 @@ import badgeVeteran    from "@/assets/badges/veteran.svg";
 import badgeAmbassador from "@/assets/badges/ambassador.svg";
 import badgeLead       from "@/assets/badges/lead.svg";
 import badgeChampion   from "@/assets/badges/champion.png";
-import imgPhotos  from "@/assets/tatabball.jpg";
-import imgVideos  from "@/assets/tata_power.JPG";
-import imgStories from "@/assets/trent.jpg";
-import imgEvents  from "@/assets/IHCL.jpg";
-import imgEModule from "@/assets/Tata_international.jpeg";
+import imgPhotos  from "@/assets/media/tatabball.jpg";
+import imgVideos  from "@/assets/media/tata_power.JPG";
+import imgStories from "@/assets/media/trent.jpg";
+import imgEvents  from "@/assets/media/IHCL.jpg";
+import imgEModule from "@/assets/media/Tata_international.jpeg";
 
 const B_INDIGO    = "#333399";   // Tata Blue — used for pending/amber text labels
 const B_YELLOW    = "#F79425";

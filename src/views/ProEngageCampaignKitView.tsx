@@ -3,10 +3,10 @@ import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import peHeroImg   from "@/assets/banner_photos/Inner Page ProEngage banner.jpg";
 import imgPreview1 from "@/assets/banner_photos/Inner Page PE below banner.jpg";
 import imgPreview2 from "@/assets/tata-communications-1.jpg";
-import imgPreview3 from "@/assets/tatabball.jpg";
-import imgPreview4 from "@/assets/tata_power.JPG";
-import imgPreview5 from "@/assets/trent.jpg";
-import imgPreview6 from "@/assets/IHCL.jpg";
+import imgPreview3 from "@/assets/media/tatabball.jpg";
+import imgPreview4 from "@/assets/media/tata_power.JPG";
+import imgPreview5 from "@/assets/media/trent.jpg";
+import imgPreview6 from "@/assets/media/IHCL.jpg";
 
 const FONT        = "'DM Sans',ui-sans-serif,system-ui,sans-serif";
 const ACCENT_NAVY = "#0D1B3E";

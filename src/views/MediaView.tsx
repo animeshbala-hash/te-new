@@ -6,7 +6,7 @@ import { SOCIAL_POSTS } from "@/data/homeSharedData";
 import { IMPACT_STORIES } from "@/data/impactStoriesData";
 
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import heroImg          from "@/assets/tata-projects.jpg";
+import heroImg          from "@/assets/heroes/public/tata-projects.jpg";
 import photo01 from "@/assets/homepagebanner/TVW 6  - 7th Day 7.JPG";
 import photo02 from "@/assets/homepagebanner/Volunteering in Action 5.jpg";
 import photo03 from "@/assets/homepagebanner/Westside Store employees_Paint an Orphanage - Trent.JPG";

@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Facebook, Linkedin, Instagram } from "lucide-react";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import contactHeroImg from "@/assets/tata-infinit.jpg";
+import contactHeroImg from "@/assets/heroes/public/tata-infinit.jpg";
 
 const ACCENT      = "#C3DB6F";
 const ACCENT_DARK = "#7a8f2a";

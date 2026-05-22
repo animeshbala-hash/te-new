@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import chackoThomasPortrait from "@/assets/chacko-thomas.jpg";
-import tcsForestImg from "@/assets/tcs-forest.png";
+import tcsForestImg from "@/assets/heroes/public/tcs-forest.png";
 
 const ACCENT      = "#4376BB";
 const ACCENT_DARK = "#2D5494";

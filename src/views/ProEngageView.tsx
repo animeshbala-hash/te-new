@@ -9,7 +9,7 @@ import { useAppContext } from "@/context/AppContext";
 import { useAuth } from "@/context/AuthContext";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import heroImg from "@/assets/tata-projects.jpg";
+import heroImg from "@/assets/heroes/public/tata-projects.jpg";
 
 const B_INDIGO    = "#333399";
 const B_YELLOW    = "#F5A623";

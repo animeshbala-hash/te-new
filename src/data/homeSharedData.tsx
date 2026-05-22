@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Linkedin, type LucideIcon } from "lucide-react";
-import drPhoto from "@/assets/dr_photo.jpg";
+import drPhoto from "@/assets/home/programmes/dr_photo.jpg";
 
 // ── Brand tokens ──────────────────────────────────────────────────────────────
 export const B_INDIGO = "#333399";

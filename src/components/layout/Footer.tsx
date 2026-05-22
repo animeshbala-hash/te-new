@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Linkedin } from "lucide-react";
-import tataEngageLogoNoBg from "@/assets/tata-engage-logo-nobg.png";
+import tataEngageLogoNoBg from "@/assets/logos/tata-engage-logo-nobg.png";
 import { useAppContext } from "@/context/AppContext";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useIsMobile, useIsTablet } from "@/hooks/useMediaQuery";
