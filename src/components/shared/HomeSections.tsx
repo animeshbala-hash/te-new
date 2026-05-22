@@ -37,7 +37,7 @@ import airIndia from "@/assets/home/programmes/air-india.jpg";
 import tataCommunications from "@/assets/tata-communications-1.jpg";
 import infiniti from "@/assets/Infiniti_2.jpg";
 import tataPower from "@/assets/home/programmes/tata_power.JPG";
-import drPhoto from "@/assets/Home_Page_DR_Option2.JPG";
+import drPhoto from "@/assets/home/programmes/dr_photo.jpg";
 import tajSatsImg from "@/assets/tata-motors-2.jpg";
 import titanImg from "@/assets/titain.jpeg";
 import trentImg from "@/assets/trent_2.jpg";
