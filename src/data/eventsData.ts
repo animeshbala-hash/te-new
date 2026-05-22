@@ -166,11 +166,11 @@ export const EVENTS: EventEntry[] = [
     excerpt:
       "1,500+ volunteer leaders from 90 countries. Tata Sustainability Group represented at the global forum on the role of corporate volunteering in addressing the sustainability challenge.",
     accentColor: E_BLUE_TVW,
-    heroImage: iave24Hero,
-    heroImageAlt: "Tata Engage delegation at the 27th IAVE World Volunteer Conference, Busan",
+    heroImage: iave24Img3,
+    heroImageAlt: "Shrirang Dhavale, Tata Sustainability Group, at the plenary of the 27th IAVE World Volunteer Conference, Busan",
     photos: [
       { src: iave24Img2 },
-      { src: iave24Img3 },
+      { src: iave24Hero },
       { src: iave24Img4 },
       { src: iave24Img5 },
       { src: iave24Img6 },
