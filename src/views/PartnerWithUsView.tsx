@@ -4,7 +4,7 @@ import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import partnerHero from "@/assets/tata-comm-2.jpeg";
+import partnerHero from "@/assets/heroes/public/tata-comm-2.jpeg";
 import partnerSectionImg from "@/assets/tata-communications-1.jpg";
 import partnerNgoImg from "@/assets/homepagebanner/Volunteering in Action 5.jpg";
 

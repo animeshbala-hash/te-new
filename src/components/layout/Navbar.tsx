@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Bell, ChevronDown, ChevronRight, User, LogOut, Share2, LayoutDashboard, Search, Menu, X, Mail, Lock, Eye, EyeOff, Building2, ShieldCheck, Landmark, ArrowRight } from "lucide-react";
-import tataLogo from "@/assets/tata-logo.png";
-import tataEngageLogo from "@/assets/tata-engage-logo-nobg.png";
+import tataLogo from "@/assets/logos/tata-logo.png";
+import tataEngageLogo from "@/assets/logos/tata-engage-logo-nobg.png";
 import type { View } from "@/types";
 import { NOTIFICATIONS_VOLUNTEER, NOTIFICATIONS_NGO, NOTIFICATIONS_SPOC, NOTIFICATIONS_ADMIN, VIKRAM_NAIR, ROHAN_DESAI, PRIYA_SHARMA, ANJALI_MEHTA } from "@/data/mockData";
 import { useAppContext } from "@/context/AppContext";

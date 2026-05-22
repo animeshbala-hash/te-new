@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import tvwHeroImg  from "@/assets/banner_photos/TVW Inner Banner.JPG";
 import imgPreview1 from "@/assets/banner_photos/TVW Inner Page below Banner.jpg";
-import imgPreview2 from "@/assets/tatabball.jpg";
-import imgPreview3 from "@/assets/trent.jpg";
-import imgPreview4 from "@/assets/IHCL.jpg";
-import imgPreview5 from "@/assets/tata_power.JPG";
+import imgPreview2 from "@/assets/media/tatabball.jpg";
+import imgPreview3 from "@/assets/media/trent.jpg";
+import imgPreview4 from "@/assets/media/IHCL.jpg";
+import imgPreview5 from "@/assets/media/tata_power.JPG";
 
 const FONT        = "'DM Sans',ui-sans-serif,system-ui,sans-serif";
 const ACCENT_NAVY = "#0D1B3E";

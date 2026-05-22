@@ -17,10 +17,10 @@ import badgeAmbassador from "@/assets/badges/ambassador.svg";
 import badgeNorthStar  from "@/assets/badges/northstar.svg";
 import badgeLead       from "@/assets/badges/lead.svg";
 import badgeChampion   from "@/assets/badges/lead.png";
-import imgPhotos  from "@/assets/tatabball.jpg";
-import imgVideos  from "@/assets/tata_power.JPG";
-import imgStories from "@/assets/trent.jpg";
-import imgEModule from "@/assets/Tata_international.jpeg";
+import imgPhotos  from "@/assets/media/tatabball.jpg";
+import imgVideos  from "@/assets/media/tata_power.JPG";
+import imgStories from "@/assets/media/trent.jpg";
+import imgEModule from "@/assets/media/Tata_international.jpeg";
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const B_YELLOW    = "#F5A623";

@@ -11,16 +11,16 @@ import {
   HERO_STATS, SOCIAL_POSTS, TICKER_ITEMS, EOEO,
   ACCENT_NAVY,
 } from "@/data/homeSharedData";
-import doodleCluster1 from "@/assets/doodle-cluster-1.png";
-import doodleCluster2 from "@/assets/doodle-cluster-2.png";
-import doodleCluster3 from "@/assets/doodle-cluster-3.png";
-import doodleCluster4 from "@/assets/doodle-cluster-4.png";
-import tataElxsiImg   from "@/assets/tata-elxsi.jpg";
-import airIndia from "@/assets/air-india.jpg";
+import doodleCluster1 from "@/assets/doodles/doodle-cluster-1.png";
+import doodleCluster2 from "@/assets/doodles/doodle-cluster-2.png";
+import doodleCluster3 from "@/assets/doodles/doodle-cluster-3.png";
+import doodleCluster4 from "@/assets/doodles/doodle-cluster-4.png";
+import tataElxsiImg   from "@/assets/home/programmes/tata-elxsi.jpg";
+import airIndia from "@/assets/home/programmes/air-india.jpg";
 import tataCommunications from "@/assets/tata-communications-1.jpg";
 import infiniti from "@/assets/Infiniti_2.jpg";
-import tcsForest from "@/assets/tcs-forest.png";
-import drPhoto from "@/assets/dr_photo.jpg";
+import tcsForest from "@/assets/heroes/public/tcs-forest.png";
+import drPhoto from "@/assets/home/programmes/dr_photo.jpg";
 import tajSatsImg from "@/assets/tata-motors-2.jpg";
 import titanImg from "@/assets/titain.jpeg";
 import trentImg from "@/assets/trent_2.jpg";

@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import tsmHeroImg  from "@/assets/homepagebanner/4. Mithapur_Eco-Tourism_LEEPEN_Harivan Farm_2022-23_Lipan Work (5).jpeg";
-import imgPreview1 from "@/assets/tata-elxsi.jpg";
-import imgPreview2 from "@/assets/air-india.jpg";
+import imgPreview1 from "@/assets/home/programmes/tata-elxsi.jpg";
+import imgPreview2 from "@/assets/home/programmes/air-india.jpg";
 import imgPreview3 from "@/assets/trent_2.jpg";
-import imgPreview4 from "@/assets/Voltas.JPG";
-import imgPreview5 from "@/assets/infiniti-1.jpg";
+import imgPreview4 from "@/assets/heroes/hubs/Voltas.JPG";
+import imgPreview5 from "@/assets/heroes/hubs/infiniti-1.jpg";
 
 const FONT        = "'DM Sans',ui-sans-serif,system-ui,sans-serif";
 const ACCENT_NAVY = "#0D1B3E";

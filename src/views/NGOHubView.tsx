@@ -3,9 +3,9 @@ import { useAppContext } from "@/context/AppContext";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { ArrowRight } from "lucide-react";
 import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
-import tataLogo from "@/assets/tata-logo.png";
-import tataEngageLogo from "@/assets/tata-engage-logo-nobg.png";
-import heroImg from "@/assets/infiniti-1.jpg";
+import tataLogo from "@/assets/logos/tata-logo.png";
+import tataEngageLogo from "@/assets/logos/tata-engage-logo-nobg.png";
+import heroImg from "@/assets/heroes/hubs/infiniti-1.jpg";
 import { B_TICKER, B_YELLOW, B_TEAL, ACCENT_NAVY } from "@/data/homeSharedData";
 import { ProgrammeSpotlight, JourneySection, NumbersSection, QuoteBanner, TickerBar, SectionDivider } from "@/components/shared/HomeSections";
 

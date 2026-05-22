@@ -24,7 +24,7 @@ import iaveIvy26Img1 from "@/assets/events/iave-ivy-2026-1.jpg";
 import iaveIvy26Hero from "@/assets/events/iave-ivy-2026-hero.jpg";
 import iaveIvy26Img2 from "@/assets/events/iave-ivy-2026-2.jpg";
 import iaveIvy26Img3 from "@/assets/events/iave-ivy-2026-3.jpg";
-import eventsHeroImg from "@/assets/tce-2.jpg";
+import eventsHeroImg from "@/assets/heroes/public/tce-2.jpg";
 
 const ACCENT_NAVY = "#0D1B3E";
 const B_INDIGO    = "#333399";

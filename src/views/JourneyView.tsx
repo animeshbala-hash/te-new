@@ -3,17 +3,17 @@ import { useAppNavigate } from "@/hooks/useAppNavigate";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 
 // ── Asset imports ─────────────────────────────────────────────────────────────
-import imgTrent        from "@/assets/trent.jpg";
+import imgTrent        from "@/assets/journey/trent.jpg";
 import imgBball        from "@/assets/homepagebanner/20240729_114952.jpg";
 import img2016         from "@/assets/homepagebanner/2016.png";
 import img2015         from "@/assets/homepagebanner/2015.png";
 import img2017         from "@/assets/homepagebanner/2017.png";
-import imgIHCL         from "@/assets/IHCL.jpg";
-import imgMotors       from "@/assets/Tata_international.jpeg";
+import imgIHCL         from "@/assets/journey/IHCL.jpg";
+import imgMotors       from "@/assets/journey/Tata_international.jpeg";
 import imgComms        from "@/assets/homepagebanner/JCAPCPL22.JPG";
 import imgAirIndia     from "@/assets/Taj_Sats.jpeg";
 import imgAIG          from "@/assets/Infiniti_2.jpg";
-import imgTrent2       from "@/assets/Voltas.JPG";
+import imgTrent2       from "@/assets/journey/Voltas.JPG";
 import img2025         from "@/assets/homepagebanner/2025.png";
 import journeyHeroImg  from "@/assets/homepagebanner/IHCL 1.jpg";
 
