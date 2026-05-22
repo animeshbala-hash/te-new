@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
+import { IS_PE_SEASON } from "@/data/mockData";
 import { useAuth } from "@/context/AuthContext";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import peHeroImg     from "@/assets/banner_photos/Inner Page ProEngage banner.jpg";
@@ -183,13 +184,13 @@ const NGO_VALUES = [
 ];
 
 const SKILLS = [
-  { label: "Human Resources",              icon: "HR" },
-  { label: "Finance",                       icon: "FIN" },
-  { label: "Business Planning & Strategy", icon: "STR" },
-  { label: "Information Technology",       icon: "IT" },
-  { label: "Web Design & Digital Solutions", icon: "WEB" },
-  { label: "Marketing & Social Media",     icon: "MKT" },
-  { label: "Mentoring & Coaching",          icon: "MNT" },
+  { label: "Human Resources",              icon: "👥" },
+  { label: "Finance",                       icon: "💹" },
+  { label: "Business Planning & Strategy", icon: "📊" },
+  { label: "Information Technology",       icon: "💻" },
+  { label: "Web Design & Digital Solutions", icon: "🎨" },
+  { label: "Marketing & Social Media",     icon: "📣" },
+  { label: "Mentoring & Coaching",          icon: "🎓" },
 ];
 
 const TSG_POINTS = [
@@ -246,13 +247,20 @@ export default function AboutProEngageView() {
             ProEngage is the Tata Group's flagship part-time, skill-based volunteering programme that brings together Tata talent and civil society organisations to create meaningful, long-term impact. Through ProEngage, volunteers don't just give back — they lead, problem-solve, and create lasting change.
           </p>
           <div style={{ display: "flex", gap: 14 }}>
-            <button onClick={() => navigate(isLoggedIn ? "proengage" : "register-role")}
-              style={{ background: B_YELLOW, color: ACCENT_NAVY, border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", boxShadow: "0 4px 20px rgba(13,27,62,0.25)" }}>
-              Browse open projects →
-            </button>
+            {IS_PE_SEASON ? (
+              <button onClick={() => navigate(isLoggedIn ? "proengage" : "register-role")}
+                style={{ background: B_YELLOW, color: ACCENT_NAVY, border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", boxShadow: "0 4px 20px rgba(13,27,62,0.25)" }}>
+                Browse Open Projects →
+              </button>
+            ) : (
+              <button onClick={() => navigate(isLoggedIn ? "register-role" : "register-role")}
+                style={{ background: B_YELLOW, color: ACCENT_NAVY, border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", boxShadow: "0 4px 20px rgba(13,27,62,0.25)" }}>
+                Register to Volunteer →
+              </button>
+            )}
             <button onClick={() => document.getElementById("pe-overview")?.scrollIntoView({ behavior: "smooth" })}
               style={{ background: "rgba(255,255,255,0.12)", color: "#fff", border: "1.5px solid rgba(255,255,255,0.28)", borderRadius: 10, padding: "14px 22px", fontWeight: 600, fontSize: 14, cursor: "pointer" }}>
-              Learn more
+              Learn More
             </button>
           </div>
         </div>
@@ -448,8 +456,8 @@ export default function AboutProEngageView() {
             <div style={{ position: "absolute", top: 38, left: "12%", right: "12%", height: 2, background: `${COLOUR}25`, zIndex: 0 }} />
 
             {[
-              { date: "15 June",      cycle: "Cycle 1",  desc: "Mid-year announcement opens the first wave of projects. Volunteers can browse and apply through monsoon and into the second half of the year." },
-              { date: "5 December",   cycle: "Cycle 2",  desc: "Year-end announcement launches the second wave. Projects typically run through the new year, leveraging holidays and weekends." },
+              { date: "15 June",      cycle: "Edition 1",  desc: "Mid-year announcement opens the first wave of projects. Volunteers can browse and apply through June & July and projects run into the second half of the year." },
+              { date: "5 December",   cycle: "Edition 2",  desc: "Year-end announcement launches the second wave. Projects typically run through the new year, leveraging holidays and weekends." },
             ].map((t, i) => (
               <div key={t.date} style={{ position: "relative", zIndex: 1, background: COLOUR, border: `1.5px solid ${COLOUR}`, borderRadius: 18, padding: "28px 28px 30px", boxShadow: "0 4px 20px rgba(13,124,82,0.15)" }}>
                 {/* Marker dot */}
@@ -481,9 +489,8 @@ export default function AboutProEngageView() {
             {SKILLS.map((skill) => (
               <div key={skill.label}
                 style={{ background: "#fff", border: `1.5px solid ${COLOUR}18`, borderRadius: 14, padding: "20px 16px", display: "flex", flexDirection: "column", alignItems: "center", gap: 12, textAlign: "center", cursor: "default" }}>
-                {/* Monogram badge instead of emoji */}
-                <div style={{ width: 36, height: 36, borderRadius: 10, background: COLOUR_LIGHT, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <span style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 800, color: COLOUR, letterSpacing: "0.5px" }}>{skill.icon}</span>
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: COLOUR_LIGHT, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>
+                  {skill.icon}
                 </div>
                 <div style={{ fontSize: 12, fontWeight: 700, color: ACCENT_NAVY, lineHeight: 1.3 }}>{skill.label}</div>
               </div>
@@ -521,10 +528,17 @@ export default function AboutProEngageView() {
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.68)", lineHeight: 1.78, marginBottom: 36 }}>
               Join thousands of Tata colleagues who contribute their professional skills through ProEngage.
             </p>
-            <button onClick={() => navigate(isLoggedIn ? "proengage" : "register-role")}
-              style={{ background: B_YELLOW, color: ACCENT_NAVY, border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", width: "100%", boxShadow: "0 4px 20px rgba(13,27,62,0.25)" }}>
-              Browse open projects →
-            </button>
+            {IS_PE_SEASON ? (
+              <button onClick={() => navigate(isLoggedIn ? "proengage" : "register-role")}
+                style={{ background: B_YELLOW, color: ACCENT_NAVY, border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", width: "100%", boxShadow: "0 4px 20px rgba(13,27,62,0.25)" }}>
+                Browse Open Projects →
+              </button>
+            ) : (
+              <button onClick={() => navigate(isLoggedIn ? "register-role" : "register-role")}
+                style={{ background: B_YELLOW, color: ACCENT_NAVY, border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", width: "100%", boxShadow: "0 4px 20px rgba(13,27,62,0.25)" }}>
+                Register to Volunteer →
+              </button>
+            )}
             <button onClick={() => navigate("about")}
               style={{ background: "transparent", color: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.22)", borderRadius: 10, padding: "14px 22px", fontWeight: 600, fontSize: 14, cursor: "pointer", width: "100%", marginTop: 12 }}>
               ← Back to About

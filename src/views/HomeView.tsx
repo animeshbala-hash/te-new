@@ -5,7 +5,7 @@ import { useAuth } from "@/context/AuthContext";
 import {
   B_INDIGO, B_YELLOW, B_TEAL, B_BLUE, B_TICKER, ACCENT_NAVY,
 } from "@/data/homeSharedData";
-import { ProgrammeSpotlight, JourneySection, NumbersSection, QuoteBanner, TickerBar, SectionDivider, ProEngageBanner } from "@/components/shared/HomeSections";
+import { ProgrammeSpotlight, JourneySection, NumbersSection, QuoteBanner, TickerBar, SectionDivider, ProEngageBanner, TSMBanner } from "@/components/shared/HomeSections";
 
 const SECTION_IDS    = ["programmes", "numbers", "journey"];
 const SECTION_LABELS = ["Programmes", "Numbers", "Journey"];
@@ -87,6 +87,9 @@ const HomeView = () => {
 
       {/* PROENGAGE BANNER */}
       <ProEngageBanner />
+
+      {/* TSM 2026 BANNER */}
+      <TSMBanner />
 
       {/* PROGRAMME SPOTLIGHT */}
       <div id="programmes">

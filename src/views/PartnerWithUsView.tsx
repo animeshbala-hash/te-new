@@ -209,15 +209,15 @@ function IntroSection() {
             What we do
           </p>
           <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>
-            Tata Engage bridges this gap
+            What we do
           </h2>
           <DefinerBar />
           <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginTop: 24 }}>
-            We serve as a trusted platform that connects{" "}
+            Tata Engage is a trusted platform that connects{" "}
             <strong style={{ color: ACCENT_NAVY }}>credible Not-for-Profit organisations</strong>{" "}
             with{" "}
             <strong style={{ color: ACCENT_NAVY }}>motivated professionals from across the Tata ecosystem</strong>
-            , enabling partnerships that strengthen organisational capacity and deliver real, on-ground impact.
+            , enabling partnerships that strengthen organisational capacity and deliver real, on-ground impact for communities.
           </p>
         </div>
 

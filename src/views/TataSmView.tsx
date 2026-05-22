@@ -4,7 +4,6 @@ import { useAuth } from "@/context/AuthContext";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
 import tsmHeroImg  from "@/assets/homepagebanner/4. Mithapur_Eco-Tourism_LEEPEN_Harivan Farm_2022-23_Lipan Work (5).jpeg";
 import tsmBelowImg from "@/assets/homepagebanner/General_Titan Company Ltd_01.jpg";
-import tsm2024Img  from "@/assets/homepagebanner/Volunteering in Action 5.jpg";
 
 // ── Tokens ────────────────────────────────────────────────────────────────────
 const FONT         = "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif";
@@ -16,7 +15,6 @@ const COLOUR_LIGHT = "#f2f8dc";
 const SECTIONS = [
   { id: "tsm-overview",    label: "Overview"          },
   { id: "tsm-aims",        label: "Aims"              },
-  { id: "tsm-2024",        label: "2024 Edition"      },
   { id: "tsm-participate", label: "How to participate"},
 ];
 
@@ -31,13 +29,6 @@ const PARTICIPATE_CARDS = [
   { title: "DIY Activities",                   desc: "Access the Do It Yourself ideas using the DIY KIT — take action independently at your own pace" },
   { title: "Company Activities",               desc: "Participate in company curated activities. Reach out to your company's CSR/Volunteering SPOC for more information" },
   { title: "Tata Engage Opportunities",        desc: "Participate in Tata Engage facilitated 'One Tata' volunteering opportunities across the month" },
-];
-
-const THEME_CHIPS = [
-  "Demystifying Sustainability",
-  "Decarbonization",
-  "Resource Efficiency",
-  "Biodiversity"
 ];
 
 // ── DefinerBar ────────────────────────────────────────────────────────────────
@@ -99,13 +90,13 @@ export default function TataSmView() {
                 onClick={() => navigate(isLoggedIn ? "dashboard" : "register-role")}
                 style={{ fontFamily: FONT, background: "#F5A623", color: "#0D1B3E", border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", boxShadow: "0 4px 20px rgba(13,27,62,0.25)" }}
               >
-                Explore Opportunities →
+                Register to Volunteer →
               </button>
               <button
                 onClick={() => document.getElementById("tsm-overview")?.scrollIntoView({ behavior: "smooth" })}
                 style={{ fontFamily: FONT, background: "rgba(255,255,255,0.12)", color: "#fff", border: "1.5px solid rgba(255,255,255,0.28)", borderRadius: 10, padding: "14px 22px", fontWeight: 600, fontSize: 14, cursor: "pointer" }}
               >
-                Learn more
+                Learn More
               </button>
             </div>
           </div>
@@ -162,30 +153,6 @@ export default function TataSmView() {
         </div>
       </section>
 
-      {/* ════════════════════ 2024 EDITION ════════════════════ */}
-      <section id="tsm-2024" style={{ position: "relative", overflow: "hidden", minHeight: 480 }}>
-        <img src={tsm2024Img} alt=""
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }} />
-        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}e8 0%, ${COLOUR}cc 38%, ${COLOUR}aa 58%, ${COLOUR}77 78%, ${COLOUR}44 100%)` }} />
-        <div style={DIAG} />
-        <div style={{ position: "relative", zIndex: 1, padding: "88px 56px" }}>
-          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-            <p style={{ fontFamily: FONT, fontSize: 11, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "rgba(255,255,255,0.65)", marginBottom: 10 }}>2024 Edition</p>
-            <h2 style={{ fontFamily: FONT, fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>2024 Edition: Smart LiFE</h2>
-            <div style={{ height: 3, background: COLOUR, borderRadius: 2, width: 48, marginTop: 10, marginBottom: 36 }} />
-            <p style={{ fontFamily: FONT, fontSize: 15, color: "rgba(255,255,255,0.85)", lineHeight: 1.8, maxWidth: 720, marginBottom: 28 }}>
-              The 2024 edition of Tata Sustainability Month is "Smart LiFE" — emphasising a Smart Lifestyle for Environment, inviting Tata employees to take small and decisive steps to imbibe a more sustainable lifestyle.
-            </p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              {THEME_CHIPS.map((chip) => (
-                <span key={chip} style={{ fontFamily: FONT, fontSize: 12, fontWeight: 600, padding: "8px 16px", borderRadius: 100, background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.25)", color: "#fff" }}>
-                  {chip}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ════════════════════ HOW TO PARTICIPATE ════════════════════ */}
       <section id="tsm-participate" style={{ padding: "88px 56px", background: "#f5f5fa" }}>
@@ -205,17 +172,6 @@ export default function TataSmView() {
             ))}
           </div>
 
-          <div style={{ marginTop: 64, textAlign: "center" }}>
-            <button
-              onClick={() => navigate(isLoggedIn ? "dashboard" : "register-role")}
-              style={{ fontFamily: FONT, background: "#F5A623", color: "#0D1B3E", border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, cursor: "pointer", boxShadow: "0 4px 20px rgba(13,27,62,0.25)" }}
-            >
-              Explore Volunteering Opportunities →
-            </button>
-            <p style={{ fontFamily: FONT, fontSize: 13, color: "#64748B", marginTop: 16 }}>
-              For queries, reach out to <a href="mailto:tataengage@tata.com" style={{ color: COLOUR_MID, textDecoration: "none", fontWeight: 600 }}>tataengage@tata.com</a>
-            </p>
-          </div>
         </div>
       </section>
 

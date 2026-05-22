@@ -250,10 +250,7 @@ export default function AboutTVWView() {
               <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", marginBottom: 10 }}>Who Can Volunteer?</p>
               <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", letterSpacing: "-0.5px" }}>Open to the entire Tata family</h2>
               <div style={{ height: 3, background: "rgba(255,255,255,0.28)", borderRadius: 2, width: 48, marginTop: 10, marginBottom: 36 }} />
-              <div style={{ marginBottom: 36 }}>
-                <div style={{ fontSize: "clamp(3.5rem, 7vw, 5.5rem)", fontWeight: 900, color: "#fff", lineHeight: 1, letterSpacing: "-3px" }}>50,000+</div>
-                <div style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 12, color: "rgba(255,255,255,0.55)", marginTop: 10, letterSpacing: "0.8px", maxWidth: 260, lineHeight: 1.5 }}>active volunteers across the Tata Group</div>
-              </div>
+
               <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, maxWidth: 380 }}>
                 No specialised skills are required for most TVW activities. Volunteers are encouraged to participate with sensitivity, responsibility, and respect for communities, guided by Tata Engage's volunteering principles.
               </p>
@@ -348,8 +345,8 @@ export default function AboutTVWView() {
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 600 }}>
             {[
-              { date: "3 March", label: "Spring Edition", desc: "Marks the beginning of the volunteering year across the Tata Group." },
-              { date: "5 September", label: "Autumn Edition", desc: "Carried forward from the momentum of the spring edition." },
+              { date: "3 March", label: "Edition 1", desc: "Commemorates the birth anniversary of founder, Jamsetji Tata." },
+              { date: "5 September", label: "Edition 2", desc: "Extends the spirit of volunteering through the second half of the year." },
             ].map((ed) => (
               <div key={ed.date} style={{ background: COLOUR, borderRadius: 16, padding: "28px 26px", boxShadow: "0 2px 12px rgba(13,27,62,0.08)" }}>
                 <div style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: "1.2px", color: "rgba(255,255,255,0.75)", textTransform: "uppercase", marginBottom: 10 }}>{ed.label}</div>

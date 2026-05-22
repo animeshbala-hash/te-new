@@ -124,19 +124,6 @@ export default function EOEOView() {
             </div>
           </div>
           <div>
-            <div style={{ background: COLOUR_LIGHT, borderRadius: 18, padding: "32px 28px", border: "1px solid #13BBB430", marginBottom: 16 }}>
-              <div style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR, marginBottom: 12 }}>Sign up to volunteer</div>
-              <p style={{ fontSize: 15, color: "#334155", lineHeight: 1.7, marginBottom: 20 }}>
-                Use your official Tata email ID to register as a volunteer on the TCS Empowers portal and enrol one or more beneficiaries.
-              </p>
-              <a
-                href="https://tcsempowers.tcsapps.com/apac2/alp/"
-                target="_blank" rel="noopener noreferrer"
-                style={{ display: "inline-block", background: COLOUR, color: "#fff", borderRadius: 10, padding: "12px 24px", fontWeight: 700, fontSize: 14, textDecoration: "none" }}
-              >
-                Sign up on TCS Empowers →
-              </a>
-            </div>
             <div style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 14, padding: "20px 24px" }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 6 }}>Available in 9 Indian languages</div>
               <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6 }}>Hindi · Bengali · Telugu · Marathi · Tamil · Urdu · Gujarati · Kannada · Odia</div>
