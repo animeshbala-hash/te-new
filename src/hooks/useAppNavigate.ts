@@ -47,6 +47,7 @@ const VIEW_TO_PATH: Record<string, string> = {
   "ewaste": "/ewaste",
   "tata-sm": "/tata-sustainability-month",
   "tsm26-live": "/tata-sustainability-month/2026",
+  "pe24-live":  "/proengage/edition/24",
   "cvp": "/cvp",
   "yes-to-access": "/yes-to-access",
   "stories": "/stories",
