@@ -298,12 +298,13 @@ export default function ImpactStoryView() {
                 );
               }
 
-              // Photo goes after this section as a standalone full-width block
-              if (slotToPhoto.has(i)) {
+              // Inline section image takes precedence over auto-distributed photo
+              const inlineImg = sec.image ?? (slotToPhoto.has(i) ? slotToPhoto.get(i) : undefined);
+              if (inlineImg) {
                 out.push(
                   <div key={`photo-${i}`} style={{ borderRadius: 14, overflow: "hidden",
                     margin: "32px 0", aspectRatio: "16/10" }}>
-                    <img src={slotToPhoto.get(i)} alt=""
+                    <img src={inlineImg} alt=""
                       style={{ width: "100%", height: "100%", objectFit: "cover",
                         objectPosition: "center center", display: "block" }} />
                   </div>
