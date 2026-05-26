@@ -931,7 +931,7 @@ export function QuoteBanner() {
 // STORY ROTATOR — single card that cycles through 3 impact stories
 // ─────────────────────────────────────────────────────────────────────────────
 function StoryRotator({ navigate }: { navigate: (view: any, slug?: string) => void }) {
-  const stories = IMPACT_STORIES.slice(0, 3);
+  const stories = IMPACT_STORIES.slice(0, 4);
   const [idx, setIdx] = useState(0);
   const [visible, setVisible] = useState(true);
 
@@ -973,7 +973,7 @@ function StoryRotator({ navigate }: { navigate: (view: any, slug?: string) => vo
       {/* Accent overlay */}
       <div style={{
         position: "absolute", inset: 0,
-        background: `linear-gradient(160deg, ${story.accentColor}dd 0%, ${story.accentColor}99 45%, rgba(0,0,0,0.55) 100%)`,
+        background: `linear-gradient(160deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.30) 45%, rgba(0,0,0,0.60) 100%)`,
         transition: "background 0.28s ease",
       }} />
 
