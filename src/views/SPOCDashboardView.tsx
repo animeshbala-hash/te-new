@@ -20,10 +20,6 @@ import imgPEKit   from "@/assets/heroes/public/tata-projects.jpg";
 import imgTSMKit  from "@/assets/homepagebanner/Volunteering in Action 5.jpg";
 import imgDir     from "@/assets/homepagebanner/Tata Bluescope Steel (2).jpg";
 import imgEModule from "@/assets/heroes/public/happy-eyes.jpg";
-import imgPhotos  from "@/assets/homepagebanner/General_Titan Company Ltd_01.jpg";
-import imgVideos  from "@/assets/homepagebanner/TVW 6  - 7th Day 7.JPG";
-import imgStories from "@/assets/homepagebanner/IHCL 1.jpg";
-import imgEvents  from "@/assets/events/volcon-2024-panel.png";
 
 const B_INDIGO    = "#333399";   // Tata Blue — used for pending/amber text labels
 const B_YELLOW    = "#F79425";
@@ -716,11 +712,11 @@ export default function SPOCDashboardView() {
   ];
 
   const SPOC_RESOURCES = [
-    { id: "photos",  label: "Photos",   desc: "Gallery from TVW22 and PE projects", count: "247 items",   accentColor: B_BLUE,        photo: imgPhotos  },
-    { id: "videos",  label: "Videos",   desc: "Impact films and event highlights",  count: "38 videos",   accentColor: B_TEAL,        photo: imgVideos  },
-    { id: "stories", label: "Stories",  desc: "Volunteer experiences and impact",   count: "94 stories",  accentColor: KPI_PROENGAGE, photo: imgStories },
-    { id: "events",  label: "Events",   desc: "VolCon and upcoming gatherings",     count: "12 upcoming", accentColor: KPI_PINK,      photo: imgEvents  },
-    { id: "emodule", label: "E-Module", desc: "SPOC orientation and guidelines",    count: "5 modules",   accentColor: "#C8850A",     photo: imgEModule },
+    { id: "tvw-kit",  label: "TVW Campaign Kit",  desc: "Assets, guides and templates for Tata Volunteering Week", count: "TVW 22",     accentColor: B_BLUE,        photo: imgTVWKit  },
+    { id: "pe-kit",   label: "PE Campaign Kit",   desc: "ProEngage edition materials and volunteer toolkits",       count: "PE Ed. 24",  accentColor: KPI_PROENGAGE, photo: imgPEKit   },
+    { id: "tsm-kit",  label: "TSM Campaign Kit",  desc: "Tata Sustainability Month resources and DIY guides",       count: "June 2026",  accentColor: "#8aad2a",     photo: imgTSMKit  },
+    { id: "directory",label: "TATA SPOC Directory", desc: "Contact directory for all Tata Engage SPOCs group-wide", count: "All SPOCs",  accentColor: KPI_YELLOW,    photo: imgDir     },
+    { id: "emodule",  label: "SPOC E-Module",     desc: "SPOC orientation, guidelines and best practices",         count: "5 modules",  accentColor: "#C8850A",     photo: imgEModule },
   ];
 
   const inp: React.CSSProperties = { width: "100%", border: "1.5px solid #e8e8f0", borderRadius: 10, padding: "10px 14px", fontSize: 13.5, fontFamily: "'DM Sans', ui-sans-serif, system-ui, sans-serif", color: ACCENT_NAVY, outline: "none", boxSizing: "border-box" };

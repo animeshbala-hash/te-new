@@ -108,28 +108,14 @@ export default function TSM26LiveView() {
               </span>
             </span>
 
-            {/* TSM Logo */}
-            <div style={{ marginBottom: 20 }}>
+            {/* TSM Logo — no H1 needed */}
+            <div style={{ marginBottom: 24 }}>
               <img src={tsmLogo} alt="TSM 2026"
-                style={{ height: 64, width: "auto", objectFit: "contain", display: "block" }} />
+                style={{ height: 80, width: "auto", objectFit: "contain", display: "block" }} />
             </div>
 
-            <p style={{ fontFamily: FONT, fontSize: 11, fontWeight: 700, letterSpacing: "1.6px",
-              textTransform: "uppercase", color: "rgba(255,255,255,0.55)", margin: "0 0 10px" }}>
-              Annual Initiative · June 2026
-            </p>
-            <div style={{ width: 48, height: 2, background: COLOUR, borderRadius: 2, margin: "0 0 22px" }} />
-
-            <h1 style={{ fontFamily: FONT, fontSize: "clamp(2.4rem,5vw,3.8rem)", fontWeight: 400,
-              color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 16px" }}>
-              Tata Sustainability Month 2026
-            </h1>
-            <p style={{ fontFamily: FONT, fontSize: 17, fontWeight: 600, color: COLOUR,
-              margin: "0 0 12px", fontStyle: "italic" }}>
-              "Thinking is good, Doing is better"
-            </p>
             <p style={{ fontFamily: FONT, fontSize: 15, fontWeight: 300, lineHeight: 1.8,
-              color: "rgba(255,255,255,0.72)", margin: "0 0 40px", maxWidth: 480 }}>
+              color: "rgba(255,255,255,0.78)", margin: "0 0 40px", maxWidth: 480 }}>
               Join 1 million+ Tata colleagues, family members and retirees to make a direct impact
               on the community and environment this June.
             </p>
@@ -303,33 +289,33 @@ export default function TSM26LiveView() {
             ))}
           </div>
 
-          {/* Programme contacts — dark section matching design system */}
-          <div style={{ background: ACCENT_NAVY, borderRadius: 20, padding: "48px 48px",
-            position: "relative", overflow: "hidden", marginBottom: 56 }}>
-            <div style={DIAG} />
-            <div style={{ position: "relative", zIndex: 1 }}>
-              <p style={{ fontFamily: FONT, fontSize: 11, fontWeight: 700, letterSpacing: "1.8px",
-                textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 8 }}>
-                Specific activities
-              </p>
-              <h3 style={{ fontFamily: FONT, fontSize: 22, fontWeight: 900, color: "#fff",
-                marginBottom: 28, letterSpacing: "-0.3px" }}>
-                Programme contacts
-              </h3>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
-                {CONTACT_ITEMS.map((c, i) => (
-                  <div key={i} style={{ background: "rgba(255,255,255,0.07)",
-                    border: "1px solid rgba(255,255,255,0.12)", borderRadius: 14, padding: "20px 22px" }}>
-                    <div style={{ fontFamily: FONT, fontSize: 13, fontWeight: 700, color: COLOUR, marginBottom: 4 }}>{c.org}</div>
-                    <div style={{ fontFamily: FONT, fontSize: 12, color: "rgba(255,255,255,0.55)", marginBottom: 12 }}>{c.activity}</div>
-                    <div style={{ fontFamily: FONT, fontSize: 13, fontWeight: 600, color: "#fff", marginBottom: 4 }}>Reach out to {c.contact}</div>
-                    <a href={`mailto:${c.email}`}
-                      style={{ fontFamily: FONT, fontSize: 12, color: COLOUR, textDecoration: "none", wordBreak: "break-all" as const }}>
-                      {c.email}
-                    </a>
+          {/* Programme contacts — light green style, no navy */}
+          <div style={{ background: COLOUR_LIGHT, border: `1.5px solid ${COLOUR}66`,
+            borderRadius: 16, padding: "36px 40px", marginBottom: 56 }}>
+            <p style={{ fontFamily: FONT, fontSize: 11, fontWeight: 700, letterSpacing: "1.8px",
+              textTransform: "uppercase", color: COLOUR_DARK, marginBottom: 8 }}>
+              Specific activities
+            </p>
+            <h3 style={{ fontFamily: FONT, fontSize: 20, fontWeight: 900, color: ACCENT_NAVY,
+              marginBottom: 24, letterSpacing: "-0.3px" }}>
+              Programme contacts
+            </h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {CONTACT_ITEMS.map((c, i) => (
+                <div key={i} style={{ background: "#fff", border: "1px solid #e8e8f0",
+                  borderRadius: 12, padding: "16px 20px", display: "flex", gap: 16, alignItems: "center" }}>
+                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: COLOUR_DARK, flexShrink: 0 }} />
+                  <div>
+                    <span style={{ fontFamily: FONT, fontSize: 13, fontWeight: 700, color: ACCENT_NAVY }}>{c.org}</span>
+                    <span style={{ fontFamily: FONT, fontSize: 13, color: "#64748B", margin: "0 8px" }}>·</span>
+                    <span style={{ fontFamily: FONT, fontSize: 13, color: "#64748B" }}>{c.activity}</span>
+                    <span style={{ fontFamily: FONT, fontSize: 13, color: "#475569", display: "block", marginTop: 2 }}>
+                      Reach out to <strong>{c.contact}</strong> —{" "}
+                      <a href={`mailto:${c.email}`} style={{ color: COLOUR_DARK, textDecoration: "none" }}>{c.email}</a>
+                    </span>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
 

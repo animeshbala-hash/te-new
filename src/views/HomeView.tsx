@@ -47,7 +47,7 @@ function BannerCarousel() {
 
   useEffect(() => {
     if (total <= 1 || paused) return;
-    const t = setInterval(() => setCur((p) => (p + 1) % total), 6000);
+    const t = setInterval(() => setCur((p) => (p + 1) % total), 4000);
     return () => clearInterval(t);
   }, [paused, total]);
 
@@ -59,92 +59,93 @@ function BannerCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Slides */}
-      {slides.map((s, i) => (
-        <div
-          key={i}
-          onClick={() => navigate(s.dest)}
-          style={{
-            position: i === 0 ? "relative" : "absolute",
-            inset: i === 0 ? undefined : "0",
-            cursor: "pointer",
-            opacity: cur === i ? 1 : 0,
-            transition: "opacity 0.55s ease",
-            background: s.bg,
-            lineHeight: 0,
-          }}
-        >
-          <img src={s.img} alt={s.alt} style={{ width: "100%", height: "auto", display: "block" }} />
-        </div>
-      ))}
-
-      {/* Controls — only when >1 slide */}
-      {total > 1 && (
-        <>
-          <button
-            onClick={(e) => { e.stopPropagation(); setCur((p) => (p - 1 + total) % total); }}
+      {/* Slides — constrained to 75vh */}
+      <div style={{ position: "relative", height: "calc(75vh - 64px)", overflow: "hidden" }}>
+        {slides.map((s, i) => (
+          <div
+            key={i}
+            onClick={() => navigate(s.dest)}
             style={{
-              position: "absolute", left: 20, top: "50%", transform: "translateY(-50%)",
-              width: 36, height: 36, borderRadius: "50%",
-              background: "rgba(0,0,0,0.32)", border: "1.5px solid rgba(255,255,255,0.22)",
-              color: "#fff", cursor: "pointer", zIndex: 10,
-              display: "flex", alignItems: "center", justifyContent: "center",
+              position: "absolute", inset: 0,
+              cursor: "pointer",
+              opacity: cur === i ? 1 : 0,
+              transition: "opacity 0.55s ease",
+              background: s.bg,
+              lineHeight: 0,
             }}
-            aria-label="Previous"
           >
-            <ChevronLeft size={16} />
-          </button>
-          <button
-            onClick={(e) => { e.stopPropagation(); setCur((p) => (p + 1) % total); }}
-            style={{
-              position: "absolute", right: 20, top: "50%", transform: "translateY(-50%)",
-              width: 36, height: 36, borderRadius: "50%",
-              background: "rgba(0,0,0,0.32)", border: "1.5px solid rgba(255,255,255,0.22)",
-              color: "#fff", cursor: "pointer", zIndex: 10,
-              display: "flex", alignItems: "center", justifyContent: "center",
-            }}
-            aria-label="Next"
-          >
-            <ChevronRight size={16} />
-          </button>
-
-          {/* Dots + counter */}
-          <div style={{
-            position: "absolute", bottom: 48, left: "50%", transform: "translateX(-50%)",
-            display: "flex", alignItems: "center", gap: 8, zIndex: 10,
-            background: "rgba(0,0,0,0.30)", borderRadius: 100, padding: "5px 14px",
-          }}>
-            {slides.map((_, i) => (
-              <button
-                key={i}
-                onClick={(e) => { e.stopPropagation(); setCur(i); }}
-                style={{
-                  width: cur === i ? 22 : 7, height: 7, borderRadius: 100,
-                  background: cur === i ? "#fff" : "rgba(255,255,255,0.4)",
-                  border: "none", padding: 0, cursor: "pointer", transition: "all 0.3s",
-                }}
-                aria-label={`Slide ${i + 1}`}
-              />
-            ))}
-            <span style={{ color: "rgba(255,255,255,0.75)", fontSize: 11, fontWeight: 600, marginLeft: 4 }}>
-              {String(cur + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-            </span>
+            <img src={s.img} alt={s.alt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
           </div>
-        </>
-      )}
+        ))}
 
-      {/* Scroll chevron */}
+        {/* Controls — only when >1 slide */}
+        {total > 1 && (
+          <>
+            <button
+              onClick={(e) => { e.stopPropagation(); setCur((p) => (p - 1 + total) % total); }}
+              style={{
+                position: "absolute", left: 20, top: "50%", transform: "translateY(-50%)",
+                width: 36, height: 36, borderRadius: "50%",
+                background: "rgba(0,0,0,0.32)", border: "1.5px solid rgba(255,255,255,0.22)",
+                color: "#fff", cursor: "pointer", zIndex: 10,
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}
+              aria-label="Previous"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); setCur((p) => (p + 1) % total); }}
+              style={{
+                position: "absolute", right: 20, top: "50%", transform: "translateY(-50%)",
+                width: 36, height: 36, borderRadius: "50%",
+                background: "rgba(0,0,0,0.32)", border: "1.5px solid rgba(255,255,255,0.22)",
+                color: "#fff", cursor: "pointer", zIndex: 10,
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}
+              aria-label="Next"
+            >
+              <ChevronRight size={16} />
+            </button>
+
+            {/* Dots + counter */}
+            <div style={{
+              position: "absolute", bottom: 20, left: "50%", transform: "translateX(-50%)",
+              display: "flex", alignItems: "center", gap: 8, zIndex: 10,
+              background: "rgba(0,0,0,0.30)", borderRadius: 100, padding: "5px 14px",
+            }}>
+              {slides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => { e.stopPropagation(); setCur(i); }}
+                  style={{
+                    width: cur === i ? 22 : 7, height: 7, borderRadius: 100,
+                    background: cur === i ? "#fff" : "rgba(255,255,255,0.4)",
+                    border: "none", padding: 0, cursor: "pointer", transition: "all 0.3s",
+                  }}
+                  aria-label={`Slide ${i + 1}`}
+                />
+              ))}
+              <span style={{ color: "rgba(255,255,255,0.75)", fontSize: 11, fontWeight: 600, marginLeft: 4 }}>
+                {String(cur + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+              </span>
+            </div>
+          </>
+        )}
+
+        {/* Scroll chevron — sits below the slides wrapper, clearly visible */}
+      </div>
       <div
         onClick={(e) => { e.stopPropagation(); document.getElementById("programmes")?.scrollIntoView({ behavior: "smooth" }); }}
         style={{
-          position: "absolute", bottom: 24, left: "50%", transform: "translateX(-50%)",
           display: "flex", flexDirection: "column", alignItems: "center",
-          gap: 2, padding: 8, zIndex: 4, cursor: "pointer",
+          gap: 2, padding: "10px 16px", cursor: "pointer", background: "rgba(13,27,62,0.06)",
+          borderBottom: "1px solid rgba(13,27,62,0.08)",
         }}
       >
         {[0, 1, 2].map((i) => (
           <svg key={i} viewBox="0 0 24 12" fill="none"
-            style={{ width: 28, height: 14, opacity: 1 - i * 0.28, color: "white",
+            style={{ width: 24, height: 12, opacity: 1 - i * 0.28, color: "#0D1B3E",
               animation: `chevronBob 1.4s ease-in-out ${i * 0.18}s infinite` }}>
             <path d="M2 2 L12 10 L22 2" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -153,6 +154,7 @@ function BannerCarousel() {
       <style>{`@keyframes chevronBob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}`}</style>
     </div>
   );
+
 }
 
 // ─── Section dot rail ─────────────────────────────────────────────────────────
