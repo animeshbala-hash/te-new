@@ -137,9 +137,6 @@ export const IMPACT_STORIES: ImpactStory[] = [
         image: iaveIvy26Img3,
       },
     ],
-        closing: "The IAVE Global Action Mapping Platform was launched on 12 May 2026 — the first time the global volunteering community will have a shared place to see, in one view, the actions being taken to advance Recognition, Support, and Safeguarding for volunteers worldwide. The platform serves as a central digital anchor for IVY 2026, supporting participation, visibility, and long-term momentum for volunteering worldwide.",
-      },
-    ],
     quotes: [
       {
         text: "My ProEngage experience with the International Association for Volunteer Efforts (IAVE), developing the 'Call to Action for the Future of Volunteering' website for IVY 2026 (the UN International Year of Volunteers for Sustainable Development) was deeply fulfilling. It allowed me and my colleagues from TCS to apply our professional skills to create real, tangible impact. For me personally it wasn't just about giving back; it was a powerful learning experience and a chance to collaborate with a global community committed to shaping purposeful, action led volunteering.",
