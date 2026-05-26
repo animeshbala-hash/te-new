@@ -28,6 +28,10 @@ import iaveIvy26Img1 from "@/assets/events/iave-ivy-2026-1.jpg";
 import iaveIvy26Img2 from "@/assets/events/iave-ivy-2026-2.jpg";
 import iaveIvy26Img3 from "@/assets/events/iave-ivy-2026-3.jpg";
 
+// IAVE 2024 — used as rotator hero for Wayanad and Melghat cards
+import iave24Card2 from "@/assets/events/iave24-2.jpg";
+import iave24Card3 from "@/assets/events/iave24-3.jpg";
+
 
 const ACCENT_NAVY  = "#0D1B3E";
 const S_TVW_BLUE   = "#135EA9";   // Wayanad — TVW blue
