@@ -20,6 +20,10 @@ import imgPEKit   from "@/assets/heroes/public/tata-projects.jpg";
 import imgTSMKit  from "@/assets/homepagebanner/Volunteering in Action 5.jpg";
 import imgDir     from "@/assets/homepagebanner/Tata Bluescope Steel (2).jpg";
 import imgEModule from "@/assets/heroes/public/happy-eyes.jpg";
+import imgPhotos  from "@/assets/homepagebanner/General_Titan Company Ltd_01.jpg";
+import imgVideos  from "@/assets/homepagebanner/TVW 6  - 7th Day 7.JPG";
+import imgStories from "@/assets/homepagebanner/IHCL 1.jpg";
+import imgEvents  from "@/assets/events/volcon-2024-panel.png";
 
 const B_INDIGO    = "#333399";   // Tata Blue — used for pending/amber text labels
 const B_YELLOW    = "#F79425";

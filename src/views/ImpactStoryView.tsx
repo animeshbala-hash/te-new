@@ -305,7 +305,7 @@ export default function ImpactStoryView() {
                     margin: "32px 0", aspectRatio: "16/10" }}>
                     <img src={slotToPhoto.get(i)} alt=""
                       style={{ width: "100%", height: "100%", objectFit: "cover",
-                        objectPosition: "center 30%", display: "block" }} />
+                        objectPosition: "center center", display: "block" }} />
                   </div>
                 );
               }

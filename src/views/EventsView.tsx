@@ -28,6 +28,11 @@ const FONT        = "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif";
 
 const TSC_ACCENT   = "#5B21B6";   // TSC 2022 — purple
 const VOL_ACCENT   = "#3B7ABD";   // VolCon 2024 — mid blue
+
+const SECTIONS_NAV = [
+  { id: "story-hero", label: "Overview" },
+  { id: "story-body", label: "Detail"   },
+];
 const IAVE24_ACCENT = "#135EA9";  // IAVE 2024 — TVW blue
 const IAVE22_ACCENT = "#4376BB";  // IAVE 2022 — about blue
 
@@ -511,7 +516,7 @@ export default function EventsView() {
   const params = useParams();
   const id = params.slug;
   const navigate = useAppNavigate();
-  const onBack = () => navigate("events-page");
+  const onBack = () => navigate("about-events");
 
   const accentFor: Record<string, string> = {
     "tsc-2022": TSC_ACCENT,
@@ -547,7 +552,7 @@ export default function EventsView() {
           <h1 style={{ fontSize: 32, fontWeight: 900, color: ACCENT_NAVY, marginBottom: 24 }}>
             This event doesn't exist yet.
           </h1>
-          <button onClick={() => navigate("events-page")}
+          <button onClick={() => navigate("about-events")}
             style={{ background: B_INDIGO, color: "#fff", border: "none", borderRadius: 10,
               padding: "10px 24px", fontFamily: FONT, fontWeight: 700, fontSize: 14,
               cursor: "pointer" }}>

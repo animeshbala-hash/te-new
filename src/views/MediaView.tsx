@@ -233,7 +233,7 @@ export default function MediaView() {
                   onClick={() => navigate("stories", s.slug)}
                   style={{
                     breakInside: "avoid", marginBottom: 20,
-                    background: "#3B7ABD", border: "none",
+                    background: "#ffffff", border: "1px solid #e8e8f0",
                     borderRadius: 14, overflow: "hidden", cursor: "pointer",
                     transition: "transform 0.2s, box-shadow 0.2s",
                   }}
@@ -247,12 +247,12 @@ export default function MediaView() {
                   </div>
                   <div style={{ padding: "20px 22px 22px" }}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-                      <span style={{ display: "inline-block", background: "rgba(255,255,255,0.18)", color: "#fff", fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 4, textTransform: "uppercase", letterSpacing: "0.5px" }}>{s.tag}</span>
-                      <span style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", fontWeight: 500 }}>{s.date}</span>
+                      <span style={{ display: "inline-block", background: "rgba(59,122,189,0.12)", color: "#3B7ABD", fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 4, textTransform: "uppercase", letterSpacing: "0.5px" }}>{s.tag}</span>
+                      <span style={{ fontSize: 11, color: "#94A3B8", fontWeight: 500 }}>{s.date}</span>
                     </div>
-                    <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.4 }}>{s.title}</div>
-                    <p style={{ fontSize: 13, color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: 16 }}>{s.excerpt}</p>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)" }}>Read story →</span>
+                    <div style={{ fontSize: 15, fontWeight: 700, color: "#0D1B3E", marginBottom: 10, lineHeight: 1.4 }}>{s.title}</div>
+                    <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, marginBottom: 16 }}>{s.excerpt}</p>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: "#3B7ABD" }}>Read story →</span>
                   </div>
                 </div>
               ))}

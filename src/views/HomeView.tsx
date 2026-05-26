@@ -11,11 +11,9 @@ import tsmLaunch from "@/assets/TSM26_launch.jpg";
 
 // ─── Carousel slide builder (date-gated) ──────────────────────────────────────
 function useBannerSlides() {
-  const now      = new Date();
-  const peEnd    = new Date("2026-07-16T00:00:00");
-  const peStart  = new Date("2026-06-15T00:00:00");
-  const tsmStart = new Date("2026-06-01T00:00:00");
-  const tsmEnd   = new Date("2026-07-01T00:00:00");
+  const now     = new Date();
+  const peEnd   = new Date("2026-07-16T00:00:00");
+  const peStart = new Date("2026-06-15T00:00:00");
 
   const slides: { img: string; alt: string; dest: string; bg: string }[] = [];
 
@@ -28,14 +26,13 @@ function useBannerSlides() {
     });
   }
 
-  if (now >= tsmStart && now < tsmEnd) {
-    slides.push({
-      img:  tsmLaunch,
-      alt:  "Tata Sustainability Month 2026 is Live",
-      dest: "tsm26-live",
-      bg:   "#C3DB6F",
-    });
-  }
+  // TSM26 slide always shown alongside the PE slide
+  slides.push({
+    img:  tsmLaunch,
+    alt:  "Tata Sustainability Month 2026 is Live",
+    dest: "tsm26-live",
+    bg:   "#C3DB6F",
+  });
 
   return slides;
 }

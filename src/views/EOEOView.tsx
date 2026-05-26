@@ -109,7 +109,7 @@ export default function EOEOView() {
 
       {/* ABOUT */}
       <section id="eoeo-about" style={{ padding: "88px 56px", background: "transparent" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div>
             <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR, marginBottom: 10 }}>About the platform</p>
             <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Become a TCS Literacy Champion</h2>
@@ -122,11 +122,11 @@ export default function EOEOView() {
                 One very impactful, flexible, and easy-to-use EOI opportunity is <strong>"Each One Empowers One"</strong> — TCS's intuitive digital literacy platform for the people, by the people. The platform enables any individual to empower another by providing financial and digital literacy while unlocking citizen entitlements — social safety nets offered by the Indian Government. Accessible in <strong>9 Indian languages</strong>, it offers trainings, videos, assessments, and digital certificates for both the volunteer and their beneficiary.
               </p>
             </div>
-          </div>
-          <div>
-            <div style={{ background: "#fff", border: "1px solid #e8e8f0", borderRadius: 14, padding: "20px 24px" }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: ACCENT_NAVY, marginBottom: 6 }}>Available in 9 Indian languages</div>
-              <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6 }}>Hindi · Bengali · Telugu · Marathi · Tamil · Urdu · Gujarati · Kannada · Odia</div>
+            {/* Language pill — below content */}
+            <div style={{ marginTop: 20, display: "inline-flex", alignItems: "center", gap: 10, background: `${COLOUR}12`, border: `1px solid ${COLOUR}30`, borderRadius: 100, padding: "8px 18px" }}>
+              <span style={{ fontSize: 12, fontWeight: 800, color: COLOUR, letterSpacing: "0.5px", textTransform: "uppercase", whiteSpace: "nowrap" }}>Available in 9 Indian languages</span>
+              <span style={{ width: 1, height: 14, background: `${COLOUR}40`, flexShrink: 0 }} />
+              <span style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5 }}>Hindi · Bengali · Telugu · Marathi · Tamil · Urdu · Gujarati · Kannada · Odia</span>
             </div>
           </div>
         </div>
