@@ -303,9 +303,9 @@ export default function ImpactStoryView() {
               if (inlineImg) {
                 out.push(
                   <div key={`photo-${i}`} style={{ borderRadius: 14, overflow: "hidden",
-                    margin: "32px 0", aspectRatio: "16/10" }}>
+                    margin: "32px 0", aspectRatio: "16/10", background: "#0d1b3e" }}>
                     <img src={inlineImg} alt=""
-                      style={{ width: "100%", height: "100%", objectFit: "cover",
+                      style={{ width: "100%", height: "100%", objectFit: "contain",
                         objectPosition: "center center", display: "block" }} />
                   </div>
                 );
