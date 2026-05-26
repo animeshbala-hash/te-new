@@ -14,6 +14,7 @@ const COLOUR_LIGHT = "#f2f8dc";
 
 const SECTIONS = [
   { id: "tsm-overview",    label: "Overview"          },
+  { id: "tsm-2026",        label: "2026 Edition"      },
   { id: "tsm-aims",        label: "Aims"              },
   { id: "tsm-participate", label: "How to participate"},
 ];
@@ -26,9 +27,15 @@ const DIAG: React.CSSProperties = {
 };
 
 const PARTICIPATE_CARDS = [
-  { title: "DIY Activities",                   desc: "Access the Do It Yourself ideas using the DIY KIT — take action independently at your own pace" },
-  { title: "Company Activities",               desc: "Participate in company curated activities. Reach out to your company's CSR/Volunteering SPOC for more information" },
+  { title: "DIY Activities",                   desc: "Access the 'Do it yourself ideas' using the DIY KIT — take action independently at your own pace" },
+  { title: "Company Activities",               desc: "Participate in company curated activities" },
   { title: "Tata Engage Opportunities",        desc: "Participate in Tata Engage facilitated 'One Tata' volunteering opportunities across the month" },
+];
+
+const COMPANY_CONTACTS = [
+  { company: "Tata Communications Green June activity", contact: "Harish Kulkarni", email: "harish.kulkarni@tatacommunications.com" },
+  { company: "Tata Power Group Climate Crew activities", contact: "Upadhye Saurabh", email: "saurabh.upadhye@tatapower.com" },
+  { company: "WWF events", contact: "Tata Engage team", email: "tataengage@tata.com" },
 ];
 
 // ── DefinerBar ────────────────────────────────────────────────────────────────
@@ -130,6 +137,25 @@ export default function TataSmView() {
         </div>
       </section>
 
+      {/* ════════════════════ 2026 EDITION ════════════════════ */}
+      <section id="tsm-2026" style={{ padding: "88px 56px", background: "#fff" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <p style={{ fontFamily: FONT, fontSize: 11, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: COLOUR_MID, marginBottom: 10 }}>TSM 2026</p>
+          <h2 style={{ fontFamily: FONT, fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>Thinking is good. Doing is better.</h2>
+          <DefinerBar colour={COLOUR} />
+          <p style={{ fontFamily: FONT, fontSize: 15, color: "#475569", lineHeight: 1.82, marginTop: 28, maxWidth: 760 }}>
+            The 2026 edition of Tata Sustainability Month emphasises action — inviting Tata employees to take small and decisive steps to imbibe a more sustainable lifestyle. Monthly activities are divided into weekly sub-themes: <strong style={{ color: ACCENT_NAVY }}>Demystifying Sustainability</strong>, <strong style={{ color: ACCENT_NAVY }}>Decarbonization</strong>, <strong style={{ color: ACCENT_NAVY }}>Resource Efficiency</strong>, and <strong style={{ color: ACCENT_NAVY }}>Biodiversity</strong> — each offering tailored content and activities aligned with Tata Group's Aalingana pillars.
+          </p>
+          <div style={{ marginTop: 32, display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <a href="https://tatasustainability.com" target="_blank" rel="noopener noreferrer"
+              style={{ fontFamily: FONT, fontSize: 13, fontWeight: 700, color: COLOUR_MID, background: COLOUR_LIGHT, border: `1.5px solid ${COLOUR_MID}`, borderRadius: 8, padding: "10px 20px", textDecoration: "none" }}>
+              Visit tatasustainability.com →
+            </a>
+          </div>
+        </div>
+      </section>
+
+
       {/* ════════════════════ TSM AIMS ════════════════════ */}
       <section id="tsm-aims" style={{ padding: "88px 56px", background: "#f5f5fa" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -170,6 +196,18 @@ export default function TataSmView() {
                 <div style={{ fontFamily: FONT, fontSize: 14, color: "#64748B", lineHeight: 1.7 }}>{card.desc}</div>
               </div>
             ))}
+          </div>
+
+          <div style={{ marginTop: 40, background: "#f5f5fa", borderRadius: 14, padding: "28px 32px" }}>
+            <p style={{ fontFamily: FONT, fontSize: 12, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: COLOUR_MID, marginBottom: 16 }}>Company contact points</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {COMPANY_CONTACTS.map((c, i) => (
+                <div key={i} style={{ fontFamily: FONT, fontSize: 14, color: "#475569", lineHeight: 1.6 }}>
+                  <strong style={{ color: ACCENT_NAVY }}>{c.company}</strong> — Reach out to {c.contact} at{" "}
+                  <a href={`mailto:${c.email}`} style={{ color: COLOUR_MID }}>{c.email}</a>
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>

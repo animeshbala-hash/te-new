@@ -15,11 +15,11 @@ import badgeVeteran    from "@/assets/badges/veteran.svg";
 import badgeAmbassador from "@/assets/badges/ambassador.svg";
 import badgeLead       from "@/assets/badges/lead.svg";
 import badgeChampion   from "@/assets/badges/champion.png";
-import imgPhotos  from "@/assets/media/tatabball.jpg";
-import imgVideos  from "@/assets/media/tata_power.JPG";
-import imgStories from "@/assets/media/trent.jpg";
-import imgEvents  from "@/assets/media/IHCL.jpg";
-import imgEModule from "@/assets/media/Tata_international.jpeg";
+import imgTVWKit  from "@/assets/heroes/public/tata-motors-3.jpg";
+import imgPEKit   from "@/assets/heroes/public/tata-projects.jpg";
+import imgTSMKit  from "@/assets/homepagebanner/Volunteering in Action 5.jpg";
+import imgDir     from "@/assets/homepagebanner/Tata Bluescope Steel (2).jpg";
+import imgEModule from "@/assets/heroes/public/happy-eyes.jpg";
 
 const B_INDIGO    = "#333399";   // Tata Blue — used for pending/amber text labels
 const B_YELLOW    = "#F79425";
@@ -1054,7 +1054,13 @@ export default function SPOCDashboardView() {
         <section id="vol-resources" style={{ scrollMarginTop: 108 }}>
           <SectionHeading eyebrow="Learning and inspiration" title="Resource Library" />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
-            {SPOC_RESOURCES.map(r => <ResourceCard key={r.id} r={r} onClick={() => { if (r.id === "emodule") setShowOrientationModal(true); else onNavigate("media"); }} />)}
+            {SPOC_RESOURCES.map(r => <ResourceCard key={r.id} r={r} onClick={() => {
+              if (r.id === "emodule") setShowOrientationModal(true);
+              else if (r.id === "tvw-kit") onNavigate("tvw-campaign-kit");
+              else if (r.id === "pe-kit")  onNavigate("proengage-campaign-kit");
+              else if (r.id === "tsm-kit") onNavigate("tsm-campaign-kit");
+              else onNavigate("media");
+            }} />)}
           </div>
         </section>
       </div>
@@ -1360,7 +1366,13 @@ export default function SPOCDashboardView() {
           <SectionHeading eyebrow="Tools & learning" title="SPOC Resources" />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12, marginBottom: 16 }}>
             {SPOC_RESOURCES.map(r => (
-              <ResourceCard key={r.id} r={r} onClick={() => { if (r.id === "emodule") setShowOrientationModal(true); else onNavigate("media"); }} />
+              <ResourceCard key={r.id} r={r} onClick={() => {
+              if (r.id === "emodule") setShowOrientationModal(true);
+              else if (r.id === "tvw-kit") onNavigate("tvw-campaign-kit");
+              else if (r.id === "pe-kit")  onNavigate("proengage-campaign-kit");
+              else if (r.id === "tsm-kit") onNavigate("tsm-campaign-kit");
+              else onNavigate("media");
+            }} />
             ))}
           </div>
         </section>

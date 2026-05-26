@@ -20,10 +20,6 @@ import iave24Img3    from "@/assets/events/iave24-3.jpg";
 import iave24Img4    from "@/assets/events/iave24-4.png";
 import iave24Img5    from "@/assets/events/iave24-5.png";
 import iave24Img6    from "@/assets/events/iave24-6.png";
-import iaveIvy26Img1 from "@/assets/events/iave-ivy-2026-1.jpg";
-import iaveIvy26Hero from "@/assets/events/iave-ivy-2026-hero.jpg";
-import iaveIvy26Img2 from "@/assets/events/iave-ivy-2026-2.jpg";
-import iaveIvy26Img3 from "@/assets/events/iave-ivy-2026-3.jpg";
 import eventsHeroImg from "@/assets/heroes/public/tce-2.jpg";
 
 const ACCENT_NAVY = "#0D1B3E";
@@ -450,7 +446,7 @@ function Iave2024({ onBack }: { onBack: () => void }) {
         eyebrow="Tata Engage · Global Forum"
         title="27th IAVE World Volunteer Conference"
         subtitle="People Power: Creating a Sustainable Future through Volunteering — Busan, Republic of Korea · 22–24 October 2024"
-        heroImage={iave24Img1}
+        heroImage={iave24Img3}
         heroImagePosition="center center" />
       <ArticleBody accent={accent}>
         <Breadcrumb onBack={onBack} />
@@ -468,7 +464,7 @@ function Iave2024({ onBack }: { onBack: () => void }) {
 
         <MediaBlock accent={accent} title="Global Corporate Volunteer Council — Gauri Rajadhyaksha & Pallavi Barua"
           body="Gauri Rajadhyaksha and Pallavi Barua represented Tata Engage at the Global Corporate Volunteer Council (GCVC) meeting, deliberating on trends in corporate volunteering across Asia — Korea, China, and Japan — and highlighting new opportunities and challenges. The sessions enabled rich cross-sharing of strategies and innovative initiatives."
-          media={<img src={iave24Img3} alt="Gauri and Pallavi at GCVC"
+          media={<img src={iave24Img1} alt="Gauri and Pallavi at GCVC"
             style={{ width: "100%", borderRadius: 14, objectFit: "cover",
               aspectRatio: "16/9", display: "block" }} />}
           mediaLeft />
@@ -505,89 +501,6 @@ function Iave2024({ onBack }: { onBack: () => void }) {
   );
 }
 
-function IaveIvy2026({ onBack }: { onBack: () => void }) {
-  const accent = IAVE24_ACCENT;
-  return (
-    <>
-      <EventHero accent={accent}
-        eyebrow="Tata Engage · ProEngage · Global Impact"
-        title="IAVE 'Call to Action for the Future of Volunteering' Platform"
-        subtitle="Powered by TCS ProEngagers — launched for IVY 2026 · 12 May 2026"
-        heroImage={iaveIvy26Img1}
-        heroImagePosition="center center" />
-      <ArticleBody accent={accent}>
-        <Breadcrumb onBack={onBack} />
-
-        <OpeningParas accent={accent} texts={[
-          "To mark IVY 2026 – the UN International Year of Volunteers for Sustainable Development, the International Association for Volunteer Efforts (IAVE) identified the need for a global digital platform to mobilise diverse stakeholders—volunteers, NGOs, corporates, governments, and foundations—around a shared Call to Action for the Future of Volunteering.",
-        ]} />
-
-        <MediaBlock accent={accent} title="The Challenge"
-          body="IAVE required a dynamic, scalable, and user-friendly microsite that could serve as both an engagement and action-mapping platform. It needed to accommodate multiple stakeholder types across geographies, integrate registration, pledging, evidence uploads, and storytelling—while balancing openness with data privacy and governance." />
-
-        <MediaBlock accent={accent} title="The IAVE – Tata Group Collaboration"
-          body="Through the ProEngage Skill-Based Volunteering programme, IAVE sought support from TCS volunteers to conceptualise and design the end-to-end digital experience, develop and integrate the microsite within IAVE's digital ecosystem, and build features such as stakeholder registration, action mapping, resource sharing, and community discussion."
-          media={<img src={iaveIvy26Img2} alt="IAVE platform launch"
-            style={{ width: "100%", borderRadius: 14, objectFit: "contain",
-              background: "#f3f4f6", aspectRatio: "16/9", display: "block" }} />}
-          mediaLeft />
-
-        <MediaBlock accent={accent} title="Pro-bono Support by TCS Volunteers"
-          body="A cross-functional team of TCS skill-based volunteers brought expertise in web and software development, UX/UI design, platform architecture, CMS configuration, analytics integration, project management, and data privacy. Working closely with the TSG and IAVE team, they translated requirements into a cohesive platform covering registration flows, public action maps, evidence uploads, searchable databases, and social sharing."
-          media={<img src={iaveIvy26Img3} alt="TCS ProEngagers team"
-            style={{ width: "100%", borderRadius: 14, objectFit: "contain",
-              background: "#f3f4f6", aspectRatio: "16/9", display: "block" }} />} />
-
-
-        <SectionHead title="The Outcome" accent={accent} />
-        <Paras texts={[
-          "The result is a robust, action-oriented engagement platform that brings the Call to Action for the Future of Volunteering to life. Stakeholders worldwide can:",
-        ]} />
-        <ul style={{ fontFamily: FONT, fontSize: 15, color: "#374151",
-          lineHeight: 1.85, margin: "0 0 24px", paddingLeft: 20 }}>
-          <li>Register and publicly commit to actions under three pillars: Recognition, Support, Safeguarding</li>
-          <li>Map and showcase volunteering actions globally</li>
-          <li>Share evidence, stories, and learning</li>
-          <li>Access campaign resources and engage in community dialogue</li>
-        </ul>
-        <Paras texts={[
-          "It is the first time the global volunteering community has a shared view of actions being taken to advance volunteering worldwide.",
-        ]} />
-
-        <PullQuote accent={accent}
-          text="My ProEngage experience with IAVE, developing the 'Call to Action for the Future of Volunteering' website for IVY 2026 was deeply fulfilling. It allowed me and my colleagues from TCS to apply our professional skills to create real, tangible impact. For me personally it wasn't just about giving back; it was a powerful learning experience and a chance to collaborate with a global community committed to shaping purposeful, action-led volunteering."
-          attribution="Ayan Basu · Software Consultant, TCS | ProEngager Edition 23" />
-
-        <PullQuote accent={accent}
-          text="When IAVE launched our Call to Action for the Future of Volunteering at the United Nations last December, we immediately knew we needed a way to register, track and share the millions of volunteer actions people were taking around the world. That's why we are excited to partner with ProEngage to develop the Call to Action Mapping Platform. Tata skills-based volunteers have developed the perfect tool for volunteers around the world to recognise, value and celebrate what they do as volunteers."
-          attribution="Nichole Cirillo · Executive Director, IAVE" />
-
-        <SectionHead title="Tata Group & IAVE: At a Glance" accent={accent} />
-        <ul style={{ fontFamily: FONT, fontSize: 15, color: "#374151",
-          lineHeight: 1.85, margin: "0 0 28px", paddingLeft: 20 }}>
-          <li>Established in 1970, IAVE brings together businesses, nonprofits, governments, academic institutions, and volunteers across 100+ countries.</li>
-          <li>In 2018–19, Tata Engage won the IAVE 'Best Global Volunteer Program' award.</li>
-          <li>In 2020, Tata Group became a member of the Global Corporate Volunteer Council.</li>
-          <li>In 2024–25, the Tata Group was invited to join the IAVE Board of Directors.</li>
-        </ul>
-
-        <a href="https://action.iave.org/" target="_blank" rel="noopener noreferrer"
-          style={{ display: "inline-flex", alignItems: "center", gap: 8, background: accent,
-            color: "#fff", borderRadius: 10, padding: "10px 22px", fontFamily: FONT,
-            fontWeight: 700, fontSize: 13, textDecoration: "none" }}>
-          Visit the Platform ↗
-        </a>
-      </ArticleBody>
-    </>
-  );
-}
-
-// ── Main ──────────────────────────────────────────────────────────────────────
-const SECTIONS_NAV = [
-  { id: "story-hero", label: "Overview" },
-  { id: "story-body", label: "Story" },
-];
-
 function accentToNavBg(hex: string): string {
   // Parse hex, darken ~40% and apply 0.82 opacity for navbar overlay
   const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
@@ -605,7 +518,6 @@ export default function EventsView() {
     "volcon-2024": VOL_ACCENT,
     "iave-2022": IAVE22_ACCENT,
     "iave-2024": IAVE24_ACCENT,
-    "iave-ivy-2026": "#135EA9",
   };
   const accent = (id && accentFor[id]) || B_INDIGO;
 
@@ -620,8 +532,6 @@ export default function EventsView() {
       case "volcon-2024": return <Volcon2024 onBack={onBack} />;
       case "iave-2022":   return <Iave2022 onBack={onBack} />;
       case "iave-2024":   return <Iave2024 onBack={onBack} />;
-      case "iave-ivy-2026": return <IaveIvy2026 onBack={onBack} />;
-      default: return null;
     }
   })();
 

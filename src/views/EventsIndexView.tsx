@@ -73,7 +73,7 @@ export default function EventsIndexView() {
           </p>
           <p style={{ fontFamily: FONT, fontSize: 15, fontWeight: 300,
             color: "rgba(255,255,255,0.72)", lineHeight: 1.7, maxWidth: 480, margin: 0 }}>
-            From TSG's flagship Sustainability Conclave to the global IAVE forum — moments where leaders, champions and the community come together.
+            From TSG's flagship Tata VOLCON to the global IAVE forum — moments where leaders, champions and the community come together.
           </p>
 
         </div>

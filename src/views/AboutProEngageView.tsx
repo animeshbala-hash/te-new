@@ -183,14 +183,56 @@ const NGO_VALUES = [
   { label: "Partner with motivated professionals committed to delivering results",          Icon: IconPartner },
 ];
 
+// Inline SVG icons for skills — subtle, monochromatic
+const SkillIcons: Record<string, React.ReactElement> = {
+  hr: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+      <circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/>
+    </svg>
+  ),
+  finance: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+      <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+    </svg>
+  ),
+  strategy: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+    </svg>
+  ),
+  it: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+      <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+    </svg>
+  ),
+  design: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+      <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/>
+      <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/>
+      <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/>
+    </svg>
+  ),
+  marketing: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+      <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+    </svg>
+  ),
+  coaching: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+    </svg>
+  ),
+};
+
 const SKILLS = [
-  { label: "Human Resources",              icon: "👥" },
-  { label: "Finance",                       icon: "💹" },
-  { label: "Business Planning & Strategy", icon: "📊" },
-  { label: "Information Technology",       icon: "💻" },
-  { label: "Web Design & Digital Solutions", icon: "🎨" },
-  { label: "Marketing & Social Media",     icon: "📣" },
-  { label: "Mentoring & Coaching",          icon: "🎓" },
+  { label: "Human Resources",               iconKey: "hr"       },
+  { label: "Finance",                        iconKey: "finance"  },
+  { label: "Business Planning & Strategy",  iconKey: "strategy" },
+  { label: "Information Technology",        iconKey: "it"       },
+  { label: "Web Design & Digital Solutions", iconKey: "design"  },
+  { label: "Marketing & Social Media",      iconKey: "marketing"},
+  { label: "Mentoring & Coaching",          iconKey: "coaching" },
 ];
 
 const TSG_POINTS = [
@@ -490,7 +532,7 @@ export default function AboutProEngageView() {
               <div key={skill.label}
                 style={{ background: "#fff", border: `1.5px solid ${COLOUR}18`, borderRadius: 14, padding: "20px 16px", display: "flex", flexDirection: "column", alignItems: "center", gap: 12, textAlign: "center", cursor: "default" }}>
                 <div style={{ width: 40, height: 40, borderRadius: 10, background: COLOUR_LIGHT, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>
-                  {skill.icon}
+                  <span style={{ color: COLOUR_DARK, opacity: 0.8 }}>{SkillIcons[skill.iconKey]}</span>
                 </div>
                 <div style={{ fontSize: 12, fontWeight: 700, color: ACCENT_NAVY, lineHeight: 1.3 }}>{skill.label}</div>
               </div>

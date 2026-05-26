@@ -208,12 +208,11 @@ function IntroSection() {
           >
             What we do
           </p>
-          <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px" }}>
-            What we do
+          <h2 style={{ fontSize: 30, fontWeight: 900, color: ACCENT_NAVY, letterSpacing: "-0.5px", lineHeight: 1.2, marginBottom: 8 }}>
+            Tata Engage is a trusted platform that connects
           </h2>
           <DefinerBar />
-          <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginTop: 24 }}>
-            Tata Engage is a trusted platform that connects{" "}
+          <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginTop: 20 }}>
             <strong style={{ color: ACCENT_NAVY }}>credible Not-for-Profit organisations</strong>{" "}
             with{" "}
             <strong style={{ color: ACCENT_NAVY }}>motivated professionals from across the Tata ecosystem</strong>
