@@ -50,6 +50,8 @@ export interface StorySection {
   bullets?: string[];
   subBlocks?: { heading: string; bullets: string[] }[];
   table?: { headers: string[]; rows: string[][] };
+  closing?: string;
+  image?: string;
 }
 
 export interface StoryPhoto {
