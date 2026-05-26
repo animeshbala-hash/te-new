@@ -1858,50 +1858,112 @@ export function ProEngageBanner() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TSM 2026 BANNER — shown during June 2026 (TSM month)
-// Links to /tata-sustainability-month/2026
+// TSM 2026 BANNER — carousel, shown during June 2026
 // ─────────────────────────────────────────────────────────────────────────────
+const TSM_SLIDES = [
+  { src: "/src/assets/TSM26_launch.jpg", alt: "Tata Sustainability Month 2026 is Live" },
+];
+
 export function TSMBanner() {
   const navigate = useAppNavigate();
+  const [slide, setSlide]     = useState(0);
+  const [paused, setPaused]   = useState(false);
+  const total = TSM_SLIDES.length;
 
   // Show throughout June 2026
   const now      = new Date();
   const showFrom = new Date("2026-06-01T00:00:00");
   const showUntil = new Date("2026-07-01T00:00:00");
-
   if (now < showFrom || now >= showUntil) return null;
+
+  // Auto-advance when multiple slides
+  useEffect(() => {
+    if (total <= 1 || paused) return;
+    const t = setInterval(() => setSlide((p) => (p + 1) % total), 5000);
+    return () => clearInterval(t);
+  }, [paused, total]);
+
+  const prev = () => setSlide((p) => (p - 1 + total) % total);
+  const next = () => setSlide((p) => (p + 1) % total);
 
   return (
     <div
-      onClick={() => navigate("tsm26-live")}
-      style={{
-        cursor: "pointer",
-        width: "100%",
-        lineHeight: 0,
-        overflow: "hidden",
-        position: "relative",
-        paddingTop: 0,
-        background: "#C3DB6F",
-      }}
-      role="link"
-      aria-label="Tata Sustainability Month 2026 — now live"
+      style={{ position: "relative", width: "100%", overflow: "hidden", background: "#C3DB6F", lineHeight: 0 }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
-      <img
-        src="/src/assets/TSM26_launch.jpg"
-        alt="Tata Sustainability Month 2026 is Live"
-        style={{ width: "100%", height: "auto", display: "block" }}
-        onError={(e) => {
-          // Fallback strip if image not yet dropped in assets
-          const el = e.currentTarget.parentElement as HTMLDivElement;
-          if (el) {
-            el.style.background = "#C3DB6F";
-            el.style.minHeight  = "80px";
-            el.style.display    = "flex";
-            el.style.alignItems = "center";
-            el.style.justifyContent = "center";
-          }
-        }}
-      />
+      {/* Slides */}
+      <div style={{ position: "relative", width: "100%" }}>
+        {TSM_SLIDES.map((s, i) => (
+          <div
+            key={i}
+            onClick={() => navigate("tsm26-live")}
+            style={{
+              position: i === 0 ? "relative" : "absolute",
+              inset: 0,
+              cursor: "pointer",
+              opacity: slide === i ? 1 : 0,
+              transition: "opacity 0.5s ease",
+              lineHeight: 0,
+            }}
+          >
+            <img
+              src={s.src}
+              alt={s.alt}
+              style={{ width: "100%", height: "auto", display: "block" }}
+              onError={(e) => {
+                const el = e.currentTarget.parentElement as HTMLDivElement;
+                if (el) {
+                  el.style.minHeight = "80px";
+                  el.style.background = "#C3DB6F";
+                  el.style.display = "flex";
+                  el.style.alignItems = "center";
+                  el.style.justifyContent = "center";
+                }
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Controls — only shown when >1 slide */}
+      {total > 1 && (
+        <div style={{
+          position: "absolute", bottom: 12, left: "50%", transform: "translateX(-50%)",
+          display: "flex", alignItems: "center", gap: 10, zIndex: 10,
+          background: "rgba(0,0,0,0.35)", borderRadius: 100, padding: "6px 14px",
+        }}>
+          <button
+            onClick={(e) => { e.stopPropagation(); prev(); }}
+            style={{ background: "none", border: "none", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", padding: 2 }}
+            aria-label="Previous"
+          >
+            ‹
+          </button>
+          {TSM_SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={(e) => { e.stopPropagation(); setSlide(i); }}
+              style={{
+                width: slide === i ? 20 : 7, height: 7, borderRadius: 100,
+                background: slide === i ? "#C3DB6F" : "rgba(255,255,255,0.5)",
+                border: "none", cursor: "pointer", padding: 0, transition: "all 0.3s",
+              }}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
+          <button
+            onClick={(e) => { e.stopPropagation(); next(); }}
+            style={{ background: "none", border: "none", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", padding: 2 }}
+            aria-label="Next"
+          >
+            ›
+          </button>
+          <span style={{ color: "rgba(255,255,255,0.75)", fontSize: 11, fontWeight: 600, marginLeft: 4 }}>
+            {String(slide + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+          </span>
+        </div>
+      )}
     </div>
   );
 }
