@@ -36,6 +36,7 @@ import TVWHubView from "@/views/TVWHubView";
 import TVW25Update1View from "@/views/TVW25Update1View";
 import ProEngageView from "@/views/ProEngageView";
 import ProEngageCampaignKitView from "@/views/ProEngageCampaignKitView";
+import ProEngage24View from "@/views/ProEngage24View";
 import TVWCampaignKitView from "@/views/TVWCampaignKitView";
 import TSMCampaignKitView from "@/views/TSMCampaignKitView";
 import DisasterResponseView from "@/views/DisasterResponseView";
@@ -416,6 +417,7 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="/proengage/edition-24" element={<ProEngage24View />} />
             <Route
               path="/tata-sustainability-month/campaign-kit"
               element={
