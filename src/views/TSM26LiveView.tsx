@@ -34,7 +34,7 @@ const SECTIONS = [
 const PARTICIPATE_ITEMS = [
   { num: "01", title: "DIY Activities",           desc: "Access the Do It Yourself ideas using the DIY KIT — take action independently at your own pace." },
   { num: "02", title: "Company Activities",        desc: "Participate in company curated activities. Reach out to your company's CSR/Volunteering SPOC." },
-  { num: "03", title: "Tata Engage Opportunities", desc: "Participate in Tata Engage facilitated "One Tata" volunteering opportunities across June." },
+  { num: "03", title: "Tata Engage Opportunities", desc: "Participate in Tata Engage facilitated \"One Tata\" volunteering opportunities across June." },
 ];
 
 const CONTACT_ITEMS = [
