@@ -59,8 +59,8 @@ function BannerCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Slides — constrained to 75vh */}
-      <div style={{ position: "relative", height: "calc(75vh - 64px)", overflow: "hidden" }}>
+      {/* Slides — full viewport minus navbar */}
+      <div style={{ position: "relative", height: "calc(100vh - 64px)", overflow: "hidden" }}>
         {slides.map((s, i) => (
           <div
             key={i}
@@ -74,7 +74,7 @@ function BannerCarousel() {
               lineHeight: 0,
             }}
           >
-            <img src={s.img} alt={s.alt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+            <img src={s.img} alt={s.alt} style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
           </div>
         ))}
 
@@ -108,9 +108,9 @@ function BannerCarousel() {
               <ChevronRight size={16} />
             </button>
 
-            {/* Dots + counter */}
+            {/* Dots + counter — bottom-left */}
             <div style={{
-              position: "absolute", bottom: 20, left: "50%", transform: "translateX(-50%)",
+              position: "absolute", bottom: 20, left: 20,
               display: "flex", alignItems: "center", gap: 8, zIndex: 10,
               background: "rgba(0,0,0,0.30)", borderRadius: 100, padding: "5px 14px",
             }}>
@@ -133,23 +133,24 @@ function BannerCarousel() {
           </>
         )}
 
-        {/* Scroll chevron — sits below the slides wrapper, clearly visible */}
-      </div>
-      <div
-        onClick={(e) => { e.stopPropagation(); document.getElementById("programmes")?.scrollIntoView({ behavior: "smooth" }); }}
-        style={{
-          display: "flex", flexDirection: "column", alignItems: "center",
-          gap: 2, padding: "10px 16px", cursor: "pointer", background: "rgba(13,27,62,0.06)",
-          borderBottom: "1px solid rgba(13,27,62,0.08)",
-        }}
-      >
-        {[0, 1, 2].map((i) => (
-          <svg key={i} viewBox="0 0 24 12" fill="none"
-            style={{ width: 24, height: 12, opacity: 1 - i * 0.28, color: "#0D1B3E",
-              animation: `chevronBob 1.4s ease-in-out ${i * 0.18}s infinite` }}>
-            <path d="M2 2 L12 10 L22 2" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        ))}
+        {/* Scroll chevron — overlaid bottom-center on the banner */}
+        <div
+          onClick={(e) => { e.stopPropagation(); document.getElementById("programmes")?.scrollIntoView({ behavior: "smooth" }); }}
+          style={{
+            position: "absolute", bottom: 12, left: "50%", transform: "translateX(-50%)",
+            display: "flex", flexDirection: "column", alignItems: "center",
+            gap: 2, padding: "6px 14px", cursor: "pointer",
+            background: "rgba(255,255,255,0.75)", borderRadius: 100, zIndex: 10,
+          }}
+        >
+          {[0, 1, 2].map((i) => (
+            <svg key={i} viewBox="0 0 24 12" fill="none"
+              style={{ width: 20, height: 10, opacity: 1 - i * 0.28, color: "#0D1B3E",
+                animation: `chevronBob 1.4s ease-in-out ${i * 0.18}s infinite` }}>
+              <path d="M2 2 L12 10 L22 2" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          ))}
+        </div>
       </div>
       <style>{`@keyframes chevronBob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}`}</style>
     </div>
