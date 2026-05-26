@@ -65,6 +65,7 @@ import EWasteView from "@/views/EWasteView";
 import YesToAccessView from "@/views/YesToAccessView";
 import TataSmView from "@/views/TataSmView";
 import TSM26LiveView from "@/views/TSM26LiveView";
+import PE24LiveView  from "@/views/PE24LiveView";
 import CVPView from "@/views/CVPView";
 import ImpactStoryView from "@/views/ImpactStoryView";
 import PrivacyView from "@/views/PrivacyView";
@@ -443,6 +444,7 @@ export default function App() {
             <Route path="/yes-to-access" element={<YesToAccessView />} />
             <Route path="/tata-sustainability-month" element={<TataSmView />} />
             <Route path="/tata-sustainability-month/2026" element={<TSM26LiveView />} />
+            <Route path="/proengage/edition/24" element={<PE24LiveView />} />
             <Route path="/cvp" element={<CVPView />} />
             <Route path="/stories" element={<ImpactStoryView />} />
             <Route path="/privacy" element={<PrivacyView />} />
