@@ -15,9 +15,6 @@ import iave24Img3      from "@/assets/events/iave24-3.jpg";
 import iave24Img4      from "@/assets/events/iave24-4.png";
 import iave24Img5      from "@/assets/events/iave24-5.png";
 import iave24Img6      from "@/assets/events/iave24-6.png";
-import iaveIvy26Img1   from "@/assets/events/iave-ivy-2026-1.jpg";
-import iaveIvy26Img2   from "@/assets/events/iave-ivy-2026-2.jpg";
-import iaveIvy26Img3   from "@/assets/events/iave-ivy-2026-3.jpg";
 
 const ACCENT_NAVY  = "#0D1B3E";
 const E_BLUE_TVW   = "#135EA9";   // iave-2024 — TVW blue
@@ -68,93 +65,6 @@ export interface EventEntry {
 
 // Ordered newest first
 export const EVENTS: EventEntry[] = [
-  {
-    slug: "iave-ivy-2026",
-    title: "IAVE 'Call to Action for the Future of Volunteering' Platform",
-    subtitle: "Powered by TCS volunteers — launched on 12 May 2026 for IVY 2026",
-    eyebrow: "ProEngage · Global Impact",
-    tag: "May 2026",
-    date: "12 May 2026",
-    location: "Global / Digital",
-    excerpt: "To mark IVY 2026 – the UN International Year of Volunteers for Sustainable Development, TCS skill-based volunteers built and launched a global digital platform for IAVE's Call to Action for the Future of Volunteering.",
-    accentColor: "#135EA9",
-    heroImage: iaveIvy26Img1,
-    heroImageAlt: "IAVE IVY 2026 platform launch",
-    photos: [
-      { src: iaveIvy26Img2, caption: "" },
-      { src: iaveIvy26Img3, caption: "" },
-    ],
-    openingPara: "To mark IVY 2026 – the UN International Year of Volunteers for Sustainable Development, the International Association for Volunteer Efforts (IAVE) identified the need for a global digital platform that could mobilise diverse stakeholders—volunteers, NGOs, corporates, governments, and foundations—around a shared Call to Action for the Future of Volunteering. Beyond awareness, the platform needed to enable participation, track actions, amplify impact stories, and foster a sense of global community, anchored in the three pillars of recognition, support, and safeguarding.",
-    sections: [
-      {
-        heading: "The Challenge",
-        body: "IAVE required a dynamic, scalable, and user-friendly microsite that could serve as both an engagement and action-mapping platform. The challenge was not merely technical, but conceptual—translating a powerful global vision for volunteering into a clear, intuitive, and action-led digital experience.",
-        bullets: [
-          "Serve as both an engagement and action-mapping platform",
-          "Accommodate multiple stakeholder types across geographies",
-          "Integrate registration, pledging, evidence uploads, and storytelling",
-          "Balance openness and accessibility with data privacy and governance",
-          "Be sustainable for IAVE to manage post-launch",
-        ],
-      },
-      {
-        heading: "The IAVE – Tata Group Collaboration",
-        body: "Through the ProEngage Skill-Based Volunteering programme, IAVE sought support from TCS volunteers to:",
-        bullets: [
-          "Conceptualise and design the end-to-end digital experience",
-          "Develop and integrate the microsite within IAVE's digital ecosystem",
-          "Build features such as stakeholder registration, action mapping, resource sharing, and community discussion",
-          "Ensure accessibility, global reach, and ease of content management",
-          "Support a phased, future-ready approach aligned with IVY 2026 milestones",
-        ],
-      },
-      {
-        heading: "Pro-bono Support by TCS Volunteers",
-        body: "A cross-functional team of TCS skill-based volunteers brought expertise in web and software development (frontend and backend), UX/UI design and user-journey mapping, platform architecture, CMS configuration, and analytics integration, project and product management using agile methods, and data privacy, accessibility, and scalability considerations. Working closely with the TSG and IAVE team, the volunteers translated requirements into a cohesive platform structure—covering registration flows, public action maps, evidence uploads, searchable databases, resources, and social sharing—while ensuring the platform remained intuitive and globally accessible.",
-      },
-      {
-        heading: "The Outcome",
-        body: "The result was a robust, action-oriented engagement platform that brings the Call to Action for the Future of Volunteering to life. The IAVE Global Action Mapping Platform was launched on 12 May 2026. It is the first time the global volunteering community will have a shared place to see, in one view, the actions being taken to advance Recognition, Support, and Safeguarding for volunteers worldwide. The platform serves as a central digital anchor for IVY 2026—supporting participation, visibility, and long-term momentum for volunteering worldwide.",
-        bullets: [
-          "Register and publicly commit to actions under the three pillars",
-          "Map and showcase volunteering actions globally",
-          "Share evidence, stories, and learning",
-          "Access campaign resources and engage in community dialogue",
-        ],
-      },
-      {
-        heading: "Tata Group & IAVE: At a Glance",
-        bullets: [
-          "Established in 1970, IAVE brings together businesses, nonprofits, governments, academic institutions, and volunteers across 100+ countries to strengthen volunteering worldwide. Its work focuses on advocacy, leadership development, and knowledge creation.",
-          "In 2018–19, Tata Engage won the IAVE 'Best Global Volunteer Program' award.",
-          "In 2020, Tata Group became a member of the Global Corporate Volunteer Council—a network of leading multinational companies with volunteering presence across geographies.",
-          "In 2024–25, the Tata Group was invited to join the IAVE Board of Directors, reinforcing its leadership in global corporate volunteering.",
-        ],
-      },
-    ],
-    quotes: [
-      {
-        text: "My ProEngage experience with the International Association for Volunteer Efforts (IAVE), developing the 'Call to Action for the Future of Volunteering' website for IVY 2026 (the UN International Year of Volunteers for Sustainable Development) was deeply fulfilling. It allowed me and my colleagues from TCS to apply our professional skills to create real, tangible impact. For me personally it wasn't just about giving back; it was a powerful learning experience and a chance to collaborate with a global community committed to shaping purposeful, action-led volunteering.",
-        attribution: "Ayan Basu",
-        role: "Software Consultant, TCS | ProEngager Edition 23",
-      },
-      {
-        text: "When IAVE launched our Call to Action for the Future of Volunteering at the United Nations last December, we immediately knew we needed a way to register, track and share the millions of volunteer actions people were taking around the world to make the CTA come to life. That's why we are excited to partner with ProEngage to develop the Call to Action Mapping Platform. Tata skills-based volunteers have developed the perfect tool for volunteers around the world to recognize, value and celebrate what they do as volunteers and the impact it makes on their communities, countries and companies.",
-        attribution: "Nichole Cirillo",
-        role: "Executive Director, IAVE",
-      },
-    ],
-    stats: [
-      { num: "100+", label: "Countries in IAVE network" },
-      { num: "3", label: "Pillars: Recognition, Support, Safeguarding" },
-      { num: "IVY 2026", label: "UN International Year of Volunteers" },
-    ],
-    slideHeadline: "A global platform for volunteering's future",
-    slideSub: "Built by TCS ProEngagers for IAVE · Launched 12 May 2026",
-    ctaLabel: "Visit the Platform",
-    ctaUrl: "https://action.iave.org/",
-  },
-
   {
     slug: "iave-2024",
     title: "27th IAVE World Volunteer Conference",
@@ -219,7 +129,7 @@ export const EVENTS: EventEntry[] = [
     location: "Taj Mahal Palace, Mumbai",
     excerpt:
       "170 Tata leaders, volunteering leads, and champions came together to celebrate a million hours, recognise outstanding contributors, and chart the Group's volunteering future.",
-    accentColor: E_BLUE_MID,
+    accentColor: E_BLUE_TVW,
     heroImage: volconPanel,
     heroImageAlt: "Panel discussion at TATA VOLCON 2024, Taj Mahal Palace Mumbai",
     photos: [
@@ -287,7 +197,7 @@ export const EVENTS: EventEntry[] = [
     location: "Taj Lands End, Mumbai",
     excerpt:
       "200+ leaders and sustainability professionals deliberated on embedding quality and scale in volunteering — on the path to 4 per capita volunteering hours by 2025.",
-    accentColor: E_PURPLE,
+    accentColor: E_BLUE_TVW,
     heroImage: tsc22Chairman,
     heroImageAlt: "N. Chandrasekaran, Chairman Tata Sons, delivering the inaugural address at TSC 2022",
     photos: [
@@ -337,7 +247,7 @@ export const EVENTS: EventEntry[] = [
     location: "Abu Dhabi",
     excerpt:
       "Tata Sustainability Group participated as a panellist at the global volunteering forum, sharing the Group's approach to embedding scale and quality in volunteering in a post-pandemic world.",
-    accentColor: E_BLUE_ABOUT,
+    accentColor: E_BLUE_TVW,
     heroImage: iavePanel,
     heroImageAlt: "Gauri Rajadhyaksha, Tata Sons, on the panel at the 26th IAVE World Volunteer Conference",
     photos: [],
