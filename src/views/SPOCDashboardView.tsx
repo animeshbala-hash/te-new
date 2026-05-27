@@ -15,11 +15,14 @@ import badgeVeteran    from "@/assets/badges/veteran.svg";
 import badgeAmbassador from "@/assets/badges/ambassador.svg";
 import badgeLead       from "@/assets/badges/lead.svg";
 import badgeChampion   from "@/assets/badges/champion.png";
-import imgTVWKit  from "@/assets/heroes/public/tata-motors-3.jpg";
+import imgTVWKit  from "@/assets/banner_photos/TVW photo 3 on innerpg.jpg";
 import imgPEKit   from "@/assets/heroes/public/tata-projects.jpg";
 import imgTSMKit  from "@/assets/homepagebanner/Volunteering in Action 5.jpg";
 import imgDir     from "@/assets/homepagebanner/20240729_114952.jpg";
 import imgEModule from "@/assets/homepagebanner/General_Titan Company Ltd_01.jpg";
+import imgVolTVW  from "@/assets/banner_photos/TVW photo 3 on innerpg.jpg";
+import imgVolPE   from "@/assets/heroes/public/tata-projects.jpg";
+import imgVolTSM  from "@/assets/homepagebanner/Volunteering in Action 5.jpg";
 
 const B_INDIGO    = "#333399";   // Tata Blue — used for pending/amber text labels
 const B_YELLOW    = "#F79425";
@@ -719,6 +722,13 @@ export default function SPOCDashboardView() {
     { id: "emodule",  label: "SPOC E-Module",     desc: "SPOC orientation, guidelines and best practices",         count: "5 modules",  accentColor: "#1A4A7A",     photo: imgEModule },
   ];
 
+  const VOL_RESOURCES = [
+    { id: "tvw-kit",  label: "TVW Campaign Kit",  desc: "Assets, guides and templates for Tata Volunteering Week", count: "TVW 22",     accentColor: B_BLUE,        photo: imgVolTVW  },
+    { id: "pe-kit",   label: "PE Campaign Kit",   desc: "ProEngage edition materials and volunteer toolkits",       count: "PE Ed. 24",  accentColor: KPI_PROENGAGE, photo: imgVolPE   },
+    { id: "tsm-kit",  label: "TSM Campaign Kit",  desc: "Tata Sustainability Month resources and DIY guides",       count: "June 2026",  accentColor: "#8aad2a",     photo: imgVolTSM  },
+  ];
+  ];
+
   const inp: React.CSSProperties = { width: "100%", border: "1.5px solid #e8e8f0", borderRadius: 10, padding: "10px 14px", fontSize: 13.5, fontFamily: "'DM Sans', ui-sans-serif, system-ui, sans-serif", color: ACCENT_NAVY, outline: "none", boxSizing: "border-box" };
 
   // ── Volunteer sections JSX ──────────────────────────────────────────────────
@@ -1053,13 +1063,11 @@ export default function SPOCDashboardView() {
       <div style={{ background: "#f8f9fc", borderRadius: 16, padding: "24px 22px", marginBottom: 52 }}>
         <section id="vol-resources" style={{ scrollMarginTop: 108 }}>
           <SectionHeading eyebrow="Learning and inspiration" title="Resource Library" />
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
-            {SPOC_RESOURCES.map(r => <ResourceCard key={r.id} r={r} onClick={() => {
-              if (r.id === "emodule") setShowOrientationModal(true);
-              else if (r.id === "tvw-kit") onNavigate("tvw-campaign-kit");
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+            {VOL_RESOURCES.map(r => <ResourceCard key={r.id} r={r} onClick={() => {
+              if (r.id === "tvw-kit") onNavigate("tvw-campaign-kit");
               else if (r.id === "pe-kit")  onNavigate("proengage-campaign-kit");
               else if (r.id === "tsm-kit") onNavigate("tsm-campaign-kit");
-              else if (r.id === "directory") onNavigate("spoc-directory");
               else onNavigate("media");
             }} />)}
           </div>
