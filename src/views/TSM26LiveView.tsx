@@ -88,7 +88,7 @@ export default function TSM26LiveView() {
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
             objectFit: "cover", objectPosition: "center" }} />
         <div style={{ position: "absolute", inset: 0,
-          background: `linear-gradient(110deg, ${ACCENT_NAVY}e8 0%, ${ACCENT_NAVY}cc 40%, ${ACCENT_NAVY}88 62%, ${ACCENT_NAVY}33 100%)` }} />
+          background: `linear-gradient(110deg, #1a3a1ae8 0%, #1a3a1acc 40%, #1a3a1a88 62%, #1a3a1a22 100%)` }} />
         <div style={DIAG} />
 
         <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto",

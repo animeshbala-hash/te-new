@@ -18,8 +18,8 @@ import badgeChampion   from "@/assets/badges/champion.png";
 import imgTVWKit  from "@/assets/heroes/public/tata-motors-3.jpg";
 import imgPEKit   from "@/assets/heroes/public/tata-projects.jpg";
 import imgTSMKit  from "@/assets/homepagebanner/Volunteering in Action 5.jpg";
-import imgDir     from "@/assets/homepagebanner/Tata Bluescope Steel (2).jpg";
-import imgEModule from "@/assets/heroes/public/happy-eyes.jpg";
+import imgDir     from "@/assets/homepagebanner/20240729_114952.jpg";
+import imgEModule from "@/assets/homepagebanner/General_Titan Company Ltd_01.jpg";
 
 const B_INDIGO    = "#333399";   // Tata Blue — used for pending/amber text labels
 const B_YELLOW    = "#F79425";
@@ -715,8 +715,8 @@ export default function SPOCDashboardView() {
     { id: "tvw-kit",  label: "TVW Campaign Kit",  desc: "Assets, guides and templates for Tata Volunteering Week", count: "TVW 22",     accentColor: B_BLUE,        photo: imgTVWKit  },
     { id: "pe-kit",   label: "PE Campaign Kit",   desc: "ProEngage edition materials and volunteer toolkits",       count: "PE Ed. 24",  accentColor: KPI_PROENGAGE, photo: imgPEKit   },
     { id: "tsm-kit",  label: "TSM Campaign Kit",  desc: "Tata Sustainability Month resources and DIY guides",       count: "June 2026",  accentColor: "#8aad2a",     photo: imgTSMKit  },
-    { id: "directory",label: "TATA SPOC Directory", desc: "Contact directory for all Tata Engage SPOCs group-wide", count: "All SPOCs",  accentColor: KPI_YELLOW,    photo: imgDir     },
-    { id: "emodule",  label: "SPOC E-Module",     desc: "SPOC orientation, guidelines and best practices",         count: "5 modules",  accentColor: "#C8850A",     photo: imgEModule },
+    { id: "directory",label: "TATA SPOC Directory", desc: "Contact directory for all Tata Engage SPOCs group-wide", count: "All SPOCs",  accentColor: "#2563A8",     photo: imgDir     },
+    { id: "emodule",  label: "SPOC E-Module",     desc: "SPOC orientation, guidelines and best practices",         count: "5 modules",  accentColor: "#1A4A7A",     photo: imgEModule },
   ];
 
   const inp: React.CSSProperties = { width: "100%", border: "1.5px solid #e8e8f0", borderRadius: 10, padding: "10px 14px", fontSize: 13.5, fontFamily: "'DM Sans', ui-sans-serif, system-ui, sans-serif", color: ACCENT_NAVY, outline: "none", boxSizing: "border-box" };
