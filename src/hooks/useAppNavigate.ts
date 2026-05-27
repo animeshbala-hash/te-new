@@ -21,6 +21,10 @@ const VIEW_TO_PATH: Record<string, string> = {
   "tvw25-update1": "/tvw/update-1",
   proengage: "/proengage",
   "proengage-campaign-kit": "/proengage/campaign-kit",
+  "tvw-campaign-kit": "/tvw/campaign-kit",
+  "tsm-campaign-kit": "/tata-sustainability-month/campaign-kit",
+  "spoc-directory": "/spoc/directory",
+  "spoc-emodule": "/spoc/emodule",
   "disaster-response": "/disaster-response",
   
   "dr-availability-form": "/disaster-response/availability",
