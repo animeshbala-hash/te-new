@@ -727,7 +727,6 @@ export default function SPOCDashboardView() {
     { id: "pe-kit",   label: "PE Campaign Kit",   desc: "ProEngage edition materials and volunteer toolkits",       count: "PE Ed. 24",  accentColor: KPI_PROENGAGE, photo: imgVolPE   },
     { id: "tsm-kit",  label: "TSM Campaign Kit",  desc: "Tata Sustainability Month resources and DIY guides",       count: "June 2026",  accentColor: "#8aad2a",     photo: imgVolTSM  },
   ];
-  ];
 
   const inp: React.CSSProperties = { width: "100%", border: "1.5px solid #e8e8f0", borderRadius: 10, padding: "10px 14px", fontSize: 13.5, fontFamily: "'DM Sans', ui-sans-serif, system-ui, sans-serif", color: ACCENT_NAVY, outline: "none", boxSizing: "border-box" };
 
