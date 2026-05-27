@@ -1059,6 +1059,7 @@ export default function SPOCDashboardView() {
               else if (r.id === "tvw-kit") onNavigate("tvw-campaign-kit");
               else if (r.id === "pe-kit")  onNavigate("proengage-campaign-kit");
               else if (r.id === "tsm-kit") onNavigate("tsm-campaign-kit");
+              else if (r.id === "directory") onNavigate("spoc-directory");
               else onNavigate("media");
             }} />)}
           </div>
@@ -1371,6 +1372,7 @@ export default function SPOCDashboardView() {
               else if (r.id === "tvw-kit") onNavigate("tvw-campaign-kit");
               else if (r.id === "pe-kit")  onNavigate("proengage-campaign-kit");
               else if (r.id === "tsm-kit") onNavigate("tsm-campaign-kit");
+              else if (r.id === "directory") onNavigate("spoc-directory");
               else onNavigate("media");
             }} />
             ))}

@@ -21,7 +21,7 @@ function useBannerSlides() {
     slides.push({
       img:  now >= peStart ? peLaunch : peTeaser,
       alt:  now >= peStart ? "ProEngage Edition 24 — now live" : "ProEngage — coming soon",
-      dest: now >= peStart ? "proengage" : "about-proengage",
+      dest: now >= peStart ? "pe24-live" : "about-proengage",
       bg:   "#F37021",
     });
   }
