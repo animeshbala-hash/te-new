@@ -506,7 +506,7 @@ const Navbar = ({
       label: "ProEngage",
       items: [
         { label: "About ProEngage", action: () => onNavigate("about-proengage") },
-        { label: "ProEngage is Live", action: () => onNavigate("proengage") },
+        { label: "ProEngage is Live", action: () => onNavigate("pe24-live") },
         { label: "Apply for a Project", action: () => onNavigate("proengage") },
         {
           label: "E-Module",
