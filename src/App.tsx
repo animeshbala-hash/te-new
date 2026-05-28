@@ -72,6 +72,8 @@ import PrivacyView from "@/views/PrivacyView";
 import LegalView from "@/views/LegalView";
 import VolunteeringGuidelinesView from "@/views/VolunteeringGuidelinesView";
 import CodeOfConductView from "@/views/CodeOfConductView";
+import TVWArchiveView from "@/views/TVWArchiveView";
+import TVWEditionView from "@/views/TVWEditionView";
 import NotFound from "@/pages/NotFound";
 
 export default function App() {
@@ -432,6 +434,8 @@ export default function App() {
             <Route path="/journey" element={<JourneyView />} />
             <Route path="/about" element={<AboutView />} />
             <Route path="/about/tvw" element={<AboutTVWView />} />
+            <Route path="/tvw/archive" element={<TVWArchiveView />} />
+            <Route path="/tvw/edition/:slug" element={<TVWEditionView />} />
             <Route path="/about/proengage" element={<AboutProEngageView />} />
             <Route path="/about/gcso" element={<GCSOView />} />
             <Route path="/about/team" element={<TeamView />} />
