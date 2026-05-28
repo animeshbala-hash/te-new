@@ -70,7 +70,6 @@ const Footer = () => {
             {[
               { label: "About Tata Engage", action: () => scrollTo("about", "about-vision") },
               { label: "Our Journey", action: () => navigate("journey" as any) },
-              { label: "Disaster Response", action: () => navigate("disaster-response" as any) },
               { label: "Partner With Us", action: () => navigate("partner" as any) },
               { label: "Media & Resources", action: () => navigate("media" as any) },
             ].map(({ label, action }) => (
@@ -87,7 +86,7 @@ const Footer = () => {
             <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.4px", textTransform: "uppercase",
               color: "rgba(255,255,255,0.35)", marginBottom: 18 }}>Programmes</p>
             {[
-              { label: "Tata Volunteering Week (TVW)", action: () => navigate("about-tvw" as any) },
+              { label: "Tata Volunteering Week", action: () => navigate("about-tvw" as any) },
               { label: "ProEngage", action: () => navigate("about-proengage" as any) },
               { label: "Disaster Response", action: () => navigate("disaster-response" as any) },
               { label: "Tata Sustainability Month", action: () => navigate("tata-sm" as any) },
