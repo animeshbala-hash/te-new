@@ -35,6 +35,8 @@ const VIEW_TO_PATH: Record<string, string> = {
   "journey": "/journey",
   "about": "/about",
   "about-tvw": "/about/tvw",
+  "tvw-archive": "/tvw/archive",
+  "tvw-is-live": "/tvw/edition/25",
   "about-proengage": "/about/proengage",
   "about-gcso": "/about/gcso",
   "about-team": "/about/team",
