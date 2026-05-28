@@ -72,7 +72,7 @@ export default function EOEOView() {
       {/* HERO */}
       <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", paddingTop: 64 }}>
         <img src={eoeoHeroImg} alt="Each One Empowers One"
-          style={{ width: "100%", height: "calc(100vh - 64px)", objectFit: "contain", background: "#000", display: "block" }} />
+          style={{ width: "100%", height: "calc(100vh - 64px)", objectFit: "fill", display: "block" }} />
       </div>
 
       {/* ABOUT */}

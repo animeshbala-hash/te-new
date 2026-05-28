@@ -84,7 +84,7 @@ export default function TSM26LiveView() {
       {/* ── HERO ── */}
       <div id="tsm26-hero" style={{ position: "relative", minHeight: "92vh", overflow: "hidden", paddingTop: 64 }}>
         <img src={tsmHeroImg} alt="Tata Sustainability Month 2026"
-          style={{ width: "100%", height: "calc(100vh - 64px)", objectFit: "cover", objectPosition: "center", display: "block" }} />
+          style={{ width: "100%", height: "calc(100vh - 64px)", objectFit: "fill", display: "block" }} />
       </div>
 
       {/* ── 2026 EDITION ── */}
