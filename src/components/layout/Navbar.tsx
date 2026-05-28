@@ -519,10 +519,10 @@ const Navbar = ({
       label: "Tata Volunteering Week (TVW)",
       items: [
         { label: "About TVW", action: () => onNavigate("about-tvw") },
-        { label: "TVW is Live", action: () => onNavigate("tvw") },
+        { label: "TVW is Live", action: () => onNavigate("tvw-is-live") },
         { label: "Volunteering Opportunities", action: () => onNavigate("tvw") },
         { label: "DIY Kit", action: () => triggerToast("DIY Kit available — check Resources") },
-        { label: "TVW Archives", action: () => onNavigate("about-tvw") },
+        { label: "TVW Archive", action: () => onNavigate("tvw-archive") },
         { label: "Resources", action: () => onNavigate("partner") },
       ],
     },
