@@ -88,28 +88,31 @@ export const EVENTS: EventEntry[] = [
     slideHeadline: "27th IAVE World Volunteer Conference",
     slideSub: "Busan, Republic of Korea · October 2024",
     openingPara:
-      "The 27th IAVE World Volunteer Conference, themed 'People Power: Creating a Sustainable Future through Volunteering,' brought together over 1,500 volunteer leaders from 90 countries at the Busan Exhibition and Convention Center. Inaugurated by the President of South Korea, Yoon Suk Yeol, the conference reaffirmed the power of volunteering to co-create solutions for pressing global challenges.",
+      "The Tata Group was invited to participate in the 27th IAVE World Volunteer Conference, held in Busan, Republic of Korea. The conference, themed 'People Power: Creating a Sustainable Future through Volunteering,' brought together global leaders to explore how volunteering can drive meaningful, sustainable change. The event was inaugurated by the President of South Korea, Yoon Suk Yeol, who highlighted the critical importance of global solidarity in addressing shared challenges. Over 1,500 volunteer leaders from more than 90 countries convened, reinforcing the role of volunteering as a powerful force in co-creating solutions for pressing global issues.",
     sections: [
       {
-        heading: "Tata Group's Representation",
-        body: "Tata Sustainability Group had a strong presence across multiple sessions of the conference.",
+        heading: "Reimagining Sustainability Through Volunteering",
+        body: "Representing the Tata Group, Mr. Shrirang Dhavale (Cluster Head, Social Services Cluster — Volunteering, Business & Human Rights, Disaster Response and Disaster Risk Reduction, Tata Sustainability Group, Tata Sons and At-Large Board Member, IAVE) was invited to participate in the plenary session 'Responding to the Sustainability Challenge: The Role of Corporate Volunteering.' In his address, he emphasised the evolving role of volunteering — not just as an act of service, but as a catalyst for reimagining personal values, behaviours, and lifestyles in response to climate change. While acknowledging significant global progress, he underscored a critical paradox: the very model of development that delivered these gains has also contributed to the climate crisis.",
         bullets: [
-          "Shrirang Dhavale represented Tata Sustainability Group in the plenary session 'Responding to the Sustainability Challenge: The Role of Corporate Volunteering,' emphasising how volunteering can help reimagine personal values and lifestyles to address climate change.",
-          "Gauri Rajadhyaksha and Pallavi Barua joined Shrirang at the Global Corporate Volunteer Council (GCVC) meeting, where participants deliberated on trends in corporate volunteering across Asia — specifically Korea, China, and Japan — and highlighted new opportunities and challenges on the horizon.",
-          "Pallavi Barua presented Tata Communications' DRIVE campaign during the India Country Spotlight, offering a five-point recommendation for companies planning to embed scale in their volunteering programmes.",
+          "Scale — by encouraging widespread participation across the Group",
+          "Depth — by focusing on impact-driven and skill-based volunteering",
+          "Individual agency — by empowering employees to pursue causes they are passionate about",
         ],
       },
       {
-        heading: "Key Highlights",
-        bullets: [
-          "The plenary and GCVC sessions reinforced the importance of skill-based volunteering and impact-focused initiatives in the post-pandemic era.",
-          "Tata Engage's role as a unifying platform across Tata companies was spotlighted, showcasing how SPOCs and employee champions have enabled the Group to consistently clock over a million volunteering hours annually for seven consecutive years.",
-          "Since 2020, the Tata Group has been part of the Global Corporate Volunteer Council (GCVC) — steering discussions on corporate volunteering and fostering collaboration among member companies globally.",
-        ],
+        heading: "Global Corporate Volunteer Council",
+        body: "Gauri Rajadhyaksha and Pallavi Barua joined Shrirang Dhavale in representing the Tata Group at the Global Corporate Volunteer Council (GCVC) meeting, where the group deliberated on trends in corporate volunteering across Asia — specifically Korea, China, and Japan — and highlighted new opportunities and challenges ahead. The sessions enabled rich cross-sharing of strategies, challenges, and innovative initiatives.",
       },
       {
-        heading: "Reflections",
-        body: "The conference celebrated volunteering as a driver of sustainability and inclusion. Tata Sustainability Group's participation highlighted the Group's belief that volunteering is not only about giving time — but about reimagining values, lifestyles, and business contexts to create a more sustainable future.",
+        heading: "India Country Spotlight",
+        body: "Pallavi Barua presented Tata Communications' DRIVE campaign during the India Country Spotlight, offering a five-point recommendation for companies planning to embed scale in their volunteering programmes.",
+      },
+    ],
+    quotes: [
+      {
+        text: "For over 150 years, the Tata Group has contributed to public good, shaping people-centric progress and creating lasting value for communities. Today, with over a million employees globally, our corporate volunteering programme has contributed over 8 million hours. With strong leadership commitment to deepen and broaden volunteering, we continue to follow a 'big tent' approach with a growing focus on impact-driven volunteering. As a member of the IAVE Board, Tata Group remains committed to supporting global efforts to advance excellence in corporate volunteering.",
+        attribution: "Chacko Thomas",
+        role: "Group Chief Sustainability Officer, Tata Sons",
       },
     ],
     stats: [
