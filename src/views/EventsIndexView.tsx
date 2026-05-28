@@ -69,10 +69,6 @@ export default function EventsIndexView() {
           </h1>
           <p style={{ fontFamily: FONT, fontSize: 18, fontWeight: 300,
             color: "rgba(255,255,255,0.8)", lineHeight: 1.6, maxWidth: 560, margin: "0 0 32px" }}>
-            Conclaves, forums and gatherings that shape the volunteering agenda.
-          </p>
-          <p style={{ fontFamily: FONT, fontSize: 15, fontWeight: 300,
-            color: "rgba(255,255,255,0.72)", lineHeight: 1.7, maxWidth: 480, margin: 0 }}>
             From TSG's flagship Tata VOLCON to the global IAVE forum — moments where leaders, champions and the community come together.
           </p>
 

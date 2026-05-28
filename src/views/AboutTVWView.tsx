@@ -346,7 +346,7 @@ export default function AboutTVWView() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 600 }}>
             {[
               { date: "3 March", label: "Edition 1", desc: "Commemorates the birth anniversary of founder, Jamsetji Tata." },
-              { date: "5 September", label: "Edition 2", desc: "Extends the spirit of volunteering through the second half of the year." },
+              { date: "5 September", label: "Edition 2", desc: "Commemorates International Volunteer Day." },
             ].map((ed) => (
               <div key={ed.date} style={{ background: COLOUR, borderRadius: 16, padding: "28px 26px", boxShadow: "0 2px 12px rgba(13,27,62,0.08)" }}>
                 <div style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: "1.2px", color: "rgba(255,255,255,0.75)", textTransform: "uppercase", marginBottom: 10 }}>{ed.label}</div>

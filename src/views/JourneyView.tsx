@@ -273,7 +273,7 @@ export default function JourneyView() {
             Be part of what comes next
           </h2>
           <p style={{ fontFamily: FONT, fontSize: 15, color: "rgba(255,255,255,0.55)", lineHeight: 1.72, marginBottom: 36 }}>
-            Join a community of 50,000+ volunteers shaping a better world through the Tata Group's longest-running commitment to action.
+            Join the Tata tribe of volunteers shaping a better world through their volunteering actions.
           </p>
           <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
             <button

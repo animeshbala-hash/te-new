@@ -8,6 +8,7 @@ import {
 import peTeaser  from "@/assets/pe-24-teaser.jpg";
 import peLaunch  from "@/assets/pe-launch.jpg";
 import tsmLaunch from "@/assets/TSM26_launch.jpg";
+import eoeoBanner from "@/assets/eoeobanner.jpg";
 
 // ─── Carousel slide builder (date-gated) ──────────────────────────────────────
 function useBannerSlides() {
@@ -32,6 +33,14 @@ function useBannerSlides() {
     alt:  "Tata Sustainability Month 2026 is Live",
     dest: "tsm26-live",
     bg:   "#C3DB6F",
+  });
+
+  // EOEO slide
+  slides.push({
+    img:  eoeoBanner,
+    alt:  "Each One Empowers One",
+    dest: "eoeo",
+    bg:   "#0D1B3E",
   });
 
   return slides;

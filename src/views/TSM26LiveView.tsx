@@ -82,61 +82,9 @@ export default function TSM26LiveView() {
       <SubPageDotRail sections={SECTIONS} accentColour={COLOUR} />
 
       {/* ── HERO ── */}
-      <div id="tsm26-hero" style={{ position: "relative", minHeight: "92vh", overflow: "hidden",
-        display: "flex", alignItems: "center", paddingTop: 64 }}>
+      <div id="tsm26-hero" style={{ position: "relative", minHeight: "92vh", overflow: "hidden", paddingTop: 64 }}>
         <img src={tsmHeroImg} alt="Tata Sustainability Month 2026"
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
-            objectFit: "cover", objectPosition: "center" }} />
-        <div style={{ position: "absolute", inset: 0,
-          background: `linear-gradient(110deg, #1a3a1ae8 0%, #1a3a1acc 40%, #1a3a1a88 62%, #1a3a1a22 100%)` }} />
-        <div style={DIAG} />
-
-        <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto",
-          padding: "0 64px", width: "100%" }}>
-          <div style={{ maxWidth: 620 }}>
-
-            {/* LIVE badge */}
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 6,
-              background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.28)",
-              borderRadius: 100, padding: "5px 14px", marginBottom: 24 }}>
-              <span style={{ width: 7, height: 7, borderRadius: "50%", background: COLOUR,
-                boxShadow: `0 0 0 3px ${COLOUR}55`, flexShrink: 0,
-                animation: "tsmPulse 1.6s ease-in-out infinite" }} />
-              <span style={{ fontFamily: FONT, fontSize: 11, fontWeight: 700,
-                letterSpacing: "1.4px", textTransform: "uppercase", color: "rgba(255,255,255,0.85)" }}>
-                TSM 2026 is Live
-              </span>
-            </span>
-
-            {/* TSM Logo — no H1 needed */}
-            <div style={{ marginBottom: 24 }}>
-              <img src={tsmLogo} alt="TSM 2026"
-                style={{ height: 80, width: "auto", objectFit: "contain", display: "block" }} />
-            </div>
-
-            <p style={{ fontFamily: FONT, fontSize: 15, fontWeight: 300, lineHeight: 1.8,
-              color: "rgba(255,255,255,0.78)", margin: "0 0 40px", maxWidth: 480 }}>
-              Join 1 million+ Tata colleagues, family members and retirees to make a direct impact
-              on the community and environment this June.
-            </p>
-
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <button onClick={() => navigate(isLoggedIn ? "dashboard" : "register-role")}
-                style={{ fontFamily: FONT, background: B_YELLOW, color: ACCENT_NAVY, border: "none",
-                  borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14,
-                  cursor: "pointer", boxShadow: "0 4px 20px rgba(13,27,62,0.25)" }}>
-                Register to Volunteer →
-              </button>
-              <a href="https://tatasustainability.com" target="_blank" rel="noopener noreferrer"
-                style={{ fontFamily: FONT, background: "rgba(255,255,255,0.12)", color: "#fff",
-                  border: "1.5px solid rgba(255,255,255,0.28)", borderRadius: 10,
-                  padding: "14px 22px", fontWeight: 600, fontSize: 14,
-                  textDecoration: "none", display: "inline-block" }}>
-                Learn More
-              </a>
-            </div>
-          </div>
-        </div>
+          style={{ width: "100%", height: "calc(100vh - 64px)", objectFit: "cover", objectPosition: "center", display: "block" }} />
       </div>
 
       {/* ── 2026 EDITION ── */}
@@ -149,13 +97,14 @@ export default function TSM26LiveView() {
               Thinking is good,<br />Doing is better
             </h2>
             <DefinerBar colour={COLOUR} />
-            <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginBottom: 24 }}>
-              The 2026 edition of Tata Sustainability Month emphasises action — inviting Tata employees
-              to take small and decisive steps to imbibe a more sustainable lifestyle.
+            <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
+              What does it mean to "do" instead of "think" in 2026? It's not just about having ideas, it's about bringing them to life. It's about choosing action over hesitation, and progress over promises. Real impact today is measured not by what we plan, but by what we actively enable and deliver, through everyday actions and collective participation.
+            </p>
+            <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginBottom: 16 }}>
+              This June, Tata employees are invited to be more than just thinkers. Be the change. Be the energy. Be the ones who turn intentions into impact. Be individuals who see possibilities and take the first step, while contributing to a larger, interconnected ecosystem of action and purpose.
             </p>
             <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.82, marginBottom: 32 }}>
-              Monthly activities are divided into weekly sub-themes, each offering tailored content
-              and activities aligned with Tata Group's Aalingana pillars.
+              With engaging activities, inspiring leadership conversations, and multiple opportunities for hands-on participation, this year's Tata Sustainability Month is designed to move from ideas to implementation, at scale and with tangible outcomes. Because thinking is good but doing it is better. And when Tata employees each take a meaningful action, together we create a future that is responsible, impactful, and built for tomorrow.
             </p>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {THEME_CHIPS.map((chip) => (

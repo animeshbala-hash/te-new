@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useAppNavigate } from "@/hooks/useAppNavigate";
 import { useAuth } from "@/context/AuthContext";
 import SubPageDotRail from "@/components/shared/SubPageDotRail";
-import eoeoHeroImg from "@/assets/homepagebanner/Westside Store employees_Paint an Orphanage - Trent.JPG";
+import eoeoHeroImg from "@/assets/eoeobanner.jpg";
 
 const ACCENT_NAVY  = "#0D1B3E";
 const COLOUR       = "#007A8A";  // DR teal
@@ -70,41 +70,9 @@ export default function EOEOView() {
       <SubPageDotRail sections={SECTIONS} />
 
       {/* HERO */}
-      <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", display: "flex", alignItems: "center", paddingTop: 64 }}>
-        <img src={eoeoHeroImg} alt=""
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
-        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, ${COLOUR}e8 0%, ${COLOUR}cc 38%, ${COLOUR}aa 58%, ${COLOUR}77 78%, ${COLOUR}44 100%)` }} />
-
-        <div style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "0 64px", width: "100%" }}>
-          <div style={{ maxWidth: 640 }}>
-            <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase", color: "#ffffff", margin: "0 0 12px" }}>
-              TCS · Employee Initiative · Year-round
-            </p>
-            <div style={{ width: 48, height: 2, background: "rgba(255,255,255,0.6)", borderRadius: 2, margin: "12px 0 22px" }} />
-            <h1 style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: "clamp(2.4rem, 5vw, 3.8rem)", fontWeight: 400, color: "#fff", lineHeight: 1.12, letterSpacing: "-0.5px", margin: "0 0 22px" }}>
-              Each One<br />Empowers One
-            </h1>
-            <p style={{ fontFamily: "'DM Sans','Noto Sans',ui-sans-serif,system-ui,sans-serif", fontSize: 15, fontWeight: 300, lineHeight: 1.7, color: "rgba(255,255,255,0.65)", margin: "0 0 32px", maxWidth: 520 }}>
-              TCS's intuitive digital literacy platform — for the people, by the people. Enable financial, digital, and functional literacy in 9 Indian languages.
-            </p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <a
-                href="https://tcsempowers.tcsapps.com/apac2/alp/"
-                target="_blank" rel="noopener noreferrer"
-                style={{ background: "#F5A623", color: "#0D1B3E", border: "none", borderRadius: 10, padding: "14px 28px", fontWeight: 800, fontSize: 14, boxShadow: "0 4px 20px rgba(13,27,62,0.25)", textDecoration: "none", display: "inline-block" }}
-              >
-                Become a Literacy Champion →
-              </a>
-              <button
-                onClick={() => document.getElementById("eoeo-about")?.scrollIntoView({ behavior: "smooth" })}
-                style={{ background: "rgba(255,255,255,0.12)", color: "#fff", border: "1.5px solid rgba(255,255,255,0.28)", borderRadius: 10, padding: "14px 22px", fontWeight: 600, fontSize: 14, cursor: "pointer" }}
-              >
-                Learn more
-              </button>
-            </div>
-          </div>
-        </div>
-
+      <div style={{ position: "relative", minHeight: "92vh", overflow: "hidden", paddingTop: 64 }}>
+        <img src={eoeoHeroImg} alt="Each One Empowers One"
+          style={{ width: "100%", height: "calc(100vh - 64px)", objectFit: "contain", background: "#000", display: "block" }} />
       </div>
 
       {/* ABOUT */}

@@ -450,51 +450,49 @@ function Iave2024({ onBack }: { onBack: () => void }) {
       <EventHero accent={accent}
         eyebrow="Tata Engage · Global Forum"
         title="27th IAVE World Volunteer Conference"
-        subtitle="People Power: Creating a Sustainable Future through Volunteering — Busan, Republic of Korea · 22–24 October 2024"
+        subtitle="People Power: Creating a Sustainable Future through Volunteering — Busan, Republic of Korea · 22–25 October 2024"
         heroImage={iave24Img3}
         heroImagePosition="center center" />
       <ArticleBody accent={accent}>
         <Breadcrumb onBack={onBack} />
 
         <OpeningParas accent={accent} texts={[
-          "Tata Sustainability Group was invited to participate in the 27th IAVE World Volunteer Conference, themed 'People Power: Creating a Sustainable Future through Volunteering.' The conference was inaugurated by the Hon'ble President of South Korea, Yoon Suk Yeol, who underscored the urgent need for global solidarity.",
-          "The event brought together over 1,500 volunteer leaders from 90 countries, reaffirming the power of volunteering to co-create solutions for pressing global challenges.",
+          "The Tata Group was invited to participate in the 27th IAVE World Volunteer Conference, held in Busan, Republic of Korea. The conference, themed 'People Power: Creating a Sustainable Future through Volunteering,' brought together global leaders to explore how volunteering can drive meaningful, sustainable change.",
+          "The event was inaugurated by the President of South Korea, Yoon Suk Yeol, who highlighted the critical importance of global solidarity in addressing shared challenges. Over 1,500 volunteer leaders from more than 90 countries convened, reinforcing the role of volunteering as a powerful force in co-creating solutions for pressing global issues.",
         ]} />
 
-        <MediaBlock accent={accent} title="Plenary Session — Shrirang Dhavale"
-          body="Shrirang Dhavale represented Tata Sustainability Group in the plenary session 'Responding to the Sustainability Challenge: The Role of Corporate Volunteering.' He emphasised how volunteering can help reimagine personal values and lifestyles to address climate change, highlighting Tata's perspective on embedding sustainability into corporate volunteering ecosystems."
+        <MediaBlock accent={accent} title="Reimagining Sustainability Through Volunteering"
+          body="Representing the Tata Group, Mr. Shrirang Dhavale (Cluster Head, Social Services Cluster — Volunteering, Business & Human Rights, Disaster Response and Disaster Risk Reduction, Tata Sustainability Group, Tata Sons and At-Large Board Member, IAVE) was invited to participate in the plenary session 'Responding to the Sustainability Challenge: The Role of Corporate Volunteering.' In his address, he emphasised the evolving role of volunteering — not just as an act of service, but as a catalyst for reimagining personal values, behaviours, and lifestyles in response to climate change. While acknowledging significant global progress, he underscored a critical paradox: the very model of development that delivered these gains has also contributed to the climate crisis, putting those achievements at risk."
           media={<img src={iave24Img3} alt="Shrirang Dhavale at IAVE 2024 plenary"
             style={{ width: "100%", borderRadius: 14, objectFit: "cover",
               aspectRatio: "16/9", display: "block" }} />} />
 
-        <MediaBlock accent={accent} title="Global Corporate Volunteer Council — Gauri Rajadhyaksha & Pallavi Barua"
-          body="Gauri Rajadhyaksha and Pallavi Barua represented Tata Engage at the Global Corporate Volunteer Council (GCVC) meeting, deliberating on trends in corporate volunteering across Asia — Korea, China, and Japan — and highlighting new opportunities and challenges. The sessions enabled rich cross-sharing of strategies and innovative initiatives."
-          media={<img src={iave24Img2} alt="Gauri and Pallavi at GCVC"
+        <Paras texts={[
+          "Through Tata Engage, the Group's flagship volunteering programme, Tata has been working to build a unified yet flexible platform that enables companies and employees to contribute meaningfully — balancing scale through widespread participation, depth through impact-driven and skill-based volunteering, and individual agency by empowering employees to pursue causes they are passionate about. This 'big tent approach' ensures that volunteering remains inclusive while steadily moving towards more purposeful, skill-led engagement.",
+        ]} />
+
+        <MediaBlock accent={accent} title="Global Corporate Volunteer Council"
+          body="Gauri Rajadhyaksha and Pallavi Barua joined Shrirang Dhavale in representing the Tata Group at the Global Corporate Volunteer Council (GCVC) meeting, where the group deliberated on trends in corporate volunteering across Asia — specifically Korea, China, and Japan — and highlighted new opportunities and challenges ahead. The sessions enabled rich cross-sharing of strategies, challenges, and innovative initiatives."
+          media={<img src={iave24Img2} alt="Gauri Rajadhyaksha and Pallavi Barua at GCVC"
             style={{ width: "100%", borderRadius: 14, objectFit: "cover",
               aspectRatio: "16/9", display: "block" }} />}
           mediaLeft />
 
-        <MediaBlock accent={accent} title="India Country Spotlight — Pallavi Barua"
+        <MediaBlock accent={accent} title="India Country Spotlight"
           body="Pallavi Barua presented Tata Communications' DRIVE campaign during the India Country Spotlight, offering a five-point recommendation for companies planning to embed scale in their volunteering programmes."
           media={<img src={iave24Img4} alt="Pallavi Barua presenting India Country Spotlight"
             style={{ width: "100%", borderRadius: 14, objectFit: "cover",
               aspectRatio: "16/9", display: "block" }} />} />
-
-        <SectionHead title="Key Highlights" accent={accent} />
-        <Paras texts={[
-          "The plenary and GCVC sessions reinforced the importance of skill-based volunteering and impact-focused initiatives in the post-pandemic era — a direction the Tata Group has been pioneering through ProEngage.",
-          "Tata Engage's role as a unifying platform across Tata companies was spotlighted, showcasing how SPOCs and employee champions have enabled the Group to consistently clock over a million volunteering hours annually for seven consecutive years.",
-          "Since 2020, the Tata Group has been part of the Global Corporate Volunteer Council, steering discussions on corporate volunteering and remaining committed to fostering a collaborative spirit globally.",
-        ]} />
 
         <PhotoGrid images={[
           { src: iave24Img5, alt: "IAVE 2024 session" },
           { src: iave24Img6, alt: "IAVE 2024 closing" },
         ]} />
 
-        <Paras texts={[
-          "The conference celebrated volunteering as a driver of sustainability and inclusion. Tata Sustainability Group's participation highlighted the Group's belief that volunteering is not only about giving time but also about reimagining values, lifestyles, and business contexts to create a more sustainable future.",
-        ]} />
+        <PullQuote accent={accent}
+          text="For over 150 years, the Tata Group has contributed to public good, shaping people-centric progress and creating lasting value for communities. Today, with over a million employees globally, our corporate volunteering programme has contributed over 8 million hours. With strong leadership commitment to deepen and broaden volunteering, we continue to follow a 'big tent' approach with a growing focus on impact-driven volunteering. As a member of the IAVE Board, Tata Group remains committed to supporting global efforts to advance excellence in corporate volunteering."
+          attribution="Chacko Thomas, Group Chief Sustainability Officer, Tata Sons" />
+
         <a href="https://iave.org" target="_blank" rel="noopener noreferrer"
           style={{ display: "inline-flex", alignItems: "center", gap: 8, background: accent,
             color: "#fff", borderRadius: 10, padding: "10px 22px", fontFamily: FONT,

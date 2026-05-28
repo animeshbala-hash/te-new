@@ -297,12 +297,7 @@ function ProgrammesSection() {
               Be part of the Tata legacy of giving.
             </div>
           </div>
-          <button
-            onClick={() => navigate("register-role")}
-            style={{ position: "relative", zIndex: 1, background: "#F5A623", color: "#0D1B3E", border: "none", borderRadius: 10, padding: "12px 24px", fontFamily: FONT, fontWeight: 800, fontSize: 14, cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0 }}
-          >
-            Register Now on Tata Engage →
-          </button>
+
         </div>
       </div>
     </section>

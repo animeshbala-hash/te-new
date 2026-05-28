@@ -58,7 +58,6 @@ function TeamSection() {
   const team = [
     { name: "Shrirang Dhavale",     title: "Cluster Head",           linkedin: "https://www.linkedin.com/in/shrirang-dhavale-45b89812/", photo: shrirangPortrait, focus: "center 25%" },
     { name: "Gauri Rajadhyaksha",   title: "Deputy General Manager", linkedin: "https://www.linkedin.com/in/gaurir/",                   photo: gauriPortrait,    focus: "center 25%" },
-    { name: "Supriya Ramachandran", title: "Manager",                linkedin: null,                                                    photo: supriyaPortrait,  focus: "center 25%" },
     { name: "Trupti Prabhu",        title: "Assistant Manager",      linkedin: "https://www.linkedin.com/in/trupti-prabhu-1bb720169/",  photo: truptiPortrait,   focus: "center 30%" },
   ];
   const initials = (n: string) => n.split(" ").map(w => w[0]).slice(0, 2).join("");
