@@ -398,14 +398,7 @@ export default function App() {
             />
             <Route path="/spoc/directory" element={<ProtectedRoute><div style={{padding:"4rem",textAlign:"center",fontFamily:"DM Sans,sans-serif"}}><h2>TATA SPOC Directory</h2><p>Coming soon.</p></div></ProtectedRoute>} />
             <Route path="/spoc/emodule" element={<ProtectedRoute><div style={{padding:"4rem",textAlign:"center",fontFamily:"DM Sans,sans-serif"}}><h2>SPOC E-Module</h2><p>Coming soon.</p></div></ProtectedRoute>} />
-            <Route
-              path="/tvw/update-1"
-              element={
-                <ProtectedRoute>
-                  <TVW25Update1View />
-                </ProtectedRoute>
-              }
-            />
+            <Route path="/tvw/update-1" element={<TVW25Update1View />} />
             <Route
               path="/tvw/campaign-kit"
               element={
